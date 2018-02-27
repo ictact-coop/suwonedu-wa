@@ -1,0 +1,38 @@
+<!--%import("join.css")-->
+
+<div class="joinContent">
+
+	<h2 class="title">{$lang->title}</h2>
+
+	<form action="" method="get" name="captcha_form" onsubmit="return false">
+
+		<p class="line"><a href="http://k2man.com" target="_blank"><img src="../securimage/securimage_show.php" id="captcha_image" /></a></p>
+
+		<p class="line">
+
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="19" height="19" id="SecurImage_as3" align="middle">
+
+				<param name="allowScriptAccess" value="sameDomain" />
+
+				<param name="allowFullScreen" value="false" />
+
+				<param name="movie" value="./addons/member_join_captcha/securimage/securimage_play.swf?audio=./addons/member_join_captcha/securimage/securimage_play.php&bgColor1=#777&bgColor2=#fff&iconColor=#000&roundedCorner=5" />
+
+				<param name="quality" value="high" />
+
+				<param name="bgcolor" value="#ffffff" />
+
+				<embed src="./addons/member_join_captcha/securimage/securimage_play.swf?audio=./addons/member_join_captcha/securimage/securimage_play.php&bgColor1=#777&bgColor2=#fff&iconColor=#000&roundedCorner=5" quality="high" bgcolor="#ffffff" width="19" height="19" name="SecurImage_as3" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+
+			</object>&nbsp;
+
+			<input name="" type="text" value="" name="captcha_string" id="captcha_string" class="inputText" />
+
+		</p>
+
+		<p class="line"><span class="button"><input name="" type="button" onclick="document.getElementById('captcha_image').src='/addons/member_join_captcha/securimage/securimage_show.php?sid=' + Math.random(); document.getElementById('captcha_string').focus();" value="{$lang->change}"></span>&nbsp;<span class="button"><input name="" class="member_join_agree" type="submit" value="{$lang->submit}" style="font-weight:bold;"/></span></p>
+
+	</form>
+
+</div>
+

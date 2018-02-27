@@ -1,0 +1,47 @@
+<load target="css/xe_cart.css" />
+
+
+<load cond="$layout_info->q_shop=='Y'" target="js/xe_cart.js" />
+
+<block >{@ $layout_info->q_thumb_w = '75'}</block>
+<block >{@ $layout_info->q_thumb_h = '70'}</block>
+
+<script>								   
+	q_thumb_w = 75;
+	q_thumb_h = 70;
+</script>
+
+
+<div id="xe_cart" style="<!--@if($layout_info->cart_top)-->top:{$layout_info->cart_top}px; <!--@else-->top:170px;<!--@endif-->width:75px; margin-right:-{$cart_right}px">
+	<input type="hidden" id="logged_info" value="Y" cond="$logged_info" />
+	<input type="hidden" id="r_prefix" value="{$r_prefix}"/>
+	
+																			
+	<div class="font_georgia">
+		<div class="q_title" style="">Quick menu</div>
+		<div id="q_box" style="margin-bottom:{($layout_info->q_thumb_h+0)-70}px">
+			<ul class="q_box">								 
+				<span class="nothing"></span>				
+			</ul>
+		</div>					   
+
+				        <!-- Q_MENU --> 		
+					    <div class="q_menu" style="text-align:center;">
+
+	                    <nav cond="$Q_MENU->list">	 
+						<li loop="$Q_MENU->list=>$key,$val" style="border-bottom:1px solid #ddd; padding:5px 0 5px 0; font-size:10px; color:#6B6B6B;font-family:Arial,'Nanum Gothic','Malgun Gothic','µ¸¿ò',Dotum,Tahoma,AppleGothic,sans-serif; letter-spacing:-0.7px;"><a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'"><strong>{$val['link']}</strong> &nbsp; <span class="fa fa-angle-right"  style="font-size:10px;"></span></a></li>
+						</nav>
+						<li cond="$layout_info->troll_ban01"><a class="" href="{$layout_info->troll_ban01_url}" onClick="#"><img src="<!--@if($layout_info->troll_ban01)-->{$layout_info->troll_ban01}<!--@else--><!--@end-->"></a></li>
+						<li cond="$layout_info->troll_ban02"><a class="" href="{$layout_info->troll_ban02_url}" onClick="#"><img src="<!--@if($layout_info->troll_ban02)-->{$layout_info->troll_ban02}<!--@else--><!--@end-->"></a></li>
+						<li cond="$layout_info->troll_ban03"><a class="" href="{$layout_info->troll_ban03_url}" onClick="#"><img src="<!--@if($layout_info->troll_ban03)-->{$layout_info->troll_ban03}<!--@else--><!--@end-->"></a></li>
+																							
+
+						<li><a class="icon_top" href="#" onClick="#">TOP</a></li>
+						<li><a class="icon_quick_fb" href="#" target="_self"><img src="<!--@if($layout_info->icon_f)-->{$layout_info->icon_f}<!--@else-->addons/xe_trolley/tpl/img/pick_01.png<!--@end-->"></a></li>	 
+				
+						</div>  <!-- / Q_MENU -->	 
+
+	</div>						 
+</div>
+
+

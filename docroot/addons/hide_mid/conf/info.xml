@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">mid 숨기기 애드온</title>
+    <description xml:lang="ko">
+        XE 문서(document) 주소에서 mid를 숨겨주는 애드온입니다.
+    </description>
+    <version>0.1.0</version>
+    <date>2014-04-25</date>
+
+    <author email_address="admin@upgle.com" link="http://upgle.com/">
+        <name xml:lang="ko">UPGLE</name>
+    </author>
+</addon>

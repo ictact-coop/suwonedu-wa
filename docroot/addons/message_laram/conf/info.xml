@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">쪽지 알람 +</title>
+    <description xml:lang="ko">
+        읽지않은 쪽지를 알려주는 애드온입니다.
+    </description>
+    <version>2.0</version>
+    <date>2012-08-17</date>
+
+    <author email_address="soonj@nate.com" link="http://backupxe.com/">
+        <name xml:lang="ko">카르마</name>
+    </author>
+    <author email_address="wincomi@me.com" link="http://xe.pe.kr/">
+        <name xml:lang="ko">윈컴이</name>
+    </author>
+	<extra_vars>
+		<var name="mode" type="select">
+            <title xml:lang="ko">알람 방식</title>
+            <description xml:lang="ko">The Bootstrap Modal을 사용하실 경우 The Bootstrap 테마를 사용하셔야 합니다.
+            확인알람을 설정하는 경우 확인을 클릭하면 쪽지읽기로 이동됩니다.</description>
+			<options value="jgrowl">
+				<title xml:lang="ko">(추천) jGrowl</title>
+			</options>
+            <options value="">
+            	<title xml:lang="ko">The Bootstrap Modal</title>
+            </options>
+            <options value="default">
+                <title xml:lang="ko">단순알람</title>
+			</options>
+            <options value="confirm">
+                <title xml:lang="ko">확인알람</title>
+            </options>
+			<options value="layer">
+                <title xml:lang="ko">레이어방식</title>
+            </options>
+        </var>
+        <var name="mode2" type="select">
+        	<title xml:lang="ko">알람 방식 2</title>
+        	<description xml:lang="ko">jGrowl 형식을 사용할때만 가능합니다.</description>
+			<options value="one_by_one">
+                <title xml:lang="ko">(추천) 쪽지 하나에 알람 한개씩 (쪽지 제목, 내용 표시)</title>
+            </options>
+            <options value="default">
+                <title xml:lang="ko">읽지않은 쪽지가 x개 있습니다.</title>
+            </options>
+        </var>
+        <var name="jgrowl_js" type="select">
+        	<title xml:lang="ko">jGrowl Javascript</title>
+        	<description xml:lang="ko">jGrowl 자바스크립트 파일을 불러옵니다. jGrowl를 불러오고 있으면 '아니요'를 해주세요. (ex:실시간 알림 모듈 사용시)</description>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+			</options>
+            <options value="no">
+            	<title xml:lang="ko">아니요</title>
+            </options>        	
+        </var>
+	</extra_vars>
+</addon>

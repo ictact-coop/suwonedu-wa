@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">외부이미지저장 애드온</title>
+    <description xml:lang="ko">
+        게시판에 복사 또는 삽입된 외부이미지를 가져와서 보관하는 애드온입니다. 일반적인 용도로 사용하는  경우 저작권의 문제가 될 수도 있습니다. 수정은 자유이나 재배포는 금지합니다.
+    </description>
+    <version>0.4.7</version>
+    <date>2011-4-21</date>
+
+    <author email_address="soonj@nate.com" link="http://www.wildgreen.co.kr">
+        <name xml:lang="ko">카르마</name>
+    </author>
+	<link>http://www.wildgreen.co.kr</link>
+	<extra_vars>
+        <var name="ri_permanent_get" type="select">
+            <title xml:lang="ko">영구저장</title>
+            <description xml:lang="ko">사용안함을 선택한 경우 캐시화일 재생성시 삭제됩니다. 사용함을 선택하는 경우, 수동 삭제만 가능합니다.</description>
+            <options value="N">
+                <title xml:lang="ko">사용안함</title>
+            </options>
+            <options value="Y">
+                <title xml:lang="ko">사용함</title>
+            </options>
+        </var>
+        <var name="ri_comment_get" type="select">
+            <title xml:lang="ko">댓글에서도 기능 사용</title>
+            <description xml:lang="ko">댓글에서도 기능을 사용할지 결정하십시요.</description>
+            <options value="Y">
+                <title xml:lang="ko">사용함</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">사용하지않음</title>
+            </options>
+        </var>
+		 <var name="ri_avoid_domain">
+            <title xml:lang="ko">제외 도메인</title>
+            <description xml:lang="ko">제외 도메인의 이미지는 저장하지 않습니다. 여러개의 경우 ,(작은따옴표)로 구분해서 입력해주십시요. ex) ggpht.com,naver.com,google.com,등... 피카사업로드컴포넌트를 사용하는 경우 ggpht.com 추가하십시요.</description>
+        </var>
+    </extra_vars>
+</addon>

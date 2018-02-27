@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">No More IE6 Korea</title>
+    <description xml:lang="ko">
+        IE6 사용자들에게 최신 버전의 브라우져를 사용할것을 권장하는 애드온입니다.
+        기본적으로 addon,admin,module 모듈에서 실행 되지 않도록 되어 있습니다.
+        (http://www.ie6nomore.kr/ - 소스는 여기서 퍼왔습니다. - 다른 사이트로 바뀜)
+        (http://www.nomoreie6.kr/ - fsfsdas 님이 준비 중이신 사이트입니다.)
+    </description>
+    <version>0.6</version>
+    <date>2010-10-14</date>
+    <author email_address="hhgyu15@gmail.com" link="www.hhgyu.wo.tc">
+    <name xml:lang="ko">hhgyu</name>
+    </author>
+    <link>http://www.hhgyu.wo.tc</link>
+    <extra_vars>
+    <var name="act_type" type="select">
+      <title xml:lang="ko">동작 방식</title>
+      <description xml:lang="ko">"1번만 동작"을 선택하시면 1번만 동작 후 쿠기에 저장하게되며 24시간후에 물어보게 되며 그렇지 않으면 매번 물어보게 됩니다</description>
+        <options value="everytime">
+          <title xml:lang="ko">매번 동작</title>
+        </options>
+        <options value="onetime">
+          <title xml:lang="ko">1번만 동작</title>
+        </options>
+    </var>
+    <var name="ie6_nomore_type" type="select">
+      <title xml:lang="ko">표시방법</title>
+      <description xml:lang="ko">...</description>
+        <options value="layer">
+          <title xml:lang="ko">레이어형</title>
+        </options>
+        <options value="box">
+          <title xml:lang="ko">박스형</title>
+        </options>
+    </var>
+    <var name="image_url" type="select">
+      <title xml:lang="ko">이미지</title>
+      <description xml:lang="ko">"외부에서 불러옴"을 선택하시면 지정된 서버에 이미지를 불러오고 "내서버"를 선택하시면 내서버에 이미지를 불러옵니다.</description>
+        <options value="you">
+          <title xml:lang="ko">외부에서 불러옴</title>
+        </options>
+        <options value="my">
+          <title xml:lang="ko">내서버</title>
+        </options>
+    </var>
+    <var name="ie6_compulsion_apply" type="select">
+      <title xml:lang="ko">강제 적용</title>
+      <description xml:lang="ko">
+      IE6 이하는 업그레이드 하지 않으면 아무것도 클릭 할수 없게 만들고 안내문 표시.
+      새로고침을 해도 적용됨.
+      </description>
+        <options value="apply_no">
+          <title xml:lang="ko">강제 적용 안함</title>
+        </options>
+        <options value="apply_yes">
+          <title xml:lang="ko">강제 적용함</title>
+        </options>
+    </var>
+    <var name="ie6_btn_color" type="select">
+      <title xml:lang="ko">버튼 색</title>
+      <description xml:lang="ko">버튼 색을 바꿔줌니다.</description>
+        <options value="1">
+          <title xml:lang="ko">1</title>
+        </options>
+        <options value="2">
+          <title xml:lang="ko">2</title>
+        </options>
+        <options value="3">
+          <title xml:lang="ko">3</title>
+        </options>
+        <options value="4">
+          <title xml:lang="ko">4</title>
+        </options>
+        <options value="5">
+          <title xml:lang="ko">5</title>
+        </options>
+        <options value="6">
+          <title xml:lang="ko">6</title>
+        </options>
+        <options value="7">
+          <title xml:lang="ko">7</title>
+        </options>
+        <options value="8">
+          <title xml:lang="ko">8</title>
+        </options>
+        <options value="9">
+          <title xml:lang="ko">9</title>
+        </options>
+        <options value="10">
+          <title xml:lang="ko">10</title>
+        </options>
+        <options value="11">
+          <title xml:lang="ko">11</title>
+        </options>
+        <options value="12">
+          <title xml:lang="ko">12</title>
+        </options>
+        <options value="13">
+          <title xml:lang="ko">13</title>
+        </options>
+        <options value="14">
+          <title xml:lang="ko">14</title>
+        </options>
+        <options value="15">
+          <title xml:lang="ko">15</title>
+        </options>
+        <options value="16">
+          <title xml:lang="ko">16</title>
+        </options>
+        <options value="17">
+          <title xml:lang="ko">17</title>
+        </options>
+        <options value="18">
+          <title xml:lang="ko">18</title>
+        </options>
+        <options value="19">
+          <title xml:lang="ko">19</title>
+        </options>
+        <options value="20">
+          <title xml:lang="ko">20</title>
+        </options>
+        <options value="21">
+          <title xml:lang="ko">21</title>
+        </options>
+    </var>
+    <var name="ie6_index_name" type="text">
+            <title xml:lang="ko">사이트 제목</title>
+            <description xml:lang="ko">
+            "본 사이트는" 문구를 바꾸시려면 여기에 써주세요.
+            Html, css를 사용하실 수 있습니다.
+            ex>&lt;&lt;span style="" /&gt;span style="font-size:20pt;color:blue;"&gt;人-편한 세상&lt;&lt;span style=""&gt;&lt;/span&gt;/span&gt;은
+            ex>&lt;span style="font-size:20pt;color:blue;"&gt;人-편한 세상&lt;/span&gt;은
+            </description>
+    </var>
+    <var name="ie6_background_color" type="text">
+            <title xml:lang="ko">배경 컬러</title>
+            <description xml:lang="ko">
+            안내문 뒷 부분에 컬러를 넣어주고 싶을 때 여기에 적어주세요.
+            ex> #000000,red
+            </description>
+    </var>
+    <var name="ie6_nomore_js" type="select">
+      <title xml:lang="ko">자바스크립트</title>
+      <description xml:lang="ko">
+      IE6에서 div(position:fixed)를 이미 사용하는경우 fixed.js를 끌수있음.
+      스크롤을 내렸는데 ie6nomore가 따라 움직이지 않을때 꺼주세요.
+      </description>
+        <options value="js_yes">
+          <title xml:lang="ko">켜기(기본값)</title>
+        </options>
+        <options value="js_no">
+          <title xml:lang="ko">끄기</title>
+        </options>
+    </var>
+    <var name="ie6_fadeout_js" type="select">
+      <title xml:lang="ko">FadeOut</title>
+      <description xml:lang="ko">
+      jQuery-fadeOut를 이용하여 없어질때 효과의 사용 여부
+      </description>
+        <options value="yes">
+          <title xml:lang="ko">켜기(기본값)</title>
+        </options>
+        <options value="no">
+          <title xml:lang="ko">끄기</title>
+        </options>
+    </var>
+    <var name="ie6_check" type="select">
+      <title xml:lang="ko">IE6 Check</title>
+      <description xml:lang="ko">
+      관리자가 적용 후 확인 할 수 있도록 IE6 체크 해제 기능
+      (테스트 후에는 되돌려 주시는 것이 좋습니다)
+      </description>
+        <options value="yes">
+          <title xml:lang="ko">켜기(기본값)</title>
+        </options>
+        <options value="no">
+          <title xml:lang="ko">끄기</title>
+        </options>
+    </var>
+    <var name="ie6_index_diy" type="textarea" >
+            <title xml:lang="ko">안내문 D.I.Y&lt;script language="JavaScript" src="./addons/ie6nomore/wysiwyg.js"&gt;&lt;/script&gt;</title>
+            <description xml:lang="ko">
+            Html, css를 사용하여 꾸미실수 있습니다.&lt;style type="text/css"&gt;#ie6_index_diy,#iframeie6_index_diy{width:350px;height:300px;}&lt;/style&gt;
+            박스 형태에서만 사용가능
+            &lt;span style="font-size:20pt;color:red;"&gt;※참고&lt;/span&gt;
+            만약 다 지워버렸는데 원래 데로 돌아가지 않는다면 html버튼을 눌러서 다 지운후 저장을 눌러주세요.
+            </description>
+    </var>
+  </extra_vars>
+</addon>

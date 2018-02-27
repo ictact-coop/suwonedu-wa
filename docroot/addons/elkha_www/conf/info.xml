@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title>Elkha - www</title>
+	<description>
+		Add or Remove "www"
+	</description>
+	<version>0.11</version>
+	<date>2011-06-09</date>
+
+	<author email_address="elkha1914@hotmail.com" link="http://elkha.kr/">
+		<name>Elkha</name>
+	</author>
+<!--
+	<extra_vars>
+        <var name="test" type="select">
+            <title>test</title>
+            <description>
+				test
+			</description>
+            <options value="default">
+                <title>Default</title>
+            </options>
+            <options value="test">
+                <title>Test</title>
+            </options>
+        </var>
+	</extra_vars>
+-->
+</addon>
+

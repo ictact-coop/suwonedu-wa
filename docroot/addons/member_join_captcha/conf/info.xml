@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">회원가입 Captcha</title>
+    <description xml:lang="ko">
+        자동 회원가입 방지를 위한 이미지 텍스트 확인을 합니다.
+    </description>
+    <version>0.1.4</version>
+    <date>2010-04-23</date>
+
+    <author email_address="k2mani@gmail.com" link="http://k2man.com">
+        <name xml:lang="ko">k2man</name>
+    </author>
+</addon>

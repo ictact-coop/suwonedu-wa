@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon version="0.2">
+  	<title xml:lang="ko">단축키 애드온</title>
+<version>0.9.9.2</version>
+<date>2010-12-04</date>
+  	<author email_address="admin@starforum.kr" link="http://starforum.kr" date="2010-12-04">
+    <name xml:lang="ko">fsfsdas</name>
+    <description xml:lang="ko">
+		키를 입력하면 원하는 페이지로 이동하게 할 수 있습니다.
+    </description>
+  </author>
+<extra_vars>
+
+<group>
+<title xml:lang="ko">기본설정</title>
+
+	<var name="board_use">  
+		<title xml:lang="ko">게시판 단축키 사용 여부</title>  
+            <options value="no">
+                <title xml:lang="ko">아니요</title>
+            </options>
+            <options value="yes">
+                <title xml:lang="ko">예</title>
+            </options>
+		<description xml:lang="ko">글목록, 글쓰기, 이전글, 다음글과 관련된 단축키 사용 여부를 결정합니다.
+		shortcut 위젯을 깔지 않고 사용으로 체크하시면 javascript 오류가 발생합니다.</description>
+	</var>  
+
+	<var name="browser_dis">  
+		<title xml:lang="ko">브라우저 기본 단축키 차단 여부</title>  
+	            <options value="no">
+                <title xml:lang="ko">아니요</title>
+            </options>
+            <options value="yes">
+                <title xml:lang="ko">예</title>
+            </options>
+		<description xml:lang="ko">단축키를 누를 때 브라우저의 기본 단축키를 차단할지 결정하세요.
+		(필수 단축키는 사용할 수 있습니다.)</description>
+	</var> 
+	
+	<var name="ctrlkey_dis">  
+		<title xml:lang="ko">"Ctrl + 숫자" 단축키 차단 여부</title>  
+            <options value="no">
+                <title xml:lang="ko">아니요</title>
+            </options>
+            <options value="yes">
+                <title xml:lang="ko">예</title>
+            </options>
+		<description xml:lang="ko">탭선택 단축키(Ctrl+숫자)를 차단할지 결정하세요.</description>
+	</var>
+
+	<var name="ie_shortcut_disable">
+		<title xml:lang="ko">IE에서 막을 단축키 (Alt+알파벳)</title>
+		<description xml:lang="ko">위에서 기본 단축키를 차단해도 IE에서 alt+a, alt+f 형태의 
+		일부 단축키가 제대로 차단되지 않습니다. 확실히 차단할 알파벳을 입력하세요.
+		예) a,c,f,g</description>
+	</var>
+
+	</group>
+
+<group>
+<title xml:lang="ko">게시판 단축키 설정</title>
+	<var name="shortcut_list">
+		<title xml:lang="ko">글목록 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="shortcut_write">
+		<title xml:lang="ko">글쓰기 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="shortcut_prev">
+		<title xml:lang="ko">이전 글 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="shortcut_next">
+		<title xml:lang="ko">다음 글 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="shortcut_latest">
+		<title xml:lang="ko">최근 글 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="shortcut_prev_list">
+		<title xml:lang="ko">이전 목록 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+		<var name="shortcut_next_list">
+		<title xml:lang="ko">다음 목록 단축키</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+
+</group>
+
+<group>
+<title xml:lang="ko">단축키 설정 1</title>
+
+	<var name="shortcut1">
+		<title xml:lang="ko">단축키 #1</title>
+		<description xml:lang="ko">단축키를 설정해 주세요. (예: q)</description>
+	</var>
+	<var name="href1">
+		<title xml:lang="ko">주소 #1</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요. (예: http://www.xpressengine.com)</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 2</title>
+	<var name="shortcut2">
+		<title xml:lang="ko">단축키 #2</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href2">
+		<title xml:lang="ko">주소 #2</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 3</title>
+
+	<var name="shortcut3">
+		<title xml:lang="ko">단축키 #3</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href3">
+		<title xml:lang="ko">주소 #3</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 4</title>
+
+	<var name="shortcut4">
+		<title xml:lang="ko">단축키 #4</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href4">
+		<title xml:lang="ko">주소 #4</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 5</title>
+
+	<var name="shortcut5">
+		<title xml:lang="ko">단축키 #5</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href5">
+		<title xml:lang="ko">주소 #5</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 6</title>
+	<var name="shortcut6">
+		<title xml:lang="ko">단축키 #6</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href6">
+		<title xml:lang="ko">주소 #6</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 7</title>
+	<var name="shortcut7">
+		<title xml:lang="ko">단축키 #7</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href7">
+		<title xml:lang="ko">주소 #7</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 8</title>
+	<var name="shortcut8">
+		<title xml:lang="ko">단축키 #8</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href8">
+		<title xml:lang="ko">주소 #8</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 9</title>
+	<var name="shortcut9">
+		<title xml:lang="ko">단축키 #9</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href9">
+		<title xml:lang="ko">주소 #9</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 10</title>
+	<var name="shortcut10">
+		<title xml:lang="ko">단축키 #10</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href10">
+		<title xml:lang="ko">주소 #10</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 11</title>
+	<var name="shortcut11">
+		<title xml:lang="ko">단축키 #11</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href11">
+		<title xml:lang="ko">주소 #11</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 12</title>
+	<var name="shortcut12">
+		<title xml:lang="ko">단축키 #12</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href12">
+		<title xml:lang="ko">주소 #12</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 13</title>
+	<var name="shortcut13">
+		<title xml:lang="ko">단축키 #13</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href13">
+		<title xml:lang="ko">주소 #13</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 14</title>
+	<var name="shortcut14">
+		<title xml:lang="ko">단축키 #14</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href14">
+		<title xml:lang="ko">주소 #14</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 15</title>
+	<var name="shortcut15">
+		<title xml:lang="ko">단축키 #15</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href15">
+		<title xml:lang="ko">주소 #15</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 16</title>
+	<var name="shortcut16">
+		<title xml:lang="ko">단축키 #16</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href16">
+		<title xml:lang="ko">주소 #16</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 17</title>
+	<var name="shortcut17">
+		<title xml:lang="ko">단축키 #17</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href17">
+		<title xml:lang="ko">주소 #17</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 18</title>
+	<var name="shortcut18">
+		<title xml:lang="ko">단축키 #18</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href18">
+		<title xml:lang="ko">주소 #18</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 19</title>
+	<var name="shortcut19">
+		<title xml:lang="ko">단축키 #19</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href19">
+		<title xml:lang="ko">주소 #19</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 20</title>
+	<var name="shortcut20">
+		<title xml:lang="ko">단축키 #20</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href20">
+		<title xml:lang="ko">주소 #20</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 21</title>
+	<var name="shortcut21">
+		<title xml:lang="ko">단축키 #21</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href21">
+		<title xml:lang="ko">주소 #21</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 22</title>
+	<var name="shortcut22">
+		<title xml:lang="ko">단축키 #22</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href22">
+		<title xml:lang="ko">주소 #22</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 23</title>
+	<var name="shortcut23">
+		<title xml:lang="ko">단축키 #23</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href23">
+		<title xml:lang="ko">주소 #23</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 24</title>
+	<var name="shortcut24">
+		<title xml:lang="ko">단축키 #24</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href24">
+		<title xml:lang="ko">주소 #24</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 25</title>
+	<var name="shortcut25">
+		<title xml:lang="ko">단축키 #25</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href25">
+		<title xml:lang="ko">주소 #25</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 26</title>
+	<var name="shortcut26">
+		<title xml:lang="ko">단축키 #26</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href26">
+		<title xml:lang="ko">주소 #26</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 27</title>
+	<var name="shortcut27">
+		<title xml:lang="ko">단축키 #27</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href27">
+		<title xml:lang="ko">주소 #27</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 28</title>
+	<var name="shortcut28">
+		<title xml:lang="ko">단축키 #28</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href28">
+		<title xml:lang="ko">주소 #28</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 29</title>
+	<var name="shortcut29">
+		<title xml:lang="ko">단축키 #29</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href29">
+		<title xml:lang="ko">주소 #29</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 30</title>
+	<var name="shortcut30">
+		<title xml:lang="ko">단축키 #30</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href30">
+		<title xml:lang="ko">주소 #30</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 31</title>
+	<var name="shortcut31">
+		<title xml:lang="ko">단축키 #31</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href31">
+		<title xml:lang="ko">주소 #31</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 32</title>
+	<var name="shortcut32">
+		<title xml:lang="ko">단축키 #32</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href32">
+		<title xml:lang="ko">주소 #32</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 33</title>
+	<var name="shortcut33">
+		<title xml:lang="ko">단축키 #33</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href33">
+		<title xml:lang="ko">주소 #33</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 34</title>
+	<var name="shortcut34">
+		<title xml:lang="ko">단축키 #34</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href34">
+		<title xml:lang="ko">주소 #34</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 35</title>
+	<var name="shortcut35">
+		<title xml:lang="ko">단축키 #35</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href35">
+		<title xml:lang="ko">주소 #35</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 36</title>
+	<var name="shortcut36">
+		<title xml:lang="ko">단축키 #36</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href36">
+		<title xml:lang="ko">주소 #36</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 37</title>
+	<var name="shortcut37">
+		<title xml:lang="ko">단축키 #37</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href37">
+		<title xml:lang="ko">주소 #37</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 38</title>
+	<var name="shortcut38">
+		<title xml:lang="ko">단축키 #38</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href38">
+		<title xml:lang="ko">주소 #38</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 39</title>
+	<var name="shortcut39">
+		<title xml:lang="ko">단축키 #39</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href39">
+		<title xml:lang="ko">주소 #39</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">단축키 설정 40</title>
+	<var name="shortcut40">
+		<title xml:lang="ko">단축키 #40</title>
+		<description xml:lang="ko">단축키를 설정해 주세요.</description>
+	</var>
+	<var name="href40">
+		<title xml:lang="ko">주소 #40</title>
+		<description xml:lang="ko">이동할 주소를 입력해 주세요.</description>
+	</var>
+</group>
+  </extra_vars>
+</addon>

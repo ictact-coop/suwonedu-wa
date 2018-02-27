@@ -1,0 +1,49 @@
+
+
+/* 퀵상품 박스 */
+
+#q_box{position:relative;}
+#q_box ul{margin:0; padding:5px 0; list-style:none}
+#q_box li{position:relative; margin:0 auto; padding:5px 0; text-align:center; }
+#q_box li span.nothing{}
+
+#q_box li .box_off{display:none; z-index:1001; position:absolute; right:0; bottom:0;width:20px; height:20px; padding:0; background:#000 url(../img/box_off.png) no-repeat ; cursor:pointer}
+#q_box li:hover .box_off{display:block}
+		
+/* next prev */
+#q_box .recent-pagination{position:relative; bottom:0; width:100%; margin-top:8px; text-align:center}
+#q_box .recent-pagination .recent-arrow{display:inline-block; width:17px; height:17px; margin:1px; background:#fff url(../img/recent_arrow.png); background-repeat:no-repeat; border:1px solid #ccc; cursor:pointer}
+#q_box .recent-pagination .recent-arrow:hover{border-color:#888}
+#q_box .recent-pagination .left-arrow{background-position:0px 1px}
+#q_box .recent-pagination .right-arrow{background-position:-13px 1px}
+#q_box .recent-pagination .left-arrow:hover{background-position:0px -12px}
+#q_box .recent-pagination .right-arrow:hover{background-position:-13px -12px}
+#q_box .recent-pagination .no-arrow{display:inline-block; width:17px; height:17px; margin:1px; background-color:#f8f8f8; background:#fff url(../img/recent_arrow.png); background-repeat:no-repeat; border:1px solid #dedede}
+#q_box .recent-pagination .no-arrow.left-arrow:hover{background-position:0px 0px}
+#q_box .recent-pagination .no-arrow.right-arrow:hover{background-position:0px 0px}
+
+.q_menu li {}
+.q_menu li a{ text-align:center; }
+.q_title { border-bottom:1px solid #000;}				   
+.q_title	{ font-size:16px; font-weight:normal; letter-spacing:0.8px;  line-height:13px;text-align:center;color:#222; padding:0 5px 5px 6px; }
+
+.q_menu em{color:#e41010}		  
+
+.font_hv,
+.btn.xl{}
+.font_georgia{font-style:italic;letter-spacing:1px; font-family:Segoe UI,Times,Arial,나눔고딕,NanumGothic,ng,돋움,Tahoma,AppleGothic,serif; font-weight: normal; }	  
+
+
+.quick_info li{border-bottom:1px solid #EEE;font-size:11px;line-height:24px;white-space:nowrap;letter-spacing:0;color:#1f1f1f}
+.quick_info a{color:#1f1f1f}
+
+
+/* 소셜 아이콘 */
+[class^=icon_]
+{display:inline-block;overflow:hidden;margin:0;padding:0;border:0;background-color:transparent;background-position:50% 50%;background-repeat:no-repeat;font-size:0;line-height:0;text-decoration:none;vertical-align:middle;text-indent:-1000em;*display:inline;*zoom:1}
+[class^=icon_sns]{width:24px;height:24px;}
+
+
+.icon_top{padding:35px 0 35px 0; width:32px;height:32px;background-image:url(http://www.vincis.co.kr/Renewal/mall/img/icon_top.png)}	/* top , f 세로 간격 */
+
+

@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.joinContent {text-align:center; border:2px solid #ddd; margin-top:20px;}
+.joinContent .inputText{ width:200px; height:28px; font-size:24px; font-weight:bold; border:3px solid #ddd; vertical-align:middle; text-align:center; color:#666; margin:0 5px 0 0;}
+.joinContent .title{ font-size:14px; padding:12px 20px; margin:10px 0 10px 0; color:#666;}
+.joinContent .line{ margin-bottom:20px; color:#333;}
+
+.joinContent .button{ position:relative; display:inline-block; width:110px; height:28px; border:1px solid #ddd; background:#f8f8f8; }
+.joinContent .button:hover{ background:#f4f4f4;}
+.joinContent .button input,
+.joinContent .button a{ position:relative; display:inline-block; vertical-align:middle; width:110px; height:28px; line-height:28px; text-align:center; overflow:visible; padding:0; margin:0; border:0; cursor:pointer; background:transparent; color:#333; text-decoration:none;}
+.joinContent .button input{ }

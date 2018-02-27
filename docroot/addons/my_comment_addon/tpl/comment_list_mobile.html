@@ -1,0 +1,83 @@
+##my_comment_addon_header##
+<load target="./mca.css" />
+
+<div class="mca">
+	<h1 class="h1">{$member_title = $lang->mca_view_my_comment }</h1>	
+	<!-- 목록 -->
+	<div class="table even">
+		<table width="100%" border="1" cellspacing="0">
+			<caption>
+				Total : {number_format($total_count)}, Page {number_format($page)}/{number_format($total_page)}			
+			</caption>
+			<thead>
+				<tr>
+					<th class="ac"><div>{$lang->no}</div></th>
+					
+					<th class="title"><div>{$lang->comment}</div></th>
+					<th class="ac"><div>{$lang->regdate}</div></th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--@foreach($comment_list as $no => $val)-->
+				{@ $content = cut_str(trim(strip_tags($val->content)), $title_len, '...')}
+				{@ $oDocument = $val->oDocument}
+				{@ $oModule = $val->oModule}
+				<tr>
+					<td class="ac">{$no}</td>					
+					<td class="text">
+						<a href="{$val->getPermanentUrl()}" onclick="window.open(this.href);return false;">
+						<!--@if(strlen($content))-->{$content}<!--@else--><em style="font-style:italic;">{$lang->no_text_comment}</em><!--@end--></a>
+					</td>
+					<td class="ac">{(zdate($val->regdate,"m-d\nH:i"))}</td>
+				</tr>
+				{@ $pmid = $oModule->mid}
+				<!--@end-->
+			</tbody>
+		</table>
+	</div>
+
+	<div class="search">
+		<form action="" class="pagination">
+		<input type="hidden" name="error_return_url" value="" />
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="act" value="{$act}" />
+		<input cond="$search_keyword" type="hidden" name="search_keyword" value="{$search_keyword}" />
+		<input cond="$search_target" type="hidden" name="search_target" value="{$search_target}" />
+
+		<a href="{getUrl('page', '', 'act', $act)}" class="direction">&laquo; {$lang->first_page}</a>
+		<block cond="$page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page && $page_navigation->page_count != $page_navigation->total_page">
+			{@$isGoTo = true}
+			<a href="{getUrl('page', '', 'act', $act)}">1</a>
+			...
+		</block>
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+			{@$last_page = $page_no}
+			<strong cond="$page_no == $page">{$page_no}</strong>
+			<a cond="$page_no != $page" href="{getUrl('page', $page_no, 'act', $act)}">{$page_no}</a>
+		<!--@end-->
+		<block cond="$last_page != $page_navigation->last_page">
+			{@$isGoTo = true}
+			...
+			<a href="{getUrl('page', $page_navigation->last_page, 'act', $act)}">{$page_navigation->last_page}</a>
+		</block>
+		<a href="{getUrl('page', $page_navigation->last_page, 'act', $act)}" class="direction">{$lang->last_page} &raquo;</a>
+		
+		</form>
+
+		<!--search -->
+		<form action="" method="post">
+			<input type="hidden" name="error_return_url" value="" />
+			<input type="hidden" name="module" value="{$module}" />
+			<input type="hidden" name="page" value="1" />
+			<select name="search_target">
+				<option value="">{$lang->search_target}</option>					
+				<option value="{$key}" loop="$usedIdentifiers=>$key,$val" selected="selected"|cond="$search_target==$key">{$val}</option>
+			</select>
+			<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" style='width:100px' />
+			<input type="submit" value="{$lang->cmd_search}" />
+			<a href="{getUrl('search_target', '', 'search_keyword', '', 'act', $act)}">{$lang->cmd_cancel}</a>
+		</form>
+		<!--/search -->
+	</div>
+</div>
+##my_comment_addon_footer##

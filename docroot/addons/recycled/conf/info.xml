@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">진행중인 강의로 이동</title>
+	<version>1.0</version>
+    <date>2009-02-15</date>
+	<author email_address="wylee73@naver.com" link="http://www.zinagan.com" date="2009. 02. 15">
+		<name xml:lang="ko">지연아빠</name>
+				<description xml:lang="ko">
+			이 애드온은 추천/비추천이 일정수이상되는 게시물을 자동으로 관리자가 지정한 게시판으로 이동하는 애드온입니다.
+			라이센스: Creative Commons 3.0(http://creativecommons.org/licenses/by/3.0/)
+		</description>
+	</author>
+	<extra_vars>
+		<var name="vote_count">
+			<title xml:lang="ko">추천수</title>
+			<description xml:lang="ko">추천수가 얼마일때 게시물을 복사할지 결정합니다.</description>
+		</var>
+		<var name="c_or_m" type="select">
+			<title xml:lang="ko">추천시 복사/이동 선택</title>
+			<description xml:lang="ko">추천받은 게시물을 선택한 게시판에 복사 혹은 이동할 것인가를 선택합니다.
+			(복사를 선택하면 추천받은 게시물이 두 개의 게시판에 존재하게 됨)</description>
+			<options value="copy">
+                <title xml:lang="ko">복사</title>
+			</options>
+			<options value="move">
+				<title xml:lang="ko">이동</title>
+			</options>
+		</var>
+		<var name="blame_count">
+			<title xml:lang="ko">비추천수</title>
+			<description xml:lang="ko">비추천수가 얼마일때 게시물을 이동할지 결정합니다.</description>
+		</var>
+		<var name="move_vote_bbs">
+			<title xml:lang="ko">추천시 이동게시판</title>
+			<description xml:lang="ko">추천수가 일정수 이상이 되면 복사/이동할 게시판 모듈이름을 넣어주세요.</description>
+		</var>
+		<var name="move_blame_bbs">
+			<title xml:lang="ko">비추천시 이동게시판</title>
+			<description xml:lang="ko">비추천수가 일정수 이상이 되면 이동할 게시판 모듈이름을 넣어주세요.</description>
+		</var>
+	</extra_vars>
+</addon>

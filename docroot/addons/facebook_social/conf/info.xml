@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">Facebook Social Plugin Addon</title>
+    <title xml:lang="en">Facebook Social Plugin Addon</title>
+    <description xml:lang="ko">
+        Facebook의 Social Plugin을 이용하여 Like 버튼을 붙여줍니다.
+    </description>
+    <description xml:lang="en">
+        Using Facebook's social plugin, this addon attaches like button to your articles.
+    </description>
+    <version>0.1</version>
+    <date>2010-05-10</date>
+
+    <author email_address="haneul0318@xpressengine.com" link="http://seungyeop.kr">
+        <name xml:lang="ko">haneul</name>
+        <name xml:lang="en">haneul</name>
+    </author>
+</addon>

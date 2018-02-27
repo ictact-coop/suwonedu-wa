@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">작성 댓글 보기</title>
+    <description xml:lang="ko">
+        '작성 댓글 보기'기능을 추가합니다.
+    </description>
+    
+    <version>1.1.2</version>
+    <date>2012-12-14</date>    
+	<author email_address="showjean@naver.com" link="http://showjean.com">
+		<name xml:lang="ko">showjean</name>				
+	</author>
+
+	<extra_vars>
+        <var name="exclude_mid" type="text">
+            <title xml:lang="ko">제외할 게시판의 mid</title>
+            <description xml:lang="ko">게시판의 mid을 입력합니다. ','로 구분하여 다수 입력이 가능합니다.
+            </description>
+        </var>
+        <var name="doc_title_len" type="text">
+            <title xml:lang="ko">문서 제목 글자수</title>
+            <description xml:lang="ko">문서 제목 글자수
+            </description>
+        </var>
+        <var name="title_len" type="text">
+            <title xml:lang="ko">댓글 제목 글자수</title>
+            <description xml:lang="ko">댓글 제목 글자수
+            </description>
+        </var>
+        <var name="header" type="text">
+            <title xml:lang="ko">PC 용 header파일의 경로</title>
+            <description xml:lang="ko">댓글 리스트에 포함시킬 header 파일의 경로를 입력하세요. (예 - ./modules/member/skins/default/common_header.html)
+            </description>
+        </var>
+        <var name="footer" type="text">
+            <title xml:lang="ko">PC 용 footer파일의 경로</title>
+            <description xml:lang="ko">댓글 리스트에 포함시킬 footer 파일의 경로를 입력하세요.  (예 - ./modules/member/skins/default/common_footer.html)
+            </description>
+        </var>
+        <var name="header_mob" type="text">
+            <title xml:lang="ko">Mobile 용 header파일의 경로</title>
+            <description xml:lang="ko">댓글 리스트에 포함시킬 header 파일의 경로를 입력하세요. (예 - ./modules/member/m.skins/default/common_header.html)
+            </description>
+        </var>
+        <var name="footer_mob" type="text">
+            <title xml:lang="ko">Mobile 용 footer파일의 경로</title>
+            <description xml:lang="ko">댓글 리스트에 포함시킬 footer 파일의 경로를 입력하세요.  (예 - ./modules/member/m.skins/default/common_footer.html)
+            </description>
+        </var>
+    </extra_vars>
+</addon>

@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/* Heading */
+.mca .h1{position:relative;border-bottom-style:solid;border-bottom-color:#ccc;zoom:1}
+.mca .h1{border-bottom-width:4px;font-size:24px}
+/* Table */
+.mca .table{margin:1em 0}
+.mca .table table{width:100%;border:0;border-collapse:collapse;border-top:2px solid #ccc}
+.mca .table caption{font-weight:bold;text-align:left;line-height:22px;padding:5px 0}
+.mca .table caption:after{content:"";display:block;clear:both}
+.mca .table caption a{font-weight:normal}
+.mca .table caption em{float:right;margin-left:1em}
+.mca .table caption strong{color:#e00}
+.mca .table caption .side{float:right;font-weight:normal;margin-left:1em}
+.mca .table th,
+.mca .table td{border:0;padding:8px;vertical-align:top;text-align:left;border-bottom:1px solid #ddd;white-space:nowrap}
+.mca .table th{background:#f8f8f8}
+.mca .table thead th{border-bottom:1px solid #999}
+.mca .table tfoot td{font-weight:bold;background:#f8f8f8}
+.mca .table.even tbody tr:nth-of-type(even) td{background-color:#fafafa}
+.mca .table td>input[type=text]{margin:-1px 0 -3px 0 !important;vertical-align:middle}
+.mca .table img{vertical-align:middle}
+.mca .table em{font-style:normal;font-weight:normal;color:#e00}
+.mca .table .title,
+.mca .table .text{white-space:normal}
+.mca .table .ac{text-align:center}
+/* Pagination */
+.mca .pagination{margin:1em 0;text-align:center;line-height:normal}
+.mca .pagination *{vertical-align:middle}
+.mca .pagination a,
+.mca .pagination strong{position:relative;display:inline-block;padding:2px 4px;font-weight:bold;text-decoration:none;line-height:normal;color:#333 !important;vertical-align:middle}
+.mca .pagination a:hover,
+.mca .pagination a:active,
+.mca .pagination a:focus{border:1px solid #ddd;margin:0 -1px}
+.mca .pagination strong{color:#e00 !important;font-size:17px}
+.mca .pagination .direction{font-weight:normal;white-space:nowrap}
+.mca .pagination .direction:hover,
+.mca .pagination .direction:active,
+.mca .pagination .direction:focus{border:0;margin:0;text-decoration:underline}
+.mca .pagination input{width:30px;text-align:center}
+.mca .pagination button{overflow:visible}
+/* Search */
+.mca .search{zoom:1}
+.mca .search:after{content:"";display:block;clear:both}
+.mca .search form{float:right;margin:1em 0}
+.mca .search form *{vertical-align:middle}
+.mca .search .pagination{float:left;text-align:left}
+/* Text Button */
+.mca input.text, 
+.mca button.text{border:0;overflow:visible;padding:0;margin:0 4px 0 0;color:#33a;background:none;text-decoration:underline}
+

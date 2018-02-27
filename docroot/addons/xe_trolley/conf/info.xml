@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">XE퀵메뉴,상품보기 애드온</title>
+	<description xml:lang="ko">퀵메뉴, 상품, 배너 표시</description>
+	<version>0.1</version>
+	<date>2015-06-25</date>
+	<author email_address="master@xestyle.com" link="http://www.xestyle.com/">
+		<name xml:lang="ko">xestyle</name>
+	</author>
+	<extra_vars>
+		<var name="xe_trolley" type="select">
+			<title xml:lang="ko">XE퀵메뉴 ON</title>
+			<options value="on">
+				<title xml:lang="ko">XE스타일 레이아웃에서 설정하실 수 있습니다.</title>
+			</options>
+		</var>
+
+	</extra_vars>
+</addon>
