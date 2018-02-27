@@ -1,0 +1,23 @@
+<!-- JS 파일 로드 -->
+<load target="js/jquery.selector.js" />
+
+<!-- 컬러셋용 CSS 파일 로드 -->
+<load target="css/selector_lang_default.css" />
+
+
+<div id="xe_selector_lang" >
+	<span class="current_lang"  style="position:relative; top:3px;"><img class="iePngFix" src="img/{$lang_type}.png" alt="" /></span>
+    <div class="select">
+        <span class="arrow"></span>
+        <button type="button" class="my_value">{$lang->xe_lang}</button>
+        <ul class="a_list" >
+        <block loop="$lang_supported=>$key,$val">
+            <block cond="$key!= $lang_type" >
+            <li><span class="lists" onclick="doChangeLangType('{$key}');return false;">{$val}</span></li>
+            </block><!--//end of key-->
+        </block><!--//end of loop-->
+        </ul>
+    </div>
+    
+    
+</div><!--selector_lang 끝-->

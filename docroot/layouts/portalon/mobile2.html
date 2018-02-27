@@ -1,0 +1,56 @@
+
+
+
+
+
+
+
+
+
+
+
+<nav id="menu3" style="">
+    <h2 class="hide"></h2>
+    <div>
+
+	   <ul class="List" >
+	      <li class="logo_m" style="height:60px;">	              
+                <a href="#" ><img style="width:60%; height:60%; padding-top:0px;" src="img/m_cate_01.jpg" alt=""></a>
+				<a href="#close" class="btn_mob_close"><img src="img/m_x.png" alt="닫기" style="height:30px; width:30px;position:relative; top:2px;"></a>
+            </li>							
+	   </ul>
+		 
+
+
+			<ul class="List" >
+			 <li class="m_search" >
+				<form action="{getUrl()}" method="get">
+					<input type="hidden" name="vid" value="{$vid}" />
+					<input type="hidden" name="mid" />
+					<input type="hidden" name="act" value="IS" />
+					<input type="text" name="is_keyword" value="{$is_keyword}" class="m_sch" placeholder="Enter keywords..." />	  
+					<!-- 버튼 bg컬러 검색 bg 컬러에 맞춰 잡아줘야됨 -->
+					<button type="submit" style="width:26px; height:26px; "><i class="fa18 fa fa-search" /></i></button>  					
+				</form>						
+			</li>				 
+		    </ul>		   	 	 																																			   
+
+
+        <ul class="List">				
+          <li loop="$c_navi->list=>$key1,$val1" class="active"|cond="$val1['selected']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+                <ul cond="$val1['list']" class="mm-list mm-panel" >
+                    <li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']" > 
+                   	 <a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+                        <ul cond="$val2['list']">
+                          <li loop="$val2['list']=>$key3,$val3" class="active"|cond="$val3['selected']"><a href="{$val3['href']}" >{$val3['link']}</a></li>		
+                        </ul>
+                    </li>	                   
+                </ul>
+            </li>			
+        </ul>			
+
+
+
+      
+    </div>
+</nav>

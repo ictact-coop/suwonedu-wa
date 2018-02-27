@@ -1,0 +1,178 @@
+
+
+
+
+ 
+
+<load target="js/fam.js" />
+
+
+<!-- 풋탑 메뉴 -->	
+<div cond="$F_MENU1->list || $F_MENU2->list" id="head_box4" class="body_width" style="font:11px/19px Arial, sans-serif; color:#6B6B6B; ">		<!--  멀티메뉴 , 메인메뉴 아래 / GNB메뉴는 top.html -->
+			<div class="row3" style=""> 
+		    <div class="header-container" style="">	
+			
+				   <ul class="" style="float: left;">                       	<!-- 멀티좌상단 메뉴 -->          
+                           <nav cond="$F_MENU1->list" id="bottom_nav">
+			                  	<ul>
+			                  		<li loop="$F_MENU1->list=>$key,$val">
+			                  			<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			                  		</li>
+			                  	</ul>
+	                      </nav>
+                   </ul>
+				   
+				   <ul class="" style="float:right;padding-right:0;">	<!-- 멀티우상단 메뉴 -->	
+                           <nav cond="$F_MENU2->list" id="bottom_nav" style="margin-right:0;">
+			                  	<ul>
+			                  		<li loop="$F_MENU2->list=>$key,$val">
+			                  			<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			                  		</li>
+			                  	</ul>
+	                      </nav>	  
+				   </ul><!-- .header-nav -->	  			
+
+		   </div><!-- .header-container -->
+	       </div><!-- .row2 -->		 
+
+</div><!-- .head_box4 -->	 
+
+
+
+
+
+
+<!-- 사이트 정보 표시 -->
+
+<!--@if($layout_info->foot_info_w == "Y")-->
+<div class="footer">
+<!--@if($layout_info->foot_info)-->
+{$layout_info->foot_info}
+<!--@else-->			 
+
+
+<div class="four_columns clearfix" >		
+
+
+<div class="column1">
+<div class="column_inner">
+
+	<div class="xeinfo">
+	<div class="xecenter" >
+		<dl class="center" >
+		<dt><h3>Guide</h3></dt>
+		<dd >
+			<h2>031-248-9700 </h2>	
+			<li style="padding-bottom:5px;">평일/토요일 9:00 ~ 18:00</li>
+			<li>일요일 및 공휴일 휴무 </li>
+		</dd>
+	</dl>			    							
+	</div> 	
+    </div>		
+
+</div>
+</div>
+
+
+<!-- Contact Us -->	
+<div class="column2">
+<div class="column_inner">
+<div>
+
+	<div class="xecenter">
+	
+	    <dl class="xelink">  	
+
+			<dt><h3>Contact Us</h3></dt>
+			<dd>
+			<li>수원시평생학습관 <br> 사업자번호 : 135-82-80780 </li>
+			<li>대표 : 정성원</li>
+			<li><span>T. </span>031-248-9700</li>
+			<li><span>F. </span>031-248-9902</li>
+			<li><span>E. </span><a href="mailto:mifasolla@suwonedu.org" title="">mifasolla@suwonedu.org</a></li>	 
+			 </dd>
+		</dl>								
+	</div>		  
+
+</div>
+</div>
+</div>
+
+
+<!-- Service -->	
+<div class="column3">
+<div class="column_inner">
+<div>
+
+<div class="xecenter" >
+<dl class="service">
+		<dt><h3>Service</h3></dt>
+		<dd>
+			<a href="/process_personal_information">개인정보처리방침</a><br>
+			<a href="/copyright_protection">저작권보호정책</a><br>
+			<a href="/without_notice">이메일무단수집거부</a><br>		 
+			<a href="/map_toour"><input type="submit" value="수원시평생학습관 오시는길"></a>  			
+		</dd>
+	</dl>	
+</div>
+
+</div>
+</div>
+</div>
+
+<!--@end-->
+
+<!-- 소셜 , 패밀리사이트 -->	
+<div class="column4">
+<div class="column_inner">
+<div>		   
+
+<div class="xecenter" style="border-right:none;">
+			
+
+			  		
+			<!--@if(sizeof($FAMILY->list)>0)-->
+			<div id="family" style="">
+				<h3 onclick="slideFamilySite()">
+					<span>Family Site</span>
+				</h3>
+			<div id="fam" style="height: auto">
+					<ul>
+						{@$idx = 0}
+						<!--@foreach($FAMILY->list as $key => $val)-->
+							<!--@if($val['link'])-->
+							<li >
+								<a href="{$val['href']}" <!--@if($val['open_window']=='Y')--> onclick="window.open(this.href);return false;"<!--@end-->>
+								{$val['text']}
+								</a>
+							</li>
+							<!--@end-->
+						<!--@end-->
+					</ul>
+			</div>
+			</div>
+			<!--@end-->	
+
+   
+        <div id="cc_menu">
+        	<div style="padding-top:40px;">
+            	<a href="http://creativecommons.org/licenses/by-nc-nd/2.0/kr/" target="_blank"><img src="/img/cc_big.png"></a>
+                <a href="http://www.wasuwon.net/rss" target="_blank" style="margin-left:20px;"><img src="/img/rss.png"></a>
+            
+            </div>
+        </div>
+</div>	<!-- / snsNotify -->	
+
+</div>
+</div>
+</div>	 <!-- / column4 -->
+
+										
+
+
+
+
+
+</div> 	<!-- / four_columns  -->		
+</div>	<!-- / footer  -->	 	  
+<!--@else--><!--@end-->

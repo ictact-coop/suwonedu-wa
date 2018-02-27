@@ -1,0 +1,16 @@
+
+.cont_wgt1{float:right;width:19.2%; margin-right:0px;}
+.cont_wgt2{float:right;width:57.3%; margin-right:10px;}
+.cont_wgt3{float:left;width:21%;margin-right:10px;}
+
+
+.cont_wgt1_2{float:right;width:17%;margin-right:0px; }	  /* 본문sub 일때 */
+.cont_wgt2_2{float:right;width:59.8%; margin-right:10px;}	  /* 본문sub 일때 */
+
+
+
+@media screen and (max-width:900px){		   
+.cont_wgt1{ display:none;}
+.cont_wgt2{float:left;width:100%; margin-right:10px;}	 
+.cont_wgt4 {float:left;width:100%; margin-right:10px;} 
+}

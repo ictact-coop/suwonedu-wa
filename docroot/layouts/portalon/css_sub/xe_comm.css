@@ -1,0 +1,64 @@
+
+
+
+	p {
+		margin: 0;
+		padding: 0;
+		border: 0;		
+		font: inherit;
+		}		
+
+
+
+
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+
+  font-weight:bold;
+  margin-bottom:15px;
+  color:#3B3B3B;
+}
+h1 {
+  font-size:30px;
+  line-height:44px;
+}
+h2 {
+  font-size:20px;
+  line-height:31px;
+}
+h3 {
+  font-size:18px;
+  line-height:25px;
+}
+h4 {
+  font-size:18px;
+  line-height:22px;
+}
+h5 {
+  font-size:13px;
+  line-height:21px;
+}
+h6 {
+  font-size:12px;
+  line-height:20px;
+}
+em {
+  font-style:italic;
+}
+strong {
+  font-weight:bold;
+}
+body, .rbStats.pie h5, .rbStats.bars h5, .rbTwitter > a h5 {
+  font:12px/19px Arial, sans-serif;
+  color:#6B6B6B;
+}
+
+
+
+
+
+
+
+

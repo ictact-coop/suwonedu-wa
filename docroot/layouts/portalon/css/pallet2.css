@@ -1,0 +1,26 @@
+
+.top_warp{background:#ff3e93; }						   			   			   			   			   			   			   			   			  			    /* --  메인 메뉴바 border값 -- */
+																																					    
+#layoutToggle2 {border:3px solid #ff3e93; }																							     			            /* --  전체메뉴 테두리 -- */
+#layoutToggle2 a.read_more{background-color:#ff3e93;}
+
+
+.top_menu ul li{border:1px solid #ff3e93;border-top:0px;}							   			   			   			   			   			   			   /* 2차분리라인 */
+.top_menu ul li.highlight {background:#ff3e93;}						                                                                                           /* 2,3 차 롤오버 bg 컬러  */	   	                                                                                            
+.top_menu ul ul li:first-child {border-top:1px solid #ff3e93;}			                                                                                       /* 3차메뉴 가로 위치  */					  
+
+.dra_font:hover{color:#3f1128;}			                                            /* 1차메뉴 롤오버 */	
+
+.login_widget .signin .btn_submit{color:#eee;background-color:#ff3e93;}	                                                                           /* 로그인 버튼 */
+
+.sch_wrap li{background-color:#c71585;}		                                /* 메뉴바 우측 퀵메뉴 3개 */
+
+.loginBox .submit { background-color:#fe4483 !important;border:1px solid #e0205e;border-right:1px solid #b21b50 !important;border-bottom:1px solid #b21b50; !important; }     /* 로그인 버튼 */
+
+
+
+.menu_select {color:#ff3e93 !important;}
+
+#layoutToggle2 a.toggle_x{background-color:#ff3e93;}		           /* 전체메뉴 X 버튼  */	 
+
+.cTab li.on a,.cTab li:hover a{border-top:2px solid #ff3e93}  		   /* xedition 게시판탭 컬러 */

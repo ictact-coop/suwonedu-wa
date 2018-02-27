@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+    <title xml:lang="ko">포탈온 레이아웃</title>
+    <title xml:lang="en">portalon Layout</title>
+    <description xml:lang="ko">포탈온 레이아웃</description>
+    <description xml:lang="en">portalon layout.</description>
+    <version>1.1</version>
+    <date>2015-6-25</date>
+    <author email_address="portalon@gmail.com" link="http://portalon.net/xe">
+        <name xml:lang="ko">portalon</name>
+        <name xml:lang="en">portalon</name>
+    </author>
+					   													  
+	<extra_vars>
+		<group>
+			<title xml:lang="ko">1. 기본 설정</title>
+
+			 <var name="frame2" type="select">
+				<title xml:lang="ko">레이아웃 스타일</title>
+				<description xml:alng="ko">레이아웃 스타일을 선택해주세요.</description>	  			
+				<options value="m">
+					<title xml:lang="ko">메인</title>
+				</options>
+				<options value="s">
+					<title xml:lang="ko">서브</title>
+				</options>									
+			</var>
+
+			<var name="logo_top" type="image">
+				<title xml:lang="ko">로고</title>	 				
+				<description xml:alng="ko">레이아웃의 상단에 표시될 로고이미지를 등록해주세요. ※ 사이즈 Free : 로고 크기에 맞게 자동 조절 됩니다. </description>
+			</var>
+			 <var name="logo_url" type="text">
+			<title xml:lang="ko">┗ 로고 URL</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요. </description>
+		    </var>
+			<var name="wa_img" type="image">
+				<title xml:lang="ko">와 최근호 이미지</title>
+				<title xml:lang="en">Wa Thumbnail</title>
+				<description xml:lang="ko">메인페이지 우측의 와 썸네일을 업로드하세요.</description>
+				<description xml:lang="en">Wa Thumbnail.</description>
+			</var>
+			
+			
+		    <var name="lay_type" type="radio">
+			<title xml:lang="ko">▶ 레이아웃 타입</title>
+			<description xml:lang="ko">원-클릭 다단 변경 레이아웃! Taye1, 2번(Daum스타일)추천! ※ 사이드바 색상 구분 - 그레이(회색) : 카테고리메뉴, 배너 영역 / 아쿠아 : 위젯 영역</description>
+			<options value="type1" src="conf/type_01.jpg">
+				<title xml:lang="ko">Type1 메인A </title>
+			</options>	
+			<options value="type2" src="conf/type_02.jpg">
+				<title xml:lang="ko">Type2 메인B</title>
+			</options>
+			<options value="type3" src="conf/type_03.jpg">
+				<title xml:lang="ko">Type3 메인C</title>
+			</options>	 			
+			<options value="type4" src="conf/type_04.jpg">
+				<title xml:lang="ko">Type4 메인D</title>
+			</options>
+			<options value="type5" src="conf/type_05.jpg">
+				<title xml:lang="ko">Type5 서브A</title>
+			</options>
+			<options value="type6" src="conf/type_06.jpg">
+				<title xml:lang="ko">Type6 서브B</title>
+			</options>
+			<options value="type7" src="conf/type_07.jpg">
+				<title xml:lang="ko">Type7 서브C</title>
+			</options>	   		
+		    </var>
+
+
+			<var name="pallet" type="radio">
+			<title xml:lang="ko">▶ 레이아웃 메인 컬러셋</title>
+			<description xml:lang="ko">레이아웃 메인 컬러셋 선택 후 포인트 컬러 매칭 시켜주세요. </description>
+			<options value="pallet1" src="conf/pallet_01.png">
+				<title xml:lang="ko">딥핑크(기본)</title>
+			</options>
+			<options value="pallet2" src="conf/pallet_02.png">
+				<title xml:lang="ko">핫핑크</title>
+			</options>
+			<options value="pallet3" src="conf/pallet_03.png">
+				<title xml:lang="ko">라이트핑크</title>
+			</options>
+			<options value="pallet4" src="conf/pallet_04.png">
+				<title xml:lang="ko">골드옐로우</title>
+			</options>
+			<options value="pallet5" src="conf/pallet_05.png">
+				<title xml:lang="ko">딥스카이블루</title>
+			</options>
+			<options value="pallet6" src="conf/pallet_06.png">
+				<title xml:lang="ko">스카이블루</title>
+			</options>
+			<options value="pallet7" src="conf/pallet_07.png">
+				<title xml:lang="ko">짙은민트</title>
+			</options>
+			<options value="pallet8" src="conf/pallet_08.png">
+				<title xml:lang="ko">그린옐로우</title>
+			</options>	 
+			
+		</var>
+																							
+
+
+		<var name="pallet_user" type="text">
+			<title xml:lang="ko">사용자 메인 컬러셋</title>
+			<description xml:lang="ko">사용자 컬러셋을 직접 지정할 수 있습니다. 입력시 사용자 컬러셋이 우선합니다. ex) #ff69b4</description>
+		</var>
+		<var name="pallet_user_s" type="text">
+			<title xml:lang="ko">사용자 서브 컬러셋</title>
+			<description xml:lang="ko">메인 컬러셋에 맞춰 매칭 시켜주세요.  ex) #ff3e93</description>
+		</var>					
+
+			<var name="body_width" type="text">
+				<title xml:lang="ko">레이아웃 최대 넓이</title>
+				<description xml:lang="ko">레이아웃 전체 가로폭을 조절 할 수 있습니다.  기본) 940px  ※ 숫자만 입력하세요. </description>
+			</var>	
+
+			 <var name="body_bg" type="text">
+			<title xml:lang="ko">전체 배경 컬러</title>
+			<description xml:lang="ko">전체 body 컬러를 직접 지정할 수 있습니다. ex) #f2f2f2</description>
+		</var>
+			<var name="body_bg_img" type="image">
+			<title xml:lang="ko">전체 배경 이미지</title>
+			<description xml:lang="ko">전체 배경 이미지를 등록할 수 있습니다. </description>
+		</var>	
+
+			 <var name="bg_repeat" type="select">
+				<title xml:lang="ko">┗ 배경 이미지 반복 여부 선택</title>
+				<description xml:alng="ko"> 배경 이미지 패턴 반복 여부를 선택할 수 있습니다.</description>
+				<options value="repeat">
+					<title xml:lang="ko">전체 반복(기본)</title>
+				</options>	   				
+				<options value="repeat-x">
+					<title xml:lang="ko">가로 반복</title>
+				</options>
+				<options value="repeat-y">
+					<title xml:lang="ko">세로 반복</title>				   
+				</options>
+				<options value="no-repeat">
+					<title xml:lang="ko">반복 안함</title>
+				</options>
+			</var>	
+
+			<var name="body_bg_rp" type="text">
+				<title xml:lang="ko">┗  배경 이미지 body bg 위치</title>
+				<description xml:lang="ko">배경 이미지 사용시 컨텐츠 bg 높이 조절로 상단과 적절히 맞추세요.  기본) -162  ※ 숫자만 입력하세요. </description>
+			</var>	
+
+		</group>
+
+
+
+
+		  
+
+
+
+	   <group>
+		<title xml:lang="ko">2. TOP, 전체메뉴 / GNB</title>	  
+
+	   	     <var name="favo_on" type="select">	   		  
+            <title xml:lang="ko">▼  즐겨찾기 사용여부 선택</title>
+            <options value="Y">
+                <title xml:lang="ko">사용함</title>
+            </options>
+			<options value="N">
+                <title xml:lang="ko">사용안함</title>						  
+            </options>
+        </var> 	 		
+	   <var name="favorit_url" type="text">
+            <title xml:lang="ko">┗ 즐겨찾기 주소</title>
+            <description xml:lang="ko">즐겨찾기에 사용될 사용자 주소를 입력해 주세요. ※  http://www.xestyle.com 형식으로 입력해 주세요. </description>
+       </var> 	  
+	   
+	   <var name="favorit_name" type="text">
+			<title xml:lang="ko">┗ 즐겨찾기 사이트 이름</title>		  		
+			<description xml:lang="ko">즐겨찾기에 사용될 사이트 이름을 입력해 주세요.</description>
+		
+		</var>
+
+
+		<var name="start_page" type="select">
+	   <title xml:lang="ko">▼ 패밀리사이트 </title>	
+	   <description xml:lang="ko">패밀리 사이트 사용 여부를 선택해주세요.</description>
+
+			<options value="family">
+                <title xml:lang="ko">패밀리사이트</title>
+            </options>	
+			<options value="N">
+                <title xml:lang="ko">사용안함</title>
+            </options>	
+        </var>				 
+			 
+		 <var name="family_site_t" type="text">
+            <title xml:lang="ko">┗ 패밀리 사이트 버튼 직접입력 </title>
+            <description xml:lang="ko">패밀리 사이트 버튼 메뉴명을 직접 입력해주세요. </description>
+       </var>
+	   <var name="family_site_url" type="text">
+            <title xml:lang="ko">┗ 패밀리 사이트 url  </title>
+            <description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.)</description>
+       </var>					 
+	   
+	   <var name="gnb_home" type="select">
+            <title xml:lang="ko">▼ 홈 (home) 버튼 사용 여부 선택 </title>		  			
+            <options value="Y">
+                <title xml:lang="ko">사용함(기본)</title>
+            </options>
+			<options value="N">
+                <title xml:lang="ko">사용안함</title>
+            </options>
+        </var>		 		
+	   <var name="home_url" type="text">
+            <title xml:lang="ko">┗ 홈 (home) URL </title>
+            <description xml:lang="ko"> 링크 될 시작페이지 url 을 입력해주세요.</description>
+       </var>
+
+	   <var name="social_log" type="select">
+            <title xml:lang="ko">▼ 소셜 로그인</title>
+			<description xml:lang="ko">소셜로그인 버튼 사용 여부를 선택해주세요.  (소셜 로그인을 사용시 "소셜 로그인 모듈"을 먼저 설치 하여야 합니다.)</description>
+			<options value="N">
+				<title xml:lang="ko">사용안함</title>
+			</options>
+			<options value="Y">
+				<title xml:lang="ko">사용함</title>
+			</options>	   			
+        </var>				   
+	   <var name="log_on" type="select">
+            <title xml:lang="ko">▼ 로그인 </title>
+			 <description xml:lang="ko">로그인 사용 여부 선택해주세요.</description>
+            <options value="Y">
+                <title xml:lang="ko">사용함(기본)</title>
+            </options>
+			<options value="N">
+                <title xml:lang="ko">사용안함</title>
+            </options>
+        </var>	
+		
+		<var name="log_modal" type="select">
+            <title xml:lang="ko">로그인 팝업/링크방식 선택 </title>
+			<description xml:lang="ko"> 팝업(기본) or 로그인페이지 연결 중 택일. 로그인페이지 사용시 로그인 모듈스킨 설치 후 회원설정에서 xe스타일 회원스킨을 선택해주세요.</description>
+			<options value="Y">
+                <title xml:lang="ko">팝업(기본)</title>
+            </options>
+			<options value="N">
+                <title xml:lang="ko">로그인페이지 연결</title>
+            </options>
+       </var>
+
+		<var name="register" type="select">
+            <title xml:lang="ko">▼ 회원가입 (Register)</title>
+			<description xml:lang="ko">상단툴바에 영역의 register 버튼 사용 여부를 선택할 수 있습니다. </description>
+			<options value="Y">
+				<title xml:lang="ko">사용함(기본)</title>
+			</options>
+			<options value="N">
+				<title xml:lang="ko">사용안함</title>
+			</options>
+        </var>		  
+		<var name="gnb_mail" type="select">
+            <title xml:lang="ko">▼ e-mail  / Contact us </title>
+			<description xml:lang="ko"> e-mail 사용 여부 선택해주세요. </description>
+            <options value="Y">
+                <title xml:lang="ko">사용함(기본)</title>
+            </options>
+			<options value="N">
+                <title xml:lang="ko">사용안함</title>
+            </options>
+        </var>
+
+		<var name="mailto2" type="text">
+            <title xml:lang="ko">e-mail (아웃룩) </title>
+			<description xml:lang="ko">사용자 e-mail 입력해주세요. ※ 풋터 사이트정보표시 e-mail 동일 적용.</description>
+       </var> 	
+	    <var name="gnb_mail_link" type="text">
+            <title xml:lang="ko">e-mail (링크방식) </title>
+			<description xml:lang="ko">Contact us 페이지 생성 후 해당 주소를 입력해주세요. </description>
+       </var>				
+
+	   <var name="lang_on" type="select">
+		<title xml:lang="ko">▼ 다국어 사용 여부 선택</title>
+            <options value="Y">
+              <title xml:lang="ko">사용함(기본)</title>
+            </options>
+            <options value="N">
+              <title xml:lang="ko">사용안함</title>
+            </options>
+        </var>	 
+		
+
+<var name="sch_on" type="radio">
+		<title xml:lang="ko">▼ GNB 상단 통합검색 or 메뉴/배너 사용 여부 선택</title>
+		<description xml:alng="ko">상단 통합검색 or 멀티메뉴(배너) 중 하나를 선택해주세요. </description>
+            <options value="ON">
+              <title xml:lang="ko">통합검색 사용함(기본)</title>
+            </options>
+            <options value="BAN">
+              <title xml:lang="ko">메뉴/배너 사용</title>
+            </options>
+			<options value=" ">
+              <title xml:lang="ko">사용안함</title>														
+            </options>
+        </var>			
+		
+		 <var name="xe_hori_left" type="textarea">
+				<title xml:lang="ko">┗ 로고 Side 메뉴 좌측 </title>
+				<description xml:lang="ko">GNB 메뉴 사용시위젯코드 또는 HTML을 입력해주세요.  ※ GNB 좌측 메뉴 전용  ex) 이용안내 | 쇼핑가이드 | 나의샵  </description>
+			</var>
+			 <var name="xe_hori_right" type="textarea">
+				<title xml:lang="ko">┗ 로고 Side 메뉴 우측 / 배너 </title>
+				<description xml:lang="ko">GNB 메뉴 사용시 위젯코드 또는 HTML을 입력해주세요.   ex) One 배너 사용시 해당 메뉴의 "메뉴 링크 이미지" 로 배너 형태로 사용가능 합니다. ex) Event 배너</description>
+			</var>
+													  
+			<var name="gnb_ban_h" type="text">
+            <title xml:lang="ko">┗ 메뉴/배너 세로 위치 (GNB우측)</title>
+            <description xml:lang="ko">배너크기에 맞춰 세로 위치 조절해주세요. ex) 배너 적정 사이즈: 160px x 74px  /</description>
+       </var> 
+	   <var name="gnb_ban_l" type="text">
+            <title xml:lang="ko">┗ 메뉴/배너 가로 위치 (GNB우측)</title>
+            <description xml:lang="ko">배너크기에 맞춰 가로 위치 조절해주세요.</description>
+       </var> 	
+																					   
+			<var name="menu_padding" type="text">
+				<title xml:lang="ko">Top메뉴 1차 좌우 간격</title>
+				<description xml:alng="ko">Top메뉴 1차 좌우 간격을 적절히 조절해주세요. ※ 숫자만 입력해주세요.</description>
+			</var>
+			<var name="pallet_1hover" type="text">
+				<title xml:lang="ko">┗ Top메뉴 1차 마우스 오버 컬러</title>
+				<description xml:alng="ko">Top메뉴 1차 마우스 오버시 컬러를 바꿀 수 있습니다. ex) #5b0036</description>
+			</var>
+
+			<var name="link_icon" type="textarea">
+				<title xml:lang="ko">Top메뉴 우측 링크 아이콘 </title>
+				<description xml:lang="ko">숏컷 코드 또는 HTML을 입력해주세요.  ex) 자료실 | 무료아이콘 | 주요메뉴보기  ※ 외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.  새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+			</var>
+
+			<var name="toggleOn" type="select">
+				<title xml:lang="ko">▼ 전체보기 메뉴 (서랍메뉴)</title>			   
+				<description xml:alng="ko">전체메뉴 펼침/접기/사용안함 중 선택하세요. 서랍메뉴 사용을 원치않으시면 "사용안함" 선택 필수! ※ 메뉴 전체보기 or 클릭율이 높은 주요메뉴 반복 노출용 (응용) </description>		  			
+				<options value="OFF">
+					<title xml:lang="ko">사용안함</title>
+				</options>		
+				<options value="Y">
+					<title xml:lang="ko">펼침</title>			  
+				</options>
+				<options value="N">
+					<title xml:lang="ko">접기</title>
+				</options>	  				
+			</var>
+							
+
+			<var name="dra_menu_arr" type="text">
+				<title xml:lang="ko">┗ 전체보기 메뉴 가로배열 갯수</title>
+				<description xml:alng="ko">전체메뉴 가로배열 갯수를 조절 할 수 있습니다.  5개(기본) ※ 숫자만 입력해주세요.  ex) 4, 5, 6</description>
+			</var>
+
+			<var name="draw_2d" type="select">
+				<title xml:lang="ko">┗ 전체보기 메뉴 세로배열 갯수, 2차메뉴, 4개(기본)</title>
+				<options value="1">
+					<title xml:lang="ko">1개</title>
+				</options>		
+				<options value="2">
+					<title xml:lang="ko">2개</title>			  
+				</options>
+				<options value="3">
+					<title xml:lang="ko">3개</title>
+				</options>	 
+				<options value="4">
+					<title xml:lang="ko">4개</title>
+				</options>	 
+				<options value="5">
+					<title xml:lang="ko">5개</title>
+				</options>	 
+			</var>	 		
+	</group>
+
+	 <group>
+		<title xml:lang="ko">3. 프로모션</title>				
+
+			<var name="p_silder" type="select">
+				<title xml:lang="ko">프로모션 슬라이드</title>
+				<description xml:alng="ko">프로모션 사용 여부를 선택해주세요. ※ 메인 / 서브 공용</description>				
+				<options value="Y">
+					<title xml:lang="ko">사용함(기본)</title>
+				</options>					
+				<options value="N">
+					<title xml:lang="ko">사용안함</title>							  
+				</options>	 			
+		     	</var>				
+			<var name="pro_ban_01" type="image">
+			<title xml:lang="ko">프로모션 이미지1</title>
+			<description xml:lang="ko">배너 이미지를 등록 해주세요, 5개 까지 등록가능합니다. ※ 기본값 width:539px height: 원하는 크기에 맞게 자동 조절 됩니다.    </description>
+		    </var>
+			<var name="pro_ban_02" type="image">
+			<title xml:lang="ko">프로모션 이미지2</title>
+			<description xml:lang="ko">배너 이미지를 등록 해주세요 ※ 기본값 width:539px height: 원하는 크기에 맞게 자동 조절 됩니다. </description>
+		    </var>
+			<var name="pro_ban_03" type="image">
+			<title xml:lang="ko">프로모션 이미지3</title>
+			<description xml:lang="ko">배너 이미지를 등록 해주세요 ※ 기본값 width:539px height: 원하는 크기에 맞게 자동 조절 됩니다.</description>
+		    </var>
+			<var name="pro_ban_04" type="image">
+			<title xml:lang="ko">프로모션 이미지4</title>
+			<description xml:lang="ko">배너 이미지를 등록 해주세요 ※ 기본값 width:539px height: 원하는 크기에 맞게 자동 조절 됩니다. </description>
+		    </var>
+			<var name="pro_ban_05" type="image">
+			<title xml:lang="ko">프로모션 이미지5</title>
+			<description xml:lang="ko">배너 이미지를 등록 해주세요 ※ 기본값 width:539px height: 원하는 크기에 맞게 자동 조절 됩니다. </description>
+		    </var>
+
+			<var name="pro_url_01" type="text">
+			<title xml:lang="ko">프로모션 URL 1</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		    </var>
+			<var name="pro_url_02" type="text">
+			<title xml:lang="ko">프로모션 URL 2</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		    </var>
+			<var name="pro_url_03" type="text">
+			<title xml:lang="ko">프로모션 URL 3</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		    </var>
+			<var name="pro_url_04" type="text">
+			<title xml:lang="ko">프로모션 URL 4</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		    </var>
+			<var name="pro_url_05" type="text">
+			<title xml:lang="ko">프로모션 URL 5</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		    </var>
+
+			<var name="pro_wgt_01" type="textarea">
+				<title xml:lang="ko">프로모션 위젯 (예비)</title>
+				<description xml:lang="ko">프로모션 영역에 사용할 위젯코드 또는 HTML을 입력해주세요.  ex) 고객지원 흐름  </description>
+			</var>
+			
+		   	   <var name="bx_ban" type="textarea">
+				<title xml:lang="ko">bx배너 5개 박스형 </title>
+				<description xml:lang="ko">bx배너 숏컷 코드 or  HTML을 입력해주세요. ex) 메인 프로모션 하단 </description>
+		</var>	
+		</group>
+
+
+	   <group>
+		<title xml:lang="ko">4. 좌측사이드바</title>				
+
+			<var name="snb_wgt_01" type="textarea">
+				<title xml:lang="ko">위젯1</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) xe커뮤니티 (카테고리 메뉴) ※ 사이트맵 번호 확인 방법 ※ DB 에서 (xe_menu 테이블) or 설치된 위젯 > 메뉴출력기를 통해 확인가능합니다.</description>
+			</var>				
+			<var name="snb_wgt_02" type="textarea">
+				<title xml:lang="ko">위젯2</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. ex) 새로운디자인</description>
+			</var>
+			<var name="snb_wgt_03" type="textarea">
+				<title xml:lang="ko">위젯3</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. ex) 무료아이콘</description>
+			</var>
+			<var name="snb_wgt_04" type="textarea">
+				<title xml:lang="ko">위젯4</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. ex) 고객의소리</description>
+			</var>
+			<var name="snb_wgt_05" type="textarea">
+				<title xml:lang="ko">위젯5</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. </description>
+			</var>	
+			<var name="snb_wgt_06" type="textarea">
+				<title xml:lang="ko">위젯6</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. </description>
+			</var>	
+
+			<var name="side_sch" type="select">
+            <title xml:lang="ko">▼ 사이드바 검색창 사용 유무 선택 </title>
+			<description xml:lang="ko">사이드바 검색창 사용 여부를 선택해주세요.</description>
+            <options value="Y">
+                <title xml:lang="ko">사용함(기본)</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">사용안함</title>						  
+            </options>
+            </var>	
+		
+		</group>
+
+
+																		 
+		 <group>
+		<title xml:lang="ko">5. 본문 중앙 콘텐츠</title>	 
+
+			<var name="cont_top_wgt" type="textarea">
+				<title xml:lang="ko">전광판 위젯</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 뉴스티커 전광판 위젯</description>
+			</var>
+
+			<var name="cont_wgt_01" type="textarea">
+				<title xml:lang="ko">위젯1</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요  ex) 상단 Tab top 위젯 썸네일 4개</description>
+			</var>
+			<var name="cont_wgt_02" type="textarea">
+				<title xml:lang="ko">위젯2</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요  ex) 레이아웃스타일</description>
+			</var>
+			<var name="cont_wgt_03" type="textarea">
+				<title xml:lang="ko">위젯3</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요  ex) 반응형웹</description>
+			</var>
+			<var name="cont_wgt_04" type="textarea">
+				<title xml:lang="ko">위젯4</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요  ex) XE유저팁</description>
+			</var>
+			<var name="cont_wgt_05" type="textarea">
+				<title xml:lang="ko">위젯5</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 쇼핑몰팁</description>
+			</var>
+
+			<var name="wgt_front" type="image">
+			<title xml:lang="ko">대표 타이틀 </title>
+			<description xml:lang="ko"> 배너 이미지 등록 ※ doorweb_content - xe_gallery3 전용  ex) 레이아웃스타일 - 템플릿 이상의 퀄리티를 원할때 XE스타일!	</description>
+		</var>
+		 <var name="wgt_front_url" type="text">
+				<title xml:lang="ko">┗ 대표 타이틀 URL</title>
+				<description xml:lang="ko">링크 될 url 주소 or 모듈 이름을 입력해주세요.  </description>
+			</var>	
+
+
+		   <var name="c_margin_top" type="text">
+			<title xml:lang="ko">본문 상단 간격</title>
+			<description xml:lang="ko">비쥬얼(프로모션)영역과 본문 사이 간격을 조절할 수 있습니다. 더한 수만큼 조절됩니다.  ※ 숫자만 입력하세요. </description>
+		</var>
+		
+			  <var name="sub_t" type="image">
+			<title xml:lang="ko">▶ 서브 타이틀</title>
+			<description xml:lang="ko">서브 본문 상단 타이틀 이미지 등록.  ex) XE스타일샵 </description>
+		</var>
+
+		<var name="cont_body_01" type="textarea">
+				<title xml:lang="ko">콘텐츠 html </title>
+				<description xml:alng="ko">콘텐츠 html 및 위젯 코드를 입력해주세요. ★ 서브 컨텐츠 숏컷은 이곳에 입력해주세요.</description>
+			</var>	
+
+			<var name="cont_wgt_sub_01" type="textarea">
+				<title xml:lang="ko">위젯1 (서브용)</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. ex) XE유저팁</description>
+			</var>
+			<var name="cont_wgt_sub_02" type="textarea">
+				<title xml:lang="ko">위젯2 (서브용)</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. ex) QnA게시판</description>
+			</var>
+			<var name="cont_wgt_sub_03" type="textarea">
+				<title xml:lang="ko">위젯3 (서브용)</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. ex) 인기글(종합)</description>
+			</var>
+			<var name="cont_wgt_sub_04" type="textarea">
+				<title xml:lang="ko">위젯4 (서브용)</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.</description>
+			</var>		
+		 			
+		</group>
+										   
+
+		  <group>
+		<title xml:lang="ko">6. 우측사이드바</title>
+
+
+			 <var name="q_icon" type="textarea">
+				<title xml:lang="ko">퀵 링크 아이콘 </title>
+				<description xml:lang="ko">숏컷 코드 또는 HTML을 입력해주세요.  ex) 자료실 | 무료아이콘 | 주요메뉴보기  ※ 외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.  새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+			</var>
+
+			<var name="lnb_wgt_01" type="textarea">
+				<title xml:lang="ko">위젯1</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 로그인</description>
+			</var>
+			<var name="lnb_wgt_02" type="textarea">
+				<title xml:lang="ko">위젯2</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 인기글(종합)</description>
+			</var>
+			<var name="lnb_wgt_03" type="textarea">
+				<title xml:lang="ko">위젯3</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 동영상</description>
+			</var>
+			<var name="lnb_wgt_04" type="textarea">
+				<title xml:lang="ko">위젯4</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 탭형 인기글 최신글 최신댓글</description>
+			</var>
+			<var name="lnb_wgt_05" type="textarea">
+				<title xml:lang="ko">위젯5</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) 디자인팁</description>
+			</var>	   
+			<var name="lnb_wgt_06" type="textarea">
+				<title xml:lang="ko">위젯6</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요. </description>
+			</var>
+		</group>
+
+
+		 <group>																				   
+		<title xml:lang="ko">7. 풋터</title>				
+		
+		<var name="flow_wgt" type="textarea">
+				<title xml:lang="ko">흐름 위젯 (최하단 위젯)</title>
+				<description xml:lang="ko">위젯코드 또는 HTML을 입력해주세요.  ex) Brand / Client  </description>
+			</var>	 
+
+		
+	   <var name="foot_info_w" type="select">
+            <title xml:lang="ko">▼ 사이트 정보 표시 사용 유무 선택 </title>
+			<description xml:lang="ko">사이트 정보 표시 사용 여부를 선택해주세요.</description>
+            <options value="Y">
+                <title xml:lang="ko">사용함(기본)</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">사용안함</title>						  
+            </options>
+       </var>	
+	 		
+	   
+     <var name="foot_info" type="textarea">
+            <title xml:lang="ko">사이트정보표시</title>
+			<description xml:lang="ko">사이트정보표시 숏컷 코드 또는 HTML 작성 후 입력해주세요.</description>
+       </var>						 
+
+	 <var name="info_title_04" type="text">					
+            <title xml:lang="ko">Family Site 제목</title>
+			<description xml:lang="ko">Family Site 제목을 입력해 주세요. ex) Family Site  </description>
+       </var>			
+	   
+	 <var name="footer_social_01" type="image">
+            <title xml:lang="ko">풋터 소셜1</title>
+			<description xml:lang="ko">풋터 소셜1 이미지 등록 (width:22px * height:22px)</description>
+       </var>
+	   <var name="foot_social_url_01" type="text">
+            <title xml:lang="ko">풋터 소셜 url</title>
+            <description xml:lang="ko">링크 될 url 주소 or 모듈 이름을 입력해주세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.)</description>
+       </var>
+  		  	   <var name="footer_social_02" type="image">
+            <title xml:lang="ko">풋터 소셜2</title>
+			<description xml:lang="ko">풋터 소셜2 이미지 등록 (width:22px * height:22px) </description>
+       </var>
+	   <var name="foot_social_url_02" type="text">
+            <title xml:lang="ko">풋터 소셜 url</title>
+            <description xml:lang="ko">링크 될 url 주소 or 모듈 이름을 입력해주세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.)</description>
+       </var>
+		  	   <var name="footer_social_03" type="image">
+            <title xml:lang="ko">풋터 소셜3</title>
+			<description xml:lang="ko">풋터 소셜3 이미지 등록 (width:22px * height:22px)</description>
+       </var>
+	   <var name="foot_social_url_03" type="text">
+            <title xml:lang="ko">풋터 소셜 url</title>
+            <description xml:lang="ko">링크 될 url 주소 or 모듈 이름을 입력해주세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.)</description>
+       </var>
+	  		  <var name="footer_social_04" type="image">
+            <title xml:lang="ko">풋터 소셜 소셜4 (예비)</title>
+			<description xml:lang="ko">풋터 소셜4 이미지 등록 (width:22px * height:22px)</description>
+       </var>
+	   <var name="foot_social_url_04" type="text">
+            <title xml:lang="ko">풋터 소셜 url</title>
+            <description xml:lang="ko">링크 될 url 주소 or 모듈 이름을 입력해주세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.)</description>
+       </var>
+	   		  <var name="footer_social_05" type="image">
+            <title xml:lang="ko">풋터 소셜5 (예비)</title>
+			<description xml:lang="ko">풋터 소셜5 이미지 등록 (width:22px * height:22px)</description>
+       </var>
+	   <var name="foot_social_url_05" type="text">
+            <title xml:lang="ko">풋터 소셜 url</title>
+            <description xml:lang="ko">링크 될 url 주소 or 모듈 이름을 입력해주세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.)</description>
+       </var>	
+
+	   <var name="foot_copy" type="textarea">
+				<title xml:lang="ko">카피라이트 정보 입력</title>
+				<description xml:lang="ko">저작권 정보 및 카피라이트 숏컷 코드 또는 HTML 작성 후 입력해주세요. </description>					 
+			</var>																																																				   
+
+	   <var name="logo_foot" type="image">
+				<title xml:lang="ko">풋터 로고 이미지</title>	 				
+				<description xml:alng="ko">풋터에 표시될 로고이미지를 등록해주세요. ex) width:132px height:40px </description>
+			</var>
+		<var name="social1" type="image">
+            <title xml:lang="ko">풋터 배너1</title>
+			<description xml:lang="ko">풋터 배너 이미지 등록 ex) 공정위 표준약관 (width:100px * height:35px)</description>
+       </var>
+	   <var name="social2" type="image">
+            <title xml:lang="ko">풋터 배너2</title>
+			<description xml:lang="ko">풋터 배너 이미지 등록 ex) 신용카드결제 (width:100px * height:35px)</description>
+       </var>
+	   <var name="social3" type="image">
+            <title xml:lang="ko">풋터 배너3</title>
+			<description xml:lang="ko">풋터 배너 이미지 등록 ex) 블랙쉴드 (width:100px * height:35px)</description>
+       </var>
+
+		 		
+
+		<var name="foot_gap" type="text">					
+            <title xml:lang="ko">풋터 컨텐츠 간격</title>
+			<description xml:lang="ko">컨텐츠와 풋터 간격 조절 가능 (서랍메뉴 높이값이 일정 비율보다 클 경우 사용)  ex) 30, -20 , 숫자만 입력하세요. </description>
+       </var>		
+
+	</group>
+
+	 	 <group>
+		<title xml:lang="ko">8. 퀵메뉴</title>	
+		
+		 <var name="addon" type="select">
+            <title xml:lang="ko">▼ XE퀵메뉴 애드온 </title>
+			<description xml:lang="ko">퀵메뉴 사용시 "XE퀵메뉴,상품보기 애드온" 사용 체크 후 사용될 대상 페이지를 지정해주세요.</description>
+            <options value="Y">
+                <title xml:lang="ko">애드온에서 사용 체크해주세요</title>
+            </options>
+			<options value="N">
+                <title xml:lang="ko">애드온에서 사용 체크해주세요</title>
+            </options>
+        </var>		 			
+		<var name="cart_top" type="text">
+			<title xml:lang="ko">┗ 상단 위치</title>
+			<description xml:lang="ko">퀵메뉴 높이값을 입력해주세요.  ※ 숫자만 입력하세요.</description>
+		</var>				  
+		<var name="q_w_pos" type="text">
+			<title xml:lang="ko">┗ 가로 위치</title>
+			<description xml:lang="ko"> 더한 수만큼 조절됩니다. ※ 숫자만 입력하세요. 레이아웃 최대 넓이 설정시 사용해주세요.</description>
+		</var>					 	
+
+		<var name="troll_ban01" type="image">	   
+            <title xml:lang="ko">퀵 배너1</title>
+			<description xml:lang="ko">퀵 배너 이미지를 등록할 수 있습니다. (width:22px * height:22px)</description>
+       </var>
+	   <var name="troll_ban02" type="image">	
+            <title xml:lang="ko">퀵 배너2</title>
+			<description xml:lang="ko">퀵 배너 이미지를 등록할 수 있습니다.  (width:22px * height:22px)</description>
+       </var>
+	   <var name="troll_ban03" type="image">	
+            <title xml:lang="ko">퀵 배너3</title>
+			<description xml:lang="ko">퀵 배너 이미지를 등록할 수 있습니다.  (width:22px * height:22px)</description>
+       </var>
+
+	   <var name="troll_ban01_url" type="text">
+			<title xml:lang="ko">퀵 배너1 URL</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		</var>
+		<var name="troll_ban02_url" type="text">
+			<title xml:lang="ko">퀵 배너2 URL</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		</var>
+		<var name="troll_ban03_url" type="text">
+			<title xml:lang="ko">퀵 배너3 URL</title>
+			<description xml:lang="ko">링크 될 url 주소를 입력하세요.  (외부사이트 링크 url 입력시 앞에 "http://" 를 써주세요.   새창으로 보기시  http://나머지 주소" target="_blank   (그대로 써주시면 됩니다.) </description>
+		</var>	 
+	   <var name="icon_f" type="image">	
+            <title xml:lang="ko">소셜 아이콘</title>
+			<description xml:lang="ko">퀵 배너 하단 소셜 아이콘 이미지를 등록할 수 있습니다. ex) 페이스북 아이콘 (width:46px * height:46px)</description>
+       </var>		  
+	</group>
+
+	<group>
+		<title xml:lang="ko">9. 샵</title>				  
+		<var name="q_shop" type="select">
+			<title xml:lang="ko">▼ 최근본상품</title>
+			<description xml:lang="ko"> 최근본상품 사용 여부를 선택해주세요. GNB 툴팁 버튼(cart, order, wish) 포함 ※ "XE퀵메뉴,상품보기 애드온" 사용 체크 후 사용될 대상 페이지를 지정해주세요. 쇼핑몰 모듈 설치 후 사용가능.</description>
+			<options value="N">
+				<title xml:lang="ko">사용안함</title>
+			</options>	
+			<options value="Y">
+				<title xml:lang="ko">사용</title>
+			</options>							  			
+		</var>
+
+		<var name="spec_license" type="textarea">
+			<title xml:lang="ko">┗ 라이선스 안내</title>
+			<description xml:lang="ko"> XE스타일샵 상품상세보기  ex) 라이선스 안내</description>
+		</var>
+		<var name="social_links" type="textarea">
+			<title xml:lang="ko">┗ 소셜 아이콘 </title>
+			<description xml:lang="ko">XE스타일샵 상품상세보기 BUY 버튼 하단에 소셜 아이콘을 등록할 수 있습니다. ex) 페이스북, Put it .. </description>
+		</var>									  
+
+		<var name="circle_txt_01" type="textarea">
+			<title xml:lang="ko">┗ 써클안내 버튼 내용 1 </title>
+			<description xml:lang="ko">상품상세보기(우측) 써클버튼 아래 내용을 입력할 수 있습니다.  ex) 상세내용</description>
+		</var>
+		<var name="circle_txt_02" type="textarea">
+			<title xml:lang="ko">┗ 써클안내 버튼 내용 2 </title>
+			<description xml:lang="ko">상품상세보기(우측) 써클버튼 아래 내용을 입력할 수 있습니다.  ex) 리뷰/QnA</description>
+		</var>
+		<var name="circle_txt_03" type="textarea">
+			<title xml:lang="ko">┗ 써클안내 버튼 내용 3 </title>
+			<description xml:lang="ko">상품상세보기(우측) 써클버튼 아래 내용을 입력할 수 있습니다.  ex) 반품/교환/배송정보 </description>
+		</var>
+		
+	 </group>
+
+	 <group>
+		<title xml:lang="ko">10. 고급</title>					
+		 <var name="fla" type="select">
+			<title xml:lang="ko">▼ 플래시</title>
+			<description xml:lang="ko"> 플래시 효과 사용 유무를 선택해주세요. ※ 로고, 배너 등 원하는 이미지 2장을 (투명png명 "logo1.png, logo2.png" )파일 저장 후 해당 폴더에 넣어주세요. 업로드 위치: layouts/portalon/swf</description>	  			
+			<options value="N">
+				<title xml:lang="ko">사용안함</title>
+			</options>			
+			<options value="curt">
+				<title xml:lang="ko">커튼</title>
+			</options>
+			<options value="geo">
+				<title xml:lang="ko">기하학</title>
+			</options>
+		</var>
+		 <var name="fla_w" type="text">					
+            <title xml:lang="ko">┗ 플래시 가로 위치</title>
+			<description xml:lang="ko">더한 수만큼 조절됩니다.  ※ 숫자만 입력하세요.</description>
+       </var>	
+	    <var name="fla_h" type="text">					
+            <title xml:lang="ko">┗ 플래시 세로 위치</title>
+			<description xml:lang="ko">더한 수만큼 조절됩니다.  ※ 숫자만 입력하세요.</description>
+       </var>	
+	   <var name="fla_time" type="text">					
+            <title xml:lang="ko">┗ 보여지는 시간</title>
+			<description xml:lang="ko">플래시가 보여지는 시간을 조절할 수 있습니다. 기본 7(초)  ※ 숫자만 입력하세요. ex) 15, 30 </description>
+       </var>	
+	   
+	   <var name="info_t_mob" type="text">								
+            <title xml:lang="ko"> 모바일 링크 아이콘 제목 </title>
+			<description xml:lang="ko">모바일 하단 링크 아이콘 제목을 입력해 주세요. ex) by Portalon</description>
+       </var>						  
+
+		<var name="icon_mob" type="textarea">
+				<title xml:lang="ko">모바일 링크 아이콘 숏컷</title>
+				<description xml:alng="ko">모바일 링크 아이콘 숏컷 코드를 입력 후 폰트어썸 아이콘 이름만 고객님에 맞게 변경해주세요.</description>
+			</var>	
+		 
+	   
+	</group>
+
+	 
+	</extra_vars>   
+	<menus>
+
+	<menu name="TOP_MENU" maxdepth="2" default="true">
+            <title xml:lang="ko">메인메뉴</title>	             
+    </menu>
+    <menu name="DRAW" maxdepth="2" default="true">
+            <title xml:lang="ko">서랍메뉴 (주요메뉴)</title>			       				
+    </menu>
+	<menu name="MULTI1" maxdepth="1" default="true">
+            <title xml:lang="ko">멀티메뉴(좌측)</title>  
+    </menu>
+	<menu name="MULTI2" maxdepth="1" default="true">
+            <title xml:lang="ko">멀티메뉴(우측)</title>          
+    </menu>	
+	<menu name="F_MENU1" maxdepth="1" default="true">
+		    <title xml:lang="ko">하단메뉴(좌측)</title>
+	</menu>
+	<menu name="F_MENU2" maxdepth="1" default="true">
+		    <title xml:lang="ko">하단메뉴(우측)</title>
+	</menu>
+	<menu name="FAMILY" maxdepth="1" default="true">
+            <title xml:lang="ko">패밀리사이트</title>
+    </menu>
+    <menu name="Q_MENU" maxdepth="1" default="true">
+		<title xml:lang="ko">퀵메뉴</title>
+	</menu>
+		<menu name="c_navi" maxdepth="2" default="true">
+		<title xml:lang="ko">카테고리 메뉴 (모바일)</title>
+	</menu>
+
+    </menus>
+</layout>

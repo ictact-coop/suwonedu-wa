@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+
+
+
+/*윤리경영 공통사용*/
+.ethic_A{ margin-bottom: 30px}
+.move-box{  background:url(/img/front/kr/m3/1_1_icon.png) 0 45px no-repeat; border-top: solid 1px #9f9f9f; border-bottom:dotted 1px #c9c9c9; padding-bottom: 30px;  }
+.page_s_title{font-size: 14px;  margin: 20px 0 10px 0; }
+.move-box li{ float:left; width: 190px; margin: 3px 0 5px 0px; background:url(/img/front/kr/p_dot.png) 0 5px no-repeat; padding-left: 8px;}
+.list_num{ margin-left:80px;}							  /* xe스타일 인덱스 가로폭 */
+.p_arr{ font-size: 15px;  margin: 20px 0 10px 0; padding-left: 15px;  background:url(/img/front/kr/p_arr.png) 0px 4px no-repeat; }
+.circle-list{ line-height: 1.6;}
+.circle-list li{ background:url(/img/front/kr/p_dot.png) 0 9px no-repeat; padding-left: 8px;}
+.circle-list_B{ line-height: 1.6;}
+.circle-list_B li{padding-left: 8px;}
+

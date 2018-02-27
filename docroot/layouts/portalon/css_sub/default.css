@@ -1,0 +1,14 @@
+
+
+
+
+#wgt_box_01{width: 49% !important;}				   /* 공원레이아웃 xe초보강좌 메뉴얼 박스 */
+#wgt_box_02 {width: 49% !important;}
+
+/* 아이패드2- */
+@media screen and (max-width:768px){
+
+#wgt_box_01{width: 100% !important;}				  /* 공원레이아웃 xe초보강좌 메뉴얼 박스 */
+#wgt_box_02 {width: 100% !important;}	  
+
+}

@@ -1,0 +1,106 @@
+
+
+
+/* cont_act.css */
+
+
+.list_num li a{font-size: 14px; width:88%; color:#0086b9 !important;}	
+.list_num li a:hover { color:#ea008a; text-decoration:underline;}
+
+.circle-list_B{padding-left: 0px; }
+	
+
+
+#total_wrap {height: 100%; text-align: center;}
+.obj_centers {min-width: 285px; max-width: 1067px; text-align: left; margin: 0px auto;padding:0px; padding-right:0; position:relative}	/* 우측 패딩값 제거 xe스타일 */
+
+/*컨텐츠영역*/
+#body_sub{width:100%;float:left;}
+.body_sub{font-size:13px;min-height:500px;position:relative;border:1px solid #e8e8e8;padding:30px 15px 0 18px;}
+
+.content_info{font-size:13px}
+.content_navi{background: url('/img/front/kr/home.png') no-repeat left center;position: absolute;right:5%;top:20px;font-size:11px;color:#000;padding-left:15px}
+.content_navi span{color:#9f9f9f;font-weight:700}
+.content_navi a{color:#000}
+.content_title{padding-left:18px;margin-bottom:20px;font-size:28px;font-weight:normal;color:#000; position:relative;z-index:1}			/* 전체 타이틀 */
+
+.move-box {padding-left:30px;}
+
+/*반응형*/
+
+.menubuttons{display: none}
+
+@media all and (max-width: 780px) {
+	/*.submenus {min-height:10px;}*/
+	#left{display:none}
+	#body_sub{width: 100%}
+
+	.obj_centers{position:relative;left:0}
+
+
+	.langselect{right:0!important}
+	.content_title{font-size:20px}
+	/*.styleicon{display:none}*/
+	
+}
+
+@media all and (max-width: 1101px) {
+	.slides{border:none!important}
+
+	
+	.qwtitle{display:block;padding:0;float:none;border:none;margin-bottom:15px}
+	#widget ul{float:none;padding:0}
+	#widget ul li{width: 13.2%;margin-left:1%}
+	#widget ul li img{width: 100%; max-width: 52px; max-height: 52px; height:100%}
+
+	#sidemenu{top: 10px}
+	/*.submenus_area{background-image:none!important}*/
+	.copytext{padding-left:150px}
+	.buys_links{float:right}
+	.wnews span{position:absolute;right:0;top:0}
+	.wnews{padding:0;paddings:10px;height:auto}
+	.wnews ul li{position:relative}
+	/*.companys{padding:0;padding:10px;height:auto}*/
+	.langselect{right:50px}
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {font-size:1em;}
+a{text-decoration: none}
+a:active {text-decoration:underline}
+a:focus {text-decoration:underline}
+.dpnone{position:absolute!important; top:0!important; left:-20000px!important; overflow:hidden; display:inline-block !important; width:1px !important; height:1px !important; margin:0 !important; font-size:0 !important; line-height:0 !important;}
+.displayinline{display: inline}
+.displayblock{display: block}
+
+dl,dt,dd,ul,li{margin:0;padding:0}
+li{list-style:none}
+.floatleft{float: left}
+.floatright{float: right}
+.clear{clear:both}
+
+
+.btn_middle{border:1px solid #bfbfbf;padding:5px 9px;background-color:#f3f3f3}
+.btn_small{border:1px solid #bfbfbf;padding:2px 6px;background-color:#f3f3f3;font-size:0.75em!important}
+.btn_big{border:1px solid #bfbfbf;padding:8px 13px;background-color:#f3f3f3;font-size:1.1em}
+.btn_white{background-color:#fff}
+.btn_gray{border-color:#858585;background-color:#a0a0a0;color:white}
+.btn_green{border-color:#659265;background-color:#739e73;color:white}
+.btn_blue{border-color:#9f9f9f;background-color:#9f9f9f;color:white}
+
+
+
+
+
+.ethic_A{ margin-bottom: 30px}
+.move-box{  background:url(/img/front/kr/m3/1_1_icon.png) 0 45px no-repeat; border-top: solid 1px #9f9f9f; border-bottom:dotted 1px #c9c9c9; padding-bottom: 30px;  }
+.page_s_title{font-size: 14px;  margin: 20px 0 10px 0; }
+.move-box li{ float:left; width: 190px; margin: 3px 0 5px 0px; background:url(/img/front/kr/p_dot.png) 0 5px no-repeat; padding-left: 8px;}
+.list_num{ margin-left:80px;}							  /* xe스타일 인덱스 가로폭 */
+.p_arr{ font-size: 15px;  margin: 20px 0 10px 0; padding-left: 15px;  background:url(/img/front/kr/p_arr.png) 0px 4px no-repeat; }
+.circle-list{ line-height: 1.6;}
+.circle-list li{ background:url(/img/front/kr/p_dot.png) 0 9px no-repeat; padding-left: 8px;}
+.circle-list_B{ line-height: 1.6;}
+.circle-list_B li{padding-left: 8px;}
+

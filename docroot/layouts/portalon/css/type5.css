@@ -1,0 +1,16 @@
+
+
+
+
+.cont_wgt1_2{float:left;width:17%; margin-right:10px;}	  /* 본문sub 일때 */
+.cont_wgt2_2{float:left;width:81.9%; margin:0;}	  /* 본문sub 일때 */
+.cont_wgt4 {float:left;width:81.9%;}
+
+
+@media screen and (max-width:900px){		   
+.cont_wgt1_2{ display:none;}
+.cont_wgt2_2{float:left;width:97.3%; margin-right:10px;}
+.cont_wgt4 {float:left;width:97.3%; margin-right:10px;} 
+}
+
+

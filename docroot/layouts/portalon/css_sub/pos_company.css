@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+
+
+.textcenter {text-align:center;}
+.colorsanga{color:#b00000;font-size:14px}
+.colorsanga2{color:#000;font-size:14px}
+.colorsanga3{color:#2098c4;font-size:14px}
+.p_arr{ font-size: 15px;  margin: 20px 0 10px 0; padding-left: 17px;  background:url("../img/p_arr.png") 0px 9px no-repeat;}
+.td_url a:hover { color:#ea008a !important; text-decoration:underline;}
+
+
+table{border-collapse: collapse;  border-spacing: 0; width:100%}
+.hide{position:absolute; top:0!important; left:-20000px!important; overflow:hidden; display:inline-block !important; width:1px !important; height:1px !important; margin:0 !important; font-size:0 !important; line-height:0 !important}
+.colorblack{color:black}
+.font16{font-size:16px}
+.font13{font-size:14px}
+.font14{font-size:14px}
+.bold{font-weight:700}
+.rbox_content{padding:15px;border:1px solid #bebebe;background:#fafafa;border-radius:5px}
+.rbox1_content{padding:15px;border:1px solid #bebebe;background:#fafafa;border-radius:5px}
+.rbox1_content li{ float:left; width: 190px; margin: 3px 0 5px 0px; padding-left: 8px; background:url("p_dot.png") 0 5px no-repeat;}
+.rbox1_content li a{color:#000;}
+.rbox1_content li a:hover{color:#b00000}
+.colorblue2{color:#2d86ba}
+/*회사소개 - 소개 */
+.m_1_1{line-height:180%}
+.m_1_1 img{width:100%}
+.m_1_m_area2{width:49%;float:left;color:#000;margin: 0 0.5%;margin-top:30px}
+.m_1_m_area3{width:49%;float:left;margin:0 0.5%;margin-top:30px}
+.m_1_m_area2 .inst{margin-top:20px}
+.inst2{font-size:18px;margin-bottom:20px;font-weight:700}
+
+
+/*테이블- 맴버혜택 회사소개 */
+
+
+.net_table2{border-top:2px solid #b00000; padding-bottom:100px; }
+.net_table2 caption{overflow:hidden; font-size:0; line-height:0;}
+.net_table2 th{background:#f8f8f8;border-bottom:1px solid #e5e5e5;border-left:1px solid #e5e5e5;border-right:1px solid #e5e5e5;padding:7px 5px}
+.net_table2 th:first-child{border-lefts:none;   }
+.net_table2 td:first-child{border-lefts:none}
+.net_table2 td{line-height:1.5 !important; border-bottom:1px solid #e5e5e5;border-left:1px solid #e5e5e5;border-right:1px solid #e5e5e5;padding:10px 15px}		/* 맴버혜택 테이블 내용 line-height */
+
+
+
+

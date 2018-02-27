@@ -1,0 +1,13 @@
+
+
+.cont_wgt1{float:left;width:19.2%; margin-right:10px;}
+.cont_wgt2{float:left;width:57.3%; margin-right:10px;}
+.cont_wgt3{float:right !important;width:21%;}
+.cont_wgt4 {float:left;width:81.9%;}
+
+
+@media screen and (max-width:900px){		   
+.cont_wgt1{ display:none;}
+.cont_wgt2{float:left;width:100%; margin-right:10px;}	 
+.cont_wgt4 {float:left;width:100%; margin-right:10px;} 
+}

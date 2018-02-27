@@ -1,0 +1,38 @@
+
+
+<load target="/common/xeicon/xeicon.min.css" />
+<!-- ÄÃ·¯ ÆÄ·¿Æ® -->
+<!--@if($layout_info->pallet_user)-->
+<include target="pallet_user.html" />
+<!--@else-->
+<block cond="!$layout_info->pallet">{@ $layout_info->pallet='pallet1'}</block>
+<!--@switch($layout_info->pallet)-->
+	<!--@case('pallet1')--><load target="css/pallet1.css" /><!--@break-->
+	<!--@case('pallet2')--><load target="css/pallet2.css" /><!--@break-->
+	<!--@case('pallet3')--><load target="css/pallet3.css" /><!--@break-->
+	<!--@case('pallet4')--><load target="css/pallet4.css" /><!--@break-->
+	<!--@case('pallet5')--><load target="css/pallet5.css" /><!--@break-->
+	<!--@case('pallet6')--><load target="css/pallet6.css" /><!--@break-->
+	<!--@case('pallet7')--><load target="css/pallet7.css" /><!--@break-->
+	<!--@case('pallet8')--><load target="css/pallet8.css" /><!--@break-->		
+<!--@endswitch-->
+<!--@endif-->
+
+<!--@switch($layout_info->lay_type)-->
+	<!--@case('type1')--><load target="css/type1.css" /><!--@break-->
+	<!--@case('type2')--><load target="css/type2.css" /><!--@break-->
+	<!--@case('type3')--><load target="css/type3.css" /><!--@break-->	   
+	<!--@case('type4')--><load target="css/type4.css" /><!--@break-->
+	<!--@case('type5')--><load target="css/type5.css" /><!--@break-->
+	<!--@case('type6')--><load target="css/type6.css" /><!--@break-->
+	<!--@case('type7')--><load target="css/type7.css" /><!--@break-->
+	
+<!--@endswitch-->
+
+<style cond="$layout_info->custom_css" type="text/css">
+{$layout_info->custom_css}
+<!--@if(!$layout_info->toggleOn =='Y')-->
+#layoutToggle2 {border:3px solid #ddd !important; }
+<!--@else--><!--@end-->
+</style>
+

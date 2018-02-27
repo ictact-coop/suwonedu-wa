@@ -1,0 +1,71 @@
+
+<nav id="menu" style="width:250px; ">
+    <h2 class="hide"></h2>
+    <div>
+
+	   <ul class="List" >
+	      <li class="logo_m" style="height:60px;">	              
+                <h1 style="padding-top: 20px; padding-left: 20px;" >평생학습웹진 와 </h1>
+				<a href="#close" class="btn_mob_close"><img src="img/m_x.png" alt="닫기" style="height:30px; width:30px;position:relative; top:2px;"></a>
+            </li>							
+	   </ul>
+		  
+			<ul class="List" style="height:auto;">
+			<li class="m_menu">
+
+				<a href="/"  ><i class="fa18 fa fa-home" /></i>&nbsp;  메인</a>	
+				
+				
+			
+				<a cond="!$is_logged" href="{getUrl('act','dispMemberSignUpForm','mid', article)}" ><i class="fa18 fa fa-pencil" /></i></i>&nbsp; 회원가입</a><a cond="!$is_logged" href="{getUrl('act','dispMemberLoginForm','mid', article)}" class="xe-login"><i class="fa18 fa fa-power-off" /></i>&nbsp; 로그인</a>	 
+
+			 
+				
+				<a cond="$is_logged" href="{getUrl('act','dispMemberInfo','mid', article)}" title="회원정보보기" onfocus=this.blur()> <i class="fa11 fa fa-user"></i>&nbsp;  회원정보&nbsp;</a><a cond="$is_logged" href="{getUrl('act','dispMemberLogout')}" class=""><i class="fa18 fa fa-power-off" /></i>&nbsp; 로그아웃</a>			
+				
+			</li>
+			</ul>
+
+
+			<ul class="List" >
+			 <li class="m_search" >
+				<form action="{getUrl()}" method="get">
+					<input type="hidden" name="vid" value="{$vid}" />
+					<input type="hidden" name="mid" value="blog_new" />
+					<input type="hidden" name="where" value="document" />
+					<input type="hidden" name="act" value="IS" />
+					<input type="hidden" name="search_target" value="title_content" />
+					<input type="text" name="is_keyword" value="{$is_keyword}" class="m_sch" placeholder="" />	  
+					<!-- 버튼 bg컬러 검색 bg 컬러에 맞춰 잡아줘야됨 -->
+					<button type="submit" style="width:26px; height:26px; "><i class="fa18 fa fa-search" /></i></button>  					
+				</form>						
+			</li>				 
+		    </ul>		   	 	 																																			   
+
+
+
+
+
+
+        <ul class="List">				
+          <li loop="$TOP_MENU->list=>$key1,$val1" class="active"|cond="$val1['selected']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['text']}</a>
+                <ul cond="$val1['list']" class="mm-list mm-panel" >
+                    <li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']" > 
+                   	 <a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+                        <ul cond="$val2['list']">
+                          <li loop="$val2['list']=>$key3,$val3" class="active"|cond="$val3['selected']"><a href="{$val3['href']}" >{$val3['link']}</a></li>		
+                        </ul>
+                    </li>	                   
+                </ul>
+            </li>			
+        </ul>			
+
+<div style="margin-top: 30px; padding-left: 15px;">
+	<b>수원시평생학습관</b><br>
+경기도 수원시 팔달구 월드컵로 381번길2 <br>
+T. 031-248-9700  
+</div>
+
+      
+    </div>
+</nav>

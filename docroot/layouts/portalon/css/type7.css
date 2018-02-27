@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+.cont_wgt1{display:none;}
+
+.cont_wgt3{display:none;}
+
+
+
+
+
+
+.cont_wgt2_2{float:left;width:100%; margin-right:10px; }	  /* 본문sub 일때 */
+
+.container {padding:0 !important;}									  /* 상품상세보기 썸네일 좌측 여백 제거  */
+.cont_w {margin-top:0px;}											  /* 상품상세보기 상단 여백 제거  */
+
+.cont_wgt4 {width:100%;float:right;}								  /* 프로모션  */
+
+.mini-cart {margin-right:0;}
+

@@ -1,0 +1,68 @@
+
+
+<load target="js/bx_prototype.js" />
+<load target="js/bx_controls.js" />
+
+<load target="js/bx_jquery.nivo.slider.pack.js" />	
+
+
+
+<figure class="banner-slideshow">
+	<div class="flexslider tv-nivoslider image-effect">			  		
+		<div id="tv-inivoslider" class="" style="z-index:20 !important;">	 <!--  모바일 흰색박스 제거 -->				 
+			
+				<a class="nivo-item readmore" href="{$layout_info->pro_url_01}" ><img src="<!--@if($layout_info->pro_ban_01)-->{$layout_info->pro_ban_01}<!--@else-->img/ban_01.jpg<!--@end-->"  alt="image" /></a>	
+				<a cond="$layout_info->pro_ban_02" class="nivo-item readmore" href="{$layout_info->pro_url_02}" ><img src="<!--@if($layout_info->pro_ban_02)-->{$layout_info->pro_ban_02}<!--@else-->img/ban_02.jpg<!--@end-->"  alt="image" /></a>			
+				<a cond="$layout_info->pro_ban_03" class="nivo-item readmore" href="{$layout_info->pro_url_03}" ><img src="<!--@if($layout_info->pro_ban_03)-->{$layout_info->pro_ban_03}<!--@else-->img/ban_01.jpg<!--@end-->"  alt="image" /></a>
+				<a cond="$layout_info->pro_ban_04" class="nivo-item readmore" href="{$layout_info->pro_url_04}" ><img src="<!--@if($layout_info->pro_ban_04)-->{$layout_info->pro_ban_04}<!--@else-->img/ban_02.jpg<!--@end-->"  alt="image" /></a>
+				<a cond="$layout_info->pro_ban_05" class="nivo-item readmore" href="{$layout_info->pro_url_05}" ><img src="<!--@if($layout_info->pro_ban_05)-->{$layout_info->pro_ban_05}<!--@else-->img/ban_01.jpg<!--@end-->"  alt="image" /></a>
+
+	</div> <!--  / tv-inivoslider -->
+	</div> <!--  / flexslider -->
+</figure>
+
+<script type="text/javascript">
+jQuery( document ).ready(function($) {
+	(function(selector){
+		var $content = $(selector);
+		$content.nivoSlider({
+			slices: 15,
+			boxCols: 8,
+			boxRows: 4,
+			startSlide: 0,
+			controlNavThumbs: false,
+			pauseOnHover: true,
+			manualAdvance: false,
+			prevText: 'Prev',
+			nextText: 'Next',
+			effect: 'random',
+			animSpeed: 600,
+			pauseTime: 5000,
+			controlNav: <!--@if($layout_info->pro_ban_02)-->1<!--@else-->0<!--@end-->,
+			directionNav: <!--@if($layout_info->pro_ban_02)-->1<!--@else-->0<!--@end-->,
+			//afterLoad: function(){
+			//	$('.ajax_loading').css("display","none");
+			//},     
+			//beforeChange: function(){ 
+			//	$content.find('.nivo-item .title').css("top","-500px" );
+			//	$content.find('.nivo-item .description').css("top","-1000px");
+			//	$content.find('.nivo-item .readmore').css("top","-2000px");
+			//}, 
+			//afterChange: function(){ 
+			//	$content.find('.nivo-item .title').css("top","330px");
+			//	$content.find('.nivo-item .description').css("top","390px");
+			//	$content.find('.nivo-item .readmore').css("top","250px");
+			//}
+		});
+
+	})('#tv-inivoslider');
+});
+</script>
+
+
+
+
+          
+
+
+       

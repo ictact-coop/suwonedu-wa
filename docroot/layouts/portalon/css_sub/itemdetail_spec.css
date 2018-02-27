@@ -1,0 +1,55 @@
+
+
+/* 상품스팩 */	
+
+table{ font-size:12px;font-family:Arial,'Nanum Gothic','Malgun Gothic','돋움',Dotum,Tahoma,AppleGothic,sans-serif; letter-spacing:-0.7px;}		  
+table{border-collapse: collapse;  border-spacing: 0; width:100%}
+
+.btn_small{color:#396392;}
+.btn_small:hover {text-decoration:underline;}
+
+
+.jukatitle{padding: 23px 0 10px 0; font-size:20px}
+.injuka_wp{margin-bottom:15px}
+.injuka_left{width: 49%;float:left}
+.injuka_right{width: 49%;float:right}
+.jukacopy{padding: 22px 0 22px 0;border-bottom:1px solid #ddd}
+
+.net_cont{position:relative;padding-top:25px}
+.m_5 .net_item{margin-top:30px}
+.m_5 .net_item .net_img{float:left;width:20%}
+.m_5 .net_item .net_table{float:left;width:75%;margin-left:5%}
+
+.net_table2{border-top:1px solid #3e3e3e}			/* 상세보기 스팩 테이블 상단 border 컬러 */
+.net_table2 caption{overflow:hidden; font-size:0; line-height:0;}
+.net_table2 th{background:#f8f8f8;border-bottom:1px solid #e5e5e5;border-left:0px solid #e5e5e5;border-right:1px solid #e5e5e5;padding:7px 5px}
+.net_table2 th:first-child{border-left:none}
+.net_table2 th:last-child{border-right:none}
+.net_table2 td:first-child{border-left:none}
+.net_table2 td:last-child{border-right:none}
+.net_table2 td{border-bottom:1px solid #e5e5e5;border-left:1px solid #e5e5e5;border-right:1px solid #e5e5e5;padding:7px 5px}
+															
+@media all and (max-width: 780px) {	 														 
+.injuka_left{width: 100%}
+.injuka_right{width: 100%}		   	
+}								 
+
+/* xe스타일 스팩, 블릿 , 타이틀 */	  
+.p_arr{ font-size: 15px;  font-weight:normal; color:#000; margin: 20px 0 10px 0; padding-left: 15px;  background:url("../img/spec_arr.png") 0px 4px no-repeat;}		 /* 블릿 */		
+												  
+ 
+
+#total_wrap {height: 100%;text-align: center;}
+.obj_centers {min-width: 285px; max-width: 1067px; text-align: left; margin: 0px auto;padding:10px;position:relative}	  
+
+/*컨텐츠영역*/
+#body_sub{width: 100%;float:left;margin:20px 0}
+.body_sub{font-size:14px;min-height:500px;position:relative;padding: 40px 0% 30px 0%}
+
+@media all and (max-width: 780px) {
+	/*.submenus {min-height:10px;}*/
+	#left{display:none}
+	#body_sub{width: 100%}		   
+	.obj_centers{position:relative;left:0}	   	
+}
+

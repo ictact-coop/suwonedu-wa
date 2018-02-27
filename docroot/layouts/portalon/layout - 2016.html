@@ -1,0 +1,921 @@
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+{@
+Context::addHtmlHeader('<meta http-equiv="X-UA-Compatible" content="IE=edge">');
+Context::set("admin_bar","false");
+if(!$_COOKIE['fakeM']) Context::addHtmlHeader('<meta name="viewport" content="width=device-width, initial-scale=1">');
+}
+
+{@ $layout_width = 940; }	 
+
+
+{@$browser_type = getenv("HTTP_USER_AGENT")}
+<!--@if(preg_match("/MSIE 8.0/",$browser_type))-->
+ {@$browser="IE8"}
+<!--@elseif (preg_match("/MSIE 9.0/",$browser_type))-->
+ {@$browser="IE9"}
+ <!--@elseif (preg_match("/MSIE 10.0/",$browser_type))-->
+ {@$browser="IE10"}
+<!--@elseif (preg_match("/Firefox\/3/",$browser_type))-->
+ {@$browser="FF3"}
+<!--@elseif (preg_match("/iPad/",$browser_type))-->
+ {@$browser="iPad"}
+<!--@else-->
+ {@$browser="etc"}
+<!--@end-->				  
+							  
+<!-- load target="css/ie9.css" media="screen" cond="$browser=='IE9'" / -->
+<load target="../../common/js/respond.min.js" targetie="lt IE 9" />	                                            <!-- 익스8 적용 , 우측 맨하단 슬라이더 썸네일안보임 추후 검토  -->   
+<load target="../../common/js/plugins/ui/jquery-ui.min.js" />	                                                <!-- xe_tabview, 프로모션 로딩 속도Up  -->  
+<!--[if lt IE 8]><load target="js/respond.min.js" /><load target="js/html5shiv.js" /><![endif]-->	    <!-- 익스8 적용 , 현재 동일 검토 후 삭제 무방  -->		  							   
+
+
+<load target="css/mmenu.css" /><!-- 마몽 스타일 모바일 메뉴 -->		
+<load target="css/style.css" />	
+<load target="css/font-awesome.min.css" index="-1"  />
+
+<load target="js/favo.js" /><!-- 즐겨찾기  -->
+
+<!-- 검색창 관련 , 프로모션 , 모바일메뉴 영향 js 둘중하나 정리 -->  		 			
+<load target="js/js.js" /><!-- 모바일 메뉴 -->
+<load target="js/custom.js" /><!-- 모바일 메뉴 --> 	
+		
+<!--%import("lang/lang")-->		             <!-- 다국어 국기이미지 추가 -->
+
+<load target="js/top_menu.js" />		 	   
+
+ <!-- bx슬라이드 -->				  
+<load target="js/jquery.bxslider.js" />
+<load target="js/sch_sidebar.js" />	         <!-- 좌측사이드바 검색창, 패럴랙스 js 3개를 하나로 통합   --> 		
+
+<include target="_settings.html" />		
+<load target="css_sub/default.css" cond="$layout_info->frame2=='s'" />		   <!-- 서브 css는 모두 여기에 -->
+
+<style>
+
+
+/* --- GNB 배경 컬러 --- */
+/* .header_top_middle {background-color: <!--@if($layout_info->body_bg)-->{$layout_info->body_bg}<!--@else-->transparent<!--@end--> !important;}  */				 
+
+
+
+.dra_font:hover{color:{$layout_info->pallet_1hover} !important;}/* 1차 롤오버 */	
+
+
+/* ★ 전체메뉴컬러 */
+#head_box {
+    	
+    -webkit-transition: top 600ms ease, opacity 600ms;
+    -moz-transition: top 600ms ease, opacity 600ms;
+    transition: top 600ms ease, opacity 600ms;
+    background-position: bottom center;
+    background-repeat: repeat-x;
+}							
+ footer { }          /*  풋터 백그라운드 bg  ★전체메뉴컬러 */
+
+.footer-wrapper {position:relative;top:<!--@if($layout_info->foot_gap)-->{$layout_info->foot_gap}<!--@else-->0<!--@end-->px; }					/*  풋터 & 컨텐츠 간격   */
+@media screen and (-webkit-min-device-pixel-ratio:0) {.footer-wrapper {top:<!--@if($layout_info->foot_gap)-->{$layout_info->foot_gap-11}<!--@else-->0<!--@end-->px;}}		  
+
+body {background:<!--@if($layout_info->body_bg)-->{$layout_info->body_bg}<!--@else-->transparent<!--@end--> url({$layout_info->body_bg_img}) {$layout_info->bg_repeat}; }
+
+.cont_w{width:100% !important;}
+.cont_log{float:left;margin-right:<!--@if($layout_info->body_width)-->2<!--@else-->0<!--@end-->px !important; padding-bottom:5px !important;}    	/* 로그인 input 박스 레이아웃 너비에 맞춰 반응  */	 
+.body_width{max-width:<!--@if($layout_info->body_width)-->{$layout_info->body_width}<!--@else-->940<!--@end-->px;}						
+
+
+/* 크롬 고객센터만 우측사이드바 프로모션 겹침 해결 */
+@media screen and (-webkit-min-device-pixel-ratio:0) {.cont_wgt3 {<!--@if($layout_info->frame2=='s' && $layout_info->p_silder=='Y' && $layout_info->lay_type=='type1')-->margin-top:174px;<!--@end-->}}		
+
+@media screen and (max-width:999px){  
+.body_width{ width:90%}
+
+.head_w{ margin-left:27px; width:90%}
+#head_box{padding-right:30px;}
+@media screen and (max-width:900px){
+.cont_wgt3{float:left;width:100%;}
+.cont_wgt4{float:left;width:100%; }	  
+.cont_wgt2_2{float:left;width:100%; margin-bottom: 30px; overflow: hidden}
+.body_width{ width:90%}
+#cont_body {<!--@if($layout_info->toggleOn =='Y')-->top:0px;<!--@elseif($layout_info->toggleOn =='N')-->top:-30px !important;<!--@end-->}			  /* 모바일 - 프로모션과 겹침 방지 */
+.head_w {position:relative; z-index:10; margin-bottom:10px; display:block}	
+.bd_hd{margin-top:30px;} 																																						  /* 모바일 - 프로모션과 겹침 방지 */
+}						 
+
+/*  퀵배너, 최근상품 , 익스8 wide  */
+#xe_cart{margin-right:<!--@if($layout_info->q_w_pos)-->{-$layout_info->q_w_pos-557}<!--@else-->-557<!--@end-->px !important; }				  
+#cont_body {<!--@if($layout_info->toggleOn =='Y')-->top:0px;<!--@elseif($layout_info->toggleOn =='N')-->top:-130px;<!--@end-->}
+
+/* 익스8 */
+@media \0screen {    
+#layoutToggle2 {<!--@if($layout_info->body_width)-->{$layout_info->body_width}px<!--@else-->width:940px<!--@end-->; }	     
+}  
+<!--@if($layout_info->foot_info_w == "N")-->.footer-container {padding:0;}<!--@else-->-557<!--@end-->
+
+
+
+</style>	
+<!-- Top버튼 -->
+<div id="top_up"></div>  
+<script type="text/javascript">	
+jQuery(function($) {		
+	$(window).scroll(function() {
+		if($(this).scrollTop() != 0) {
+			if($.browser.msie && ($.browser.version==8 || $.browser.version==7)){
+				$('#top_up').show();
+			} else {
+				$('#top_up').fadeIn();
+			};
+		} else {
+			if($.browser.msie && ($.browser.version==8 || $.browser.version==7)){
+				$('#top_up').hide();
+			} else {
+				$('#top_up').fadeOut();
+			};
+		}
+	});
+	$('#top_up').click(function(){ $('html,body').clearQueue().stop().animate({ scrollTop: 0 }, 500); });		
+});				
+</script>																													   
+											
+
+<!-- 플래시 --> 	
+<!--@if($layout_info->fla == 'curt')-->
+<div id="ad_div" style="">
+<div id="layer1" style="background-color:transparent; margin:0; padding:0;position:absolute; left:50%; z-index:9999; margin-left:<!--@if($layout_info->fla_w)--> {$layout_info->fla_w+273}px;<!--@else-->273px;<!--@end--> margin-top:<!--@if($layout_info->fla_h)--> {$layout_info->fla_h+464}px;<!--@else-->464px;<!--@end--> layer-background-color:white;">
+    <table cellpadding="0" cellspacing="0" style="">
+        <tr>
+            <td >   
+              <p><a href="http://www.adobe.com/go/getflashplayer"></a></p>	
+		  <script type="text/javascript" name="wmode" value="transparent" > 		  
+              background:displayMultimedia("layouts/portalon/swf/fla_332x313_portal.swf", 196, 258  ); 		  	 
+          </script>
+            </td>
+        </tr>
+        <tr>	           
+    </table>
+</div>
+</div>		
+
+																   
+<!--@elseif($layout_info->fla =='geo')-->																   
+<div id="ad_div" style="">
+<div id="layer1" style="background-color:transparent; margin:0; padding:0;position:absolute; left:50%; z-index:9999; margin-left:<!--@if($layout_info->fla_w)--> {$layout_info->fla_w+273}px;<!--@else-->-265px;<!--@end--> margin-top:<!--@if($layout_info->fla_h)--> {$layout_info->fla_h+464}px;<!--@else-->300px;<!--@end--> layer-background-color:white;">
+    <table cellpadding="0" cellspacing="0" style="">
+        <tr>
+            <td >   
+              <p><a href="http://www.adobe.com/go/getflashplayer"></a></p>	
+		  <script type="text/javascript" name="wmode" value="transparent" > 		  
+              background:displayMultimedia("layouts/portalon/swf/geo_539x195.swf", 539, 395  ); 		  	 
+          </script>
+            </td>
+        </tr>
+        <tr>	           
+    </table>
+</div>
+</div>	
+<!--@else-->
+<!--@end-->																   
+
+<include target="top.html" />	  
+
+	<div class="header">
+
+			<div class="head_navi" style="height:10px;">		 				
+				<div class="body_width">								
+					
+			    <div class="menu_wrap">
+				<div class="" style="">
+					<!-- 우상단 로그인 끝 -->
+					<div class="body_width">
+					
+				    	<!-- TOP 메뉴 -->
+						<div class="top_wrap" style="height:37px;">
+							<ul id="menu" class="top_menu" >
+								<li loop="$TOP_MENU->list=>$key1,$val1" cond="$val1['link']" class="top_depth1"|cond="$val1['selected']"  class="top_depth1"|cond="!$val1['selected']">
+									<a class="dra_depth1 dra_font" href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'" style="padding:0 {$layout_info->menu_padding}px;">
+									<span>{$val1['link']}<i cond="$val1['list']" class="fa fa11 fa-chevron-down"></i></span>
+									</a>
+									<div cond="$val1['list']"  class="dra_list1" >
+										<ul>
+											<li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="top_depth2">
+												<a href="{$val2['href']}" class="menu_select"|cond="$val2['selected']" class="dra_font2"|cond="!$val2['selected']" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}<i cond="$val2['list']" class="fa fa12_arrow fa-angle-right" style="position:absolute; float:right; margin:3px 4px 0 0;"></i>
+												</a>
+												<ul class="top_depth2 dra_list2" cond="$val2['list']">
+													<li loop="$val2['list']=>$key3,$val3" ><a href="{$val3['href']}" class="dra_font"|cond="$val3['selected']" class="dra_font3"|cond="!$val3['selected']" target="_blank"|cond="$val3['open_window']=='Y'">{$val3['link']}</a>
+													</li>
+												</ul>
+											</li>	  
+										</ul>
+									 </div>	
+								   </li>
+                                   <li class="top_depth1" style="padding-top:5px;"><a href="#" class="link_icon" title="주요메뉴보기" id="toggleBtn" style="padding:5px 10px; border:1px solid #CCC; border-radius:4px; ">사이트맵</i></a></li>			   
+	
+								 
+							  </ul>	 <!-- /#menu -->
+							
+						</div>       <!-- / top_warp -->
+						
+					</div>	        <!-- / body_width -->
+				</div>		        <!-- / wrap_menu -->
+			</div>		            <!-- / menu_warp -->
+		</div>		                <!-- / body_width -->	 
+						
+
+		</div>	                    <!-- / head_navi -->	 
+</div>		                        <!-- / header  -->		
+																  
+
+<!-- 모바일용 -->
+<div id="head_box5" style="font:11px/19px Arial, sans-serif; color:#6B6B6B; ">		<!-- gnb 별도 폰트 사이즈 적용 -->
+			<div class="head_w" > 
+				<div class="head_wrap" >	
+			
+				   <ul class="head_tip">	 
+                        <li>	
+						<span class="cart-inner" style="float:left; "> 							
+				        	<a href="#menu" style="padding-right:10px;"><i class="fa24 fa fa-bars" onclick="click_f()"/></i> </a>			<!-- Top -->
+					        <a cond="$layout_info->snb_wgt_01" href="#menu3" style="padding-right:15px;"><i class="fa24 fa fa-list-ul" onclick="click_f()"/></i> </a>		<!-- 카테고리 -->	   
+						</span><!-- .cart-inner -->	
+					   </li>  	 
+                   </ul>         <!-- head_tip -->		 					
+											 
+			<ul class="head_tip">	 														 
+			<li style="float:right;" id="search_pc">	 	
+
+   <!-- 통합 검색 -->	 
+			   <span class="m_search" style=""> 
+			   <form action="{getUrl()}" method="post" class="search" >
+
+			   <input type="hidden" name="mid" value="search" />	   
+               <input type="hidden" name="act" value="IS" />
+               <input type="hidden" name="search_target" value="title_content" />  
+			   <input name="is_keyword" type="text" title="" class="search_input" />	        
+
+			   <button type="submit" style="padding-top:3px; width:26px; height:26px; cursor:pointer;"><i class="fa18 fa fa-search" /></i></button>
+             </form> 
+		     </span>	 	
+
+				
+			</li>  <!-- .mini-cart -->
+			</ul> <!-- .head_tip -->	   				
+
+		</div>   <!-- .head_wrap -->
+	</div>       <!-- .head_w -->
+
+
+</div>           <!-- .head_box5 -->	
+
+
+ 		
+
+<div cond="$MULTI1->list || $MULTI2->list" id="head_box4" class="body_width" style="font:11px/19px Arial, sans-serif; color:#6B6B6B; ">		<!--  멀티메뉴 , 메인메뉴 아래 / GNB메뉴 top.html -->
+			<div class="head_w" style="background-color: <!--@if($layout_info->body_bg_img)-->transparent<!--@else-->#f2f2f2<!--@end-->;"> 
+		    <div class="head_wrap" style="">	
+			
+				   <ul style="float: left; ">                       	             <!-- 멀티좌상단 메뉴 -->          
+                           <nav cond="$MULTI1->list" id="multi_menu">
+			                  	<ul>
+			                  		<li loop="$MULTI1->list=>$key,$val" >
+			                  			<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			                  		</li>
+			                  	</ul>
+	                      </nav>
+                   </ul>
+				   
+				   <ul class="multi_menu_right" style="float:right;padding-right:0;">	<!-- 멀티우상단 메뉴 -->	
+                           <nav cond="$MULTI2->list" id="multi_menu" style="margin-right:0;">
+			                  	<ul>
+			                  		<li loop="$MULTI2->list=>$key,$val">
+			                  			<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			                  		</li>
+			                  	</ul>
+	                      </nav>	  
+				   </ul>  			
+
+		   </div><!-- .head_wrap -->
+	       </div><!-- .head_w -->		 
+
+</div>           <!-- .head_box4 -->	  																																			  
+
+
+<!-- 전체,서랍메뉴, layoutToggle 중복 충돌 찾아서 삭제  layoutToggle2 로 변경,  layoutToggle 은 기존 jowr-.js  메인 메뉴 드롭다운과 함께 반응 ; layoutToggle2 프로모션 충돌 임시추가-->					  
+
+
+<!--@if($layout_info->toggleOn =='OFF')-->
+<div style="clear:both;">
+<div id="layoutToggle2" class="body_width" style="display:none;">	
+</div>
+</div>
+<!--@elseif($layout_info->toggleOn =='N')-->
+<div id="layoutToggle2" class="body_width" style="border:1px solid #ddd !important; ">	   
+				 <ul>
+				 <li loop="$DRAW->list=>$key1,$val1" cond="$val1['link']" class="dra_menu"|cond="$val1['selected']" class="dra_menu"|cond="!$val1['selected']" style="width:<!--@if($layout_info->dra_menu_arr)-->{100/$layout_info->dra_menu_arr}%<!--@else-->{100/5}%<!--@end-->;">
+					<a class="depth1" href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a><button class="depth2" cond="$val1['list']"></button></a>
+					<ul cond="$val1['list']" class="dra_depth">
+						<li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="depth2_h" >
+							<a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'"  class="menu_select"|cond="$val2['selected']"><i class="fa fa-caret-right" style="font-size:10px;"></i>&nbsp; {$val2['text']}</a>
+						</li>
+					</ul>	   					
+				</li>		
+			    </ul>
+				<a id="toggleBtn22" class="toggle_x" style="background-color:#ddd !important;"><img src="img/toggle_x.png"/></a> 
+</div>
+<!--@elseif($layout_info->toggleOn =='Y')-->
+<div id="layoutToggle2" class="body_width" style="">	   
+				 <ul>
+				 <li loop="$DRAW->list=>$key1,$val1" cond="$val1['link']" class="dra_menu"|cond="$val1['selected']" class="dra_menu"|cond="!$val1['selected']" style="width:<!--@if($layout_info->dra_menu_arr)-->{100/$layout_info->dra_menu_arr}%<!--@else-->{100/5}%<!--@end-->;">
+					<a class="depth1" href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a><button class="depth2" cond="$val1['list']"></button></a>
+					<ul cond="$val1['list']" class="dra_depth">
+						<li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="depth2_h" >
+							<a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'"  class="menu_select"|cond="$val2['selected']"><i class="fa fa-caret-right" style="font-size:10px;"></i>&nbsp; {$val2['text']}</a>
+						</li>
+					</ul>	   					
+				</li>		
+			    </ul>
+				<a id="toggleBtn22" class="toggle_x" style=""><img src="img/toggle_x.png"/></a> 
+</div>			  
+<!--@end-->
+
+
+<!-- 서랍메뉴 -->
+<script>	 
+<!--@if($layout_info->toggleOn =='Y')-->
+		function toggleOn(arg){		   		
+			if(arg){
+	        	jQuery("#cont_body").animate({top:"<!--@if($layout_info->draw_2d=='1')-->-73px<!--@elseif($layout_info->draw_2d=='2')-->-92px<!--@elseif($layout_info->draw_2d=='3')-->-111px<!--@elseif($layout_info->draw_2d=='4')-->-130px<!--@elseif($layout_info->draw_2d=='5')-->-149px<!--@end-->"}, 100);		
+			}else{
+	        	jQuery("#cont_body").animate({top:"0px"}, 100);	   			
+			}					 
+		}
+<!--@elseif($layout_info->toggleOn =='N')-->
+		function toggleOn(arg){		   		
+			if(arg){
+	        	jQuery("#cont_body").animate({top:"0px"}, 100);		
+			}else{
+	        	jQuery("#cont_body").animate({top:"<!--@if($layout_info->draw_2d=='1')-->-73px<!--@elseif($layout_info->draw_2d=='2')-->-92px<!--@elseif($layout_info->draw_2d=='3')-->-111px<!--@elseif($layout_info->draw_2d=='4')-->-130px<!--@elseif($layout_info->draw_2d=='5')-->-149px<!--@end-->"}, 100);	   			
+			}					 
+		}
+<!--@end-->	
+</script>																																																															   
+
+
+<div id="cont_body" class="cont_body2 row-fluid" style="<!--@if($layout_info->toggleOn =='Y')-->top:0;<!--@elseif($layout_info->toggleOn=='N')-->top:<!--@if($layout_info->draw_2d=='1')-->-73px;<!--@elseif($layout_info->draw_2d=='2')-->-92px;<!--@elseif($layout_info->draw_2d=='3')-->-111px;<!--@elseif($layout_info->draw_2d=='4')-->-130px;<!--@elseif($layout_info->draw_2d=='5')--> -149px;<!--@end--><!--@end-->position:relative;height:auto;z-index:9; background:#fff">
+
+		<div class="body_width" class="{$layout_info->frame} {$layout_info->reverse}">	   	 		
+			
+			
+			 <!-- 좌측 사이드바 영역 -->
+            <div class="<!--@if($layout_info->frame2=='s')-->cont_wgt1_2<!--@else-->cont_wgt1<!--@end-->" cond="$layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6' " id="snb" style="z-index:4400;"> <!-- 전체배경컬럼★ -->
+				<!--@if($layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6')-->
+                
+                
+			<aside class="span{$li->sb_width} hidden-phone leftmenu" id="sb" style="margin-left:0; margin-top:15px;">
+
+            <block cond="$mid==article">
+            <ul class="well nav nav-list ac">
+            <li class="nav-header" style="margin-bottom:20px; padding-bottom:7px; padding-left:30px; cursor:pointer" onClick="location.href='/article'"><img src="/img/title/t63051.png"></li>		
+            <li class="active"|cond="$category==93922"><a href="{getURL('','mid','article','category','93922','page','1')}"><i class="icon-chevron-sign-right"></i> 기획</a></li>
+            <li class="active"|cond="$category==63057"><a href="{getURL('','mid','article','category','63057','page','1')}"><i class="icon-chevron-sign-right"></i> 칼럼</a></li>
+            <li class="active"|cond="$category==63054"><a href="{getURL('','mid','article','category','63054','page','1')}"><i class="icon-chevron-sign-right"></i> 사례</a></li>
+            </ul>                                    
+            </block> 
+            
+            <block cond="$mid==review">
+            <ul class="well nav nav-list ac">
+            <li class="nav-header" style="margin-bottom:20px; padding-bottom:7px; padding-left:30px; cursor:pointer" onClick="location.href='/review'"><img src="/img/title/t84933.png"></li>		
+            <li class="active"|cond="$category==84936"><a href="{getURL('','mid','review','category','84936','page','1')}"><i class="icon-chevron-sign-right"></i> 교육</a></li>
+            <li class="active"|cond="$category==84935"><a href="{getURL('','mid','review','category','84935','page','1')}"><i class="icon-chevron-sign-right"></i> 책+</a></li>
+            </ul>                                    
+            </block> 
+            
+            <!--<block cond="$mid==human">
+            <ul class="well nav nav-list ac">
+            <li class="nav-header" style="margin-bottom:20px; padding-bottom:7px; padding-left:30px; cursor:pointer" onClick="location.href='/human'"><img src="/img/title/t98144.png"></li>		
+            <li class="active"|cond="$category==98146"><a href="{getURL('','mid','human','category','98146','page','1')}"><i class="icon-chevron-sign-right"></i> 인터뷰</a></li>
+            <li class="active"|cond="$category==98147"><a href="{getURL('','mid','human','category','98147','page','1')}"><i class="icon-chevron-sign-right"></i> 사람책</a></li>
+            </ul>                                    
+            </block> -->
+                        
+            <block cond="$mid==news||$mid==directory||$mid==form||$mid==human">
+            <ul class="well nav nav-list ac">
+            <li class="nav-header" style="margin-bottom:20px; padding-bottom:7px; padding-left:30px; cursor:pointer" onClick="location.href='/news'"><img src="/img/title/t13329.png"></li>																			
+            <li class="active"|cond="$mid==news"><a href="{getURL('','mid','news')}">평생학습소식</a></li>
+            <li class="active"|cond="$category==13330"><a href="{getURL('','mid','news','category','13330','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 교육</a></li>
+            <li class="active"|cond="$category==13331"><a href="{getURL('','mid','news','category','13331','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 행사</a></li>
+            <li class="active"|cond="$category==13332"><a href="{getURL('','mid','news','category','13332','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 포럼</a></li>
+            <li class="active"|cond="$category==13333"><a href="{getURL('','mid','news','category','13333','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 공모</a></li>
+            <li class="active"|cond="$mid==directory"><a href="{getURL('','mid','directory')}">단체리스트</a></li>
+            <li class="active"|cond="$category==81231"><a href="{getURL('','mid','directory','category','81231','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 평생학습도시</a></li>
+            <li class="active"|cond="$category==81232"><a href="{getURL('','mid','directory','category','81232','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 정부기관/지원기관</a></li>
+            <li class="active"|cond="$category==81233"><a href="{getURL('','mid','directory','category','81233','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 학회/연구소</a></li>
+            <li class="active"|cond="$category==81234"><a href="{getURL('','mid','directory','category','81234','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 시민사회단체</a></li>
+            <li class="active"|cond="$category==81235"><a href="{getURL('','mid','directory','category','81235','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 사회적경제</a></li>
+            <li class="active"|cond="$category==81236"><a href="{getURL('','mid','directory','category','81236','page','1')}"><i class="icon-chevron-sign-right"></i> &nbsp; 해외</a></li>
+            <li class="active"|cond="$mid==form"><a href="{getURL('','mid','form')}">문서</a></li>
+            <li class="active"|cond="$mid==human"><a href="{getURL('','mid','human')}">사람책</a></li>
+            </ul>                                    
+            </block>  
+            
+            <block cond="$mid==newsletter">
+            <ul class="well nav nav-list ac">
+            <li class="nav-header" style="margin-bottom:20px; padding-bottom:7px; padding-left:30px; cursor:pointer" onClick="location.href='/newsletter'"><img src="/img/title/t443.png"></li>	
+            <li class="active"|cond="$category==110468"><a href="{getURL('','mid','newsletter','category','110468','page','1')}"><i class="icon-chevron-sign-right"></i> 2017년</a></li>
+            <li class="active"|cond="$category==100388"><a href="{getURL('','mid','newsletter','category','100388','page','1')}"><i class="icon-chevron-sign-right"></i> 2016년</a></li>	
+            <li class="active"|cond="$category==6800"><a href="{getURL('','mid','newsletter','category','6800','page','1')}"><i class="icon-chevron-sign-right"></i> 2015년</a></li>
+            <li class="active"|cond="$category==6799"><a href="{getURL('','mid','newsletter','category','6799','page','1')}"><i class="icon-chevron-sign-right"></i> 2014년</a></li>
+            <li class="active"|cond="$category==6798"><a href="{getURL('','mid','newsletter','category','6798','page','1')}"><i class="icon-chevron-sign-right"></i> 2013년</a></li>
+            <li class="active"|cond="$category==6797"><a href="{getURL('','mid','newsletter','category','6797','page','1')}"><i class="icon-chevron-sign-right"></i> 2012년</a></li>
+            </ul>                                    
+            </block> 
+            
+            <block cond="$mid==blog">
+            <ul class="well nav nav-list ac">
+            <li class="nav-header" style="margin-bottom:20px; padding-bottom:7px; padding-left:30px; cursor:pointer" onClick="location.href='/blog'"><img src="/img/title/t80699.png"></li>		
+            <li class="active"|cond="$category==80701"><a href="{getURL('','mid','blog','category','80701','page','1')}"><i class="icon-chevron-sign-right"></i> 우리학교이야기</a></li>
+            <li class="active"|cond="$category==80702"><a href="{getURL('','mid','blog','category','80702','page','1')}"><i class="icon-chevron-sign-right"></i> 정관장의 뷰파인더</a></li>
+            <li class="active"|cond="$category==82772"><a href="{getURL('','mid','blog','category','82772','page','1')}"><i class="icon-chevron-sign-right"></i> From 학습관</a></li>
+            </ul>                                    
+            </block>
+
+      
+<img class="zbxe_widget_output" widget="content" skin="tb_sb_wa_side" content_type="document" module_srls="63051,84933,98144,80699" list_type="normal" tab_type="none" markup_type="table" list_count="8" page_count="1" subject_cut_size="25" option_view="title" show_browser_title="N" show_comment_count="N" show_trackback_count="N" show_category="N" show_icon="N" order_target="regdate" order_type="desc" thumbnail_type="crop" />         
+                
+
+				<script type="text/javascript">
+					jQuery("aside#sb .sb_recent_doc ul.nav-list").prepend("<li class='nav-header'><!--@if($li->sb_header_icon!='no')--><i class='icon-rss'></i><!--@end-->Recent Posts</li>");
+					jQuery("aside#sb .sb_recent_comm ul.nav-list").prepend("<li class='nav-header'><!--@if($li->sb_header_icon!='no')--><i class='icon-comments'></i><!--@end-->Recent Comments</li>");
+				</script>
+                <div style="padding:10px 20px 20px; border:1px solid #e4e4e4; border-radius:5px; margin-top:30px;">
+                	<span class="nav-header" style="padding-left:0px;">Popular Keywords</span> 
+                
+                <ul class="tag_side">
+                <span class="tag5"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','수원평생학습동향리포트')}">수원평생학습동향리포트</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','지역')}">지역</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','수원시평생학습관')}">수원시평생학습관</a></span>
+                <span class="tag3"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','뭐라도학교')}">뭐라도학교</a></span>
+                <span class="tag5"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','누구나학교')}">누구나학교</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','시민교육')}">시민교육</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','인문학')}">인문학</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','도요새책방')}">도요새책방</a></span>
+                <span class="tag3"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','네트워크')}">네트워크</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','학습공동체')}">학습공동체</a></span>
+                <span class="tag5"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','누구나학습마을')}">누구나학습마을</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','사회혁신')}">사회혁신</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','시니어')}">시니어</a></span>
+                <span class="tag3"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','시민주도평생학습')}">시민주도평생학습</a></span>
+                
+                <span class="tag2"><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','웰컴투수원')}">웰컴투수원</a></span>
+                <span><a href="{getURL('','mid','article','act','IS','where','document','search_target','tag','is_keyword','함께읽기모임')}">함께읽기모임</a></span>
+                
+
+                </ul>
+                
+                <div style="text-align:right"><a href="/index.php?mid=keywords"><i class="xi-plus-square"></i> 더보기</a></div>
+                </div>
+                <!--<div style="padding:20px; border:1px solid #ccc; border-radius:5px; margin-top:20px;">
+                	<div style="font-weight:bold; margin-bottom:10px; font-size:14px; border-bottom:1px solid #CCC; color:#ee7600">아카이브와 필진</div>
+                <img class="zbxe_widget_output" widget="contentextended" skin="default_writer_side" colorset="white" content_type="document" module_srls="82915" use_limit="N" order_target="list_order" order_type="desc" list_type="gallery" option_view="thumbnail,title,extravar" list_count="6" page_count="1" markup_type="table" title_target="title" nickname_target="nickname" extravar_name="description" show_browser_title="N" show_content_title="N" show_comment_count="N" show_trackback_count="N" show_category="N" show_icon="N" show_point_level="N" show_always_new="N" show_nocomment_document="N" tab_type="none" tab_order="module_order" tab_showtype="module" tab_move_type="mouseover" category_range="all" hyperlink="Y" hyperlink_src="extravar" view_secret_document="all_user" comment_document_secret="Y" thumbnail_type="crop" thumbnail_width="100" thumbnail_height="75" cols_list_count="2" />
+                </div>-->
+				<div class="well sb1" cond="$li->sb1">{$li->sb1}</div>
+				<div class="well sb2" cond="$li->sb2">{$li->sb2}</div>
+				<div class="well sb3" cond="$li->sb3">{$li->sb3}</div>
+				<include target="custom/custom_sidebar_bottom.html" cond="$li->custom_sidebar_bottom=='yes'" />
+			</aside>                
+                
+                
+				<h2 class="side_top"  style="height:33px;">
+				<!--@elseif($layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6')-->
+				<h2 class="side_top"  style="height:33px; ">   <!-- 서브 좌측 사이드바 세로 위치 조절 -->
+				<!--@end-->
+				
+					<a class="side_top_a" href="{$layout_info->c_url1_3}"></a>
+				</h2>
+				   <div class="use_wgt">
+
+					   					
+				   {$layout_info->snb_wgt_01}		   <!-- 카테고리 -->	
+
+
+		<!-- 검색 사이드바 -->
+		<!--@if($layout_info->side_sch=='Y')--> 
+		<div class="sch" style="margin-top:-6px;"/>
+		<form action="{getUrl()}" method="post" id="sideSearch" class="newclearfix" style="">
+			<input type="hidden" name="mid" value="search" />
+			<input type="hidden" name="act" value="IS" />
+			<input type="hidden" name="search_target" value="title_content" />
+			<input name="is_keyword" type="text" class="inputText" placeholder="Enter keywords.." />
+			<input type="submit" class="submit search_submit" value="" />
+		</form>
+		</div>	  
+		<br>
+		<!--@else-->
+		<!--@end-->
+
+					
+				</div>		
+			</div>	   <!-- cont_wgt1 --> 
+
+
+
+			
+<div cond="$layout_info->frame2=='s'" class="cont_wgt4" id="snb" style="<!--@if($layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' ||$layout_info->lay_type=='type5' || $layout_info->lay_type=='type6')--><!--@end-->z-index:9999; <!--@if($layout_info->p_silder == 'Y')-->margin-bottom:6px;<!--@end-->" >	<!-- id="snb" 쇼케이스 충돌 , margin-bottom:6px; 고객지원 프로모션 하단 간격 -->
+<include cond="$layout_info->p_silder=='Y'" target="promo.html" />			                                                                            <!-- 프로모션 -->	
+<div cond="$layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6' || $layout_info->lay_type=='type7'" class="cont_w has_bg"|cond="$layout_info->c_bg" class="cont_w"|cond="!$layout_info->c_bg" >	                                            <!-- Content -->			  
+	  
+{$layout_info->pro_wgt_01}	 		<!-- 프로모션 영역 위젯 (예비용) -->
+
+<div class="" id="" style="">		  
+
+<div cond="$layout_info->sub_t" id="wrapper">
+	<div class="header-wrapper" >			
+
+		<div id="head_box" class="body_width" role="banner" style="height: auto;	padding:8px 0 10px 0; ">                                 <!-- 타이틀과 컨텐츠 간격 조절 -->
+			<div class=""> 
+				<div class="head_wrap" >
+					<div class="mobile-menu show-for-small">
+					<a class="left-links" href="#menu"><i class="fa24 fa fa-bars" onclick="click_f()"/></i></a>
+					</div><!-- end mobile menu -->		  					
+					
+					<div class="left-links">	
+                     </div> <!-- .left-links -->	 
+					 
+					<div id="logo">
+						<a href="#" title="" rel="home" style="position:relative; top:-3px;"><img src="{$layout_info->sub_t}" /></a>       <!-- 타이틀 높이 조절 -->
+					</div>  					
+
+			       <div class="right-links" >								
+			      </div><!-- .right-links -->	 
+
+		</div><!-- .large-12 -->
+	</div>    <!-- .row -->	
+
+</div>        <!-- .header -->	
+</div>        <!-- .header-wrapper -->	
+</div>	      <!-- wrapper -->
+																			
+
+							<!-- include target="cont_shop.html" / -->	 
+					        <!--[if lt IE 8]><load target="js/respond.min.js" /><load target="layouts/portalon/css/cont_price.css" /><![endif]-->	    <!-- 커스터마이징, 레이아웃 설정에서 익스8 일부 누락 해결  -->	
+				
+						  	{$layout_info->cont_body_01}	 	  
+					 
+			   	       </div>
+			       </div><!-- /CONTENT -->
+																																											
+	         </div>
+
+	
+			<!-- 중앙 컨텐츠 영역  ★전체메뉴컬러-->
+			<div class="<!--@if($layout_info->frame2=='s')-->cont_wgt2_2<!--@else-->cont_wgt2<!--@end--> cont_wgt_1" cond="$layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6' || $layout_info->lay_type=='type7'" style=" z-index:5500;">	  		
+		
+					  <!-- 회원가입 상단 간격으로 삭제 padding-top:7px; 사용자 적용 전환 -->
+				  <div cond="$layout_info->frame2=='s'" class="wgt_list_01" style="width:100%;">				 
+				  
+  		
+					</div>
+					
+		
+					
+				    <div class="use_wgt"  >
+				   	 <include cond="$layout_info->p_silder=='Y'" target="promo.html" />   <!-- 프로모션 -->
+					 		
+					 <!--@if($layout_info->frame2=='m')--> 									   
+					 <div class="wgt_list_01" style="margin-top:10px;">	 
+					  <!-- bx슬라이드 -->
+					  <!--@if($layout_info->bx_ban)-->
+					   
+					  <div class="container-inner" >																																	   
+					  <div class="brandlogo-wrapper" style="float:left; margin:0; padding:0;">
+					  <div class="brandlogo-contain" style="">		   		
+					  <div class="bx-title brand-title"><h2>메인 카테고리</h2></div>
+					  <div class="bxslider" style="overflow:hidden; height:124px;">
+					  {$layout_info->bx_ban} 															   
+					  </div>	  
+					  </div>	   
+					  </div>  		  
+					  </div>
+					  </div>	
+					  <!--@else--> 
+					  </div>	 
+                      <!--@end-->	        
+	
+					 
+					 {$content}  
+
+					 <!--@else-->
+		  					 
+														 
+			     	   <!-- 기본 컨텐츠 박스 , 본문 상단 간격 ex 자주묻는질문 -->
+				       <div class="cont_w" style="margin-top:<!--@if($layout_info->c_margin_top)-->{$layout_info->c_margin_top}<!--@else-->0<!--@end-->px;">		 					 
+					    {$content}
+			   	       </div>
+			   
+					</div>
+					<!--@end-->
+					 
+					
+					
+				   <!--@if($layout_info->frame2=='m')-->				
+				</div>
+				   
+			      
+					<!--@end-->
+			</div>
+
+																		
+
+
+		  							 
+			
+
+		</div>		<!-- / body_width --> 
+	 
+
+		
+</div>		 <!-- / cont_body -->	
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">	var hideMenuOpend = "{$layout_info->hide_menu_opened}";</script>
+<!--%import("js/drawer.js")-->
+
+
+
+<!--@if($layout_info->alert_browser == "yes")-->
+<script type="text/javascript">
+	var browser = {
+		a:navigator.userAgent.toLowerCase()
+	}
+	browser = {
+		ie:false,
+		ie6:browser.a.indexOf('msie 6') !=-1,
+		ie7:browser.a.indexOf('msie 7') !=-1,
+		ie8:browser.a.indexOf('msie 8') !=-1,
+		opera:!!window.opera,
+		safari:browser.a.indexOf('safari') !=-1,
+		safari3:browser.a.indexOf('applewebkit/5') !=-1,
+		chrome:browser.a.indexOf('chrome') !=-1,
+		firefox:browser.a.indexOf('firefox') !=-1
+	}
+	var blan = "{$lang_type}";
+	var msg = "Not functioning well for IE6 and Opera user."
+	if(blan == "ko") 		msg = "IE6, 오페라 사용자는 제대로 보여지지 않습니다."
+	else if(blan=="jp") msg = "IE６、OPERAの利用者には正しく表示できません" 
+	if(xGetCookie("keepBrowser") == null){
+		var epr = new Date();
+		var d = 1;
+		epr.setTime(epr.getTime()+(d*24*60*60*1000));
+		xSetCookie("keepBrowser", true, epr);	
+		alert(msg);		
+	}
+</script>
+<!--@else-->
+<script type="text/javascript">
+	if(xGetCookie("keepBrowser") != null){
+		xDeleteCookie("keepBrowser");
+	}
+</script>
+<!--@endif-->
+<!-- Layout -->
+
+
+
+
+
+<div class="" style="clear:both;"></div>   <!-- 전체보기 닫힘시 풋탑 border-top 라인 컨텐츠에 가려짐 방지 --> 						
+				
+		
+
+<footer class="footer-wrapper body_width" >										 		  
+
+ <!-- 흐름 위젯 --> 
+{$layout_info->flow_wgt}	
+
+
+		<script type="text/javascript">
+	
+		jQuery(document).ready(function($){
+		  $('.brandlogo-contain .bxslider').bxSlider(
+			{
+			 speed: 600,
+			  pause: 3000,			  
+			  minSlides: 1,
+			  //infiniteLoop: false,
+			  maxSlides: 7,
+			  slideWidth: 97,
+			  slideMargin: 11,
+			  autoHover: true,
+			  moveSlides:1,
+		      
+			  pager:false, 
+			  controls: true,
+			}
+		  );
+		});
+
+		jQuery(document).ready(function($){
+		  $('.brandlogo-contain2 .bxslider').bxSlider(
+			{
+			 speed: 600,
+			  pause: 3000,			  
+			  minSlides: 1,
+			  //infiniteLoop: false,
+			  maxSlides: 8,
+			  slideWidth: 122,
+			  slideMargin: 11,
+			  autoHover: true,
+			  moveSlides:1,
+		      
+			  pager:false, 
+			  controls: true,
+			}
+		  );
+		});
+
+	</script>
+
+
+
+
+
+
+
+
+<div class="body_width" style="">
+<div id="foot_top">	
+
+
+<include target="footer.html" />				 
+
+
+
+</div>			  <!-- / footer-inner -->
+</div>			  <!-- / body_width -->
+
+
+ 
+</footer>
+
+
+
+<!-- 모바일 메뉴 오픈시 잠시 보이는 현상 아래 위치 -->
+<include target="mobile.html" />						   
+<include target="mobile2.html" />					   
+
+
+
+
+
+<!-- Login widget , 로그인 모달  -->						 
+
+<section cond="$layout_info->use_login_widget != 'N'" class="login_widget" style="display:none"|cond="$XE_VALIDATOR_ID != 'layouts/xedition/layout/1' || !$XE_VALIDATOR_MESSAGE">
+
+	<div class="ly_dimmed"></div>
+	<div class="signin">
+		<div class="login-header">
+			<h1>LOGIN</h1>
+		</div>
+		<div class="login-body">
+			<form action="{getUrl()}" method="post" autocomplete="off">
+				<input type="hidden" name="act" value="procMemberLogin" />
+				<input type="hidden" name="success_return_url" value="{htmlspecialchars(getRequestUriByServerEnviroment(), ENT_COMPAT | ENT_HTML401, 'UTF-8', FALSE)}" />
+				<input type="hidden" name="xe_validator_id" value="layouts/xedition/layout/1" />
+				<fieldset>
+					<legend class="blind">{$lang->cmd_login}</legend>
+					<div class="control-group">
+						<div class="group">
+							<input type="text" name="user_id" id="uemail" required />
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label class="info_label" for="uemail">{$lang->user_id}</label>
+						</div>
+						<div class="group">
+							<input type="password" name="password" id="upw" required />
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label class="info_label" for="upw">{$lang->password}</label>
+						</div>
+					</div>
+					<div cond="$XE_VALIDATOR_ID == 'layouts/xedition/layout/1' && $XE_VALIDATOR_MESSAGE" class="control-group">
+						<p class="error">{$XE_VALIDATOR_MESSAGE}</p>
+					</div>
+					<div class="control-group">
+						<label class="chk_label" for="keepid_opt">
+							<input type="checkbox" name="keep_signed" id="keepid_opt" />
+							<span class="checkbox"></span> {$lang->keep_signed}
+						</label>
+						<div id="warning">
+							<p>{str_replace('\n\n', '<br />', $lang->about_keep_signed)}</p>
+							<div class="edge"></div>
+						</div>
+						<button type="submit" class="btn_submit">{$lang->cmd_login}</button>
+						
+					
+
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="login-footer">
+			<a href="{getUrl('mid','blog','act', 'dispMemberFindAccount')}">{$lang->cmd_find_member_account}</a>
+			<span class="f_bar">|</span>
+			<a href="{getUrl('mid','blog','act', 'dispMemberSignUpForm')}">{$lang->cmd_signup}</a>
+		</div>
+		<a href="#" class="btn_ly_popup"><span class="blind">닫기</span></a>
+	</div>
+	<script>
+	jQuery(function ($) {
+		var keep_msg = $("#warning");
+		$(".chk_label").on("mouseenter mouseleave focusin focusout", function (e) {
+			if(e.type == "mouseenter" || e.type == "focusin") {
+				keep_msg.show();
+			}
+			else {
+				keep_msg.hide();
+			}
+		});
+		$("#ly_login_btn, #ly_btn").click(function () {
+			$(".login_widget").show();
+			return false;
+		});
+		$(".btn_ly_popup").click(function () {
+			$(".login_widget").hide();
+			return false;
+		});
+		$("input").blur(function () {
+			var $this = $(this);
+			if ($this.val()) {
+				$this.addClass("used");
+			}
+			else {
+				$this.removeClass("used");
+			}
+		});
+	});
+	</script>
+</section>
+<!-- /Login widget -->	    
+
+
+
+
+
+
+
+<!-- 플래시 -->
+
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+adTime=<!--@if($layout_info->fla_time)-->{$layout_info->fla_time}<!--@else-->7<!--@end-->;  // 보여줄 시간(초)
+chanceAd=1; // 보여줄 횟수
+var ns=(document.layers);
+var ie=(document.all);
+var w3=(document.getElementById && !ie);
+adCount=0;
+function initAd(){
+        if(!ns && !ie && !w3) return;
+        if(ie)                adDiv=eval('document.all.ad_div.style');
+        else if(ns)        adDiv=eval('document.layers["ad_div"]');
+        else if(w3)        adDiv=eval('document.getElementById("ad_div").style');
+        randAd=Math.ceil(Math.random()*chanceAd);
+        if (ie||w3)
+        adDiv.visibility="visible";
+        else
+        adDiv.visibility ="show";
+        if(randAd==1) showAd();
+}
+function showAd(){
+if(adCount<adTime*10){adCount+=1;
+        if (ie){documentWidth  =document.body.offsetWidth/2+document.body.scrollLeft-20;
+        documentHeight =document.body.offsetHeight/2+document.body.scrollTop-20;}        
+        else if (ns){documentWidth=window.innerWidth/2+window.pageXOffset-20;
+        documentHeight=window.innerHeight/2+window.pageYOffset-20;} 
+        else if (w3){documentWidth=self.innerWidth/2+window.pageXOffset-20;
+        documentHeight=self.innerHeight/2+window.pageYOffset-20;} 
+        adDiv.left=documentWidth-200;adDiv.top =documentHeight-200;
+        setTimeout("showAd()",100);}else closeAd();
+}
+function closeAd(){
+if (ie||w3)
+adDiv.display="none";
+else
+adDiv.visibility ="hide";
+}
+onload=initAd;
+function hideLayer() {
+document.all.layer1.style.visibility = "hidden";
+}
+//-->
+</script>
