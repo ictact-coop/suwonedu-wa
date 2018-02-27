@@ -8,7 +8,7 @@
 
 # 데이터베이스 복원
 $ mysql -u root -p -e 'create database `wa_local`;'
-$ gunzip < dump/wa.20180227221830.sql.gz | mysql -u root -p wp_local
+$ gunzip < dump/wa.20180227221830.sql.gz | mysql -u root -p wa_local
 
 # 파일 디렉토리 놓기
 $ tar zxvf dump/files.tar.gz -C ./docroot/
