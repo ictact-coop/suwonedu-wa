@@ -1,0 +1,45 @@
+<load target="./css/profiler.admin.css" />
+
+<div class="x_page-header">
+	<h1>
+		{$lang->profiler}
+		<a href="#descModule" class="x_icon-question-sign" data-toggle="#descModule">{$lang->help}</a>
+	</h1>
+</div>
+
+<p id="descModule" class="x_alert x_alert-info" hidden="hidden">{$lang->about_profiler}</p>
+
+<ul class="x_nav x_nav-tabs">
+	<li class="x_active"|cond="$act == 'dispProfilerAdminDashboard'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminDashboard')}">{$lang->cmd_profiler_dashboard}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispProfilerAdminConfig'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminConfig')}">{$lang->cmd_profiler_config}</a>
+	</li>
+	<li class="slowlog"|cond="!in_array($act, array('dispProfilerAdminSlowlog', 'dispProfilerAdminAddonList', 'dispProfilerAdminWidgetList'))" class="x_active slowlog"|cond="in_array($act, array('dispProfilerAdminSlowlog', 'dispProfilerAdminAddonList', 'dispProfilerAdminWidgetList'))">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminSlowlog')}">{$lang->cmd_profiler_slowlog}</a>
+		<ul class="x_nav-tabs2">
+			<li class="active"|cond="$act == 'dispProfilerAdminSlowlog'">
+				<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminSlowlog')}">트리거</a>
+			</li>
+			<li class="active"|cond="$act == 'dispProfilerAdminAddonList'">
+				<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminAddonList')}">애드온</a>
+			</li>
+			<li class="active"|cond="$act == 'dispProfilerAdminWidgetList'">
+				<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminWidgetList')}">위젯</a>
+			</li>
+		</ul>
+	</li>
+	<li class="x_active"|cond="$act == 'dispProfilerAdminTrigger'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminTrigger')}">{$lang->cmd_profiler_arrange_triggers}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispProfilerAdminModuleConfig'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminModuleConfig')}">{$lang->cmd_profiler_arrange_module_config}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispProfilerAdminAddonConfig'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminAddonConfig')}">{$lang->cmd_profiler_arrange_addon_config}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispProfilerAdminTable'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispProfilerAdminTable')}">{$lang->cmd_profiler_arrange_table}</a>
+	</li>
+</ul>

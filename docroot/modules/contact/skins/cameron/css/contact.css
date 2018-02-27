@@ -1,0 +1,65 @@
+@charset "utf-8";
+.contact_us{width:100%}
+.contact_us a,.contact_us a:hover{text-decoration:none}
+
+/* Title */
+.contactTitle{position:relative; padding-bottom:10px; *zoom:1}
+.contactTitle:after{content:" "; clear:both; display:block}
+.contactTitle h2.contactTitleText{position:relative; float:left; margin:0; padding:0; font-family:Verdana,"돋움"; font-size:20px; font-weight:bold; color:#3d3d3d}
+.contactTitle a.admin_setup{position:relative; top:10px; float:right; margin-left:10px; padding-left:14px; background:url('../img/iconSetup.gif') no-repeat scroll 0 transparent; text-decoration:none; white-space:nowrap; font-size:12px; color:#666}
+.contactTitle p.required{position:relative; top:10px; float:right; margin:0; padding:0; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:12px; font-weight:bold; color:#a4a4a4}
+
+/* Terms */
+#terms{width:100%; margin:10px 0; overflow:hidden; text-align:justify}
+#terms .termsTitle{margin:0 0 10px 0; color:#3d3d3d; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:16px; font-weight:bold}
+#termsContents p{margin:3px 0 3px 0; font-size:12px}
+#agree_check{margin-top:20px; padding:7px; border:1px solid #e7e7e7; background:#f9f8f4; color:#666; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:12px; font-weight:bold}
+#agree_check input{margin:0 4px 0 0}
+#agree_check label{vertical-align:top; cursor:pointer}
+
+/* Table */
+#form_contact{margin:0; padding:0}
+#contact_table{width:100%; border:0; border-top:2px solid #232323; border-bottom:1px solid #c2c2c2; border-spacing:0; margin:0; padding:0}
+#contact_table th{width:100px; padding:18px 12px; background:#fafafa; border-bottom:1px solid #e4e4e4; text-align:left; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:12px; font-weight:bold; color:#3d3d3d}
+#contact_table td{padding:18px 12px; border-bottom:1px solid #e4e4e4; text-align:left}
+#contact_table td ul{margin:0; padding:0; list-style:none; *zoom:1}
+#contact_table td ul:after{content:" "; clear:both; display:block}
+#contact_table td ul li{float:left; margin:0 8px 0 0; padding:0}
+#contact_table td p{margin:4px 0 0 0; padding:0; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:12px; color:#a4a4a4 !important}
+
+/* Input */
+#contact_table td input.text,
+#contact_table td input.date,
+#contact_table td input.tel{position:relative; width:240px; margin:0; padding:8px; background:#fafafa; border:1px solid #cccccc; font-size:14px; color:#000; vertical-align:middle}
+#contact_table td input.tel{width:48px; margin:0 4px 0 0}
+#contact_table td input.radio,
+#contact_table td input[type=checkbox]{width:13px; height:13px; margin:0 5px 0 0; padding:0; vertical-align:middle}
+#contact_table td label{margin:0 20px 0 0; vertical-align:middle; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:12px; color:#5c5c5c !important; cursor:pointer}
+#contact_table td textarea{position:relative; width:99%; height:140px; margin:0; padding:6px; background:#fafafa; border:1px solid #cccccc; font-size:14px; color:#000; vertical-align:top}
+#contact_table td select{position:relative; width:256px !important; margin:0; padding:2px; background:#fff; border:1px solid #cccccc; color:#000; vertical-align:middle}
+
+#contact_table td textarea:hover,
+#contact_table td input.text:hover,
+#contact_table td input.date:hover,
+#contact_table td input.tel:hover,
+#contact_table td select:hover{border-color:#acb8fc !important}
+
+/* Option */
+em.required_icon{position:relative; top:2px; *top:-2px; _top:1px; width:12px; height:12px; background:url(../img/em.png) no-repeat; display:inline-block; font-style:normal; color:#e81010; text-indent:-9999px}
+#contact_form .cameron_table td label{margin:0; vertical-align:middle; font-size:12px; cursor:pointer; color:#5c5c5c !important}
+.cufon{margin-bottom:4px}
+
+/* Button */
+.send{margin-top:30px; text-align:right}
+.contact_submit, .contact_confirm{background:-moz-linear-gradient(top,#f3482b 0%, #ea331f 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3482b), color-stop(100%,#ea331f)); background:-webkit-linear-gradient(top,#f3482b 0%,#ea331f 100%); background:-o-linear-gradient(top,#f3482b 0%,#ea331f 100%); background:-ms-linear-gradient(top,#f3482b 0%,#ea331f 100%); background:linear-gradient(top,#f3482b 0%,#ea331f 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3482b', endColorstr='#ea331f',GradientType=0 ); border:1px solid #f35b49; border-radius:7px; -webkit-border-radius:7px; -moz-border-radius:7px; box-shadow:1px 1px 2px #fff inset; -webkit-box-shadow:1px 1px 2px #fff inset; -moz-box-shadow:1px 1px 2px #fff inset; font-family:Arial,Helvetica,sans-serif,"돋움"; font-size:14px; font-weight:bold; overflow:visible; color:#fff; cursor:pointer}
+.contact_submit{margin:0; padding:10px 32px 8px 40px; *padding:6px 36px; letter-spacing:8px}
+.contact_confirm{width:80px; display:block; margin:0 auto; padding:10px 12px 8px 20px; *padding:8px 20px; letter-spacing:8px}
+.contact_submit:hover, .contact_confirm:hover{background:-moz-linear-gradient(top,#ef2000 0%, #e11600 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ef2000), color-stop(100%,#e11600)); background:-webkit-linear-gradient(top,#ef2000 0%,#e11600 100%); background:-o-linear-gradient(top,#ef2000 0%,#e11600 100%); background:-ms-linear-gradient(top,#ef2000 0%,#e11600 100%); background:linear-gradient(top,#ef2000 0%,#e11600 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef2000', endColorstr='#e11600',GradientType=0 )}
+
+/* Success */
+#success_form {margin-top:20px}
+.message p{margin:14px 0 !important}
+#mail_content ul{margin:0; padding:0; list-style:none}
+#mail_content li{margin:0 0 5px 0}
+#mail_content li .mail_var_title{margin-right:5px; font-family:Arial,Helvetica,sans-serif,"돋움"; font-weight:bold}
+#link_back_contact {margin-top:30px; text-align:center}

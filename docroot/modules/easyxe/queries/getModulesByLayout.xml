@@ -1,0 +1,12 @@
+<query id="getModulesByLayout" action="select">
+    <tables>
+        <table name="modules" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="layout_srl" var="layout_srl" />
+        <condition operation="equal" column="mlayout_srl" var="mlayout_srl" />
+    </conditions>
+</query>

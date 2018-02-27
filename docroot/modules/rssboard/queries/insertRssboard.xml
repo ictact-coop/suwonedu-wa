@@ -1,0 +1,14 @@
+<query id="insertRssboard" action="insert">
+	<tables>
+		<table name="rssboard"/>
+	</tables>
+	<columns> 
+		<column name="rssboard_srl" var="rssboard_srl" default="0" notnull="notnull" />
+		<column name="module_srl" var="module_srl" default="0" notnull="notnull"/>
+		<column name="category_srl" var="category_srl" default="0"/>
+		<column name="rssurl" var="rssurl" notnull="notnull" />
+		<column name="rssname" var="rssname" notnull="notnull" />
+		<column name="regdate" default="curdate()"/>
+		<column name="updatedate" default="0" />
+	</columns>
+</query>

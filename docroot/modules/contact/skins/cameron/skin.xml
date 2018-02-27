@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">XE Cameron Contact Us Skin</title>
+	<title xml:lang="en">XE Cameron Contact Us Skin</title>
+	<description xml:lang="ko">
+		XE Cameron Contact Us Skin
+		Treasurej (xepro@naver.com)
+	</description>
+	<description xml:lang="en">
+		XE Cameron Contact Us Skin
+		Treasurej (xepro@naver.com)
+	</description>
+	<version>1.5</version>
+	<date>2013-05-23</date>
+	
+	<author email_address="a@cameron.co.kr" link="http://cameron.co.kr/">
+		<name xml:lang="ko">Treasurej</name>
+		<name xml:lang="en">Treasurej</name>
+	</author>
+</skin>

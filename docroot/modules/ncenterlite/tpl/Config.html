@@ -1,0 +1,280 @@
+<load target="js/ncenter_admin.js" />
+<load target="css/ncenter_admin.css" />
+<include target="header.html" />
+
+<div cond="$_ncenterlite_env_agreement == 'NULL'">
+	<form action="{getUrl('')}" method="post" class="message info x_clearfix">
+		<input type="hidden" name="module" value="ncenterlite" />
+		<input type="hidden" name="act" value="procNcenterliteAdminEnviromentGatheringAgreement" />
+		<h2><span class="x_label x_label-important">도와주세요!</span> 사용 환경 정보 제공 동의</h2>
+		<p>'알림센터 Lite'는 <a href="http://ko.wikipedia.org/wiki/자유소프트웨어" target="_blank">자유소프트웨어</a>로 제공하고 있습니다.</p>
+		<p>'알림센터 Lite'는 사용자의 버그 보고, 의견 제출을 통해 공동의 힘으로 발전하고 있습니다.<br>'제공 동의'를 선택하면 아래와 같은 항목이 전송되며, 알림센터 Lite의 기능을 개선하는데 참고하겠습니다. 감사합니다.</p>
+		<ul>
+			<li>이 사이트의 도메인</li>
+			<li>알림센터 Lite의 버전</li>
+			<li>XE 버전</li>
+			<li>PHP 버전</li>
+		</ul>
+		<div class="x_pull-right" style="margin-bottom:10px">
+			<button type="submit" name="is_agree" value="Y" class="x_btn x_btn-small x_btn-primary">제공 동의</button>
+			<button type="submit" name="is_agree" value="N" class="x_btn x_btn-small">제공 안 함</button>
+		</div>
+	</form>
+</div>
+
+
+<form ruleset="insertConfig" action="./" method="post" class="x_form-horizontal" id="fo_ncenterlite">
+	<input type="hidden" name="module" value="ncenterlite" />
+	<input type="hidden" name="act" value="procNcenterliteAdminInsertConfig" />
+
+	<section class="section collapsed">
+		<h1>기본 기능 설정 (클릭하시면 기능설정을 할 수 있습니다.)</h1>
+		<div class="x_control-group">
+			<label class="x_control-label"><span class="x_label x_label-important">주의!</span>알림센터 동작여부</label>
+			<div class="x_controls">
+				<label class="x_inline">
+					<input type="radio" id="use_y" name="use" value="Y" checked="checked"|cond="$config->use == 'Y'" /> 동작
+				</label>
+				<label class="x_inline">
+					<input type="radio" id="use_n" name="use" value="N" checked="checked"|cond="$config->use == 'N'" /> 동작 안 함
+				</label>
+				<p class="x_help-block"><span class="x_label x_label-important">주의!</span>알림센터의 모든 기능을 중지 시킬 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label"><span class="x_label x_label-important">주의!</span>알림센터 노출여부</label>
+			<div class="x_controls">
+				<label class="x_inline">
+					<input type="radio" id="display_use_y" name="display_use" value="Y" checked="checked"|cond="$config->display_use == 'Y'" /> 동작
+				</label>
+				<label class="x_inline">
+					<input type="radio" id="display_use_n" name="display_use" value="N" checked="checked"|cond="$config->display_use == 'N'" /> 동작 안 함
+				</label>
+				<p class="x_help-block">알림센터의 스킨을 사용할 것인지 혹은 위젯 레이아웃에서 제작되어 들어간 스킨을 사용할지 선택합니다. 기본은 알림센터모듈의 기본스킨을 사용하도록 합니다.
+				<span class="x_label x_label-important">주의!</span> 알림센터를 레이아웃이나 위젯으로 표현할 수 있을 때에만 동작안함 선택하세요.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">익명 알림에서 익명 이름 설정</label>
+			<div class="x_controls">
+				<input type="text" name="anonymous_name" value="{$config->anonymous_name}" />
+				<p class="x_help-block">익명 게시판 등에서 알림이 등록될 시, Anonymous 등 익명을 표시할 이름을 설정할 수 있습니다. 기본은 Anonymous 입니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">멘션 설정</label>
+			<div class="x_controls mention_option">
+				<label class="x_inline">
+					<input type="checkbox" name="mention_format[]" value="respect" data-mention-split="님" checked="checked"|cond="in_array('respect', $config->mention_format)" /> '님'을 붙여 쓸 수 있도록 허용
+				</label>
+				<ul class="preview">
+					<li data-mention-default="enable"><strong>@스님</strong></li>
+					<li data-mention-default="enable"><strong>@선생님이다</strong></li>
+					<li data-mention-default="enable"><strong>@NAME</strong>&nbsp;&nbsp;…</li>
+					<li data-mention-default="enable"><strong>@NAME</strong>&nbsp;&nbsp;님</li>
+					<li><strong>@NAME</strong>님</li>
+					<li><strong>@NAME</strong>님과</li>
+					<li><strong>@NAME1</strong>님,&nbsp;&nbsp;<strong>@NAME2</strong>님이&nbsp;&nbsp;…</li>
+				</ul>
+				<p class="x_help-block">녹색으로 표시된 예시처럼 사용할 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">맨션 타겟 설정</label>
+			<div class="x_controls">
+				<label class="x_inline">
+					<input type="radio" id="mention_names_id" name="mention_names" value="id" checked="checked"|cond="$config->mention_names == 'id'" /> 아이디
+				</label>
+				<label class="x_inline">
+					<input type="radio" id="mention_names_nick_name" name="mention_names" value="nick_name" checked="checked"|cond="$config->mention_names == 'nick_name'" /> 닉네임
+				</label>
+				<p class="x_help-block">알림센터에서 닉네임 혹은 아이디 선택하여 맨션설정을 할 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">회원정보 메뉴노출 설정</label>
+			<div class="x_controls">
+				<label class="x_inline">
+					<input type="radio" id="user_config_list_id" name="user_config_list" value="Y" checked="checked"|cond="$config->user_config_list == 'Y'" /> 회원정보에 표시함.
+				</label>
+				<label class="x_inline">
+					<input type="radio" id="user_config_list_nick_name" name="user_config_list" value="N" checked="checked"|cond="$config->user_config_list == 'N'" /> 표기안함
+				</label>
+				<p class="x_help-block">회원정보보기에서 메뉴 목록에 회원알림센터 설정 및 회원알림목록을 접근할 수잇는 페이지를 노출하거나 노출 시키지 않을 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">안드로이드알림 솔루션</label>
+			<div class="x_controls">
+				<label class="x_inline"><input type="radio" name="android_format" value="N" checked="checked"|cond="$config->android_format == 'N'" /> 안드로이드 알림을 사용하지 않음</label>
+				<label class="x_inline"><input type="radio" name="android_format" value="mobileplus" checked="checked"|cond="$config->android_format == 'mobileplus'" />MobilePlus</label>
+				<p>알림센터와 함께 안드로이드 모바일 알림 솔루션을 선택하여 사용할 수 있습니다. 각각의 안드로이드 어플리케이션 플레폼을 사용하시면 선택하여 사용하시기 바랍니다.</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">쪽지 알림 설정</label>
+			<div class="x_controls">
+				<label><input type="checkbox" name="message_notify" value="N" checked="checked"|cond="$config->message_notify == 'N'" /> 쪽지 알림을 사용하지 않음(XE의 기본 쪽지 알림을 사용)</label>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">알림센터 사용여부</label>
+			<div class="x_controls">
+				<p class="x_help-block">선택한 페이지에서 알림센터를 표시하지 않습니다.</p>
+				<div loop="$mid_list => $mid, $item">
+					<label>
+						<input type="checkbox" value="{$item->module_srl}" name="hide_module_srls[]" checked="checked"|cond="in_array($item->module_srl, $config->hide_module_srls)" />
+						<strong>{$item->browser_title}</strong> ({$item->mid} / {strtoupper($item->module)})
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">댓글 알림 사용게시판</label>
+			<div class="x_controls">
+				<p class="x_help-block">선택한 게시판에서는 댓글의 모든 알림을 관리자가 받을 수 있습니다.</p>
+				<div loop="$mid_list => $mid, $item">
+					<label>
+						<input type="checkbox" value="{$item->module_srl}" name="admin_comment_module_srls[]" checked="checked"|cond="in_array($item->module_srl, $config->admin_comment_module_srls)" />
+						<strong>{$item->browser_title}</strong> ({$item->mid} / {strtoupper($item->module)})
+					</label>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section collapsed">
+		<h1>새 글 알림 및 문서알림 (클릭하시면 기능설정을 할 수 있습니다.) </h1>
+		<div class="x_control-group">
+			<label class="x_control-label">글 추천 알림.</label>
+			<div class="x_controls">
+				<label class="x_inline"><input type="radio" name="voted_format" value="Y" checked="checked"|cond="$config->voted_format == 'Y'" /> 사용함</label>
+				<label class="x_inline"><input type="radio" name="voted_format" value="N" checked="checked"|cond="$config->voted_format == 'N'" /> 사용하지 않음</label>
+				<p>글이 추천받았을때 추천알림을 받을 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">게시판 읽을경우 관련알림 삭제</label>
+			<div class="x_controls">
+				<label class="x_inline"><input type="radio" name="document_read" value="N" checked="checked"|cond="$config->document_read == 'N'" />알림을 지우지 않음</label>
+				<label class="x_inline"><input type="radio" name="document_read" value="Y" checked="checked"|cond="$config->document_read == 'Y'" />알림을 지움</label>
+				<p>게시판을 읽을경우 해당 글의 포함된 모든 알림내역을 알림내역에서 삭제 합니다. 기본값은 N입니다.</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">댓글 알림 설정</label>
+			<div class="x_controls">
+				<label class="x_inline"><input type="radio" name="document_notify" value="all-comment" checked="checked"|cond="$config->document_notify == 'all-comment'" /> 글쓴이에게 모든 댓글 알림</label>
+				<label class="x_inline"><input type="radio" name="document_notify" value="direct-comment" checked="checked"|cond="$config->document_notify == 'direct-comment'" /> 대댓글은 알리지 않음</label>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="section collapsed">
+		<h1>레이아웃 설정 (클릭하시면 기능설정을 할 수 있습니다.)</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="layout_srl">{$lang->layout}</label>
+			<div class="x_controls">
+				<select name="layout_srl" id="layout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$layout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$config->layout_srl==$val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#aboutLayout" data-toggle class="x_icon-question-sign">{$lang->help}</a>
+				<p class="x_help-block" id="aboutLayout" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="layout_srl">모바일 {$lang->layout}</label>
+			<div class="x_controls">
+				<select name="mlayout_srl" id="mlayout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$mlayout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$config->mlayout_srl==$val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#aboutLayout" data-toggle class="x_icon-question-sign">{$lang->help}</a>
+				<p class="x_help-block" id="aboutLayout" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section collapsed">
+		<h1>스킨 설정 (클릭하시면 기능설정을 할 수 있습니다.)</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->skin}</label>
+			<div class="x_controls">
+				<select name="skin" onchange="doDisplaySkinColorset(this); return false;">
+					<option loop="$skin_list => $key, $val" value="{$key}" selected="selected"|cond="$config->skin == $key">
+						{$val->title} ({htmlspecialchars($key)})
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->colorset}</label>
+			<div class="x_controls">
+				<select name="colorset" id="ncenterlite_colorset">
+					<option loop="$colorset_list => $key, $val" value="{$val->name}" selected="selected"|cond="$config->colorset == $val->name">
+						{$val->title} ({$val->name})
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">mobile {$lang->mskin}</label>
+			<div class="x_controls">
+				<select name="mskin" onchange="doDisplayMobileSkinColorset(this); return false;">
+					<option loop="$mskin_list => $key, $val" value="{$key}" selected="selected"|cond="$config->mskin == $key">
+						{$val->title} ({htmlspecialchars($key)})
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">mobile {$lang->colorset}</label>
+			<div class="x_controls">
+				<select name="mcolorset" id="ncenterlite_colorset">
+					<option loop="$mcolorset_list => $key, $val" value="{$val->name}" selected="selected"|cond="$config->mcolorset == $val->name">
+						{$val->title} ({$val->name})
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">알림센터의 z-index</label>
+			<div class="x_controls">
+				<input type="number" name="zindex" value="{$config->zindex}" />
+				<p class="x_help-block">알림센터가 다른 요소에 가려지는 경우에 100, 200, ... 이상으로 높여 보세요.</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+
+	<section class="section">
+		<h1>기타</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">시험용 스킨 알림 생성</label>
+			<div class="x_controls">
+				<label><input type="button" name="dummy" onClick="doDummyDataInsert();" class="x_btn" value="더미 데이터 생성"> 스킨 및 모듈 테스트를 위한 시험용 알림 생성</label>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">시험용 푸시 알림 생성</label>
+			<div class="x_controls">
+				<label><input type="button" name="dummy" onClick="doDummyPushDataInsert();" class="x_btn" value="더미 데이터 생성"> 모듈 및 모바일 테스트를 위한 시험용 알림 생성</label>
+			</div>
+		</div>
+	</section>
+</form>
+<div cond="$_ncenterlite_iframe_url">
+	<p>설치된 알림센터 버전 : Lite v{$ncenterlite_module_info->version}</p>
+	<iframe frameborder="0" src="{$_ncenterlite_iframe_url}" style="display:block; margin:10px auto; padding:0; width:90%;border:3px solid #7361d6; border-radius:10px; height:200px; overflow:scroll; "></iframe>
+</div>

@@ -1,0 +1,20 @@
+<query id="getLoginRank" action="select">
+	<tables>
+		<table name="member_loginlog" alias="loginlog" />
+		<table name="member" alias="member" />
+	</tables>
+	<columns>
+		<column name="count(*)" alias="total" />
+		<column name="member.member_srl" alias="member_srl" />
+		<column name="member.nick_name" alias="nick_name" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="loginlog.member_srl" default="member.member_srl" />
+	</conditions>
+	<groups>
+		<group column="loginlog.member_srl" />
+	</groups>
+	<navigation>
+		<index var="sort_index" default="total" order="order_type" />
+	</navigation>
+</query>

@@ -1,0 +1,23 @@
+<!--%import("filter/insert_api_key.xml")-->
+
+<include target="./header.html" />
+
+<form action-"./" method="post" class="x_form-horizontal" onsubmit="return procFilter(this, insert_api_key)">
+	<section class="section">
+		<div class="x_control-group">
+			<label class="x_control-label" for="api_key">{$lang->analytics_api_key}</label>
+			<div class="x_controls">
+				api_key : <input type="text" id="api_key" name="api_key" value="{$api_key}" />
+				<input class="x_btn x_btn-primary" type="button" onclick="checkAPIKey(jQuery('#api_key').val())" value="{$lang->cmd_check_analytics_api_key}" />
+
+				<p class="x_help-block">{$lang->about_analytics_api_key}</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_registration}" />
+		</div>
+	</div>
+</form>

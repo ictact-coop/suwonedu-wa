@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<!-- EasyXE 설정 -->
+		<action name="dispEasyxeAdminSetting" type="view" admin_index="true" />
+		<!-- 메뉴 관리 -->
+		<action name="dispEasyxeAdminMenuTree" type="view" />
+		<action name="dispEasyxeAdminCurrentPageDesign" type="view" />
+		<action name="dispEasyxeAdminViewPageSource" type="view" />
+		<action name="dispEasyxeAdminViewMobilePageSource" type="view" />
+		<action name="dispEasyxeAdminGenerateCodeInPage" type="view" />
+		<action name="dispEasyxeAdminPageAuthorizeLog" type="view" />
+
+		<!-- 회원 활동 -->
+		<action name="dispEasyxeAdminMemberActivity" type="view" />
+		<!-- 모듈 레이아웃 일괄 변경 -->
+		<action name="dispEasyxeAdminChangeModuleLayout" type="view" />
+
+		<action name="getEasyxeAdminMenuItems" type="model" />
+		<action name="getEasyxeAdminMemberSearchTpl" type="model" />
+		<action name="getEasyxeAdminMemberSearchResult" type="model" />
+		<action name="getEasyxeAdminInsertMemberFormTpl" type="model" />
+
+		<action name="getEasyxeAdminAddonList" type="model" />
+		<action name="getEasyxeAdminLayoutUsingModule" type="model" />
+
+		<!-- EasyXE 설정 저장 -->
+		<action name="procEasyxeAdminSaveSetting" type="controller" />
+		<action name="procEasyxeAdminSaveMessageSetting" type="controller" />
+		<!-- 스팸 IP 추가 -->
+		<action name="procEasyxeAdminInsertDeniedIP" type="controller" />
+		<!-- 스팸 단어 추가 -->
+		<action name="procEasyxeAdminInsertDeniedWord" type="controller" />
+		<!-- 모듈 레이아웃 일괄 변경 -->
+		<action name="procEasyxeAdminChangeModuleLayout" type="controller" />
+
+		<!-- 애드온 끄기/켜기 -->
+		<action name="procEasyxeAdminToggleAddonActivate" type="controller" method="POST"/>
+		<action name="procEasyxePageAuthorize" type="controller" method="POST"/>
+	</actions>
+</module>

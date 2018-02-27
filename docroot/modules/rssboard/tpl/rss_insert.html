@@ -1,0 +1,54 @@
+<!--%import("filter/rss_insert.xml")-->
+<!--%import("js/menu_admin.js")-->
+
+<!--#include("header.html")-->
+
+
+<form action="./" method="post" onsubmit="return procFilter(this, rss_insert)" enctype="multipart/form-data">
+	<input type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="rssboard_srl" value="{$rssboard_srl}" />
+	
+	<table cellspacing="0" class="rowTable">
+		<tr>
+			<th scope="row"><div>{$lang->rssname}</div></th>
+			<td>
+				<input type="text" name="rssname" value="{htmlspecialchars($rssname)}" class="inputTypeText w200" />
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->rssurl}</div></th>
+			<td>
+				<input type="text" name="rssurl" value="{$rssurl}" class="inputTypeText w300" />
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->target_module}</div></th>
+			<td>
+				<input type="hidden" name="target_module" value="{$target_module->module_srl}" id="target_module" />
+				<input type="text" name="_target_module" id="_target_module" class="inputTypeText w200"  value="{$target_module->mid} ({htmlspecialchars($target_module->browser_title)})" readonly="readonly"><a href="{getUrl('','module','module','act','dispModuleSelectList','id','target_module','type','single')}" onclick="popopen(this.href,'ModuleSelect');return false;" class="button green"><span>{$lang->cmd_select}</span></a>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->category}</div></th>
+			<td>
+				<select id ="category_srl" name="category_srl">
+					<!--@foreach($category_list as $n => $v)-->
+						<option value="{$v->category_srl}"
+							<!--@if($v->category_srl == $category_srl)-->
+							selected
+							<!--@endif-->
+							>
+							{$v->title}
+						</option>
+					<!--@endforeach-->
+				</select>
+			</td>
+		</tr>	    
+		<tr>
+			<th colspan="2" class="button">
+				<span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+				<span class="button"><input type="button" value="{$lang->cmd_back}" onclick="history.back(); return false;" /></span>
+			</th>
+		</tr>
+	</table>
+</form>

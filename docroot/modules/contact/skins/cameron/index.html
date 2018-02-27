@@ -1,0 +1,50 @@
+<include target="_header.html" />
+<form action="./" method="post" ruleset="sendMail" id="form_contact" >
+	<input type="hidden" name="act" value="procContactSendEmail" />
+	<input type="hidden" name="enable_terms" value="N" />
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+
+	<div id="terms" cond="$module_info->enable_terms == 'Y'">
+		<input type="hidden" name="enable_terms" value="Y" />
+		<div class="termsTitle">Terms of Use Agreement</div>
+		<div id="terms-main">
+			{$module_info->content}
+		</div>
+		<div id="agree_check"><input type="checkbox" id="checkbox" name="check_agree"><label for="checkbox">{$module_info->mcontent}</label></div>
+	</div>
+	<div id="terms" cond="$module_info->enable_terms == 'N' && $module_info->content">
+		<input type="hidden" name="enable_terms" value="N" />
+		<div class="termsTitle">{$module_info->mcontent}</div>
+		<div id="terms-main">
+			{$module_info->content}
+		</div>
+	</div>
+
+	<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+
+	<table id="contact_table">
+		<tbody>
+			<tr>
+				<th scope="row">{$lang->contact_subject} <em class="required_icon">*</em></th>
+				<td><input class="text" type="text" name="Subject"></td>
+			</tr>
+			<tr>
+				<th scope="row">{$lang->contact_email} <em class="required_icon">*</em></th>
+				<td><input class="text" type="text" name="Email"></td>
+			</tr>
+			<tr cond="$form_extra_keys" loop="$form_extra_keys => $key, $val">
+				<th scope="row">{$val->name}<!--@if($val->is_required=='Y')--> <em class="required_icon">*</em><!--@end--></th>
+				<td>{$val->getFormHTML()}</td>
+			</tr>
+			<tr>
+				<th scope="row">{$lang->contact_content} <em class="required_icon">*</em></th>
+				<td><textarea class="textarea" name="Comment"></textarea></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="send"><button type="submit" class="contact_submit">{$lang->contact_send}</button></div>
+</form>
+<include target="_footer.html" />

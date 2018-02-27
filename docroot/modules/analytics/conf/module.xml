@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants/>
+	<actions>
+		<action name="dispAnalyticsAdminContent" type="view" admin_index="true" />
+		<action name="procAnalyticsAdminInsertAPIKey" type="controller" />
+		<action name="procAnalyticsAdminCheckAPIKey" type="controller" />
+	</actions>
+</module>

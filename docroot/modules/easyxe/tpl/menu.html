@@ -1,0 +1,80 @@
+<load target="./js/jquery.fancytree-all.min.js" type="body" />
+<load target="./js/menu.js" type="body" />
+<load target="./js/ui.contextmenu/jquery.ui-contextmenu.js" type="body" />
+<load target="./css/skin-win8/ui.fancytree.css" />
+
+{@Context::loadJavascriptPlugin('ui')}
+<style scoped>
+#tree ul{margin:0}
+</style>
+			<section class="mapi" id="siteMapTree">
+				<script id="tmpl_menuTree" type="text/x-jquery-tmpl">
+					<ul>
+						{{html Nodes}}
+					</ul>
+				</script>
+				<script id="tmpl_menuTreeNode" type="text/x-jquery-tmpl">
+					<li id="menu${MenuId}">
+						<a href="#" data-param='{ "sMenuId":"${MenuId}" }'>${MenuTitleWithHome}</a>
+						{{html SubTree}}
+					</li>
+				</script>
+
+				<script id="tmpl_menuSelector_menuTree" type="text/x-jquery-tmpl">
+					<ul>
+						{{html Nodes}}
+					</ul>
+				</script>
+				<script id="tmpl_menuSelector_menuTreeNode" type="text/x-jquery-tmpl">
+					<li>
+						<a href="#" class="_nodeType_${NodeType} _menu_url_${MenuUrl}" data-param='{ "sMenuId":"${MenuId}", "sMenuUrl":"${MenuUrl}", "sMenuTitle":"${MenuTitle}" }'>${MenuTitle}</a>
+						{{html SubTree}}
+					</li>
+				</script>
+			</section>
+<div class="x_row">
+	<div class="x_span4">
+		<ul id="menuList" class="x_nav x_nav-pills x_nav-stacked">
+			<li loop="$layout_info->menu=> $no, $menu" class="x_active"|cond="$menu->menu_srl == $menu_srl">
+				<a href="{getUrl('menu_srl', $menu->menu_srl)}">
+					<i class="fa fa-folder"></i> {$menu->title}
+				</a>
+			</li>
+		</ul>
+	</div>111
+	<div class="x_span8">
+		<div id="tree">
+		<ul>
+			{@ $start = true }
+			{@ $depth = 0 }
+			<block loop="$menu_item_list => $no, $val">
+			<!--@if(!$start && $val->depth == $depth)-->
+			</li>
+			<!--@end-->
+			<!--@if($val->depth > $depth)--> 
+			<ul>
+			<!--@else-->
+			<!--@while($val->depth < $depth)-->
+			</li>
+			</ul>
+			{@ $depth -= 1}
+			<!--@end-->
+			<!--@endif-->
+			<li<!--@if($val->depth < $menu_item_list[$no+1]->depth)--> class="folder"<!--@end-->><a href="{$val->href}" >{$val->text}</a>
+				{@ $start = false }
+				{@ $depth = $val->depth }
+			<!--@end-->
+			<!--@while($depth > 0)-->
+			</li>
+			</ul>
+			{@ $depth -= 1}
+			<!--@end-->
+		</ul>
+		</div>
+	</div>
+</div>
+
+<div class="x_btn-group" style="display:none">
+	<a href="" class="x_btn" disabled onclick="alert('Beta 버전에서 제공하지 않는 기능입니다.');return false"><i class="fa fa-upload"></i> 엑셀 파일 업로드</a>
+	<a href="" class="x_btn x_btn-success" disabled onclick="alert('Beta 버전에서 제공하지 않는 기능입니다.');return false"><i class="fa fa-download"></i> 엑셀 파일로 다운받기</a> 
+</div>

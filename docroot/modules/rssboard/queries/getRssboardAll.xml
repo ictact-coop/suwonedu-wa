@@ -1,0 +1,8 @@
+<query id="getRssboardAll" action="select">
+    <tables>
+        <table name="rssboard" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+</query>

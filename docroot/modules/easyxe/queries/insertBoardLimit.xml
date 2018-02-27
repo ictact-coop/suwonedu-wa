@@ -1,0 +1,13 @@
+<query id="insertBoardLimit">
+	<tables>
+		<table name="easyxe_board_limit" />
+	</tables>
+	<columns>
+		<column name="limit_srl" var="limit_srl" notnull="notnull" default="sequence()" />
+		<column name="module_srl" var="module_srl" notnull="notnull" />
+		<column name="period" var="period" notnull="notnull" />
+		<column name="period_type" var="period" notnull="notnull" />
+		<column name="document_limit_count" var="document_limit_count" notnull="notnull" />
+		<column name="comment_limit_count" var="comment_limit_count" notnull="notnull" />
+	</columns>
+</query>

@@ -1,0 +1,8 @@
+<filter name="rss_insert" module="rssboard" act="procRssboardAdminUpdate" confirm_msg_code="confirm_submit">
+  <form />
+  <parameter />
+  <response callback_func="completeRssboardInsert">
+    <tag name="error" />
+    <tag name="message" />
+  </response>
+</filter>

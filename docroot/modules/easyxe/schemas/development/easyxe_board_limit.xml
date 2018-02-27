@@ -1,0 +1,9 @@
+<table name="easyxe_board_limit">
+	<column name="limit_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="module_srl" type="number" size="11" notnull="notnull" index="idx_module_srl" />
+	<column name="group_srl" type="number" size="11" notnull="notnull" index="idx_group_srl" />
+	<column name="period" type="number" size="11" notnull="notnull" />
+	<column name="period_unit" type="char" size="5" notnull="notnull" />
+	<column name="document_limit_count" type="number" size="11" notnull="notnull" />
+	<column name="comment_limit_count" type="number" size="11" notnull="notnull" />
+</table>

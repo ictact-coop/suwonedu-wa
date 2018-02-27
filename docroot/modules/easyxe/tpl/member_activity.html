@@ -1,0 +1,7 @@
+<h1>로그인 랭킹</h1>
+<ul>
+	<li loop="$login_rank_list => $no, $member">
+		<a href="#" class="member_{$member->member_srl}">{$member->nick_name}</a>
+		({number_format($member->total)})
+	</li>
+</ul>

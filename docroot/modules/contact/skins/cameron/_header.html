@@ -1,0 +1,34 @@
+<!--%import("lang")-->
+<load target="css/contact.css" />
+<load target="js/contact.js" type="body" />
+
+<style type="text/css">
+<block cond="$lang_type == 'ko' || $lang_type == 'en'">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+.contactTitle h2.contactTitleText,.contactTitle p.required,#terms .termsTitle,#agree_check,#contact_table th,#contact_table td p,#contact_table td label,.contact_submit,.contact_confirm,#mail_content li .mail_var_title{font-family:'Nanum Gothic'; font-weight:700}
+</block>
+
+<block cond="$lang_type == 'jp'">
+.contactTitle h2.contactTitleText,.contactTitle p.required,#terms .termsTitle,#agree_check,#contact_table th,#contact_table td p,#contact_table td label,.contact_submit,.contact_confirm,#mail_content li .mail_var_title{font-family:meiryo,Arial,Helvetica,sans-serif,'돋움'}
+</block>
+<block cond="$lang_type == 'zh-CN'">
+.contactTitle h2.contactTitleText,.contactTitle p.required,#terms .termsTitle,#agree_check,#contact_table th,#contact_table td p,#contact_table td label,.contact_submit,.contact_confirm,#mail_content li .mail_var_title{font-family:'Microsoft Yahei',Simsun,Arial,Helvetica,sans-serif,'돋움'}
+</block>
+<block cond="$lang_type == 'zh-TW'">
+.contactTitle h2.contactTitleText,.contactTitle p.required,#terms .termsTitle,#agree_check,#contact_table th,#contact_table td p,#contact_table td label,.contact_submit,.contact_confirm,#mail_content li .mail_var_title{font-family:'Microsoft JhengHei',Arial,Helvetica,sans-serif,'돋움'}
+</block>
+</style>
+
+{@$browser_type = getenv("HTTP_USER_AGENT")}
+<!--@if(preg_match("/MSIE 9.0/",$browser_type))-->
+	<include target="ie9.html" />
+<!--@else if(preg_match("/MSIE 6.0/",$browser_type))-->
+	<include target="ie6.html" />
+<!--@endif-->
+
+<div class="contact_us">
+	<div class="contactTitle" cond="$module_info->mid">
+		<h2 class="contactTitleText">{$module_info->browser_title}</h2>
+		<a class="admin_setup" cond="$logged_info->is_admin == 'Y'" href="{getUrl('act','dispContactAdminContactInfo')}">{$lang->cmd_setup}</a>
+		<p class="required"><em class="required_icon">*</em> <span>{$lang->contact_required}</span></p>
+	</div>

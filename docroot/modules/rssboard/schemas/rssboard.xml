@@ -1,0 +1,9 @@
+<table name="rssboard">
+    <column name="rssboard_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="module_srl" type="number" size="11" default="0" notnull="notnull" index="idx_module_srl" />
+    <column name="rssurl" type="varchar" size="250" notnull="notnull" />
+    <column name="rssname" type="varchar" size="250" notnull="notnull" />
+    <column name="category_srl" type="number" size="11" notnull="notnull" />
+    <column name="regdate" type="date" />
+    <column name="updatedate" type="date" />
+</table>

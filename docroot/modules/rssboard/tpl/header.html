@@ -1,0 +1,16 @@
+
+<h3 class="xeAdmin">{$lang->rssboard} <span class="gray">{$lang->cmd_management}</span></h3>
+
+<div class="infoText">{nl2br($lang->about_rssboard)}</div>
+
+<!--@if($module_info)-->
+<div class="header4">
+
+    <ul class="localNavigation">
+        <li <!--@if($act=='dispRssboardAdminContent')-->class="on"<!--@end-->><a href="{getUrl('act','dispRssboardAdminContent','module_srl','')}">{$lang->cmd_rssboard_list}</a></li>
+        <li <!--@if($act=='dispRssboardAdminInfo'||$act=='dispRssboardAdminInsert')-->class="on"<!--@end-->><a href="{getUrl('act','dispRssboardAdminInfo')}"><!--@if($rssboard_srl)-->{$lang->cmd_view_info}<!--@else-->{$lang->cmd_create_rssboard}<!--@end--></a></li>
+
+    </ul>
+</div>
+<!--@end-->
+

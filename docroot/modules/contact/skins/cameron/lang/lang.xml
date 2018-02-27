@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="contact_required">
+		<value xml:lang="ko"><![CDATA[필수 기재 항목]]></value>
+		<value xml:lang="en"><![CDATA[Fields are required]]></value>
+		<value xml:lang="jp"><![CDATA[ひっす]]></value>
+		<value xml:lang="zh-CN"><![CDATA[必备]]></value>
+	</item>
+	<item name="contact_subject">
+		<value xml:lang="ko"><![CDATA[제목]]></value>
+		<value xml:lang="en"><![CDATA[Subject]]></value>
+		<value xml:lang="jp"><![CDATA[タイトル]]></value>
+		<value xml:lang="zh-CN"><![CDATA[题目]]></value>
+	</item>
+	<item name="contact_email">
+		<value xml:lang="ko"><![CDATA[이메일]]></value>
+		<value xml:lang="en"><![CDATA[E-mail]]></value>
+		<value xml:lang="jp"><![CDATA[E-mail]]></value>
+		<value xml:lang="zh-CN"><![CDATA[E-mail]]></value>
+	</item>
+	<item name="contact_content">
+		<value xml:lang="ko"><![CDATA[내용]]></value>
+		<value xml:lang="en"><![CDATA[Question and Comment]]></value>
+		<value xml:lang="jp"><![CDATA[コンテンツ]]></value>
+		<value xml:lang="zh-CN"><![CDATA[內容]]></value>
+	</item>
+	<item name="contact_send">
+		<value xml:lang="ko"><![CDATA[전송]]></value>
+		<value xml:lang="en"><![CDATA[Send]]></value>
+		<value xml:lang="jp"><![CDATA[完了]]></value>
+		<value xml:lang="zh-CN"><![CDATA[轉送]]></value>
+	</item>
+	<item name="contact_message">
+		<value xml:lang="ko"><![CDATA[전송이 완료되었습니다.]]></value>
+		<value xml:lang="en"><![CDATA[An email has been sent successfully.]]></value>
+		<value xml:lang="jp"><![CDATA[転送が完了しました。]]></value>
+		<value xml:lang="zh-CN"><![CDATA[转让已完成。]]></value>
+	</item>
+	<item name="contact_confirm">
+		<value xml:lang="ko"><![CDATA[확인]]></value>
+		<value xml:lang="en"><![CDATA[Confirm]]></value>
+		<value xml:lang="jp"><![CDATA[かく-にん]]></value>
+		<value xml:lang="zh-CN"><![CDATA[确认]]></value>
+	</item>
+</lang>

@@ -1,0 +1,9 @@
+<filter name="rss_delete" module="rssboard" act="procRssboardAdminDelete" confirm_msg_code="confirm_delete">
+    <form>
+        <node target="rssboard_srl" required="true" />
+    </form>
+    <response callback_func="completeDeleteRssboard">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

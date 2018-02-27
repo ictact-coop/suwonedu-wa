@@ -1,0 +1,42 @@
+<form action="">
+	PC 레이아웃
+	<select name="layout_srl" id="layout_srl">
+		<option value="{$layout->layout_srl}" loop="$layout_list => $no, $layout">{$layout->title}</option>
+	</select>
+	<br>
+	모바일 레이아웃
+
+	<select name="m_layout_srl" id="m_layout_srl">
+		<option value="{$layout->layout_srl}" loop="$layout_list => $no, $layout">{$layout->title}</option>
+	</select>
+	<br>
+	모듈 스킨 <select name="" id=""></select>
+	<br>
+	<input type="submit" class="x_btn" value="적용">
+</form>
+<form action="" method="post" class="x_form-horizontal">
+	<input type="hidden" name="module">
+	<input type="hidden" name="act">
+	<section class="section">
+		<h1>레이아웃 설정 {htmlspecialchars($layout_info->layout_title)}</h1>
+		{@$group=''}
+		<block loop="$layout_info->extra_var => $key => $extra_var">
+			<h2 cond="$group != $extra_var->group">{$extra_var->group}</h2>
+			<div class="x_control-group">
+				<label for="" class="x_control-label">{$extra_var->title}</label>
+				<div class="x_controls">
+					<input type="text" value="{$extra_var->value}" cond="$extra_var->type == 'text'">
+					<select name="" cond="$extra_var->type == 'select'">
+						<option value="{$key}" selected|cond="$key == $extra_var->value" loop="$extra_var->options => $key, $val">{$val->val}</option>
+					</select>
+					<block cond="$extra_var->type">
+					{print_r($extra_var)}
+					</block>
+				</div>
+			</div>
+			{@$group=$extra_var->group}
+		</block>
+	</section>
+</form>
+
+<!--<xmp>{print_r($layout_info)}</xmp>-->

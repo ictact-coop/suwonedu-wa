@@ -1,0 +1,252 @@
+<load target="./css/font-awesome.css" />
+<load target="./css/textassist.css" />
+<load target="./css/admin_bar.css" index="-100" />
+<load target="./js/admin_bar.js" index="-100" />
+<load target="./js/adminBarPlugin.js" index="-100" />
+<load target="./js/plugins/textassist.js" cond="$module_info->module != 'page'"/>
+
+<nav id="easyAdminBar" class="adminbar adminbar-top" style="display:none"|cond="$easyAdminBarStatus != 'o'">
+	<div class="nav-collapse">
+		<button type="button"><i class="fa fa-bars"></i></button>
+	</div>
+	<ul class="nav-gnb">
+		<!-- 시작 페이지 -->
+		<li class="home">
+			<a href="{getUrl()}">
+				<i class="fa fa-home"></i>
+			</a>
+		</li>
+		<!-- 관리자 -->
+		<li>
+			<a href="{getUrl('', 'module', 'admin')}"><i class="fa fa-tachometer"></i> 관리자</a>
+		</li>
+		<!-- 설정 -->
+		<li class="active"|cond="$act == 'dispAdminConfigGeneral'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispAdminConfigGeneral')}" data-menu="config"><i class="fa fa-cog"></i> 설정
+			</a>
+			<div class="nav-panel">
+				<ul class="panel-tab-square">
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispAdminConfigGeneral')}"><i class="fa fa-cog"></i> 일반</a>
+					</li>
+
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispMemberAdminConfig')}"> <i class="fa fa-user"></i> 회원 설정
+						</a>
+					</li>
+					<!--<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispPointAdminConfig')}">
+							<i class="fa fa-database"></i> 
+							포인트
+						</a>
+					</li>
+					<li cond="is_object(getClass('attendance'))">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispAttendanceAdminList')}">
+							<i class="fa fa-calendar"></i> 
+							출석부
+						</a>
+					</li>
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispIntegration_searchAdminContent')}">
+							<i class="fa fa-search"></i> 
+							통합 검색
+						</a>
+					</li>-->
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispEasyxeAdminSetting')}">
+							<i class="fa fa-bolt"></i> 
+							툴바 제거
+						</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<!-- 애드온 -->
+		<li class="adminbar-addon">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispEasyxeAdminManageAddon')}" data-menu="addon"><i class="fa fa-toggle-on"></i> 애드온</a>
+			<ul>
+				<!-- 애드온 목록은 필요 시에 Ajax로 호출하여 보여준다 -->
+				<li class="addon-loading">
+					<a href="#addon-loading">
+						<i class="fa fa-spinner fa-spin"></i> 로딩중...
+					</a>
+				</li>
+			</ul>
+		</li>
+		<!-- 회원 -->
+		<li class="active"|cond="$act == 'dispMemberAdminList'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispMemberAdminList')}" data-menu="member" data-panel-resize="true"> <i class="fa fa-user"></i> {$lang->manage_member} <i class="fa fa-caret-down"></i>
+			</a>
+			<div class="nav-panel">
+				<ul class="panel-tab-square">
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispMemberAdminList')}">
+							<i class="fa fa-list"></i>회원 목록
+						</a>
+					</li>
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispMemberAdminGroupList')}">
+							<i class="fa fa-users"></i>회원 그룹
+						</a>
+					</li>
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispPointAdminPointList')}">
+							<i class="fa fa-database"></i>포인트
+						</a>
+					</li>
+					<li class="loginlog" cond="is_object(getClass('loginlog'))">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminList')}">
+							<i class="fa fa-history"></i>로그인 기록
+						</a>
+					</li>
+					<li class="loginlog" cond="is_object(getClass('pointhistory'))">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispPointhistoryAdminList')}">
+							<i class="fa fa-book"></i>포인트 내역
+						</a>
+					</li>
+					<li class="loginlog" cond="is_object(getClass('ncenterlite'))">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispNcenterliteAdminList')}">
+							<i class="fa fa-bell-o"></i>알림 목록
+						</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispDocumentAdminList')}"> <i class="fa fa-pencil-square-o"></i> {$lang->manage_document}
+			</a>
+			<ul>
+				<li>
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispDocumentAdminDeclared')}">신고글 관리</a>
+				</li>
+			</ul>
+		</li>
+		<li class="active"|cond="$act == 'dispCommentAdminList'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispCommentAdminList')}">
+				<i class="fa fa-comment"></i> {$lang->manage_comment}
+			</a>
+			<ul>
+				<li>
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispCommentAdminDeclared')}">신고댓글 관리</a>
+				</li>
+			</ul>
+		</li>
+		<li class="active"|cond="$act == 'dispFileAdminList'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispFileAdminList')}" data-menu="file">
+				<i class="fa fa-paperclip"></i> {$lang->manage_file} <i class="fa fa-caret-down"></i>
+			</a>
+			<div class="nav-panel">
+				<ul class="panel-tab-square">
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispFileAdminList')}">
+						<i class="fa fa-list"></i>
+						파일 목록
+						</a>
+					</li>
+					<li class="loginlog">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispModuleAdminFileBox')}"><i class="fa fa-inbox"></i>파일 보관함</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li class="active"|cond="$act == 'dispMenuAdminSiteMap'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispMenuAdminSiteMap')}" data-menu="menu"|cond="isset($layout_info->menu) && count($layout_info->menu) > 0 && FALSE">
+				<i class="fa fa-sitemap"></i> 메뉴
+			</a>
+			<ul cond="isset($layout_info->menu) && count($layout_info->menu) > 0">
+				<li loop="$layout_info->menu => $no, $menu">
+					<a href="{getUrl('act', 'dispEasyxeAdminMenuTree', 'menu_srl', $menu->menu_srl)}">{$menu->title}</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispPageAdminContent')}" data-menu-disabled="page">
+			<i class="fa fa-book"></i> 페이지
+			</a>
+			<ul class="nav-panel">
+				<li>
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispPageAdminContent')}">페이지 목록</a>
+				</li>
+				<li>
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispPageAdminInsert')}">페이지 추가</a>
+				</li>
+			</ul>
+		</li>
+		<li class="active"|cond="$act == 'dispBoardAdminContent'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispBoardAdminContent')}" data-menu="board"> <i class="fa fa-paper-plane"></i> 게시판 <i class="fa fa-caret-down"></i>
+			</a>
+			<ul>
+				<li>
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispBoardAdminContent')}">
+						<i class="fa fa-list"></i>
+						게시판 목록
+					</a>
+				</li>
+				<li>
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispBoardAdminInsertBoard')}">
+						<i class="fa fa-plus"></i>
+						게시판 추가
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li class="active"|cond="$act == 'dispMenuAdminSiteDesign'">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispMenuAdminSiteDesign')}" data-menu="design"><i class="fa fa-star"></i> 디자인 <i class="fa fa-caret-down"></i>
+			</a>
+			<div class="nav-panel">
+				<ul class="panel-tab-square">
+					<li cond="$module_info->layout_srl">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispLayoutAdminModify', 'layout_srl', $module_info->layout_srl)}">
+						<i class="fa fa-desktop"></i> PC
+						</a>
+					</li>
+					<li cond="$module_info->mlayout_srl">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispLayoutAdminModify', 'layout_srl', $module_info->mlayout_srl)}"><i class="fa fa-mobile"></i> 모바일</a>
+					</li>
+					<li>
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispEasyxeAdminChangeModuleLayout')}"><i class="fa fa-retweet"></i> 일괄 변경</a>
+					</li>
+					<li class="loginlog">
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispMenuAdminSiteDesign')}">
+							<i class="fa fa-cogs"></i> 전체 디자인
+						</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+        <li>
+			<a href="{getUrl('mid', 'writer')}" data-menu-disabled="page">
+			<i class="xi-user-info"></i> 필진노출관리
+			</a>
+
+		</li>
+        <li>
+			<a href="/index.php?module=admin&act=dispLayoutAdminModify&layout=portalon&layout_srl=99899" data-menu-disabled="page">
+			<i class="xi-stack-paper"></i> 와 최근호 이미지 수정
+			</a>
+
+		</li>
+        
+	</ul>
+	<div class="nav-aside" style="display:block">
+		<ul>
+			<li>
+				<a href="{getUrl('act', 'dispBoardAdminBoardInfo')}" data-menu="boardConfig" cond="$module_info->module == 'board'">게시판 설정</a>
+			</li>
+		</ul>
+		<div class="nav-panel">
+			<ul class="panel-tab-square">
+				<li class="loginlog" >
+					<a href="{getUrl('', 'module', 'admin', 'act', 'dispEasyxeAdminCreateBoard')}">
+						<i class="fa fa-plus"></i> 게시판 추가
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</nav>
+<button class="nav-toggle" style="top:46px"|cond="$easyAdminBarStatus == 'o'">
+	<i class="fa fa-chevron-down" cond="$easyAdminBarStatus == 'o'"></i>
+	<i class="fa fa-chevron-up" cond="$easyAdminBarStatus != 'o'"></i>
+</button>

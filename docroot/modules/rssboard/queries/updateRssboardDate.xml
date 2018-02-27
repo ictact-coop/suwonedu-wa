@@ -1,0 +1,11 @@
+<query id="updateRssboardDate" action="update">
+	<tables>
+		<table name="rssboard"/>
+	</tables>
+	<columns> 
+		<column name="updatedate" default="curdate()"/>
+	</columns>
+	<conditions>
+		<condition operation="equal" column="rssboard_srl" var="rssboard_srl" filter="number" notnull="notnull"/>
+	</conditions>
+</query>

@@ -1,0 +1,5 @@
+<table name="easyxe_preset">
+	<column name="preset_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="preset_name" type="varchar" size="80" notnull="notnull" />
+	<column name="config" type="text" notnull="notnull" />
+</table>

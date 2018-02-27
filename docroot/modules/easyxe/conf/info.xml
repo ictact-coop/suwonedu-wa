@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">EasyXE</title>
+	<description xml:lang="ko">사이트를 손쉽게 관리/제작할 수 있도록 도와주는 모듈입니다. </description>
+	<version>1.43.1</version>
+	<date>2015-08-18</date>
+	<category>system</category>
+
+	<author email_address="contact@funnyxe.com" link="http://funnyxe.com">
+		<name xml:lang="ko">퍼니엑스이</name>
+	</author>
+</module>
