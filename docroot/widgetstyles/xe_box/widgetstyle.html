@@ -1,0 +1,124 @@
+<!--@if($widgetstyle_extar_var->ws_colorset == "Black")-->
+    {@ $_wsClassName = "Black"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Basic")-->
+    {@ $_wsClassName = "Basic"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Blue")-->
+    {@ $_wsClassName = "Blue"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Pink")-->
+    {@ $_wsClassName = "Pink"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Sky")-->
+    {@ $_wsClassName = "Sky"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Green")-->
+    {@ $_wsClassName = "Green"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Orange")-->
+    {@ $_wsClassName = "Orange"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "Purple")-->
+    {@ $_wsClassName = "Purple"}
+<!--@elseif($widgetstyle_extar_var->ws_colorset == "White")-->
+    {@ $_wsClassName = "White"}
+<!--@else-->
+    {@ $_wsClassName = $layout_info->colorset}
+<!--@end-->
+
+<!--@if($widgetstyle_extar_var->ws_more_color)-->
+<style type="text/css">
+	.{$_wsClassName} #lBottomBg #BasicRMoreBt .widgetMoreLink {color:{$widgetstyle_extar_var->ws_more_color} !important;}
+</style>
+<!--@end-->
+<!--%import("css/BasicR.css")-->
+{@$widgetstyle_extar_var->ws_more_url=trim($widgetstyle_extar_var->ws_more_url);}
+
+<div class="BasicR {$_wsClassName}">
+
+                   
+      						    
+    <div id="lTitleBg" style="background:url({$request_uri}widgetstyles/BasicR/img/Black.gif) no-repeat; " >
+    <div id="rTitleBg" style="background:url({$request_uri}widgetstyles/BasicR/img/Black.gif) no-repeat right top; " > 
+ 
+    <h6 class="BasicRTitle" style="float:left;color:{$widgetstyle_extar_var->ws_title_color} !important;  "><i class="fa fa12_2 fa-{$widgetstyle_extar_var->ws_title_icon}"></i>&nbsp;&nbsp;{$widgetstyle_extar_var->ws_title}</h6>
+   
+    <div id="BasicRMoreBt">
+    <!--@if($widgetstyle_extar_var->ws_more_url)-->
+
+            <!--@if(strtolower(substr($widgetstyle_extar_var->ws_more_url,0,4))=='http')-->
+                <a href="{$widgetstyle_extar_var->ws_more_url}" class="widgetMoreLink">
+            <!--@else-->
+                <a href="http://{$widgetstyle_extar_var->ws_more_url}" class="widgetMoreLink">
+            <!--@end-->
+            
+            <!--@if($widgetstyle_extar_var->ws_more_imgbt_use=="no")-->
+            	{$widgetstyle_extar_var->ws_more_text}
+                <!--@elseif($widgetstyle_extar_var->ws_more_imgbt_use=="style1")-->
+                <img src="img/moreBt.png" width="47" height="18" class="moreBt" alt="more" />
+                <!--@elseif($widgetstyle_extar_var->ws_more_imgbt_use=="style2")-->
+                <img src="img/moreBt2.png" width="47" height="18" class="moreBt" alt="more" />
+                <!--@elseif($widgetstyle_extar_var->ws_more_imgbt_use=="style3")-->
+                <img src="layouts/portalon/img/bt_more.png" width="47" height="18" class="moreBt" alt="more" />
+                <!--@elseif($widgetstyle_extar_var->ws_more_imgbt_use=="style4")-->
+                <img src="img/moreBt4.png" width="47" height="18" class="moreBt" alt="more" />
+            <!--@end-->
+            </a>
+            
+        <!--@end-->
+    </div>
+    </div>
+    </div>
+	
+	
+    <!--@if($widgetstyle_extar_var->ws_title_use=="yes")--><!--중단부 사용-->    
+    <!--@if($widgetstyle_extar_var->ws_img_position=="top")--><!--사용자 이미지 상단 정렬-->    
+    <div id="wsImgBox" <!--@if($widgetstyle_extar_var->ws_img)--> <!--@else-->style="padding:15px 20px 0px 25px;" <!--@end--> >
+        <!--@if($widgetstyle_extar_var->ws_img)-->
+    <img src="{$widgetstyle_extar_var->ws_img}" id="wsCustomImg" class="iePngFix" />
+    <!--@end-->     
+    <div id="wsCustomTitleWrap">
+    <!--@if($widgetstyle_extar_var->ws_title_big)-->
+        <span id="wsCustomBigTitle_l" >{$widgetstyle_extar_var->ws_title_big}</span>
+        <!--@if($widgetstyle_extar_var->ws_title_small)-->
+        <span id="wsCustomSmallTitle" >{$widgetstyle_extar_var->ws_title_small}</span>
+        <!--@end-->
+        <!--@end-->
+           
+    </div>
+    </div>
+
+     <div id="wsBody" <!--@if($widgetstyle_extar_var->ws_img)-->style="padding:10px 0 5px 25px;" <!--@end-->>
+    {$widget_content}
+    </div>
+
+    <!--@elseif($widgetstyle_extar_var->ws_img_position=="left")--><!--사용자 이미지 좌측 정렬-->
+        <div id="wsWarp">
+        <!--@if($widgetstyle_extar_var->ws_img)-->
+        <img src="{$widgetstyle_extar_var->ws_img}" id="wsCustomImg_l" class="iePngFix" />
+        <!--@end-->    
+        <div id="wsImgBox_l" <!--@if($widgetstyle_extar_var->ws_img)--> <!--@else-->style="padding:15px 20px 0px 25px;" <!--@end--> >
+     
+        <div id="wsCustomTitleWrap_l">
+        <!--@if($widgetstyle_extar_var->ws_title_big)-->
+            <span id="wsCustomBigTitle_l" >{$widgetstyle_extar_var->ws_title_big}</span>
+            <!--@if($widgetstyle_extar_var->ws_title_small)-->
+            <span id="wsCustomSmallTitle_l" >{$widgetstyle_extar_var->ws_title_small}</span>
+            <!--@end-->
+            <!--@end-->
+         <div id="wsBody_l" style="background-color:{$widgetstyle_extar_var->ws_bgcolor} !important;">
+        {$widget_content}
+        </div>           
+        </div>
+        </div>
+        </div>
+    <!--@end-->
+    <!--사용자 이미지 정렬 끝-->
+
+    <!--중단부 사용하지 않을시-->
+	<!--@else-->    
+    
+    <div id="wsBody" style="background-color:{$widgetstyle_extar_var->ws_bgcolor} !important; ">
+    {$widget_content}
+    </div>
+    <!--@end-->
+
+    <div id="lBottomBg">
+    <div id="rBottomBg">
+    </div></div>
+    
+</div>

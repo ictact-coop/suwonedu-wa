@@ -1,0 +1,33 @@
+<!--@if($widgetstyle_extra_var->ws_colorset == "gray")-->
+    {@ $_wsClassName = "gray"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "lightsky")-->
+    {@ $_wsClassName = "lightsky"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "orange")-->
+    {@ $_wsClassName = "orange"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "sky")-->
+    {@ $_wsClassName = "sky"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "green")-->
+    {@ $_wsClassName = "green"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "deeppink")-->
+    {@ $_wsClassName = "deeppink"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "lightpink")-->
+    {@ $_wsClassName = "lightpink"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "tomato")-->
+    {@ $_wsClassName = "tomato"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "royalblue")-->
+    {@ $_wsClassName = "royalblue"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "gold")-->
+    {@ $_wsClassName = "gold"}
+<!--@end-->
+
+<!--%import("style.css")-->
+
+<div class="sbwidgetstyle {$_wsClassName}">
+    <h2 <!--@if($widgetstyle_extra_var->korean == "yes")-->style="font-family:inherit;font-style:normal"<!--@end-->>
+		<b></b>{$widgetstyle_extra_var->ws_title}
+		<!--@if($widgetstyle_extra_var->more == "yes")-->
+			<a class="more" href="{$widgetstyle_extra_var->more_url}"></a>
+		<!--@end-->
+	</h2>
+    {$widget_content}
+</div>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgetstyle>
+    <title xml:lang="ko">Sketchbook5 위젯스타일</title>
+    <description xml:lang="ko">Sketchbook5에 어울리는 위젯스타일입니다.</description>
+    <version>3.0</version>
+    <date>2012-04-07</date>
+    <preview>preview.gif</preview>
+
+    <author email_address="wincomi@wincomi.com" link="http://xe.pe.kr">
+        <name xml:lang="ko">윈컴이</name>
+    </author>
+
+    <extra_vars>
+		<var name="no_name">
+			<title xml:lang="ko">방문해주세요.</title>
+			<description xml:lang="ko">한번 찾아주시면 정말 감사하겠습니다.&lt;br /&gt;
+			&lt;a href="http://www.nsws.kr" target="_blank"&gt;http://www.nsws.kr&lt;/a&gt; - 웹 개발자 커뮤니티.
+			</description>
+		</var>
+        <var name="ws_colorset" type="select">
+            <title xml:lang="ko">컬러셋</title>
+            <description xml:lang="ko">컬러셋을 지정해주세요</description>
+            <options>
+                <name xml:lang="ko">기본 (Gray)</name>
+                <value>gray</value>
+            </options>
+            <options>
+                <name xml:lang="ko">LightSky</name>
+                <value>lightsky</value>
+            </options>
+            <options>
+                <name xml:lang="ko">Orange</name>
+                <value>orange</value>
+            </options>
+            <options>
+                <name xml:lang="ko">Sky</name>
+                <value>sky</value>
+            </options>
+            <options>
+                <name xml:lang="ko">Green</name>
+                <value>green</value>
+            </options>
+            <options>
+                <name xml:lang="ko">DeepPink</name>
+                <value>deeppink</value>
+            </options>
+            <options>
+                <name xml:lang="ko">LightPink</name>
+                <value>lightpink</value>
+            </options>
+            <options>
+                <name xml:lang="ko">Tomato</name>
+                <value>tomato</value>
+            </options>
+            <options>
+                <name xml:lang="ko">RoyalBlue</name>
+                <value>royalblue</value>
+            </options>
+            <options>
+                <name xml:lang="ko">Gold</name>
+                <value>gold</value>
+            </options>
+        </var>
+        <var name="ws_title" type="text">
+            <name xml:lang="ko">제목</name>
+            <description xml:lang="ko">제목을 입력하세요.</description>
+        </var>
+        <var name="more" type="select">
+            <name xml:lang="ko">더보기</name>
+            <description xml:lang="ko">더보기를 사용할까요? 더보기는 "&gt;"로 나옵니다.</description>
+            <options>
+                <name xml:lang="ko">아니요</name>
+                <value>no</value>
+            </options>
+            <options>
+                <name xml:lang="ko">네</name>
+                <value>yes</value>
+            </options>
+        </var>
+        <var name="more_url" type="text">
+            <name xml:lang="ko">더보기 URL</name>
+            <description xml:lang="ko">더보기의 URL 혹은 모듈아이디를 적어주세요.</description>
+        </var>
+        <var name="korean" type="select">
+            <name xml:lang="ko">한글</name>
+            <description xml:lang="ko">'Trebuchet MS' 글꼴을 사용하지 않습니다. 한글을 쓸 경우'예'를 눌러주세요.</description>
+            <options>
+                <name xml:lang="ko">아니요</name>
+                <value>no</value>
+            </options>
+            <options>
+                <name xml:lang="ko">예</name>
+                <value>yes</value>
+            </options>
+        </var>
+    </extra_vars>
+</widgetstyle>

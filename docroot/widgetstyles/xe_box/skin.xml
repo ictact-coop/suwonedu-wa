@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgetstyle>
+    <title xml:lang="ko">기본위젯스타일 BasicR</title>
+    <title xml:lang="en">Basic Widget Style BasicR</title>
+    <description xml:lang="ko">BasicR 위젯스타일 입니다.</description>
+    <description xml:lang="en">BasicR</description>
+    <version>0.1</version>
+    <date>2011-12-16</date>
+    <preview>preview.gif</preview>
+
+    <author email_address="touchmine@nate.com" link="http://www.touchmind.co.kr">
+        <name xml:lang="ko">touchmind</name>
+        <name xml:lang="en">touchmind</name>
+    </author>
+
+    <extra_vars>
+        <var name="ws_colorset" type="select">
+            <title xml:lang="ko">컬러셋</title>
+            <title xml:lang="en">Colorset</title>
+            <description xml:lang="ko">컬러셋을 지정해주세요</description>
+            <description xml:lang="en">Choose colorset</description>
+			<options>
+                <name xml:lang="ko">기본</name>
+                <name xml:lang="en">Basic</name>
+                <value>Basic</value>
+            </options>
+            <options>
+                <name xml:lang="ko">검정색</name>
+                <name xml:lang="en">Black</name>
+                <value>Black</value>
+            </options>
+			<options>
+                <name xml:lang="ko">하얀색</name>
+                <name xml:lang="en">White</name>
+                <value>White</value>
+            </options>
+			<options>
+                <name xml:lang="ko">오랜지</name>
+                <name xml:lang="en">Orange</name>
+                <value>Orange</value>
+            </options>
+			<options>
+                <name xml:lang="ko">하늘색</name>
+                <name xml:lang="en">Sky</name>
+                <value>Sky</value>
+            </options>
+			<options>
+                <name xml:lang="ko">핑크</name>
+                <name xml:lang="en">Pink</name>
+                <value>Pink</value>
+            </options>
+			<options>
+                <name xml:lang="ko">파랑</name>
+                <name xml:lang="en">Blue</name>
+                <value>Blue</value>
+            </options>
+			<options>
+                <name xml:lang="ko">보라</name>
+                <name xml:lang="en">Purple</name>
+                <value>Purple</value>
+            </options>
+			<options>
+                <name xml:lang="ko">녹색</name>
+                <name xml:lang="en">Green</name>
+                <value>Green</value>
+            </options>
+        </var>											 
+
+		 <var name="ws_bgcolor" type="text">
+            <name xml:lang="ko">bg컬러</name>
+            <name xml:lang="en">bgcolor</name>
+            <description xml:lang="ko">bg컬러</description>
+            <description xml:lang="en">bgcolor</description>
+        </var>
+
+
+        <var name="ws_title" type="text">
+            <name xml:lang="ko">제목</name>
+            <name xml:lang="en">Title</name>
+            <description xml:lang="ko">제목 텍스트</description>
+            <description xml:lang="en">Title text</description>
+        </var>
+        <var name="ws_title_color" type="text">
+            <name xml:lang="ko">제목 색상</name>
+            <name xml:lang="en">Title color</name>
+            <description xml:lang="ko">위젯 스타일 제목의 색상을 선택합니다.(#efefef등 16진수 컬러값으로 입력합니다.)</description>
+            <description xml:lang="en">select widgetstyle title color</description>
+        </var>
+
+		 <var name="ws_title_icon" type="filebox" filter="jpg,jpeg,gif,png">
+            <name xml:lang="ko">아이콘 이미지</name>
+            <name xml:lang="zh-CN">栏目图标</name>
+            <name xml:lang="zh-TW">標題圖示</name>
+            <name xml:lang="jp">アイコンイメージ</name>
+            <description xml:lang="ko">제목 앞 아이콘 이미지를 등록합니다.</description>
+            <description xml:lang="zh-CN">可以给栏目名指定个性图标。</description>
+            <description xml:lang="zh-TW">可指定標題前方的圖示。</description>
+            <description xml:lang="jp">タイトル前のアイコンイメージを登録します。</description>
+        </var>
+
+		<var name="ws_title_use">
+			<type>select</type>
+			<name xml:lang="ko">중단 텍스트 사용여부</name>
+			<name xml:lang="en">whether to use bigsize text</name>
+			<description xml:lang="ko">중단텍스트를 출력하지 않고 리스트만 출력한다.</description>
+			<description xml:lang="en">select vertical align</description>
+
+			<options>
+				<name xml:lang="ko">사용함</name>
+				<name xml:lang="en">use</name>
+				<value>yes</value>
+			</options>
+			<options>
+				<name xml:lang="ko">사용안함</name>
+				<name xml:lang="en">do not use</name>
+				<value>no</value>
+			</options>
+		</var>
+		<var name="ws_img_position">
+			<type>select</type>
+			<name xml:lang="ko">사용자 이미지 위치</name>
+			<name xml:lang="en">User image position</name>
+			<description xml:lang="ko">사용자 이미지의 위치를 선택합니다.</description>
+			<description xml:lang="en">select user image position</description>
+
+			<options>
+				<name xml:lang="ko">상단</name>
+				<name xml:lang="en">top</name>
+				<value>top</value>
+			</options>
+			<options>
+				<name xml:lang="ko">좌측</name>
+				<name xml:lang="en">left</name>
+				<value>left</value>
+			</options>
+		</var>
+	
+		<var name="ws_title_big">
+			<type>text</type>
+			<name xml:lang="ko">중단 큰 텍스트</name>
+			<name xml:lang="en">Big Text</name>
+			<description xml:lang="ko">목록 상단의 텍스트중 큰 텍스트를 입력한다.</description>
+			<description xml:lang="en">Input big size text upper side of list</description>
+		</var>
+	
+		
+		<var name="ws_title_small">
+			<type>text</type>
+			<name xml:lang="ko">중단 작은텍스트</name>
+			<name xml:lang="en">Small Text</name>
+			<description xml:lang="ko">목록 상단의 텍스트중 작은글씨 텍스트를 입력한다.</description>
+			<description xml:lang="en">Input small size text upper side of list</description>
+		</var>	
+	
+	
+		
+		<var name="ws_img">
+			<type filter="jpg,jpeg,gif,png">filebox</type>
+			<name xml:lang="ko">위젯 이미지</name>
+			<name xml:lang="en">widget image</name>
+			<description xml:lang="ko">위젯 스타일 중단에 들어갈 이미지를 선택한다. 100px * 100px의 이미지에 최적화 되어 있습니다.</description>
+			<description xml:lang="en">select widget image</description>
+		</var>
+		
+        <var name="ws_more_url" type="text">
+            <name xml:lang="ko">더보기 URL</name>
+            <name xml:lang="en">more URL</name>
+            <description xml:lang="ko">포함한 URL를 등록합니다. url이 입력되지 않으면 more 텍스트가 나타나지 않습니다.</description>
+            <description xml:lang="en">Destination of a link 'more'. Register an URL including http://</description>
+        </var>
+		<var name="ws_more_imgbt_use">
+			<type>select</type>
+			<name xml:lang="ko">더보기 이미지 버튼</name>
+			<name xml:lang="en">whether to use bigsize text</name>
+			<description xml:lang="ko">더보기 버튼 사용 여부 및 종류선택</description>
+			<description xml:lang="en">select vertical align</description>
+
+			<options>
+				<name xml:lang="ko">사용안함</name>
+				<name xml:lang="en">no</name>
+				<value>no</value>
+			</options>
+			<options>
+				<name xml:lang="ko">Style1</name>
+				<name xml:lang="en">Style1</name>
+				<value>style1</value>
+			</options>
+			<options>
+				<name xml:lang="ko">Style2</name>
+				<name xml:lang="en">Style2</name>
+				<value>style2</value>
+			</options>
+			<options>
+				<name xml:lang="ko">Style3</name>
+				<name xml:lang="en">Style3</name>
+				<value>style3</value>
+			</options>
+			<options>
+				<name xml:lang="ko">Style4</name>
+				<name xml:lang="en">Style4</name>
+				<value>style4</value>
+			</options>
+		</var>
+        <var name="ws_more_text" type="text">
+            <name xml:lang="ko">더보기 텍스트</name>
+            <name xml:lang="en">more Text</name>
+            <description xml:lang="ko">더보기 텍스트로 사용될 글자입력</description>
+            <description xml:lang="en">Text for a link 'more'</description>
+       </var>
+        <var name="ws_more_color" type="text">
+            <name xml:lang="ko">더보기 글자 색상</name>
+            <name xml:lang="en">More text color</name>
+            <description xml:lang="ko">더보기 텍스트의 색상을 선택합니다.(#efefef등 16진수 컬러값으로 입력합니다.)</description>
+            <description xml:lang="en">select more text color</description>
+        </var>
+    </extra_vars>
+</widgetstyle>
