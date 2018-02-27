@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">content 첫번째 스킨</title>
+    <title xml:lang="en">content 1st skin</title>
+    <description xml:lang="ko">content 첫번째 스킨입니다.</description>
+    <version>0.1</version>
+    <date>2011-12-17</date>
+    <link>http://studyu.cafe24.com/</link>
+
+    <author email_address="" link="http://studyu.cafe24.com/">
+        <name xml:lang="ko">Study4U</name>
+    </author>
+
+    <colorset>
+		<color name="default">
+			<title xml:lang="ko">default</title>
+			<title xml:lang="en">default</title>
+		</color>
+	</colorset>
+</skin>

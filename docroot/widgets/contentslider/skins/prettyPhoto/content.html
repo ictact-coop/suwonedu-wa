@@ -1,0 +1,10 @@
+<!--// 설정된 컬러셋의 종류에 따라서 css파일을 import 합니다 -->
+<!--@if($colorset=="Webzine")-->
+<include target="Webzine.html" />
+<!--@elseif($colorset=="News")-->
+<include target="News.html" />
+<!--@elseif($colorset=="Post")-->
+<include target="Post.html" />
+<!--@else-->
+<include target="Portfolio.html" />
+<!--@end-->

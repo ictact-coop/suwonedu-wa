@@ -1,0 +1,314 @@
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<!--// 위젯이나 레이아웃에서 로딩된 js 중복 체크 -->
+<!--@foreach(Context::getJsFile() as $key => $jsfile)-->
+	<!--@if(preg_match('/jquery.prettyPhoto.js/i',$jsfile['file']))-->{@$ptyptojs='Y'}<!--@end-->
+	<!--@if(preg_match('/flowplayer-3.2.6.min.js/i',$jsfile['file']))-->{@$flowjs='Y'}<!--@end-->
+	<!--@if(preg_match('/cufon-yui.js/i',$jsfile['file']))-->{@$cufonjs='Y'}<!--@end-->
+<!--@end-->
+
+<!--@if($ptyptojs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/prettyPhoto.css")--><!--@end-->
+<!--@if($ptyptojs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/jquery.prettyPhoto.js")--><!--@end-->
+<!--@if($flowjs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/flowplayer-3.2.6.min.js")--><!--@end-->
+<!--@if($cufonjs!='Y'&&$widget_info->cufon == 'Y')--><!--%import("../isoTope/cufon-yui.js")--><!--@end-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@ $slide_id = mt_rand()}
+{@ $skin_id = "Gal01_".$slide_id}
+<!--@if(!$widget_info->title_font_size)-->{@$title_font_size = '13px'}
+<!--@else-->{@$title_font_size = $widget_info->title_font_size}<!--@end-->
+<!--@if(!$widget_info->title_font_color)-->{@ $title_font_color = '#171717'}
+<!--@else-->{@ $title_font_color = $widget_info->title_font_color}<!--@end-->
+<!--@if($widget_info->title_font_family=='Default')-->{@ $title_font_family = "굴림,Arial,'Lucida Grande','Lucida Sans Unicode',sans-serif"}
+<!--@else-->{@ $title_font_family = $widget_info->title_font_family}<!--@end-->
+<!--@if($widget_info->title_font_user)-->{@ $title_font_family = $widget_info->title_font_user}<!--@end-->
+<!--@if(!$widget_info->title_height)-->{@ $textT1_Height = 18}
+<!--@else-->{@ $textT1_Height = $widget_info->title_height}<!--@end-->
+
+<!--@if(!$widget_info->content_font_size)-->{@ $content_font_size = '11px'}
+<!--@else-->{@ $content_font_size = $widget_info->content_font_size}<!--@end-->
+<!--@if(!$widget_info->content_font_color)-->{@ $content_font_color = '#000'}
+<!--@else-->{@ $content_font_color = $widget_info->content_font_color}<!--@end-->
+<!--@if($widget_info->content_font_family=='Default')-->{@ $content_font_family = "굴림,Arial,Helvetica,AppleGothic,Sans-serif"}
+<!--@else-->{@ $content_font_family = $widget_info->content_font_family}<!--@end-->
+<!--@if($widget_info->content_font_user)-->{@ $content_font_family = $widget_info->content_font_user}<!--@end-->
+<!--@if(!$widget_info->content_height)-->{@ $textC1_Height = 50}
+<!--@else-->{@ $textC1_Height = $widget_info->content_height}<!--@end-->
+
+<!--// 테두리 크기(2px) -->
+<!--@if(!$widget_info->cl_grbdsize)-->{@ $widget_info->cl_grbdsize = 2}<!--@end-->
+
+<!--@if($widget_info->title_font_family=='webfont'&&$widget_info->title_fonturl!='')-->
+<style>
+	.wf-active .post-title {
+		font-family: '{$widget_info->title_font_user}';
+	}
+</style>
+<script src="http://www.google.com/jsapi"></script>
+<script>
+	google.load( "webfont", "1" );
+	google.setOnLoadCallback(function() {
+		WebFont.load({ custom: {
+			families: [ "{$widget_info->title_font_user}" ],
+			urls: [ "{$widget_info->title_fonturl}" ]
+		}});
+	});
+</script>
+<!--@end-->
+<!--@if($widget_info->content_font_family=='webfont'&&$widget_info->content_fonturl!='')-->
+<style>
+	.wf-active .post-content {
+		font-family: '{$widget_info->content_font_user}';
+	}
+</style>
+<script src="http://www.google.com/jsapi"></script>
+<script>
+	google.load( "webfont", "1" );
+	google.setOnLoadCallback(function() {
+		WebFont.load({ custom: {
+			families: [ "{$widget_info->content_font_user}" ],
+			urls: [ "{$widget_info->content_fonturl}" ]
+		}});
+	});
+</script>
+<!--@end-->
+
+<!--@if($widget_info->title_font_family=='cufon'&&$widget_info->title_fonturl!='')-->
+<script type="text/javascript" src="{$widget_info->title_fonturl}"></script><!--@end-->
+<!--@if($widget_info->content_font_family=='cufon'&&$widget_info->content_fonturl!='')-->
+<script type="text/javascript" src="{$widget_info->content_fonturl}"></script><!--@end-->
+
+<!--@if($widget_info->cufon == 'Y'&&$widget_info->fonturl=='Y')-->
+<script type="text/javascript">
+jQuery(function($){
+<!--@if($widget_info->title_font_family=='cufon'&&$widget_info->title_fonturl!=''&&$widget_info->title_font_user!='')-->
+Cufon.replace('.{$skin_id} .post-title', { fontFamily: '{$widget_info->title_font_user}', hover: true });<!--@end-->
+<!--@if($widget_info->content_font_family=='cufon'&&$widget_info->content_fonturl!=''&&$widget_info->content_font_user!='')-->
+Cufon.replace('.{$skin_id} .post-content', { fontFamily: '{$widget_info->content_font_user}' });<!--@end-->
+});
+</script>
+<!--@end-->
+
+{@ $skincssimgpath = getSiteUrl()."widgets/contentslist/skins"}
+
+<style type="text/css">
+
+/************************************************************************************
+RESET
+*************************************************************************************/
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+	margin: 0;
+	padding: 0;
+}
+
+img, fieldset {
+	border: 0;
+}
+
+/* set img max width */
+img {
+	border: 0;
+}
+
+/* reset iphone text adjust */
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+.css3pie{behavior:url(widgets/contentslist/skins/Gallery01/PIE.htc)}
+
+/* Image rounded corners */
+.rounded-all { -moz-border-radius: 8px; -webkit-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; }
+.rounded-top { -moz-border-radius: 8px 8px 0 0; -webkit-border-radius: 8px 8px 0 0; -khtml-border-radius: 8px 8px 0 0; border-radius: 8px 8px 0 0; }
+.rounded-bottom { -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; -khtml-border-radius: 0 0 8px 8px; border-radius: 0 0 8px 8px; }
+.rounded-left { -moz-border-radius: 8px 0 0 0; -webkit-border-radius: 8px 0 0 0; -khtml-border-radius: 8px 0 0 0; border-radius: 8px 0 0 0; }
+.rounded-right { -moz-border-radius: 0 8px 0 0; -webkit-border-radius: 0 8px 0 0; -khtml-border-radius: 0 8px 0 0; border-radius: 0 8px 0 0; }
+
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-size: {$title_font_size};
+	font-family: {$title_font_family};
+	font-weight: bold;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color: {$content_font_color};
+	font-size: {$content_font_size};
+	font-family: {$content_font_family};
+	font-weight: normal;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+div#wrap_{$skin_id} {
+	width: auto;
+	height: auto;
+}
+#gal_{$skin_id} {
+	position:relative;
+	margin:0 0 0 -10px;
+	padding:0;
+	*zoom:1;
+}
+
+#gal_{$skin_id} li {
+	position:relative;
+	float:left;
+	margin:0 0 10px 15px;
+	display:inline;
+	list-style:none;
+	line-height:16px;
+	width: {$widget_info->thumbnail_width}px;
+}
+
+#gal_{$skin_id} li a {
+	text-decoration: none;
+}
+#gal_{$skin_id} li a:focus, #gal_{$skin_id} li a:hover, #gal_{$skin_id} li a:active {
+	text-decoration: underline;
+}
+
+#gal_{$skin_id} li .gal-image {
+	position:relative;
+	margin:0 0 5px 0;
+	padding:0;
+	border: {$widget_info->cl_grbdsize}px solid {$widget_info->cl_grbdcolor};
+	width: {$widget_info->thumbnail_width}px;
+	height: {$widget_info->thumbnail_height}px;
+}
+
+#gal_{$skin_id} li .gal-image img {
+	position:relative;
+	margin:0;
+	padding:0;
+	background: white;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px; 
+}
+
+#gal_{$skin_id} li .gal-title a{
+	height:{$textT1_Height}px;
+	margin-bottom:5px;
+	display:block;
+	width:{$widget_info->thumbnail_width}px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/Gallery01/Gallery01/ellipsis.xml#ellipsis');
+}
+
+#gal_{$skin_id} li .gal-content a{
+	width:{$widget_info->thumbnail_width}px;
+	height: {$textC1_Height}px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/Gallery01/ellipsis.xml#ellipsis');
+}
+
+/* gallery meta */
+#gal_{$skin_id} li .gal-meta {
+	font-size: 85%;
+	margin: 10px 0px;
+	line-height: 160%;
+	font: .81em/150% Arial, Helvetica, sans-serif;
+}
+#gal_{$skin_id} li .gal-meta span {
+	margin-right: 10px;
+	overflow: visible !important;
+	padding: 3px 0 3px 20px;
+	color:{$title_font_color};
+}
+#gal_{$skin_id} li .gal-meta span.gal-author {
+	background: url('{$skincssimgpath}/Gallery01/images/post-writer.png') no-repeat 1px 3px;
+}
+#gal_{$skin_id} li .gal-meta span.gal-category {
+	background: url('{$skincssimgpath}/Gallery01/images/post-category.png') no-repeat 2px 3px;
+}
+#gal_{$skin_id} li .gal-meta span.gal-tag {
+	background: url('{$skincssimgpath}/Gallery01/images/post-tag.png') no-repeat 2px 3px;
+}
+#gal_{$skin_id} li .gal-meta span.gal-comment {
+	background: url('{$skincssimgpath}/Gallery01/images/post-comment.png') no-repeat 2px 3px;
+}
+
+#gal_{$skin_id} li .gal-image .no_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	display:block;
+	background:url('{$skincssimgpath}/Gallery01/images/no_image.png') no-repeat center center;
+}
+
+</style>
+
+<div id="wrap_{$skin_id}">
+<ul id="gal_{$skin_id}">
+<!--@foreach($widget_info->content_items as $key => $item)-->
+    <li>
+		<div class="gal-image rounded-all css3pie" style="width:{$widget_info->thumbnail_width}px;">
+			<a href="<!--@if($widget_info->ptypto=='Y'&&$item->getPreview())-->{$item->getPreview()}<!--@else-->{$item->getLink()}<!--@end-->" <!--@if($widget_info->ptypto=='Y')-->rel='prettyPhoto[mixed]'<!--@end-->>
+		<!--@if($widget_info->show_thumbnail=='Y'&&$item->getThumbnail())-->
+				<img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px;" class="css3pie<!--@if($widget_info->ptypto=='Y'&&$item->getPreview())--> fade<!--@end-->" />
+		<!--@else-->
+				<img src="./images/blank.gif" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px;" class="no_image" />
+		<!--@end-->
+			</a>
+		</div>
+
+		<!--@if($widget_info->show_title == 'Y')-->
+		<div class="gal-title textT1_{$skin_id}">
+			<a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+		</div>
+		<!--@end-->
+
+		<!--@if($widget_info->show_content == 'Y')-->
+		<div class="gal-content textC1_{$skin_id}">
+			<a href="{$item->getLink()}">{$item->getContent()}</a>
+		</div>
+		<!--@end-->
+		<!--@if($widget_info->show_browser_title=='Y'||$widget_info->show_author=='Y'||$widget_info->show_category=='Y'||$widget_info->show_comment_count=='Y')-->
+		<div class="gal-meta">
+			<!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+			<span class="gal-tag"><a href="<!--@if($item->contents_link)-->{$item->contents_link}<!--@else-->{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}<!--@end-->">{$item->getBrowserTitle()}</a></span><!--@end-->
+			<!--@if($widget_info->show_author=='Y')-->
+			<span class="gal-author">{$item->getNickName()}</span><!--@end-->
+			<!--@if($widget_info->show_category=='Y' && $item->get('category_srl') )-->
+			<span class="gal-category"><a href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}" title="View all category">{$item->getCategory()}</a></span><!--@end-->
+			<!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+			<span class="gal-comment"><a href="{$item->getLink()}#comment" title="View all comment">{$item->getCommentCount()}</a></span><!--@end-->
+		</div>
+		<!--@end-->
+	</li>
+<!--@end-->
+</ul>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	if ($.browser.msie && $.browser.version < 7) return; // Don't execute code if it's IE6 or below cause it doesn't support it.
+	$(".fade").fadeTo(1, 1);
+	$(".fade").hover(function () {
+		$(this).fadeTo("fast", 0.33);
+	}, function () {
+		$(this).fadeTo("slow", 1);
+	});
+	<!--@if($widget_info->ptypto=='Y')-->
+	$("#gal_{$skin_id} a[rel^='prettyPhoto']").prettyPhoto({theme:'pp_default'});
+	<!--@end-->
+});
+</script>

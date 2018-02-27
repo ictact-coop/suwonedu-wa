@@ -1,0 +1,25 @@
+<load target="./js/hb_bank.js" type="body" />
+<load target="./css/widget.css" />
+
+<div class="bankinfo">
+	<div class="title"><strong><i class="fa14 fa fa-database" style="font-size:13px;"></i>&nbsp; 무통장 입금안내</strong></div>
+	<div>
+		<ul>
+			<!--@if($widget_info->bank_num01)-->
+			<li>
+				&#183; <strong style="color:#996c48">{$widget_info->bank_name01}</strong> : <span>{$widget_info->bank_num01}</span>
+			</li>
+			<!--@end-->
+			<!--@if($widget_info->bank_num02)-->
+			<li>
+				&#183; <strong style="color:#1a4373">{$widget_info->bank_name02}</strong> : <span>{$widget_info->bank_num02}</span>
+			</li>
+			<!--@end-->
+			<!--@if($widget_info->bank_info)-->
+			<li>
+				&#183; <strong>예금주</strong> : <strong>{$widget_info->bank_info}</strong>
+			</li>
+			<!--@end-->
+		</ul>
+	</div>
+</div>

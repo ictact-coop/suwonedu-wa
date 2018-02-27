@@ -1,0 +1,19 @@
+<load target="./js/content_widget.js" />
+<load target="./js/img_over.js" />
+<load target="./css/widget.css" />
+
+<block cond="$widget_info->list_type == 'image_slide'||$widget_info->list_type == 'image_slideA'">
+<load target="./css/owl.carousel.css" />
+<load target="./css/owl.theme.css" />
+<load target="./js/owl.carousel.js" type="body" />
+</block>
+
+
+
+<div class="WrapWidget_D">
+    <!--@if($widget_info->tab_type == "tab_top")-->
+        <!--#include("./_tab_top.html")-->
+    <!--@else-->
+        <!--#include("./_tab_none.html")-->
+    <!--@end-->
+</div>

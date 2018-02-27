@@ -1,0 +1,304 @@
+<!--@if($colorset=="blast")-->
+	<!--%import("js/blast.js")-->
+<!--@elseif($colorset=="blinds")-->
+	<!--%import("js/blinds.js")-->
+<!--@elseif($colorset=="basic")-->
+	<!--%import("js/basic.js")-->
+<!--@elseif($colorset=="squares")-->
+	<!--%import("js/squares.js")-->
+<!--@elseif($colorset=="fade")-->
+	<!--%import("js/fade.js")-->
+<!--@elseif($colorset=="slices")-->
+	<!--%import("js/slices.js")-->
+<!--@else-->
+	<!--%import("js/fly.js")-->
+<!--@end-->
+<!--%import("js/wowSlider.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "wowSlider_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 14}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "Tahoma,Arial,Helvetica"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/wowSlider/js"}
+
+<style type="text/css" media="screen">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	font-weight: bold;
+	text-decoration: none;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	font-weight: normal;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#wowslider-container { 
+/*	overflow: hidden; */
+	zoom: 1; 
+	position: relative; 
+	width:{$widget_info->slider_img_width}px;
+	height:{$widget_info->slider_img_height}px;
+	margin:0 auto;
+	z-index:100;
+}
+#wowslider-images{
+	position: absolute;
+	width:{$widget_info->slider_img_width}px;
+	height:{$widget_info->slider_img_height}px;
+	overflow:hidden;
+	cursor:pointer;
+}
+#wowslider-images a{
+	text-decoration: none; 
+	color:transparent;
+}
+
+#wowslider-images img{
+	top:0;
+	left:0;
+	border:none 0;
+}
+#wowslider-container a{ 
+	text-decoration: none; 
+	outline: none; 
+	border: none;
+}
+
+#wowslider-container  .ws_bullets { 
+	font-size: 0px; 
+	padding: 10px; 
+	float: left;
+	position:absolute;
+    right: 10px;
+    top: 10px;
+	z-index:1001;
+}
+#wowslider-container .ws_bullets a { 
+	margin-left:4px;
+	width:22px;
+	height:22px;
+	background: url('{$skincssimgpath}/bullet.png') left top;
+	float: left; 
+	text-indent: -1000px; 
+	position:relative;
+}
+#wowslider-container .ws_bullets a.ws_selbull, #wowslider-container .ws_bullets a:hover{
+	background-position: 0 100%;
+}
+#wowslider-container a.ws_next, #wowslider-container a.ws_prev {
+	position:absolute;
+	display:none;
+	top:50%;
+	margin-top:-15px;
+	position:absolute;
+	z-index:1001;
+	height: 30px;
+	width: 30px;
+	background-image: url('{$skincssimgpath}/arrows.png');
+}
+#wowslider-container a.ws_next{
+	background-position: 100% 0;
+	right:21px;
+}
+#wowslider-container a.ws_prev {
+	left:21px;
+	background-position: 0 0; 
+}
+* html #wowslider-container a.ws_next,* html #wowslider-container a.ws_prev{display:block}
+#wowslider-container:hover a.ws_next, #wowslider-container:hover a.ws_prev {display:block}
+
+#wowslider-container .ws-title{
+	position:absolute;
+	display:block;
+	bottom: 20px;
+	left: 20px;
+	margin-right:25px;
+	padding:10px;
+	background-color:white;
+	color:{$widget_info->title_font_color};
+	z-index: 50;
+	opacity:0.5;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);	
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+}
+#wowslider-container .ws-title div{
+	padding-top:5px;
+	font-size: {$title_font_size}px;
+}
+#wowslider-container .ws_bullets  a img{
+	text-indent:0;
+	display:block;
+	top:20px;
+	left:-{$widget_info->thumbnail_width}px;
+	visibility:hidden;
+	position:absolute;
+	cursor:pointer;
+    -moz-box-shadow: 0 0 5px #FFF;
+	box-shadow: 0 0 5px #FFF;
+    border: 2px solid #000;
+	border-radius:4px;
+	-moz-border-radius:4px;
+}
+#wowslider-container .ws_bullets a:hover img{
+	visibility:visible;
+}
+
+#wowslider-container .ws_bulframe div div{
+	height:{$widget_info->thumbnail_height}px;
+	overflow:visible;
+	position:relative;
+}
+#wowslider-container .ws_bulframe div {
+	overflow:hidden;
+	position:relative;
+	width:{$widget_info->thumbnail_width}px;
+}
+#wowslider-container .ws_bulframe{
+	display:none;
+	top:35px;
+	overflow:visible;
+	position:absolute;
+	cursor:pointer;
+    -moz-box-shadow: 0 0 5px #FFF;
+	box-shadow: 0 0 5px #FFF;
+    border: 2px solid #000;
+	border-radius:4px;
+	-moz-border-radius:4px;
+}
+#wowslider-container .ws_bulframe span{
+	display:block;
+	position:absolute;
+	top:-8px;
+	margin-left:1px;
+	left:{($widget_info->thumbnail_width-15)/2}px;
+	background:url('{$skincssimgpath}/triangle.png');
+	width:15px;
+	height:6px;
+}
+
+a#vlb{display:none}
+</style>
+
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+{@$imgidx=0}
+<div id="wowslider-container">
+	<div id="wowslider-images">
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+	<!--@if($item->getTitle())-->
+	{@$title = strip_tags($item->getTitle($widget_info->subject_cut_size))}
+	<!--@else-->
+	{@$title = ($item->getTitle($widget_info->subject_cut_size))}
+	<!--@end-->
+	<!--@if($item->getThumbnail())-->
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto' />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()=='')-->
+			<a href="{$item->getLink()}" class='open_doc' target="_blank" />
+			<!--@elseif($widget_info->target_ext_var=='link'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto' />
+			<!--@elseif($widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto' />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class='open_doc' />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+<img src="{$item->getImgslider()}" id="wows{$imgidx++}" <!--@if($widget_info->show_title=='Y')-->title="{$title}"<!--@end-->></a>
+	<!--@end--><!--@end-->
+</div>
+{@$img_idx=0}
+ 
+</div>
+
+<script type="text/javascript">
+
+var wowSlider=new WowSlider({
+	effect:"{$colorset}",
+	prev:"",
+	next:"",
+	duration:1000,
+	delay:{$widget_info->slide_delay},
+	outWidth:{$widget_info->slider_img_width},
+	outHeight:{$widget_info->slider_img_height},
+	width:{$widget_info->slider_img_width},
+	height:{$widget_info->slider_img_height},
+	caption:<!--@if($widget_info->show_content_title=='Y')-->true<!--@else-->false<!--@end-->,
+	controls:<!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->,
+	autoPlay:{$widget_info->slide_auto},
+	bullets:<!--@if($widget_info->navigation_control=='Y')-->true<!--@else-->false<!--@end-->
+});
+	jQuery(document).ready(function($){
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$("#wowslider-images").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+	});
+</script>

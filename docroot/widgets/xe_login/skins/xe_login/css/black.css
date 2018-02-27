@@ -1,0 +1,204 @@
+
+.loginBox p.securitySignIn { clear:both; padding:0 0 0 18px; margin:4px 0 0 0; }
+.loginBox p.noneSSL { background:url("../images/none_ssl.png") no-repeat left top; }
+.loginBox p.SSL { background:url("../images/ssl.png") no-repeat left top; }
+.loginBox p.noneSSL a { color:#BF6801; text-decoration:none; }
+.loginBox p.SSL a { color:#9CAC74; text-decoration:none; }
+
+.loginFormA .loginForm {display:block;}
+.loginFormA .openidForm {display:none;}
+.loginFormB .loginForm {display:none;}
+.loginFormB .openidForm {display:block;}
+
+/** login box **/
+fieldset {
+	border:none;
+	padding:0;
+	margin:0;
+}
+
+
+.loginBox {
+	width:180px;
+	height:172px;
+	position:relative;
+	z-index:0;
+}
+
+.loginBox a {
+	font-size:11px;
+	color:#ccc;
+	text-decoration:none;
+}
+
+.loginBox a:hover {
+	font-size:11px;
+	color:#fff;
+	text-decoration:underline;
+}
+
+.loginBox .top {
+	background:url(../images/black/boxTop.gif) no-repeat;
+	height:5px;
+	font-size:0px;
+}
+
+.loginBox .content {
+	border-left:2px solid #4f5a5b;
+	border-right:2px solid #4f5a5b;
+	background-color:#232b2b;
+	padding:9px 10px;
+}
+
+.loginBox .bottom {
+	background:url(../images/black/boxBottom.gif) no-repeat;
+	height:5px;
+	font-size:0px;
+}
+
+.loginBox .inputB {
+	float:left;
+	width:103px;
+}
+
+.loginBox .inputB input {
+	border:none;
+	background-color:#444a4a;
+	color:#fff;
+	font-family:arial;
+	font-size:12px;
+	margin-bottom:5px;
+	padding:2px 0 0 0;
+	width:103px;
+	height:17px;
+}
+
+.loginBox .loginId {
+	background:url(../images/black/id.gif) #e1e1e1 no-repeat 3px 0px;
+}
+
+.loginBox .loginIdOn {
+	background:#e1e1e1;
+}
+
+.loginBox .loginPass {
+	background:url(../images/black/pass.gif) #e1e1e1 no-repeat 3px 0px;
+}
+
+.loginBox .loginPassOn {
+	background:#e1e1e1;
+}
+
+.loginBox a.signup {
+	background:url(../images/black/btn.gif) no-repeat 0px 0px;
+	display:block;
+	width:71px;
+	height:23px;
+	padding:8px 0 0 0;
+	font-size:11px;
+	color:#fff;
+	text-decoration:none;
+	text-align:center;
+	margin:4px 0 0 0;
+	font:12px arial;
+}
+
+.loginBox .submit {
+	background:url(../images/black/btn.gif) no-repeat 0 0;
+	border:none;
+	display:block;
+	width:46px;
+	height:41px;
+	margin:2px 0 0 0;
+	cursor:pointer;
+	font:12px arial;
+	float:right;
+}
+
+.loginBox .submitopenid {
+	background:url(../images/black/btnopenid.gif) no-repeat 0 0;
+	border:none;
+	display:block;
+	width:158px;
+	height:35px;
+	margin:2px 0 3px 0;
+	cursor:pointer;
+	font:12px arial;
+	float:right;
+}
+
+.loginBox .openid_user_id {
+	border:none;
+	background:url(../images/black/openid.gif) #464c4c no-repeat 3px 0px;
+	margin-bottom:5px;
+	padding:5px 0 0 30px;
+	width:125px;
+	height:26px;
+	font-size:18px;
+	font-family:arial;
+	color:#fff;
+}
+
+.loginBox .miscLinks {
+	padding:4px 0 0 0;
+	clear:both;
+}
+
+.loginBox label {
+	color:#ccc;
+	font-size:11px;
+}
+
+.loginBox .keepLogin {
+	float:left;
+	padding:0 0 5px 0;
+	margin:0;
+	vertical-align:middle;
+}
+
+.loginBox .keepLogin input {
+	vertical-align:middle;
+}
+
+.loginBox .signup {
+	float:right;
+	padding:2px 0 0 0;
+	margin:0;
+}
+
+ul.help {
+	list-style:none;
+	margin:0;
+	padding:2px 0 0 0;
+	border-top:1px dashed #4b5151;
+	clear:both;
+}
+
+ul.help li {
+	float:left;
+	padding:4px 0 0;
+	white-space:nowrap;
+}
+
+ul.help li.openid {
+	float:right;
+}
+
+/** login info **/
+
+.userName {
+	color:#fff;
+}
+
+ul.userMenu {
+	list-style:none;
+	margin:0;
+	padding:5px 0 0 0;
+	clear:both;
+}
+
+ul.userMenu li {
+	background:url(../images/bulletFF1A00.gif) no-repeat 0 4px;
+	padding:2px 0 2px 10px;
+	font-size:11px;
+}

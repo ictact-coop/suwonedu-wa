@@ -1,0 +1,84 @@
+<load target="smart_popular.css" />
+
+{@
+	$tabc=count($widget_info->tab_view_arr);
+	$optc=count($widget_info->option_view_arr);
+	$li_width = $widget_info->widget_widths/$tabc;
+	$img_width = $widget_info->thumbnail_width-2;
+	$img_height = $widget_info->thumbnail_height-2;
+}
+
+<!--@if(!$global['popsid'])-->{@ $__Context->global['popsid'] = 1}<!--@endif-->{@ $__Context->global['popsid']++}
+
+<div id="popular{$global['popsid']}" class="smart-popular newClear">
+
+	
+	<div class="tabs_inner newClear" style="width:100%">
+		<!--// Popular Documents Start -->
+		<div id="popular_documents_s{$global['popsid']}" class="tabs_content<!--@if($widget_info->tab_view_arr[0]=='popular')--> tabs_active<!--@endif-->">
+
+					
+                    <table cond="$widget_info->popular_documents" class="poptable" style="width:100%">
+						
+                        <tr loop="$widget_info->popular_documents=>$key,$val" class="newClear">
+                        <block loop="$i=0; $i<$optc; $i++">
+						<!--@if($widget_info->option_view_arr[$i]=='image')-->
+							
+						<!--@elseif($widget_info->option_view_arr[$i]=='title')-->
+							<td class="text_title"><div class="ellipsis" style="width:100%"><a href="{$val->getPermanentUrl()}">{$val->getTitle($widget_info->subject_cut_size)}</a></div></td>
+						<!--@endif-->
+						</block>
+                        </tr>
+                        
+                        
+                        </table>
+					
+
+		</div>
+		<!--// Popular Documents End -->
+		
+		
+	</div>
+</div>
+
+<script>
+jQuery(function($){
+	var $popular = $("#popular{$global['popsid']}"),
+		$tabs_items = $popular.find(".tabs_items"),
+		$tabs_itema = $tabs_items.find("a"),
+		$tabs_inner = $popular.find(".tabs_inner");
+
+	var $pds = $("#popular_documents_s{$global['popsid']}"),
+		$nds = $("#newest_documents_s{$global['popsid']}"),
+		$ncs = $("#newest_comments_s{$global['popsid']}");
+
+	function actTab($tid){
+		$tabs_itema.removeClass("tabs_active");
+		$tid.addClass("tabs_active");
+	}
+
+	function actItem($sid){
+		$tabs_inner.find(".tabs_active").removeClass("tabs_active");
+		$sid.addClass("tabs_active");
+	}
+
+	$tabs_itema.on("mouseover click",function(e){
+		e.preventDefault();
+		var $tid = $(this);
+		actTab($tid);
+	});
+
+	$("#pd_link_s{$global['popsid']}").on("mouseover click",function(e){
+		e.preventDefault();
+		actItem($pds);
+	});
+	$("#nd_link_s{$global['popsid']}").on("mouseover click",function(e){
+		e.preventDefault();
+		actItem($nds);
+	});
+	$("#nc_link_s{$global['popsid']}").on("mouseover click",function(e){
+		e.preventDefault();
+		actItem($ncs);
+	});
+});
+</script>

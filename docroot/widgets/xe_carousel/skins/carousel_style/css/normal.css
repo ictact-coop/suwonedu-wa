@@ -1,0 +1,22 @@
+.carouselListContainer{background:transparent; margin:0px -11px 0px -11px !important; }					 /* 마진값 박스 간격 디테일 조절 */
+#carousel { position:relative; width:100%; display:block; }
+#carousel ul {margin:0 auto;padding: 0;list-style: none;display: block;background:#transparent;}
+#carousel li {color: #999;text-align: center;background-color: #transparent;padding: 0px 0 20px 0;margin:10px 4px 4px 4px;display: block;float: left;}	    /* 위젯 스타일 삭제시 상단 여백 0 , 마진값 박스 간격 디테일 조절,  */
+#carousel li .contentbox {position:relative;width:100%;height:100%;}
+#carousel li .contentbox .carousel_thumbnail{width:100%;height:100%;border: 1px solid #ddd;}
+#carousel li .contentbox .carousel_thumbnail a:hover img{-webkit-transition: opacity 0.2s ease-in-out;-moz-transition: opacity 0.2s ease-in-out;-o-transition: opacity 0.2s ease-in-out;-ms-transition: opacity 0.2s ease-in-out;transition: opacity 0.2s ease-in-out; opacity:.5;}
+
+#carousel li .contentbox .content_info{ position:relative; height:50px; top:0px;}
+#carousel li .contentbox .info_bg { position:relative; background:#transparent; height:50px;  }
+#carousel li .contentbox .title{ position:relative; color:#545454; margin:5px; font-size:12px;top:-50px; text-align:left;}
+#carousel li .contentbox .regdate{ position:relative; color:#aaaaaa; margin:5px; font-size:10px;top:-53px; text-align:left;}
+#carousel li .contentbox .author{ position:relative; color:#aaaaaa; margin:5px; font-size:10px;top:-95px; text-align:right;}
+
+.carousel_prev{position: absolute;right:35px; display:block; top: 0px;width:15px;height:15px;margin-top: 3px;padding: 0px;border: 1px solid #d9d2c5;background: #transparent;}
+.carousel_next{position: absolute;right:15px; display:block; top: 0px;width:15px;height:15px;margin-top: 3px;padding: 0px;border: 1px solid #d9d2c5;background: #transparent;}
+.carousel_prev:hover{opacity:.5}
+.carousel_next:hover{opacity:.5}
+.carousel_prev span {margin:0 auto;display:block;width:15px;height:15px;background:url('../images/prev.png');background-position:left center;}
+.carousel_next span {margin:0  auto;display:block;width:15px;height:15px;background:url('../images/next.png');background-position:right center;}
+.browser_title{position:absolute;right:-10px;top:-8px;padding:1px; border:1px solid #fff;background:#0e76bc; border-radius:5px;-webkit-border-radius:5px; line-height:16px;}
+

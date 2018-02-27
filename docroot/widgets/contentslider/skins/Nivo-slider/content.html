@@ -1,0 +1,316 @@
+<!--%import("js/jquery.nivo.slider.pack.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  DD_belatedPNG.fix('.nivo-controlNav a, .nivo-directionNav a');
+</script>
+<![endif]-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "Nivoslider_".mt_rand()}
+{@$slider_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 12}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,Helvetica, Arial, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 슬라이드 이미지 높이 + 테두리 -->
+{@$slider_img_width=$widget_info->slider_img_width+($widget_info->slider_img_bdsize*2)}
+{@$slider_img_height=$widget_info->slider_img_height+($widget_info->slider_img_bdsize*2)}
+
+<!--// 슬라이드 박스 간격 (10px) -->
+{@$tablespace=10}
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/Nivo-slider/images"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	height: {$textT1_Height}px;
+	line-height: {$title_font_size}px;
+	text-decoration: none;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#nivoslider_{$skin_id} {
+    width:{$slider_img_width}px;
+    height:{$slider_img_height+24}px;
+    margin:0 auto;
+}
+#{$slider_id} {
+	position:relative;
+    width:{$widget_info->slider_img_width}px;
+    height:{$widget_info->slider_img_height}px;
+	border: {$widget_info->slider_img_bdsize}px solid {$widget_info->slider_img_bdcolor};
+}
+#{$slider_id} img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+#{$slider_id} a {
+	border:0;
+	display:block;
+}
+
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+	background:url('{$skincssimgpath}/loading.gif') no-repeat 50% 50%;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:60;
+	display:none;
+}
+/* The slices in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:50;
+	height:100%;
+}
+
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#fff;
+	color:{$widget_info->content_font_color};
+	opacity:0.4; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:89;
+    text-shadow:none;
+    font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+<!--@if($widget_info->content_height)-->
+	height: {$widget_info->content_height}px;
+<!--@end-->
+}
+
+.nivo-caption a { 
+ 	display:inline !important;
+	color:{$widget_info->content_font_color};
+    text-decoration:underline;
+}
+
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+
+.nivo-html-caption {
+    display:none;
+}
+
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav {
+	position:absolute;
+    margin:0 auto;
+	bottom:-24px;
+}
+.nivo-controlNav a {
+	display:block;
+	width:22px;
+	height:22px;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+	position:relative;
+	z-index:99;
+	cursor:pointer;
+	background:url('{$skincssimgpath}/bullets.png') no-repeat;
+}
+.nivo-controlNav a.active {
+	background-position:0 -22px;
+	font-weight:bold;
+}
+
+.nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	text-indent:-9999px;
+	border:0;
+	position:absolute;
+	top:45%;
+	z-index:99;
+	cursor:pointer;
+	background:url('{$skincssimgpath}/arrows.png') no-repeat;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+a.nivo-prevNav {
+	left:15px;
+}
+
+#{$slider_id} .lightbox_image {
+	width:{$widget_info->slider_img_width}px;
+	height:{$widget_info->slider_img_height}px;
+	float:left;
+	display:block;
+	background:url('{$skincssimgpath}/magnify.png') no-repeat center center;
+}
+
+#{$slider_id} .lightbox_video {
+	width:{$widget_info->slider_img_width}px;
+	height:{$widget_info->slider_img_height}px;
+	float:left;
+	display:block;
+	background:url('{$skincssimgpath}/video.png') no-repeat center center;
+}
+
+#{$slider_id} .no_image {
+	width:{$widget_info->slider_img_width}px;
+	height:{$widget_info->slider_img_height}px;
+	float:left;
+	display:block;
+	background:url('{$skincssimgpath}/no_image.png') no-repeat center center;
+}
+
+#{$slider_id} .open_doc {
+	width:{$widget_info->slider_img_width}px;
+	height:{$widget_info->slider_img_height}px;
+	float:left;
+	display:block;
+	background:url('{$skincssimgpath}/document.png') no-repeat center center;
+}
+
+</style>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+<div id="nivoslider_{$skin_id}">
+<div id="{$slider_id}" class="nivoSlider">
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@end-->
+		<!--@end-->
+		<!--@if($item->getThumbnail())-->
+		<img src="{$item->getImgslider()}"  title='<!--@if($widget_info->show_title=="Y")-->{$item->getTitle($widget_info->subject_cut_size)}<!--@end--><br><!--@if($widget_info->show_content=="Y")-->{$item->getContent($widget_info->content_cut_size)}<!--@end-->'  alt='{$item->getTitle($widget_info->subject_cut_size)} by {$item->getNickName()}' />
+		<!--@end-->
+		</a>
+	<!--@end-->
+</div>
+</div>
+<script> 
+jQuery(document).ready(function($) {
+	$('#{$slider_id}').nivoSlider({
+		effect:'{$colorset}', //Specify sets like: 'fold,fade,sliceDown'
+		slices:20,
+		animSpeed:500, //Slide transition speed
+		pauseTime:{$widget_info->slide_delay},
+		startSlide:0, //Set starting Slide (0 index)
+		directionNav:<!--@if($widget_info->navigation_control=='Y')-->true<!--@else-->false<!--@end-->, //Next & Prev
+		directionNavHide:true, //Only show on hover
+		controlNav:<!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->, //1,2,3...
+		controlNavThumbs:false, //Use thumbnails for Control Nav
+		controlNavThumbsFromRel:false, //Use image rel for thumbs
+		controlNavThumbsSearch: '.jpg', //Replace this with...
+		controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
+		keyboardNav:true, //Use left & right arrows
+		pauseOnHover:true, //Stop animation while hovering
+		manualAdvance:false, //Force manual transitions
+		captionOpacity:0.8, //Universal caption opacity
+		beforeChange: function(){},
+		afterChange: function(){},
+		slideshowEnd: function(){}, //Triggers after all slides have been shown
+		lastSlide: function(){}, //Triggers when last slide is shown
+		afterLoad: function(){} //Triggers when slider has loaded
+	});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$("#{$slider_id}").find("a[rel^='prettyPhoto']:not(.nivo-prevNav,.nivo-nextNav,.nivo-control)").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+});
+</script> 

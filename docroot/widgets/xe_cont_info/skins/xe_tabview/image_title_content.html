@@ -1,0 +1,167 @@
+{@$_idx=0}
+<div id="tab-{$i+1+$mtrand}"><ul class="widgetZineA" >
+
+<!--@foreach($widget_info->content_items as $key => $item)-->
+    <li<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end-->>
+
+        <div class="thumbArea" style="width:{$widget_info->thumbnail_width}px;margin-right:-{$widget_info->thumbnail_width}px;">
+            <a href="{$item->getLink()}" class="thumb" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px" target="_blank"|cond="$widget_info->new_window">
+                <!--@if($item->getThumbnail())-->
+                    <img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px" />
+                <!--@else-->
+                    <span class="imgNone"><img src="img/noimage.png" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px"/></span>
+                <!--@end-->
+					<div class='caption'><p class='captionInside'>{$item->getTitle($widget_info->subject_cut_size)}</br>
+                    <span class="date">{$item->getRegdate("Y-m-d")}</span> <span class="hour">{$item->getRegdate("H:i")}</span></p>
+                     <!--@if($widget_info->show_icon=='Y')-->
+                  	<!--@if((int)($item->getRegdate('YmdHis')>date("YmdHis", time()-$widget_info->duration_new)))-->
+                  	<span class="ribbon"></span>
+                  	<!--@end-->
+                  <!--@end-->  
+                    </div>
+                <!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+                    <strong class="category">{$item->getCategory()}</strong>
+                <!--@end-->
+            </a>
+        </div>
+
+    <!--@for($j=0,$c=count($widget_info->option_view_arr);$j<$c;$j++)-->
+
+        <!--@if($widget_info->option_view_arr[$j]=='title')-->
+        <p class="titleArea" style="margin-left:{$widget_info->thumbnail_width+20}px;">
+
+            <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                <a href="{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}" target="_blank"|cond="$widget_info->new_window"><strong class="board">{$item->getBrowserTitle()}</strong></a>
+            <!--@end-->
+
+            <!--@if($widget_info->show_category=='Y' && $item->get('category_srl') )-->
+                <a href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}" target="_blank"|cond="$widget_info->new_window"><strong class="category">{$item->getCategory()}</strong></a>
+            <!--@end-->
+
+            <a href="{$item->getLink()}" class="title" target="_blank"|cond="$widget_info->new_window">{$item->getTitle($widget_info->subject_cut_size)}</a>
+
+            <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+                <em class="replyNum" title="Replies"><a href="{$item->getLink()}#comment" target="_blank"|cond="$widget_info->new_window">{$item->getCommentCount()}</a></em>
+            <!--@end-->
+
+            <!--@if($widget_info->show_trackback_count=='Y' && $item->getTrackbackCount())-->
+                <em class="trackbackNum" title="Trackbacks"><a href="{$item->getLink()}#trackback" target="_blank"|cond="$widget_info->new_window">{$item->getTrackbackCount()}</a></em>
+            <!--@end-->
+
+            <!--@if($widget_info->show_icon=='Y')-->
+                <span class="icon">{$item->printExtraImages()}</span>
+            <!--@end-->
+
+            <!--@if($widget_info->option_view_arr[$j+1]=='regdate')-->
+                <span class="date">{$item->getRegdate("Y-m-d")}</span> <span class="hour">{$item->getRegdate("H:i")}</span>
+            <!--@end-->
+        </p>
+
+        <!--@else if($widget_info->option_view_arr[$j]=='content')-->
+        <p class="text" style="margin-left:{$widget_info->thumbnail_width+20}px;">
+            {$item->getContent()}
+            <!--@if($widget_info->option_view_arr[$j+1]=='regdate')-->
+              <span class="date">{$item->getRegdate("Y-m-d")}</span> <span class="hour">{$item->getRegdate("H:i")}</span>
+            <!--@end-->
+        </p>
+
+        <!--@else if($widget_info->option_view_arr[$j]=='nickname')-->
+        <p class="authorArea" style="margin-left:{$widget_info->thumbnail_width+20}px;">
+                <a href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}" target="_blank"|cond="$widget_info->new_window">{$item->getNickName()}</a>
+            <!--@if($widget_info->option_view_arr[$j+1]=='regdate')-->
+                <span class="date">{$item->getRegdate("Y-m-d")}</span> <span class="hour">{$item->getRegdate("H:i")}</span>
+            <!--@end-->
+       
+        <!--@end-->
+
+    <!--@end-->
+    </li>
+{@$_idx++}
+<!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+    <ul class="widgetNavigator">
+        <li><button type="button" class="prev" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.widgetNavigator').prev('ul.widgetZineA'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+        <li><button type="button" class="next" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.widgetNavigator').prev('ul.widgetZineA'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+    </ul>
+<!--@end-->
+</p></div>   
+<script type="text/javascript">
+	// <![CDATA[
+	jQuery(function(){
+  var $ = jQuery;
+		$(window).load(function(){
+			
+			//set and get some variables
+			var thumbnail = {
+				imgIncrease : 100, /* the image increase in pixels (for zoom) */
+				effectDuration : 400, /* the duration of the effect (zoom and caption) */
+				/* 
+				get the width and height of the images. Going to use those
+				for 2 things:
+					make the list items same size
+					get the images back to normal after the zoom 
+				*/
+				imgWidth : $('.thumbArea').find('img').width(), 
+				imgHeight : $('.thumbArea').find('img').height() 
+				
+			};
+			
+			//make the list items same size as the images
+			$('.thumbArea').css({ 
+				
+				'width' : thumbnail.imgWidth, 
+				'height' : thumbnail.imgHeight 
+				
+			});
+			
+			//when mouse over the list item...
+			$('.thumbArea').hover(function(){
+				
+				$(this).find('img').stop().animate({
+					
+					/* increase the image width for the zoom effect*/
+					width: parseInt(thumbnail.imgWidth) + thumbnail.imgIncrease,
+					height: parseInt(thumbnail.imgHeight) + thumbnail.imgIncrease,
+					/* we need to change the left and top position in order to 
+					have the zoom effect, so we are moving them to a negative
+					position of the half of the imgIncrease */
+					left: thumbnail.imgIncrease/2*(-1),
+					top: thumbnail.imgIncrease/2*(-1)
+					
+				},{ 
+					
+					"duration": thumbnail.effectDuration,
+					"queue": false
+					
+				});
+				
+				//show the caption using slideDown event
+				$(this).find('.caption:not(:animated)').slideDown(thumbnail.effectDuration);
+				
+			//when mouse leave...
+			}, function(){
+				
+				//find the image and animate it...
+				$(this).find('img').animate({
+					
+					/* get it back to original size (zoom out) */
+					width: thumbnail.imgWidth,
+					height: thumbnail.imgHeight,
+					/* get left and top positions back to normal */
+					left: 0,
+					top: 0
+					
+				}, thumbnail.effectDuration);
+				
+				//hide the caption using slideUp event
+				$(this).find('.caption').slideUp(thumbnail.effectDuration);
+				
+			});
+			
+		});
+		
+			});
+			// ]]
+	</script>

@@ -1,0 +1,41 @@
+<ul class="widgetGalleryEx">
+{@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+    <li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clearLeft"<!--@end--> style="<!--@if($_idx >= $widget_info->list_count)-->display:none;<!--@end-->width:{$widget_info->thumbnail_width}px;">
+        <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+            <!--@if($v=='thumbnail')-->
+                <a href="{$item->getLink()}" class="thumb" style="width:100%;height:{$widget_info->thumbnail_height}px">
+                    <!--@if($item->getThumbnail())-->
+                        <img src="{$item->getThumbnail()}" style="width:100%;height:{$widget_info->thumbnail_height}px"/>
+                    <!--@else-->
+                        <img src="/img/standby.jpg" style="width:100%;height:{$widget_info->thumbnail_height}px"/>
+                    <!--@end-->
+                <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                    <strong class="board">{$item->getBrowserTitle()}</strong>
+                <!--@end-->
+				<!--@if($widget_info->show_content_title=='Y' && $item->getDocumentTitle())-->
+					<a href="{$item->getDocumentURL()}"><strong class="board">{$item->getDocumentTitle()}</strong></a>
+				<!--@end-->
+                <!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+                    <strong class="category">{$item->getCategory()}</strong>
+                <!--@end-->
+                </a>
+
+            <!--@else if($v=='title')-->
+			<div style="white-space:normal;text-align:center; margin-bottom:10px;">
+            <a href="{$item->getLink()}" class="title" style="font-weight:bold;">{$item->getTitle($widget_info->subject_cut_size)}</a>
+			<span style="color:#999">{$item->getExtraVar()}</span>
+            </div>
+        <!--@end-->
+    <!--@end-->
+    </li>
+    {@$_idx++}
+    <!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<ul class="widgetNavigator">
+    <li><button type="button" class="prev" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.widgetNavigator').prev('ul.widgetGalleryEx'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+    <li><button type="button" class="next" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.widgetNavigator').prev('ul.widgetGalleryEx'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+</ul>
+<!--@end-->

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">네비게이션 위젯</title>
+	<title xml:lang="en">Navigation 위젯</title>
+    <description xml:lang="ko">가로, 세로, 트리 메뉴와 사이트맵등을 출력합니다.</description>
+	<description xml:lang="en">가로, 세로, 트리 메뉴와 사이트맵등을 출력합니다.</description>
+    <version>0.4</version>
+    <date>2011-04-25</date>
+    <author email_address="" link="http://study4u.hosting.paran.com">
+        <name xml:lang="ko">배워서남준다</name>
+		<name xml:lang="en">Study4U</name>
+    </author>
+    <extra_vars>
+        <var id="menu_srl" type="menu">
+            <name xml:lang="ko">메뉴</name>
+			<name xml:lang="en">Menu</name>
+            <description xml:lang="ko">메뉴를 선택하세요.(* 필수선택사항)</description>
+			<description xml:lang="en">Please select menu to display.</description>
+        </var>
+        <var id="start_depth" type="text">
+            <title xml:lang="ko">메뉴 출력 단계</title>
+			<title xml:lang="en">Depth to display menu</title>
+            <description xml:lang="ko">* 선택된 메뉴의 하위 메뉴 출력시 단계\n- 0: 메인 메뉴 출력 (기본값)\n- 1: 선택된 메인 메뉴 출력\n- 2이상: 선택된 하위 단계 메뉴 출력</description>
+		</var>
+
+		<var id="nav_width" type="text">
+            <title xml:lang="ko">전체 넓이</title>
+			<title xml:lang="en">Width</title>
+            <description xml:lang="ko">전체 넓이를 입력하세요.\n* 입력시 전체 넓이는 입력된 값으로 고정 출력됩니다.\n* 메뉴 갯수가 많아서, 메뉴가 두줄로 출력될 경우 서브 메뉴와 레이어가 겹치는 경우 사용하세요.\n* 기본값 1000px</description>
+        </var>
+
+		<var id="bgcolor" type="color">
+            <title xml:lang="ko">위젯박스 배경색</title>
+			<title xml:lang="en">bgColor of widget</title>
+            <description xml:lang="ko">위젯박스의 배경색을 지정합니다. \n* 각 스킨의 메뉴 배경색이 투명인 경우 배경색을 지정할 수 있습니다.</description>
+        </var>
+
+		<var id="zindex" type="text">
+            <title xml:lang="ko">zIndex</title>
+			<title xml:lang="en">zIndex</title>
+            <description xml:lang="ko">서브메뉴가 다른 레이어 밑으로 출력될때 zIndex 값을 지정하여 위로 출력할 수 있습니다. * 기본값 : 100</description>
+        </var>
+	</extra_vars>
+</widget>

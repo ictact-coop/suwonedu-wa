@@ -1,0 +1,227 @@
+<!--%import("js/s3Slider.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "s3Slider_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 14}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "Arial, Helvetica, sans-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(50px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 23}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 14}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,Arial, Helvetica, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 내용 높이(50px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$textC1_Height = 50}
+<!--@else-->
+{@$textC1_Height = $widget_info->content_height}
+<!--@end-->
+
+{@$s3ContentWidth = $widget_info->slider_img_width/4}
+
+<style type="text/css" media="screen">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	font-weight: bold;
+	text-decoration: none;
+	overflow: hidden;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	font-weight: normal;
+	text-decoration: none;
+	overflow: hidden;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#{$slide_id} {
+    width: {$widget_info->slider_img_width}px; /* important to be same as image width 410 */
+    height: {$widget_info->slider_img_height}px; /* important to be same as image height 300 */
+    position: relative; /* important */
+	overflow: hidden; /* important */
+}
+
+#{$slide_id}Content {
+    width: {$widget_info->slider_img_width}px; /* important to be same as image width or wider */
+    position: absolute;
+	top: 0;
+	margin-left: 0;
+	overflow: hidden; /* important */
+}
+
+.{$slide_id}Image {
+    float: left;
+    position: relative;
+	display: none;
+}
+
+.{$slide_id}Image div {
+    position: absolute;
+    padding: 10px 13px;
+    width: {$s3ContentWidth}px; /* 내용 넓이 */
+    background-color: #fff;
+    filter: alpha(opacity=40);
+    -moz-opacity: 0.4;
+	-khtml-opacity: 0.4;
+    opacity: 0.4;
+    display: none;
+}
+
+#{$slide_id} .clear {
+	clear: both;
+}
+
+#{$slide_id} .Top {
+	top: 0;
+	left: 0;
+}
+
+#{$slide_id} .Bottom {
+	bottom: 0;
+    right: 0;
+}
+
+#{$slide_id} .Left {
+	top: 0;
+    left: 0;
+	width: {$s3ContentWidth}px !important;
+	height: {$widget_info->slider_img_height}px;
+}
+
+#{$slide_id} .Right {
+	right: 0;
+	bottom: 0;
+	margin-right: 30px;
+	width: {$s3ContentWidth}px !important;
+	height: {$widget_info->slider_img_height-16}px;
+}
+
+#{$slide_id} ul { list-style-type: none;}
+
+</style>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$('#{$slide_id}').s3Slider({
+		timeOut: {$widget_info->slide_delay}
+	});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$(".{$slide_id}Image: a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+	});
+</script>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+<div id="{$slide_id}">
+	<ul id="{$slide_id}Content">
+		<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($item->getThumbnail())-->
+		<li class="{$slide_id}Image">
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@end-->
+		<!--@end-->
+			<img src="{$item->getImgslider()}" alt='{$item->getTitle($widget_info->subject_cut_size)}' />
+			</a>
+			<!--@if($widget_info->show_content_title=='Y')-->
+			<div class="{$colorset} textT1_{$skin_id}">
+			<!--@if($widget_info->show_title=='Y')-->
+			<a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a><!--@end-->
+			<p class="textC1_{$skin_id}"><a href="{$item->getLink()}">{$item->getContent($widget_info->content_cut_size)}</a></p>
+			</div>
+			<!--@end-->
+		</li>
+		<!--@end--><!--@end-->
+		<div class="clear {$slide_id}Image"></div>
+	</ul>
+</div>
+

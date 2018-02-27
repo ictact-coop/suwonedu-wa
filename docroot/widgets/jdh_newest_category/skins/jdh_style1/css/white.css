@@ -1,0 +1,16 @@
+.latest1_white { width:100%; padding-bottom:0px; overflow:hidden; position:relative;}
+.latest1_white h2 { margin:0; display:block; height:21px; padding:9px 0 0 15px; margin-bottom:10px; color:#333333; background:url(../images/white/lineNotice.gif) no-repeat left bottom; font-size:1em;}
+
+.latest1_white ul { margin:0; padding:0; }
+.latest1_white ul li { height:20px; background:url(../images/white/bulletD0.gif) no-repeat 7px 5px; padding-left:15px; overflow:hidden; list-style:none; white-space:nowrap;}
+
+.latest1_white ul li .title a { color:#818181; text-decoration:none; }
+.latest1_white ul li .title a:hover { text-decoration:underline; }
+.latest1_white ul li .title span.comment { color:#FE6700; font:.9em Tahoma; }
+.latest1_white ul li .title span.comment a { color:#FE6700; font:.9em Tahoma; }
+
+.latest1_white ul li .date { color:#333333; font:.8em Tahoma; white-space:nowrap; margin-right:0px; float:right;}
+
+.latest1_white .more { position:absolute; top:12px; right:0px; color:#333333; font:.8em Tahoma;}
+.latest1_white a.more { text-decoration:none;} 
+.latest1_white a.more:hover { text-decoration:underline;} 

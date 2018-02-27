@@ -1,0 +1,8 @@
+/* LNB - 컬러셋설정 */
+#lnbBox.purple{ background:#F4F4F4 url(../images/purple/lnb_bg.gif) repeat-y;}
+#lnbBox h1.purple{ color:#000000;background:#FFFFFF url(../images/purple/h1_lnb_bg.gif) no-repeat scroll 0 0;}
+#lnbBox.purple #lnbBottom {background:#FFFFFF url(../images/purple/lnb_bg_bottom.gif) no-repeat scroll 0 0;}
+#lnb.purple li.folder a:hover { background-color:#F3F2F0; color:#3a66a2; font-weight:bold;}
+#lnb.purple li.folder a:focus { background-color:#F3F2F0; }
+#lnb.purple li.folder a {border-bottom:1px solid #DFDFDF; background:transparent url(../images/bul_folder.gif) no-repeat scroll 5px 50%;color:#555555;}
+#lnb.purple li.on a {background:#FAF9F8 url(../images/bul_folder_on.gif) no-repeat scroll 5px 50%;color:#3A66A2;}

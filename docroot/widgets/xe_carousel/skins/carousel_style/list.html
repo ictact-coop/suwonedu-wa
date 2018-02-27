@@ -1,0 +1,126 @@
+<!--%import("css/normal.css")-->
+{@ $unique = rand(0,100);}
+
+
+<style>
+.cont_w {height:{$widget_info->thumbnail_height+40}px !important;}					/* 배경미지지 타입 하단 간격 줄임 */ 
+</style>
+
+ <!--@if(($widget_info->button_enum)=="Y")-->
+		<div style="">
+       <a href="#" id="carouselList_{$unique}_carousel_prev" class="carousel_prev" style="position: absolute; display: block; z-index:9999;"><span></span></a>
+       <a href="#" id="carouselList_{$unique}_carousel_next" class="carousel_next" style="position: absolute; display: block; z-index:9999;"><span></span></a>  
+</div>	
+<!--@end-->		
+
+<div id="carouselList_{$unique}" class="carouselListContainer" style="margin:0;padding:0;position:relative;display:block; white-space:nowrap;text-overflow:ellipsis; overflow:hidden; height:{$widget_info->thumbnail_height+50}px;">
+	<!--@if(count($widget_info->document_list))-->    
+    <ul id="carousel" class="{$widget_info->roll_list_count}"; style="width:100%;margin:0;padding:0;">
+     <!--@for($j=0;$j<$widget_info->cols_list_count;$j++)-->
+         {@ $oDocument = $widget_info->document_list[$j]}
+         <!--@if($oDocument->document_srl)--> 
+         {@ $_existsThumbnail = $oDocument->thumbnailExists($widget_info->thumbnail_width,$widget_info->thumbnail_height,$widget_info->thumbnail_type) }
+             <!--@if($_existsThumbnail)-->
+                 <li>
+                    <div class="contentbox" >
+                            <div class="carousel_thumbnail" style="width:{$widget_info->thumbnail_width+2}px; height:{$widget_info->thumbnail_height+2}px;">                    
+                                <a href="{getUrl('','document_srl',$oDocument->document_srl)}">
+                                    <img src="{$oDocument->getThumbnail($widget_info->thumbnail_width,$widget_info->thumbnail_height,$widget_info->thumbnail_type)}" border="0"/>
+                                </a>        
+                            </div> 
+							
+							<div class="thumb_title" style="display:none;">{$oDocument->getTitle($widget_info->subject_cut_size)}</div>
+                            <!--@if($widget_info->display_browser_title == 'Y')-->
+                            <div class="browser_title">
+                                 <font style="font-size:11px; color:#fff;">{$oDocument->getBrowserTitle()}</font>
+                            </div>
+                            <!--@end-->
+                            <!--@if(($widget_info->display_content_info)=="Y")-->
+                                <div class="content_info" style="width:{$widget_info->thumbnail_width}px;">
+                                    <div class="info_bg"></div>
+                                    <div class="title">
+                                        {$oDocument->getTitle($widget_info->subject_cut_size)}
+                                    </div>            
+                                    <div class="regdate">                                    
+                                        <!--@if(($widget_info->display_regdate)=="Y")-->
+                                        {$oDocument->getRegdate("Y.m.d")}
+                                         <!--@end--> 
+                                        <!--@if(($widget_info->display_author)=="Y")-->
+                                          &nbsp; {$oDocument->getNickName()}
+                                         <!--@end--> 
+                                         <!--@if(($widget_info->display_readed_count)=="Y")-->
+                                      	  &nbsp;  view <font style="font-size:10px">{$oDocument->getCommentCount()}</font>
+                                         <!--@end--> 
+                                    </div>                                                                                      
+                                </div>
+                           <!--@end--> 
+                     </div>
+                    
+                 </li>
+             <!--@end-->
+          <!--@end-->
+     <!--@end-->
+    </ul> 
+        <!--@if(($widget_info->button_enum)=="Y")-->
+            
+        <!--@end-->
+    <!--@end-->
+</div>
+
+
+
+
+<script type="text/javascript" src="./js/jquery.carouFredSel.js"></script> 
+<script type="text/javascript" src="./js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="./js/jquery.balloon.js"></script>
+<script>
+jQuery(function($){
+	$('#carouselList_{$unique} #carousel').carouFredSel({    
+		width:'100%',
+		height:'auto',
+		scroll:{
+			items: Number($('#carouselList_{$unique} #carousel').attr("class")),
+			duration:1000,
+			pauseOnHover:true
+		},
+		items:{
+			visible:{
+				min:1,
+				max: Number($('#carouselList_{$unique} #carousel li').length)
+			}
+		},
+		prev:"#carouselList_{$unique}_carousel_prev",
+		next: "#carouselList_{$unique}_carousel_next",		
+		mousewheel: true,
+		swipe: {
+			onMouse: true,
+			onTouch: true
+		}
+	});
+});
+</script>
+
+<!--@if(($widget_info->tooltip_enum)=="Y")-->
+<script>
+jQuery(function($){
+	$("#carouselList_{$unique} #carousel > li").each(function(){
+		 var n = $(this).children(".contentbox").children(".carousel_thumbnail").children(".thumb_title").text();
+		 $(this).balloon({
+			position:'bottom',
+			contents: n,
+			tipSize: 11,
+			css: {
+					 border: 'solid 2px #ffffff',
+					 padding: '2px',
+					 fontSize: '11px',
+					 fontWeight: 'normal',
+					 lineHeight: '2',
+					 backgroundColor: '#0e76bc',
+					 color: '#fff',
+					 radius: '5px'
+				}
+		 });
+	});
+});
+</script>
+<!--@end-->

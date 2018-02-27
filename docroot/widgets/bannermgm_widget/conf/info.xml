@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">배너 출력 위젯</title>
+    <description xml:lang="ko">배너 관리자를 통해 등록된 배너를출력하는 위젯입니다.</description>
+    <version>0.2</version>
+    <date>2010-02-10</date>
+
+    <author email_address="ironyjk@embian.com" link="http://me2day.net/ironyjk">
+        <name xml:lang="ko">최희철</name>
+        <name xml:lang="en">Choi Hee Chul</name>
+    </author>
+    
+    <author email_address="neverdie@embian.com" link="http://twitter.com/bbuggi">
+        <name xml:lang="ko">김진환</name>
+        <name xml:lang="en">Kim Jin Hwan</name>
+    </author>
+
+    <author email_address="sunyoung@embian.com" link="">
+        <name xml:lang="ko">박선영</name>
+        <name xml:lang="en">Park Sun Young</name>
+    </author>
+    
+    <extra_vars>
+        <var id="bannermgm_srl">
+            <type>text</type>
+                <name xml:lang="ko">배너 번호</name>
+                <description xml:lang="ko">배너 관리자에서 설정된 배너의 번호를
+                입력합니다.</description>
+        </var>
+        <var id="img_width">
+            <type>text</type>
+                <name xml:lang="ko">이미지 폭</name>
+                <description xml:lang="ko">배너 이미지의 폭을 지정합니다.
+                (지정하지 않을 경우 이미지의 폭으로 설정됩니다)</description>
+        </var>
+        <var id="img_height">
+            <type>text</type>
+                <name xml:lang="ko">이미지 높이</name>
+                <description xml:lang="ko">배너 이미지의 높이을 지정합니다.
+                (지정하지 않을 경우 이미지의 높이로 설정됩니다)</description>
+        </var>
+        <var id="link_target">
+            <type>select</type>
+            <name xml:lang="ko">대상 창 (target)</name>
+            <description xml:lang="ko">배너를 클릭 했을 경우 링크가 열릴 창을 선택합니다</description>
+            <options>
+                <value>_blank</value>
+                <name xml:lang="ko">새창</name>
+            </options>
+            <options>
+                <value>_top</value>
+                <name xml:lang="ko">현재창</name>
+            </options>
+            <options>
+                <value>_self</value>
+                <name xml:lang="ko">현재 프레임</name>
+            </options>
+        </var>
+    </extra_vars>
+</widget>

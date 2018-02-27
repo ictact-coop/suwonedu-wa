@@ -1,0 +1,31 @@
+@charset "utf-8";
+.newClear:after{content:' '; display:block; clear:both; font-size:0; width:0; height:0; visibility:hidden; line-height:0}
+* html .newClear,:first-child+html .newClear{zoom:1}
+
+.smart-popular .tabs_items ul{margin:0; padding:0; list-style:none}
+.smart-popular .tabs_items li{float:left; margin:0 -1px 0 0; padding:0; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-size:13px; font-weight:700}
+.smart-popular .tabs_items li a{display:block; background-color:#f8f8f8; margin:0; padding:11px 0 11px 0; border:1px solid #dedede; border-bottom-color:#ccc; text-align:center; color:#999; text-decoration:none; cursor:pointer}
+.smart-popular .tabs_items a:hover{text-decoration:none}
+.smart-popular .tabs_items a.tabs_active{background-color:#fff; border-top-color:#fd7700}
+
+.smart-popular .tabs_inner{position:relative}
+.smart-popular .tabs_content{display:none}
+.smart-popular .tabs_active{display:block !important}
+.smart-popular .tabs_inner a{text-decoration:none; cursor:pointer; outline:none}
+.smart-popular .tabs_inner a:hover{text-decoration:none}
+.smart-popular .tabs_inner ul{margin:0; padding:0; list-style:none}
+.smart-popular .tabs_inner li{margin:0; padding:20px 0; border-top:1px dashed #ddd}
+.smart-popular .tabs_inner li:first-child{border-top:none}
+.smart-popular .tabs_inner li p{margin:0; padding:0; line-height:1.4; font-family:돋음; font-size:11px; color:#999}
+.smart-popular .tabs_inner li p.tabs_thumb{float:left; margin:0 10px 0 2px}
+
+.smart-popular .tabs_inner li p.tabs_thumb span.noimg{margin:0; padding:0; border:4px solid white; *border:4px solid #f5f5f5; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; box-shadow:0 0 4px rgba(0, 0, 0, 0.8); -moz-box-shadow:0 0 4px rgba(0, 0, 0, 0.8); -webkit-box-shadow:0 0 4px rgba(0, 0, 0, 0.8); display:block; text-align:center}
+.smart-popular .tabs_inner li p.tabs_thumb span.noimgtext{margin:38% 0 0 0; padding:0; display:block; font-size:11px; color:#999}
+
+.smart-popular .tabs_inner li p.text_title{margin-bottom:6px; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-size:12px; font-weight:700; color:#666}
+.smart-popular .tabs_inner li p.text_date{color:#fd7700}
+.smart-popular .tabs_inner li p.tabs_text span.text_content2{color:#999}
+.smart-popular .tabs_inner li p.tabs_text span.text_date2{color:#666}
+.smart-popular .tabs_inner li a:hover p.text_title,
+.smart-popular .tabs_inner li a:focus p.text_title{color:#fd7700}
+.smart-popular .tabs_inner li a:hover p.text_content{color:#999}

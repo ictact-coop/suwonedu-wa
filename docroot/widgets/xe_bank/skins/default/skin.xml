@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">무통장 입금계좌 위젯</title>
+	<version>0.1</version>
+	<date>2013-12-13</date>
+	<author email_address="wds0119@empal.com" link="http://homebox-tm.com/">
+		<name xml:lang="ko">HomeBox™</name>
+	</author>
+</skin>

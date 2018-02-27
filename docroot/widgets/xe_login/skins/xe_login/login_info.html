@@ -1,0 +1,47 @@
+<!--// colorset의 값에 따라 css 파일을 import 한다 -->
+<!--@if(!$colorset)-->
+    {@ $colorset = "default"}
+<!--@end-->
+
+<!--@if($colorset=="white")-->
+    <!--%import("css/default.css")-->
+<!--@end-->
+
+<!--%import("./filter/logout.xml")-->
+<!--포인트, 레벨 출력-->
+{@ $oPointModel = &getModel('point'); $point = $oPointModel->getPoint($logged_info->member_srl); $oModuleModel = &getModel('module');  $config = $oModuleModel->getModuleConfig('point'); $level = $oPointModel->getLevel($point, $config->level_step); }
+
+<div id="logged">
+	
+	<div id="login_header">
+	<a href="{getUrl('act','dispMemberMessages','member_srl',$logged_info->member_srl)}" title="{$lang->cmd_view_message_box}">
+	<span id=message>
+		<span class=bgp></span>
+	</span></a>
+	
+	<span id="name" title="LEV{$level} EXP{$point}">&nbsp;{$logged_info->nick_name}</span>
+	
+	<a href="{getUrl('act','dispMemberInfo','member_srl',$logged_info->member_srl)}" title="{$lang->cmd_view_member_info}">
+	<span id="info">
+	<span class=bgp></span>
+	</span></a>
+	</div>
+
+	<div id="logged_menu">
+	<a href="{getUrl('act','dispMemberScrappedDocument','member_srl',$logged_info->member_srl)}" title="{$lang->cmd_view_scrapped_document}">스크랩</a><span class="menu_separator">|</span><a href="{getUrl('act','dispMemberSavedDocument','member_srl',$logged_info->member_srl)}" title="{$lang->cmd_view_saved_document}">저장함</a><span class="menu_separator">|</span><a href="{getUrl('act','dispMemberOwnDocument','member_srl',$logged_info->member_srl)}" title="{$lang->cmd_view_own_document}">작성글</a><span class="menu_separator">|</span><a href="{getUrl('act','dispMemberFriend','member_srl',$logged_info->member_srl)}" title="{$lang->cmd_view_friend}">친구</a><br />
+	<span class="menu_separator"></span>
+	<span class="menu">포인트 : {$point}<!--@if($nextpoint!=0)-->/{$nextpoint} ({$percent}%)<!--@endif--></span> <span class="menu_separator"> | </span> 
+	<span class="menu">레벨: {$level} <span class="blind member_{$logged_info->member_srl}"></span>
+	<!--@if($logged_info->is_admin=="Y")-->
+	<!--@if($layout_info->layout_srl)-->
+	<!--@end-->
+	<!--@elseif($logged_info->is_site_admin)-->
+	<a href="{getUrl('','module','homepage')}" onclick="window.open(this.href);return false;"><span title="{$lang->cmd_management}">{$lang->cmd_management}</span></a>
+	<!--@end-->
+	</div>
+
+	<div id="btn">
+		<span id="manage"><span class=bgp></span> <a href="{getUrl('','module','admin')}" onclick="window.open(this.href);return false;" title="{$lang->cmd_management}">{$lang->cmd_management}</a></span><!-- 관리 -->
+		<a href="{getUrl('act','dispMemberLogout')}" class="logoutButton"><span id="logout" title="{$lang->cmd_logout}" /><span class=bgp></span></span></a>
+	</div>
+</div>

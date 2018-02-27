@@ -1,0 +1,122 @@
+<load target="treasurej_popular.css" />
+
+{@$popsid++}
+<!--// TAB Start -->
+<div>
+	<ul class="tabs_items" style="width:{$widget_info->widget_widths}px">
+		<!--@for($j=0,$c=count($widget_info->tab_view_arr);$j<$c;$j++)-->
+		<!--@if($widget_info->tab_view_arr[$j]=='popular')-->
+		<li class="tabs_active"|cond="$widget_info->tab_view_arr[0]=='popular'" style="width:{($widget_info->widget_widths/$c-2)}px" onmouseover="jQuery(this).parent().find('li.tabs_active').removeClass('tabs_active');jQuery(this).addClass('tabs_active');return false;"><a id="pd_link_s{$popsid}">{$lang->ip_popular_documents}</a></li>
+		<!--@elseif($widget_info->tab_view_arr[$j]=='newestd')-->
+		<li class="tabs_active"|cond="$widget_info->tab_view_arr[0]=='newestd'" style="width:{($widget_info->widget_widths/$c-2)}px" onmouseover="jQuery(this).parent().find('li.tabs_active').removeClass('tabs_active');jQuery(this).addClass('tabs_active');return false;"><a id="nd_link_s{$popsid}">{$lang->ip_newest_documents}</a></li>
+		<!--@elseif($widget_info->tab_view_arr[$j]=='newestc')-->
+		<li class="tabs_active"|cond="$widget_info->tab_view_arr[0]=='newestc'" style="width:{($widget_info->widget_widths/$c-2)}px" onmouseover="jQuery(this).parent().find('li.tabs_active').removeClass('tabs_active');jQuery(this).addClass('tabs_active');return false;"><a id="nc_link_s{$popsid}">{$lang->ip_newest_comments}</a></li>
+		<!--@end-->
+		<!--@end-->
+	</ul>
+</div>
+<!--// TAB End -->
+
+<div id="n_link_s{$popsid}" class="tabs_inner" style="width:{$widget_info->widget_widths}px">
+
+	<!--// Popular Documents Start -->
+	<div id="popular_documents_s{$popsid}" class="tabs_active"|cond="$widget_info->tab_view_arr[0]=='popular'">
+		<!--@if($widget_info->popular_documents)-->
+		<ul>
+			<!--@foreach($widget_info->popular_documents as $k => $v)-->
+			<li>
+				<a href="{$v->getPermanentUrl()}">
+				<!--@for($j=0,$c=count($widget_info->option_view_arr);$j<$c;$j++)-->
+				<!--@if($widget_info->option_view_arr[$j]=='image')-->
+				<p class="tabs_thumb">
+					<!--@if($v->getThumbnail())-->
+						<img style=" *position:absolute;" src="{$v->getThumbnail($widget_info->thumbnail_width,$widget_info->thumbnail_height,crop)}" border="0" alt="" />
+					<!--@else-->
+						<span class="noimg" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px"><span class="noimgtext">No Image<span></span>
+					<!--@end-->
+				</p>
+				<!--@elseif($widget_info->option_view_arr[$j]=='title' || $widget_info->option_view_arr[$j]=='content' || $widget_info->option_view_arr[$j]=='regdate')-->
+				<p class="tabs_text" style="*margin-left:{$widget_info->thumbnail_width+30}px; width:{($widget_info->widget_widths-$widget_info->thumbnail_width-20)}px"|cond="$widget_info->option_view_arr[0]=='image'">
+					<!--@if($widget_info->option_view_arr[$j]=='title')--><span class="tabs_title">{$v->getTitle($widget_info->subject_cut_size)}</span>
+					<!--@elseif($widget_info->option_view_arr[$j]=='content')--><span class="tabs_content">{$v->getSummary($widget_info->content_cut_size)}</span>
+					<!--@elseif($widget_info->option_view_arr[$j]=='regdate')--><span class="tabs_date">{$v->getRegdate("Y-m-d")}</span><!--@end-->
+				</p>
+				<!--@end-->
+				<!--@end-->
+				<p class="lcr"></p>
+				</a>
+			</li>
+			<!--@end-->
+		</ul>
+		<!--@end-->
+	</div>
+	<!--// Popular Documents End -->
+	
+	<!--// Newest Documents Start -->
+	<div id="newest_documents_s{$popsid}" class="tabs_active"|cond="$widget_info->tab_view_arr[0]=='newestd'">
+		<!--@if($widget_info->newest_documents)-->
+		<ul>
+			<!--@foreach($widget_info->newest_documents as $k => $v)-->
+			<li>
+				<a href="{$v->getPermanentUrl()}">
+				<!--@for($j=0,$c=count($widget_info->option_view_arr);$j<$c;$j++)-->
+				<!--@if($widget_info->option_view_arr[$j]=='image')-->
+				<p class="tabs_thumb">
+					<!--@if($v->getThumbnail())-->
+						<img style=" *position:absolute;" src="{$v->getThumbnail($widget_info->thumbnail_width,$widget_info->thumbnail_height,crop)}" border="0" alt="" />			 <!-- *position: ie7 xestyle-->
+					<!--@else-->
+						<span class="noimg" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px"><span class="noimgtext">No Image<span></span>
+					<!--@end-->
+				</p>
+				<!--@elseif($widget_info->option_view_arr[$j]=='title' || $widget_info->option_view_arr[$j]=='content' || $widget_info->option_view_arr[$j]=='regdate')-->
+				<p class="tabs_text" style="*margin-left:{$widget_info->thumbnail_width+30}px; width:{($widget_info->widget_widths-$widget_info->thumbnail_width-20)}px"|cond="$widget_info->option_view_arr[0]=='image'">
+					<!--@if($widget_info->option_view_arr[$j]=='title')--><span class="tabs_title">{$v->getTitle($widget_info->subject_cut_size)}</span>
+					<!--@elseif($widget_info->option_view_arr[$j]=='content')--><span class="tabs_content">{$v->getSummary($widget_info->content_cut_size)}</span>
+					<!--@elseif($widget_info->option_view_arr[$j]=='regdate')--><span class="tabs_date">{$v->getRegdate("Y-m-d")}</span><!--@end-->
+				</p>
+				<!--@end-->
+				<!--@end-->
+				<p class="lcr"></p>
+				</a>
+			</li>
+			<!--@end-->
+		</ul>
+		<!--@end-->
+	</div>
+	<!--// Newest Documents End -->
+	
+	<!--// Newest Comments Start -->
+	<div id="newest_comments_s{$popsid}" class="tabs_active"|cond="$widget_info->tab_view_arr[0]=='newestc'">
+		<!--@if($widget_info->newest_comments)-->
+		<ul>
+			<!--@foreach($widget_info->newest_comments as $k => $v)-->
+			<li>
+				<a href="{$v->getPermanentUrl()}">
+				<p class="tabs_text">
+					<span class="tabs_content2">{$v->getSummary($widget_info->comment_cut_size)}</span>
+					<span class="tabs_date2">&nbsp;&nbsp;{$v->getRegdate("Y-m-d")}</span>
+				</p>
+				<p class="lcr"></p>
+				</a>
+			</li>
+			<!--@end-->
+		</ul>
+		<!--@end-->
+	</div>
+	<!--// Newest Comments End -->
+	
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$("#nd_link_s{$popsid}").mouseover(function(){
+		$("#popular_documents_s{$popsid}, #newest_comments_s{$popsid}").removeClass('tabs_active'); $("#newest_documents_s{$popsid}").addClass('tabs_active');
+	});
+	$("#pd_link_s{$popsid}").mouseover(function(){
+		$("#newest_documents_s{$popsid}, #newest_comments_s{$popsid}").removeClass('tabs_active'); $("#popular_documents_s{$popsid}").addClass('tabs_active');
+	});
+	$("#nc_link_s{$popsid}").mouseover(function(){
+		$("#newest_documents_s{$popsid}, #popular_documents_s{$popsid}").removeClass('tabs_active'); $("#newest_comments_s{$popsid}").addClass('tabs_active');
+	});
+});
+</script>

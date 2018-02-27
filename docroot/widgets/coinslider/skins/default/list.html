@@ -1,0 +1,50 @@
+<!--%import("./js/coin-slider.js")-->
+
+<!--%import("./css/coin-slider-styles.css")-->
+
+
+<div class="widgetContainer">
+<div class="coin-slider">
+<div id='coin-slider_{$widget_info->widget_division}' width='{$widget_info->thumbnail_width}'>
+	<!--@foreach($widget_info->coinslider_items as $key => $item)-->
+	<!--@if($widget_info->hyperlink == 'Y')--><a href="{$item->getLink()}" <!--@if($widget_info->hyperlink_type=='newwindow')-->target="_blank"<!--@end-->><!--@end-->
+		<!--@if($item->getThumbnail())-->
+			<img src="{$item->getThumbnail()}" />
+		<!--@else-->
+		<!--@end-->
+		<!--@if($widget_info->show_title == 'Y' || $widget_info->show_content == 'Y')-->
+		<span class="contentview">
+			<!--@if($widget_info->show_title == 'Y')--><strong>{$item->getTitle($widget_info->subject_cut_size)}</strong>
+			<!--@if($widget_info->show_content == 'Y')--><br /><!--@end--><!--@end-->
+			<!--@if($widget_info->show_content == 'Y')-->{$item->getContent()}<!--@end-->
+		</span>
+		<!--@end-->
+	<!--@if($widget_info->hyperlink == 'Y')--></a><!--@end-->
+	<!--@end-->	
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#coin-slider_{$widget_info->widget_division}').coinslider({
+			width:{$widget_info->thumbnail_width},
+			height:{$widget_info->thumbnail_height},
+			spw:{$widget_info->square_width},
+			sph:{$widget_info->square_height},
+			delay:{$widget_info->slide_delay},
+			sDelay:{$widget_info->square_delay},
+			opacity:{$widget_info->content_opacity},
+			titleSpeed:{$widget_info->content_speed},
+			effect:'<!--@if($widget_info->slide_effect != 'rand')-->{$widget_info->slide_effect}<!--@end-->',
+			navigation:<!--@if($widget_info->show_navigation == 'Y')-->true<!--@else-->false<!--@end-->,
+			imagelist:<!--@if($widget_info->show_imagelist == 'Y')-->true<!--@else-->false<!--@end-->,
+			links:<!--@if($widget_info->hyperlink == 'Y')-->true<!--@else-->false<!--@end-->,
+			hoverPause:<!--@if($widget_info->hover_pause == 'Y')-->true<!--@else-->false<!--@end-->,
+			uptitle:<!--@if($widget_info->content_position == 'top')-->true<!--@else-->false<!--@end-->,
+			imagebutton:<!--@if($colorset == 'default')-->false<!--@else-->true<!--@end-->,
+			imagebuttontype:<!--@if($colorset == 'imagebutton01')-->0<!--@else if($colorset == 'imagebutton02')-->1<!--@else if($colorset == 'imagebutton03')-->2<!--@else if($colorset == 'imagebutton04')-->3<!--@else-->0<!--@end-->,
+			skinsrc:'{$skin_path}'
+			});
+	});
+</script>

@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">shopxe 이미지 슬라이더 위젯</title>
+    <title xml:lang="en">Content Image Slider Widget</title>
+    <description xml:lang="ko">최근 이미지와 내용을 슬라이드로 출력하는 위젯입니다.</description>
+    <description xml:lang="en">This widget displays images and content Slider.</description>
+    <version>1.0</version>
+    <date>2011-04-19</date>
+
+    <author email_address="" link="http://study4u.hosting.paran.com/">
+        <name xml:lang="ko">Study4u</name>
+        <name xml:lang="en">Study4u</name>
+    </author>
+
+    <extra_vars>
+	<group>
+		<title xml:lang="ko">- 모든 스킨에 적용되는 기본항목 - [**] 표시는 코드생성전에 꼭 확인하세요.\n\n(비워두시면 기본값을 사용합니다)</title>
+		<title xml:lang="en">- 모든 스킨에 적용되는 기본항목 - [**] 표시는 코드생성전에 꼭 확인하세요.\n\n(blank value will use default value)</title>
+
+		<var id="module_srls">
+            <type>module_srl_list</type>
+            <name xml:lang="ko">[**] 대상 모듈</name>
+            <name xml:lang="en">[**] Target Module</name>
+            <description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+            <description xml:lang="en">The target articles to be sorted will be the ones submitted in the selected module.</description>
+        </var>
+
+		<var id="list_count">
+			<type>text</type>
+			<name xml:lang="ko">[**] 슬라이드 총 갯수</name>
+			<name xml:lang="en">[**] Number of Slide images</name>
+			<description xml:lang="ko">출력될 슬라이드이미지의 총 갯수를 정하실 수 있습니다. (기본 5개)</description>
+			<description xml:lang="en">You can set the number of images to display. (5 as default)</description>
+		</var>
+
+		<var id="slider_img_width">
+			<type>text</type>
+			<name xml:lang="ko">[**] 슬라이드 가로 넓이</name>
+			<name xml:lang="en">[**] Width of slider Image</name>
+			<description xml:lang="ko">슬라이드 이미지의 가로 넓이를 정하실 수 있습니다. (기본 400px)</description>
+			<description xml:lang="en">You can set the width of slider image. (400px as default)</description>
+		</var>
+
+		<var id="slider_img_height">
+			<type>text</type>
+			<name xml:lang="ko">[**] 슬라이드 세로 높이</name>
+			<name xml:lang="en">[**] Height of slider Image</name>
+			<description xml:lang="ko">슬라이드 이미지의 세로 높이를 지정할 수 있습니다. (기본 250px)</description>
+			<description xml:lang="en">You can set the height of slider image. (250px as default)</description>
+		</var>
+
+		<var id="navigation_size">
+			<type>text</type>
+			<name xml:lang="ko">[**] 네비게이션 가로 넓이</name>
+			<name xml:lang="en">[**] Width of Navigation</name>
+			<description xml:lang="ko">썸네일박스 또는 캡션박스의 가로 넓이를 지정할 때 사용됩니다. (기본 200px)</description>
+			<description xml:lang="en">You can set the width of thumbnail box or caption box. (200px as default)</description>
+		</var>
+
+		<var id="thumbnail_type">
+            <type>select</type>
+            <name xml:lang="ko">이미지 생성 방법</name>
+            <name xml:lang="en">Image Type</name>
+            <description xml:lang="ko">이미지 생성 방법을 선택할 수 있습니다. (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+            <description xml:lang="en">Image Type may be set here.</description>
+            <options>
+                <value>crop</value>
+                <name xml:lang="ko">Crop (채우기)</name>
+                <name xml:lang="en">Crop</name>
+            </options>
+            <options>
+                <value>ratio</value>
+                <name xml:lang="ko">Ratio (비율 맞추기)</name>
+                <name xml:lang="en">Ratio</name>
+            </options>
+        </var>
+
+		<var id="order_target">
+            <type>select</type>
+            <name xml:lang="ko">정렬 대상</name>
+            <name xml:lang="en">Target to be sorted</name>
+            <description xml:lang="ko">등록된 순서 또는 변경된 순서로 정렬을 할 수 있습니다.</description>
+            <description xml:lang="en">The list of newewst articles may be sorted by submitted order or modified order.</description>
+            <options>
+                <value>list_order</value>
+                <name xml:lang="ko">최신 등록순</name>
+                <name xml:lang="en">Newest Submitted Order</name>
+            </options>
+            <options>
+                <value>update_order</value>
+                <name xml:lang="ko">최근 변경순</name>
+                <name xml:lang="en">Newest Modified Order</name>
+            </options>
+        </var>
+
+		<var id="order_type">
+            <type>select</type>
+            <name xml:lang="ko">정렬 방법</name>
+            <name xml:lang="en">Sorting Type</name>
+            <description xml:lang="ko">정렬대상을 내림차순 또는 올림차순으로 정렬할 수 있습니다.</description>
+            <description xml:lang="en">You can sort target articles by ascending or descending order.</description>
+            <options>
+                <value>desc</value>
+                <name xml:lang="ko">내림차순</name>
+                <name xml:lang="en">Descending order</name>
+            </options>
+            <options>
+                <value>asc</value>
+                <name xml:lang="ko">올림차순</name>
+                <name xml:lang="en">Ascending order</name>
+            </options>
+		</var>
+
+        <var id="show_control">
+            <type>select</type>
+            <name xml:lang="ko">컨트롤 버튼 표시</name>
+            <name xml:lang="en">Display control</name>
+            <description xml:lang="ko">좌,우 이동 버튼입니다.</description>
+			<description xml:lang="en">You may control image to Left or Right.</description>
+			<options>
+                <value>Y</value>
+                <name xml:lang="ko">출력(기본)</name>
+                <name xml:lang="en">Display(default)</name>
+            </options>
+            <options>
+                <value>N</value>
+                <name xml:lang="ko">출력않음</name>
+                <name xml:lang="en">No Display</name>
+            </options>
+        </var>
+
+        <var id="navigation_control">
+            <type>select</type>
+            <name xml:lang="ko">페이지 버튼 표시</name>
+            <name xml:lang="en">Display Page control</name>
+            <description xml:lang="ko">페이지 이동 버튼입니다.</description>
+			<description xml:lang="en">It will display as like page number.</description>
+			<options>
+                <value>Y</value>
+                <name xml:lang="ko">출력(기본)</name>
+                <name xml:lang="en">Display(default)</name>
+            </options>
+            <options>
+                <value>N</value>
+                <name xml:lang="ko">출력않음</name>
+                <name xml:lang="en">No Display</name>
+            </options>
+        </var>
+
+        <var id="content_items_shuffle">
+            <type>select</type>
+            <name xml:lang="ko">게시물 순서 섞기</name>
+            <name xml:lang="en">Shuffle newest document</name>
+            <options>
+                <value>Y</value>
+                <name xml:lang="ko">예(기본)</name>
+                <name xml:lang="en">Yes(default)</name>
+            </options>
+            <options>
+                <value>N</value>
+                <name xml:lang="ko">아니요</name>
+                <name xml:lang="en">No</name>
+            </options>
+        </var>
+
+        <var id="slide_auto">
+            <type>select</type>
+            <name xml:lang="ko">자동 슬라이드</name>
+            <name xml:lang="en">Slide Auto</name>
+            <options>
+                <value>true</value>
+                <name xml:lang="ko">자동(기본)</name>
+                <name xml:lang="en">Auto(default)</name>
+            </options>
+            <options>
+                <value>false</value>
+                <name xml:lang="ko">수동</name>
+                <name xml:lang="en">Manual</name>
+            </options>
+        </var>
+
+		<var id="slide_delay">
+            <type>text</type>
+            <name xml:lang="ko">슬라이드 속도</name>
+            <name xml:lang="en">Slide delay</name>
+            <description xml:lang="ko">슬라이드의 속도를 조절할 수 있습니다. 1초 : 1000 (기본값 3000)</description>
+            <description xml:lang="en">Delay of Slide can be assigned. 1sec : 1000 (default : 3000)</description>
+        </var>
+
+		<var id="target_ext_var">
+            <type>select</type>
+            <name xml:lang="ko">확장변수 적용 대상</name>
+			<name xml:lang="en">Target of Extra var</name>
+            <description xml:lang="ko">확장변수가 적용되는 대상을 지정할 수 있습니다.</description>
+			<description xml:lang="en">You may set the Target of Extra var.</description>
+            <options>
+                <value>none</value>
+                <name xml:lang="ko">사용안함</name>
+				<name xml:lang="en">No Use</name>
+            </options>
+			<options>
+                <value>content</value>
+                <name xml:lang="ko">내용</name>
+				<name xml:lang="en">content</name>
+            </options>
+            <options>
+                <value>title</value>
+                <name xml:lang="ko">제목</name>
+				<name xml:lang="en">title</name>
+            </options>
+			<options>
+                <value>image</value>
+                <name xml:lang="ko">이미지</name>
+				<name xml:lang="en">image</name>
+            </options>
+			<options>
+                <value>link</value>
+                <name xml:lang="ko">링크</name>
+				<name xml:lang="en">link</name>
+            </options>
+		</var>
+
+		<var id="ext_var">
+            <type>text</type>
+            <name xml:lang="ko">확장변수명</name>
+			<name xml:lang="en">Extra var</name>
+            <description xml:lang="ko">확장변수명을 입력하세요.</description>
+            <description xml:lang="en">You may set the Extra var.</description>
+		</var>
+
+        <var id="open_article">
+            <type>select</type>
+            <name xml:lang="ko">이미지 클릭 연결 대상</name>
+            <name xml:lang="en">이미지 클릭 연결 대상</name>
+            <description xml:lang="ko">이미지 클릭시 연결 대상을 선택할 수 있습니다.</description>
+			<description xml:lang="en">이미지 클릭시 연결 대상을 선택할 수 있습니다.</description>
+			<options>
+                <value>N</value>
+                <name xml:lang="ko">사용안함</name>
+                <name xml:lang="en">NONE</name>
+            </options>
+            <options>
+                <value>Y</value>
+                <name xml:lang="ko">게시글</name>
+                <name xml:lang="en">Article</name>
+            </options>
+            <options>
+                <value>Z</value>
+                <name xml:lang="ko">prettyPhoto</name>
+                <name xml:lang="en">prettyPhoto</name>
+            </options>
+		</var>
+
+        <var id="ptypoto">
+            <type>select</type>
+            <name xml:lang="ko">prettyPhoto 테마</name>
+            <name xml:lang="en">prettyPhoto theme</name>
+            <description xml:lang="ko">이미지 클릭 대상의 원본이미지 선택하였을때,\n prettyPhoto 테마를 사용할수 있습니다.</description>
+			<description xml:lang="en">이미지 클릭 대상의 원본이미지 선택하였을때,\n prettyPhoto 테마를 사용할수 있습니다.</description>
+			<options>
+                <value>pp_default</value>
+                <name xml:lang="ko">default</name>
+                <name xml:lang="en">default</name>
+            </options>
+			<options>
+                <value>light_rounded</value>
+                <name xml:lang="ko">light rounded</name>
+                <name xml:lang="en">light rounded</name>
+            </options>
+            <options>
+                <value>dark_rounded</value>
+                <name xml:lang="ko">dark rounded</name>
+                <name xml:lang="en">dark rounded</name>
+            </options>
+            <options>
+                <value>light_square</value>
+                <name xml:lang="ko">light square</name>
+                <name xml:lang="en">light square</name>
+            </options>
+            <options>
+                <value>dark_square</value>
+                <name xml:lang="ko">dark square</name>
+                <name xml:lang="en">dark square</name>
+            </options>
+            <options>
+                <value>facebook</value>
+                <name xml:lang="ko">facebook</name>
+                <name xml:lang="en">facebook</name>
+            </options>
+		</var>
+
+        <var id="img_fade">
+            <type>select</type>
+            <name xml:lang="ko">이미지 페이드 효과</name>
+            <name xml:lang="en">이미지 페이드 효과</name>
+            <description xml:lang="ko">이미지에 마우스 오버시 페이드 효과를 선택할 수 있습니다.</description>
+			<description xml:lang="en">이미지에 마우스 오버시 페이드 효과를 선택할 수 있습니다.</description>
+            <options>
+                <value>Y</value>
+                <name xml:lang="ko">사용</name>
+                <name xml:lang="en">사용</name>
+            </options>
+			<options>
+                <value>N</value>
+                <name xml:lang="ko">사용안함</name>
+                <name xml:lang="en">NONE</name>
+            </options>
+		</var>
+
+	
+	</group>
+
+	<group>
+		<title xml:lang="ko">- 제목 출력시 Font Size, Font-Family, Font Color를 지정할 수 있습니다.\n\n(비워두시면 기본값을 사용합니다)</title>
+		<title xml:lang="en">- You can set the Font Size, Type, Color to display title.\n\n(blank value will use default value)</title>
+
+        <var id="show_title">
+            <type>select</type>
+            <name xml:lang="ko">제목 표시</name>
+            <name xml:lang="en">Display Title</name>
+            <options>
+                <value>Y</value>
+                <name xml:lang="ko">출력(기본)</name>
+                <name xml:lang="en">Display(default)</name>
+            </options>
+            <options>
+                <value>N</value>
+                <name xml:lang="ko">출력않음</name>
+                <name xml:lang="en">No Display</name>
+            </options>
+        </var>
+
+		<var id="subject_cut_size">
+            <type>text</type>
+            <name xml:lang="ko">제목 글자수</name>
+            <name xml:lang="en">Length of Subject</name>
+            <description xml:lang="ko">제목 글자수를 지정할 수 있습니다. (0또는 비워두시면 자르지 않습니다)</description>
+            <description xml:lang="en">Length of Subject can be assigned. (0 or blank value will not restrict the length)</description>
+        </var>
+
+		<var id="title_font_family">
+            <type>select</type>
+            <name xml:lang="ko">제목 글씨체</name>
+            <name xml:lang="en">Font family of Subject</name>
+            <description xml:lang="ko">제목 글씨체를 지정할 수 있습니다.</description>
+            <description xml:lang="en">Font family of Subject can be assigned.</description>
+            <options>
+                <value>Default</value>
+                <name xml:lang="ko">기본값</name>
+                <name xml:lang="en">Default</name>
+            </options>
+             <options>
+                <value>Dotum</value>
+                <name xml:lang="ko">돋움</name>
+                <name xml:lang="en">Dotum</name>
+            </options>
+			<options>
+                <value>Gulim</value>
+                <name xml:lang="ko">굴림</name>
+                <name xml:lang="en">Gulim</name>
+            </options>
+            <options>
+                <value>Batang</value>
+                <name xml:lang="ko">바탕</name>
+                <name xml:lang="en">Batang</name>
+            </options>
+            <options>
+                <value>Gungsuh</value>
+                <name xml:lang="ko">궁서</name>
+                <name xml:lang="en">Gungsuh</name>
+            </options>
+			<options>
+                <value>Tahoma</value>
+                <name xml:lang="ko">Tahoma</name>
+                <name xml:lang="en">Tahoma</name>
+            </options>
+			<options>
+                <value>Verdana</value>
+                <name xml:lang="ko">Verdana</name>
+                <name xml:lang="en">Verdana</name>
+            </options>
+			<options>
+                <value>Helvetica</value>
+                <name xml:lang="ko">Helvetica</name>
+                <name xml:lang="en">Helvetica</name>
+            </options>
+			<options>
+                <value>Georgia</value>
+                <name xml:lang="ko">Georgia</name>
+                <name xml:lang="en">Georgia</name>
+            </options>
+			<options>
+                <value>Sans-serif</value>
+                <name xml:lang="ko">Sans-serif</name>
+                <name xml:lang="en">Sans-serif</name>
+            </options>
+		</var>
+
+ 		<var id="title_font_user">
+            <type>text</type>
+            <name xml:lang="ko">제목 글꼴 직접 입력</name>
+			<name xml:lang="en">Set Title of font family</name>
+            <description xml:lang="ko">제목 글씨체를 직접 정의할 수 있습니다.(예:'맑은 고딕',Malgun Gothic,Helvetica,Sans-serif)\n공백이나 (") 따옴표는 사용할 수 없습니다.</description>
+            <description xml:lang="en">You may set the title of font family.</description>
+		</var>
+
+		<var id="title_font_size">
+            <type>text</type>
+            <name xml:lang="ko">제목 문자 크기</name>
+            <name xml:lang="en">Font size of Subject</name>
+            <description xml:lang="ko">제목 글자 크기를 지정할 수 있습니다.</description>
+            <description xml:lang="en">Font size of Subject can be assigned.</description>
+        </var>
+
+ 		<var id="title_font_color">
+            <type>text</type>
+            <name xml:lang="ko">제목 글자색</name>
+			<name xml:lang="en">Set Title of font color</name>
+            <description xml:lang="ko">제목 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')\n기본값은 검정색입니다.</description>
+            <description xml:lang="en">You may set the title of font color.</description>
+		</var>
+
+		<var id="title_height">
+            <type>text</type>
+            <name xml:lang="ko">제목 높이</name>
+			<name xml:lang="en">Height of Title</name>
+            <description xml:lang="ko">제목 출력시 높이를 지정할 수 있습니다.</description>
+            <description xml:lang="en">You may set the height of Title.</description>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">- 내용 출력시 Font Size, Font-Family, Font Color를 지정할 수 있습니다.\n\n(비워두시면 기본값을 사용합니다)</title>
+		<title xml:lang="en">- You can set the Font Size, Type, Color to display content.\n\n(blank value will use default value)</title>
+
+		<var id="show_content">
+            <type>select</type>
+            <name xml:lang="ko">내용 표시</name>
+            <name xml:lang="en">Display Content</name>
+            <options>
+                <value>Y</value>
+                <name xml:lang="ko">출력(기본)</name>
+                <name xml:lang="en">Display(default)</name>
+            </options>
+            <options>
+                <value>N</value>
+                <name xml:lang="ko">출력않음</name>
+                <name xml:lang="en">No Display</name>
+            </options>
+        </var>
+
+		<var id="content_cut_size">
+            <type>text</type>
+            <name xml:lang="ko">내용 글자수</name>
+			<name xml:lang="en">Content Length</name>
+            <description xml:lang="ko">내용 글자수를 지정할 수 있습니다. (기본값 200)</description>
+            <description xml:lang="en">Length of Content can be assigned. (200 as default)</description>
+		</var>
+
+		<var id="content_font_family">
+            <type>select</type>
+            <name xml:lang="ko">내용 글씨체</name>
+            <name xml:lang="en">Font family of Content</name>
+            <description xml:lang="ko">내용 글씨체를 지정할 수 있습니다.</description>
+            <description xml:lang="en">Font family of Content can be assigned.</description>
+            <options>
+                <value>Default</value>
+                <name xml:lang="ko">기본값</name>
+                <name xml:lang="en">Default</name>
+            </options>
+             <options>
+                <value>Dotum</value>
+                <name xml:lang="ko">돋움</name>
+                <name xml:lang="en">Dotum</name>
+            </options>
+			<options>
+                <value>Gulim</value>
+                <name xml:lang="ko">굴림</name>
+                <name xml:lang="en">Gulim</name>
+            </options>
+            <options>
+                <value>Batang</value>
+                <name xml:lang="ko">바탕</name>
+                <name xml:lang="en">Batang</name>
+            </options>
+            <options>
+                <value>Gungsuh</value>
+                <name xml:lang="ko">궁서</name>
+                <name xml:lang="en">Gungsuh</name>
+            </options>
+			<options>
+                <value>Tahoma</value>
+                <name xml:lang="ko">Tahoma</name>
+                <name xml:lang="en">Tahoma</name>
+            </options>
+			<options>
+                <value>Verdana</value>
+                <name xml:lang="ko">Verdana</name>
+                <name xml:lang="en">Verdana</name>
+            </options>
+			<options>
+                <value>Helvetica</value>
+                <name xml:lang="ko">Helvetica</name>
+                <name xml:lang="en">Helvetica</name>
+            </options>
+			<options>
+                <value>Georgia</value>
+                <name xml:lang="ko">Georgia</name>
+                <name xml:lang="en">Georgia</name>
+            </options>
+			<options>
+                <value>Sans-serif</value>
+                <name xml:lang="ko">Sans-serif</name>
+                <name xml:lang="en">Sans-serif</name>
+            </options>
+		</var>
+
+ 		<var id="content_font_user">
+            <type>text</type>
+            <name xml:lang="ko">내용 글꼴 직접 입력</name>
+			<name xml:lang="en">Set Content of font family</name>
+            <description xml:lang="ko">내용 글씨체를 직접 정의할 수 있습니다.(예:'맑은 고딕',Malgun Gothic,Helvetica,Sans-serif)\n공백이나 (") 따옴표는 사용할 수 없습니다.</description>
+            <description xml:lang="en">You may set the content of font family.</description>
+		</var>
+
+		<var id="content_font_size">
+            <type>text</type>
+            <name xml:lang="ko">내용 문자 크기</name>
+            <name xml:lang="en">Font size of Content</name>
+            <description xml:lang="ko">내용 문자 크기를 지정할 수 있습니다.</description>
+            <description xml:lang="en">Font size of Content can be assigned.</description>
+        </var>
+
+ 		<var id="content_font_color">
+            <type>text</type>
+            <name xml:lang="ko">내용 글자색</name>
+			<name xml:lang="en">Set Content of font color</name>
+            <description xml:lang="ko">내용 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')\n기본값은 검정색입니다.</description>
+            <description xml:lang="en">You may set the content of font color.</description>
+		</var>
+
+		<var id="content_height">
+            <type>text</type>
+            <name xml:lang="ko">내용 높이</name>
+			<name xml:lang="en">Height of Content</name>
+            <description xml:lang="ko">내용 출력시 높이를 지정할 수 있습니다.</description>
+            <description xml:lang="en">You may set the height of Content.</description>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">- 추가 선택 항목 - 스킨에 따라 선택적으로 적용됩니다.\n\n(비워두시면 기본값을 사용합니다)</title>
+		<title xml:lang="en">- 추가 선택 항목 - 스킨에 따라 선택적으로 적용됩니다.\n\n(blank value will use default value)</title>
+
+		<var id="thumbnail_width">
+			<type>text</type>
+			<name xml:lang="ko">[01].썸네일 가로 넓이</name>
+			<name xml:lang="en">[01].Width of Thumbnail</name>
+			<description xml:lang="ko">출력될 이미지의 가로넓이를 정하실 수 있습니다. (기본 80)</description>
+			<description xml:lang="en">You can set the width of image. (80 as default)</description>
+		</var>
+
+		<var id="thumbnail_height">
+			<type>text</type>
+			<name xml:lang="ko">[02].썸네일 세로 높이</name>
+			<name xml:lang="en">[02].Height of Thumbnail</name>
+			<description xml:lang="ko">이미지의 세로 높이를 지정할 수 있습니다. (기본 60)</description>
+			<description xml:lang="en">You can set the height of image. (60 as default)</description>
+		</var>
+		
+		<var id="thumbnail_bdsize">
+			<type>text</type>
+			<name xml:lang="ko">[03].썸네일 테두리 두께</name>
+			<name xml:lang="en">[03].Boder size of thumbnail</name>
+			<description xml:lang="ko">썸네일 이미지의 boder size를 지정할 수 있습니다. (기본 1px)</description>
+			<description xml:lang="en">You can set the boder size of thumbnail. (1px as default)</description>
+		</var>
+
+		<var id="thumbnail_bdcolor">
+			<type>text</type>
+			<name xml:lang="ko">[04].썸네일 테두리 색</name>
+			<name xml:lang="en">[04].Boder color of thumbnail</name>
+			<description xml:lang="ko">썸네일 이미지의 boder color를 지정할 수 있습니다. (기본 #ccc)</description>
+			<description xml:lang="en">You can set the boder color of thumbnail. (#ccc as default)</description>
+		</var>
+
+		<var id="cols_list_count">
+			<type>text</type>
+			<name xml:lang="ko">[05].썸네일 이미지 수</name>
+			<name xml:lang="en">[05].Number of thumbnail Images</name>
+			<description xml:lang="ko">출력될 가로 이미지의 수를 정하실 수 있습니다. (기본 5개)</description>
+			<description xml:lang="en">You can set the number of thumbnail Images to display. (5 as default)</description>
+		</var>
+
+		<var id="slider_img_bdsize">
+			<type>text</type>
+			<name xml:lang="ko">[06].슬라이드 테두리 두께</name>
+			<name xml:lang="en">[06].Boder size of slider Image</name>
+			<description xml:lang="ko">슬라이드 이미지의 boder size를 지정할 수 있습니다. (기본 0px)</description>
+			<description xml:lang="en">You can set the boder size of slider Image. (0px as default)</description>
+		</var>
+
+		<var id="slider_img_bdcolor">
+			<type>text</type>
+			<name xml:lang="ko">[07].슬라이드 테두리 색</name>
+			<name xml:lang="en">[07].Boder color of slider Image</name>
+			<description xml:lang="ko">슬라이드 이미지의 boder color를 지정할 수 있습니다. (기본 #ccc)</description>
+			<description xml:lang="en">You can set the boder color of slider Image. (#ccc as default)</description>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">- 제한된 기능 -</title>
+		<title xml:lang="en">- 제한된 기능 -</title>
+
+		<var id="mid_height">
+            <type>text</type>
+            <name xml:lang="ko">bxSlider(only)</name>
+			<name xml:lang="en">bxSlider(only)</name>
+            <description xml:lang="ko">bxSlider 스킨의 게시판 이름 출력시 높이를 지정할 수 있습니다.\n(0또는 비워주시면 출력하지 않습니다)</description>
+            <description xml:lang="en">You may set the height of BrowerTitle.\n(0 or blank value will not display)</description>
+		</var>
+
+		<var id="ea_title">
+            <type>text</type>
+            <name xml:lang="ko">easyAccordion(only)</name>
+			<name xml:lang="en">easyAccordion(only)</name>
+            <description xml:lang="ko">슬라이드 제목을 입력할 수 있습니다. 구분자: ';' (예. 제목1;제목2;제목3)</description>
+            <description xml:lang="en">You may set the title of slide. (ex. title1;title2;title3)</description>
+		</var>
+
+		<var id="duration_new">
+            <type>text</type>
+            <name xml:lang="ko">new 표시 시간 (hours)</name>
+            <name xml:lang="en">Duration of indication for new item</name>
+            <description xml:lang="ko">새로 등록된 게시물의 new 표시시간을 정할 수 있습니다. (시간 단위)</description>
+            <description xml:lang="en">You may set the duration of indication for fresh item. (unit is hour)</description>
+        </var>
+	</group>
+	</extra_vars>
+</widget>

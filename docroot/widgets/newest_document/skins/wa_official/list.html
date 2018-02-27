@@ -1,0 +1,11 @@
+    <!--%import("css/white.css")-->
+
+<div class="latest_white">
+    <ul>
+        <!--@foreach($widget_info->document_list as $oDocument)-->
+        <li>
+            <a href="{$oDocument->getPermanentUrl()}#{$oDocument->getCommentCount()}">{$oDocument->getTitle($widget_info->subject_cut_size)}</a>
+        </li>
+        <!--@end-->
+    </ul>
+</div>

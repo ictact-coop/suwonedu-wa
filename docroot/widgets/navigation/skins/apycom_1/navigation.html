@@ -1,0 +1,98 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "apycom1".mt_rand()}
+{@$menu_id = "apycom1"}
+
+{@$skincssimgpath = getSiteUrl()."widgets/navigation/skins/apycom_1/images"}
+<style type="text/css">
+
+div#{$skin_id} #{$menu_id} {
+    width:{$widget_info->nav_width}px;
+	z-index:{$widget_info->zindex};
+}
+/* menu::base */
+div#{$skin_id} #{$menu_id} {
+	display: block;
+	float: right;
+    height:35px;
+}
+
+div#{$skin_id} #{$menu_id} ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: right;
+}
+
+
+div#{$skin_id} #{$menu_id} li {
+    position: relative;
+    z-index: 9;
+    margin: 0;
+    display: block;
+    float: left;
+}
+
+
+div#{$skin_id} #{$menu_id} a {
+    position: relative;
+    z-index: 10;
+    display: block;
+    float: left;
+    text-decoration: none;
+}
+div#{$skin_id} #{$menu_id} li.current a {}
+
+div#{$skin_id} #{$menu_id} span {
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+
+/* menu::level1 */
+div#{$skin_id} #{$menu_id} a {
+    padding: 0;
+}
+
+div#{$skin_id} #{$menu_id} li.last { background: none; padding-left:0;}
+
+div#copyright {
+	display:none;
+}
+</style>
+<!--%import("js/menu.js")-->
+
+<div id="{$skin_id}">
+<div id="{$menu_id}">
+    <ul class="{$menu_id}">
+	{@$last_key = end(array_keys($widget_info->menu_list))}
+	<!--@foreach($widget_info->menu_list as $key => $value)-->
+	<!--@if($key == $last_key)-->
+		<!--@if($value['link'])-->
+		<li class="last <!--@if($value['selected'])-->active current<!--@end-->"><a href="{$value['href']}" class="parent" <!--@if($value['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value['link']}</span></a>
+			<!--@if($value['list'])-->
+			<ul>
+			<!--@foreach($value['list'] as $key1 => $val1)--><!--@if($val1['link'])-->
+				<li><a href="{$val1['href']}" <!--@if($val1['list'])-->class="parent"<!--@end--> <!--@if($val1['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$val1['link']}</span></a></li><!--@end--><!--@end-->
+			</ul><!--@end-->
+		</li><!--@end-->
+	<!--@else-->
+		<!--@if($value['link'])-->
+		<li <!--@if($value['selected'])-->class="active current"<!--@end-->><a href="{$value['href']}" class="parent" <!--@if($value['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value['link']}</span></a>
+			<!--@if($value['list'])-->
+            <ul>
+			<!--@foreach($value['list'] as $key1 => $value1)--><!--@if($value1['link'])-->
+                <li><a href="{$value1['href']}" <!--@if($value1['list'])-->class="parent"<!--@end--> <!--@if($value1['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value1['link']}</span></a>
+					
+                </li><!--@end--><!--@end-->
+            </ul><!--@end-->
+        </li><!--@end-->
+	<!--@end-->
+	<!--@end--> 
+	</ul>
+</div>
+</div>
+<script type="text/javascript">
+jQuery("div#{$skin_id}").parent().parent().css('overflow', '');
+</script>
+<div id="copyright">Copyright &copy; 2011 <a href="http://apycom.com/">Apycom jQuery Menus</a></div>

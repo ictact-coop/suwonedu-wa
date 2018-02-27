@@ -1,0 +1,69 @@
+<!--@if(is_array($main_menu->list))-->
+<!--%import("js/tree_menu.js")-->
+<!--%import("css/tree_menu.css")-->
+<style type="text/css">
+.gymTree h1{background:#{$widget_info->widget_title_bg_color}; color:#{$widget_info->widget_title_color};}
+<!--@if($widget_info->widget_title_type=='image' && $widget_info->widget_title_image)-->
+.gymTree h1{padding:0;}
+.gymTree h1 .titleImage{width:{$widget_info->widget_width}px; height:30px;}
+<!--@end-->
+.gymTree ul.gymful{width:{($widget_info->widget_width-10)}px; height:{($widget_info->widget_height-35)}px;}
+.gymTree ul li a{color:#{$widget_info->menu_color};}
+.gymTree ul li a.active{color:#{$widget_info->selected_menu_color};}
+.gymTreeBtnArea .mTreeBtnAreaWrap .treeBtn{background:#{$widget_info->open_all_bg_color}; color:#{$widget_info->open_all_text_color};}
+.gymTreeBtnArea .mTreeBtnAreaWrap .treeBtn:hover{background:#{$widget_info->open_all_hover_bg_color}; color:#{$widget_info->open_all_hover_text_color};}
+</style>
+{@$gymtree_btn_area_width = $widget_info->widget_width + ($widget_info->widget_border_size*2)}
+{@$gymtree_btn_width = ($widget_info->widget_width/2) + $widget_info->widget_border_size}
+<div class="gymTreeBtnArea" style="width:{$gymtree_btn_area_width}px; height:24px;">
+	<div class="mTreeBtnAreaWrap" style="width:{($gymtree_btn_area_width+2)}px">
+		<span class="treeBtn" id="btn_mopen_all" style="width:{$gymtree_btn_width}px">{$lang->cmd_open_all}</span><span class="treeBtn" id="btn_mclose_all" style="width:{$gymtree_btn_width}px">{$lang->cmd_close_all}</span>
+	</div>
+</div>
+<div class="widgetContainer" style="width:{$widget_info->widget_width}px; height:{$widget_info->widget_height}px; background:#{$widget_info->widget_bg_color}; border:{$widget_info->widget_border_size}px {$widget_info->widget_border_type} #{$widget_info->widget_border_color};">
+	<div class="gymTree">
+
+		<ul class="gymful">
+			<li loop="$main_menu->list=>$key1,$val1" class="active"|cond="$val1['selected']" id="c{$val1['node_srl']}">
+				<span class="catsrls">{$val1['node_srl']}</span>
+				<a href="#" class="icon <!--@if($val1['list'])-->plus<!--@else-->minus<!--@end-->"><span></span></a><a href="{getUrl('mid',$val1['url'],'act','','page','','search_target','','search_keyword','','document_srl','','category',$category)}#c{$val1['node_srl']}" class="active"|cond="$val1['url']==$widget_info->mid" <!--@if($val1['open_window']=='Y')--> target="_blank"<!--@end-->><strong>{$val1['text']}</strong></a>
+                
+{@
+ $oDB = &DB::getInstance();
+ $query = $oDB->_query('select count(*) as total from xe_documents where module_srl = 181');
+ $result = $oDB->_fetch($query);
+}
+{$result->total}
+                
+				<ul cond="$val1['list']" class="gytcsub1">
+					<li loop="$val1['list']=>$key2,$val2" class="active"|cond="$val2['selected']" id="c{$val2['node_srl']}">
+						<span class="catsrls">{$val1['node_srl']}-{$val2['node_srl']}</span>
+						<a href="#" class="icon <!--@if($val2['list'])-->plus<!--@else-->minus<!--@end-->"><span></span></a><a href="{getUrl('mid',$val2['url'],'act','','page','','search_target','','search_keyword','','document_srl','', 'category', $category)}#c{$val1['node_srl']}" class="active"|cond="$val2['url']==$widget_info->mid" <!--@if($val2['open_window']=='Y')--> target="_blank"<!--@end-->>{$val2['text']}</a>
+						<ul cond="$val2['list']" class="gytcsub2">
+							<li loop="$val2['list']=>$key3,$val3" class="active"|cond="$val3['selected']" id="c{$val3['node_srl']}">
+								<span class="catsrls">{$val1['node_srl']}-{$val2['node_srl']}-{$val3['node_srl']}</span>
+								<a href="#" class="icon <!--@if($val3['list'])-->plus<!--@else-->minus<!--@end-->"><span></span></a><a href="{getUrl('mid', $val3['url'],'act','','page','','search_target','','search_keyword','','document_srl','','category', $category)}#c{$val1['node_srl']}" class="active"|cond="$val3['url']==$widget_info->mid" <!--@if($val3['open_window']=='Y')--> target="_blank"<!--@end-->>{$val3['text']}</a>
+								<ul cond="$val3['list']" class="gytcsub3">
+									<li loop="$val3['list']=>$key4,$val4" class="active"|cond="$val4['selected']" id="c{$val4['node_srl']}">
+										<span class="catsrls">{$val1['node_srl']}-{$val2['node_srl']}-{$val3['node_srl']}-{$val4['node_srl']}</span>
+										<a href="#" class="icon <!--@if($val4['list'])-->plus<!--@else-->minus<!--@end-->"><span></span></a><a href="{getUrl('mid',$val4['url'],'act','','page','','search_target','','search_keyword','','document_srl','','category', $category)}#c{$val1['module__srl']}" class="active"|cond="$val4['url']==$widget_info->mid" <!--@if($val4['open_window']=='Y')--> target="_blank"<!--@end-->>{$val4['text']}</a>
+										<ul cond="$val4['list']" class="gytcsub4">
+											<li loop="$val4['list']=>$key5,$val5" class="active"|cond="$val5['selected']" id="c{$val5['node_srl']}">
+												<span class="catsrls">{$val1['node_srl']}-{$val2['node_srl']}-{$val3['node_srl']}-{$val4['node_srl']}-{$val5['node_srl']}</span>
+												<a href="#" class="icon minus"><span></span></a><a href="{getUrl('mid',$val5['url'],'act','','page','','search_target','','search_keyword','','document_srl','','category',$category)}#c{$val1['node_srl']}" class="active"|cond="$val5['url']==$widget_info->mid" <!--@if($val5['open_window']=='Y')--> target="_blank"<!--@end-->>{$val5['text']}</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<span id="mod_srl" style="display:none">{$widget_info->module_srl}</span>
+</div>
+
+<span id="display_menu_type" style="display:none">{$widget_info->display_menu_type}</span>
+<!--@end-->

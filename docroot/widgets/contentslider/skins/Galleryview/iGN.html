@@ -1,0 +1,296 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "Galleryview_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#ffffff'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "굴림,'Trebuchet MS',Arial,Helvetica,san-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(16px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 0}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#ffffff'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "굴림,Arial, Helevtica, Verdana, san-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 내용 높이(40px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$textC1_Height = 40}
+<!--@else-->
+{@$textC1_Height = $widget_info->content_height}
+<!--@end-->
+
+{@$cap_height=0}
+<!--@if($widget_info->show_title=='Y')-->
+{@$cap_height = $cap_height+$textT1_Height}
+<!--@end-->
+<!--@if($widget_info->show_content=='Y')-->
+{@$cap_height = $cap_height+$textC1_Height}
+<!--@end-->
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/Galleryview/css"}
+
+<style type="text/css" media="screen">
+
+#{$slide_id} {
+	background: #eee;
+	color: #111;
+	margin: 0 auto;
+}
+
+/* GALLERY LIST */
+/* IMPORTANT - Change '#myGallery' to the ID of your gallery list to prevent a flash of unstyled content */
+#{$slide_id} { visibility: hidden; }
+
+/* GALLERY CONTAINER */
+.gv-gallery { overflow: hidden; }
+
+/* LOADING BOX */
+.gv-loader { background: url('{$skincssimgpath}/loader.gif') center center no-repeat #fff; }
+
+
+/*************************************************/
+/**   PANEL STYLES								**/
+/*************************************************/
+
+/* GALLERY PANELS */
+.gv-panel { filter: inherit; }
+
+/* 슬라이드 캡션 */
+/* NOTE - It is best to define padding here as well so overlay and background retain identical dimensions */
+.gv-panel .gv-panel-overlay,
+.gv-panel .gv-overlay-background {
+	height: {$cap_height}px;
+<!--@if($widget_info->show_content_title=='Y')-->
+	padding: 10px 10px 10px 10px;
+<!--@end-->
+}
+
+/* PANEL OVERLAY BACKGROUND */
+.gv-panel .gv-overlay-background { background: #222; }
+
+/* PANEL OVERLAY CONTENT */
+.gv-panel .gv-panel-overlay { color: white; }
+.gv-panel .gv-panel-overlay a { color: white; text-decoration: none; font-weight: bold; }
+
+.gv-panel .gv-panel-overlay h3, .gv-panel .gv-panel-overlay h3 a, .gv-panel .gv-panel-overlay h3 a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align:left;
+	overflow:hidden;
+	height: {$textT1_Height}px;
+	line-height: {$title_font_size}px;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.gv-panel .gv-panel-overlay h3 a:hover, .gv-panel .gv-panel-overlay h3 a:focus {
+	text-decoration: underline;
+}
+
+.gv-panel .gv-panel-overlay p, .gv-panel .gv-panel-overlay p a, .gv-panel .gv-panel-overlay p a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	font-weight: normal;
+	text-decoration: none;
+	overflow:hidden;
+	height: {$textC1_Height}px;
+	line-height: {$content_font_size}px;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.gv-panel .gv-panel-overlay p a:hover, .gv-panel .gv-panel-overlay p a:focus {
+	text-decoration: underline;
+}
+
+
+/* CONTENT PANELS */
+.gv-panel-content { overflow-y: auto; }
+
+
+/*************************************************/
+/**   FILMSTRIP STYLES							**/
+/*************************************************/
+
+
+/* FILMSTRIP */
+/* 'margin' will define top/bottom margin in completed gallery */
+.gv-filmstrip { margin: 5px; }
+
+/* FILMSTRIP FRAMES (contains both images and captions) */
+.gv-frame {}
+
+/* WRAPPER FOR FILMSTRIP IMAGES */
+.gv-frame .gv-img_wrap {}
+
+/* WRAPPER FOR CURRENT FILMSTRIP IMAGE */
+.gv-frame.current .gv-img_wrap {}
+
+/* FRAME IMAGES */
+.gv-frame img { border: none; }
+
+/* FRAME CAPTION */
+.gv-frame .gv-caption { height: 2em; line-height: 2em; font-size: 1em; text-align: center; }
+
+/* CURRENT FRAME CAPTION */
+.gv-frame.current .gv-caption { }
+
+/* POINTER FOR CURRENT FRAME */
+.gv-pointer {
+	border-color: black;
+}
+
+/* NAVIGATION BUTTONS */
+.gv-nav-next {
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+	background: url('{$skincssimgpath}/themes/dark/next.png') top left no-repeat;
+}
+.gv-nav-prev {
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+	background: url('{$skincssimgpath}/themes/dark/prev.png') top right no-repeat;
+}
+.gv-panel-nav-next {
+	height: 42px;
+	width: 42px;
+	cursor: pointer;
+	background: url('{$skincssimgpath}/themes/dark/panel-nav-next.png') top left no-repeat;
+}
+.gv-panel-nav-prev {
+	height: 42px;
+	width: 42px;
+	cursor: pointer;
+	background: url('{$skincssimgpath}/themes/dark/panel-nav-prev.png') top right no-repeat;
+}
+
+/* TRANSPARENT BORDER FIX FOR IE6 */
+/* NOTE - DO NOT CHANGE THIS RULE */
+*html .gv-pointer {
+	filter: chroma(color=pink);
+}
+</style>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+<script type="text/javascript"> 
+	jQuery(document).ready(function($){
+		$('#{$slide_id}').galleryView({
+			panel_width: {$widget_info->slider_img_width},
+			panel_height: {$widget_info->slider_img_height},
+			frame_width: {$widget_info->thumbnail_width},
+			frame_height: {$widget_info->thumbnail_height},
+			frame_opacity: 1,
+			filmstrip_position:'bottom',
+			show_captions: true,
+			frame_gap: 10,
+			overlay_opacity: 0.8,
+			transition_interval: {$widget_info->slide_delay},
+			show_panel_nav: false,
+			transition_speed: 600,
+			show_filmstrip_nav: false,
+			show_overlays: true,
+			pointer_size: 6,
+			animate_pointer: false,
+			panel_animation: 'crossfade',
+			ptyPoto: '{$widget_info->open_article}'
+		});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$("#{$slide_id}").find("a[rel^='prettyPhoto']:not(.gv-panel-nav-next,.gv-panel-nav-prev)").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+	});
+</script>
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+	{@shuffle($content_items)}
+<!--@end-->
+<ul id="{$slide_id}">
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			{@$open_article=$item->getLink()}
+			<!--@else-->
+			{@$open_article=$item->getPreview()}
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			{@$open_article=$item->getLink()}
+			<!--@else-->
+			{@$open_article=$item->getDocumentSrl()}
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			{@$open_article=$item->getLink()}
+			<!--@else-->
+			{@$open_article=$item->getDocumentSrl()}
+			<!--@end-->
+		<!--@end-->
+		<!--@if($item->getThumbnail())-->
+		<li>
+			<img src="{$item->getImgslider()}" title='{$item->getTitle($widget_info->subject_cut_size)}' alt="{$open_article}"/>
+			<div class="gv-panel-overlay">
+			<!--@if($widget_info->show_content_title=='Y')-->
+				<p><a href="{$item->getLink()}">{$item->getContent($widget_info->content_cut_size)}</a></p>
+			<!--@end-->
+			</div>
+		</li>
+		<!--@end-->
+	<!--@end-->
+</ul>

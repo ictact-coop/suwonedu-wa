@@ -1,0 +1,15 @@
+<!--%import("./js/coin-slider.js")-->
+
+<!--%import("./css/coin-slider-styles.css")-->
+
+
+<div class="widgetContainer">
+<div class="coin-slider">
+<div id='coin-slider_{$widget_info->widget_division}' width='{$widget_info->thumbnail_width}'>
+	<!--@foreach($widget_info->coinslider_items as $key => $item)-->
+	<a href="{$item->getLink()}" ><img src="{$item->getThumbnail()}" /></a>
+	<!--@end-->	
+</div>
+</div>
+</div>
+

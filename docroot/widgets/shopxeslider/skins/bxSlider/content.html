@@ -1,0 +1,15 @@
+<!--%import("js/jquery.bxSlider.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--@if($colorset=="Multiple_Slides")-->
+<include target="Multiple_Slides.html" />
+<!--@elseif($colorset=="Article_Slides")-->
+<include target="Article_Slides.html" />
+<!--@elseif($colorset=="Auto_Fade")-->
+<include target="Auto_Fade.html" />
+<!--@elseif($colorset=="Slide_News")-->
+<include target="Slide_News.html" />
+<!--@else-->
+<include target="Vertical_Slides.html" />
+<!--@end-->

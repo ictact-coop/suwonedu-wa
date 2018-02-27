@@ -1,0 +1,429 @@
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<!--// 위젯이나 레이아웃에서 로딩된 js 중복 체크 -->
+<!--@foreach(Context::getJsFile() as $key => $jsfile)-->
+	<!--@if(preg_match('/jquery.prettyPhoto.js/i',$jsfile['file']))-->{@$ptyptojs='Y'}<!--@end-->
+	<!--@if(preg_match('/flowplayer-3.2.6.min.js/i',$jsfile['file']))-->{@$flowjs='Y'}<!--@end-->
+	<!--@if(preg_match('/cufon-yui.js/i',$jsfile['file']))-->{@$cufonjs='Y'}<!--@end-->
+<!--@end-->
+
+<!--@if($ptyptojs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/prettyPhoto.css")--><!--@end-->
+<!--@if($ptyptojs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/jquery.prettyPhoto.js")--><!--@end-->
+<!--@if($flowjs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/flowplayer-3.2.6.min.js")--><!--@end-->
+<!--@if($cufonjs!='Y'&&$widget_info->cufon == 'Y')--><!--%import("../isoTope/cufon-yui.js")--><!--@end-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$slide_id = mt_rand()}
+{@$skin_id = "conT01_".$slide_id}
+
+{@$thumbnail_width = $widget_info->thumbnail_width}
+<!--@if(!$widget_info->title_font_size)-->{@$title_font_size = '13px'}
+<!--@else-->{@$title_font_size = $widget_info->title_font_size}<!--@end-->
+<!--@if(!$widget_info->title_font_color)-->{@ $title_font_color = '#171717'}
+<!--@else-->{@ $title_font_color = $widget_info->title_font_color}<!--@end-->
+<!--@if($widget_info->title_font_family=='Default')-->{@ $title_font_family = "굴림,Arial,'Lucida Grande','Lucida Sans Unicode',sans-serif"}
+<!--@else-->{@ $title_font_family = $widget_info->title_font_family}<!--@end-->
+<!--@if($widget_info->title_font_user)-->{@ $title_font_family = $widget_info->title_font_user}<!--@end-->
+<!--@if(!$widget_info->title_height)-->{@ $textT1_Height = 18}
+<!--@else-->{@ $textT1_Height = $widget_info->title_height}<!--@end-->
+
+<!--@if(!$widget_info->content_font_size)-->{@ $content_font_size = '11px'}
+<!--@else-->{@ $content_font_size = $widget_info->content_font_size}<!--@end-->
+<!--@if(!$widget_info->content_font_color)-->{@ $content_font_color = '#000'}
+<!--@else-->{@ $content_font_color = $widget_info->content_font_color}<!--@end-->
+<!--@if($widget_info->content_font_family=='Default')-->{@ $content_font_family = "굴림,Arial,Helvetica,AppleGothic,Sans-serif"}
+<!--@else-->{@ $content_font_family = $widget_info->content_font_family}<!--@end-->
+<!--@if($widget_info->content_font_user)-->{@ $content_font_family = $widget_info->content_font_user}<!--@end-->
+<!--@if(!$widget_info->content_height)-->{@ $textC1_Height = 50}
+<!--@else-->{@ $textC1_Height = $widget_info->content_height}<!--@end-->
+
+<!--@if($widget_info->title_font_family=='webfont'&&$widget_info->title_fonturl!='')-->
+<style>
+	.wf-active .post-title {
+		font-family: '{$widget_info->title_font_user}';
+	}
+</style>
+<script src="http://www.google.com/jsapi"></script>
+<script>
+	google.load( "webfont", "1" );
+	google.setOnLoadCallback(function() {
+		WebFont.load({ custom: {
+			families: [ "{$widget_info->title_font_user}" ],
+			urls: [ "{$widget_info->title_fonturl}" ]
+		}});
+	});
+</script>
+<!--@end-->
+<!--@if($widget_info->content_font_family=='webfont'&&$widget_info->content_fonturl!='')-->
+<style>
+	.wf-active .post-content {
+		font-family: '{$widget_info->content_font_user}';
+	}
+</style>
+<script src="http://www.google.com/jsapi"></script>
+<script>
+	google.load( "webfont", "1" );
+	google.setOnLoadCallback(function() {
+		WebFont.load({ custom: {
+			families: [ "{$widget_info->content_font_user}" ],
+			urls: [ "{$widget_info->content_fonturl}" ]
+		}});
+	});
+</script>
+<!--@end-->
+
+<!--@if($widget_info->title_font_family=='cufon'&&$widget_info->title_fonturl!='')-->
+<script type="text/javascript" src="{$widget_info->title_fonturl}"></script><!--@end-->
+<!--@if($widget_info->content_font_family=='cufon'&&$widget_info->content_fonturl!='')-->
+<script type="text/javascript" src="{$widget_info->content_fonturl}"></script><!--@end-->
+
+<!--@if($widget_info->cufon == 'Y'&&$widget_info->fonturl=='Y')-->
+<script type="text/javascript">
+jQuery(function($){
+<!--@if($widget_info->title_font_family=='cufon'&&$widget_info->title_fonturl!=''&&$widget_info->title_font_user!='')-->
+Cufon.replace('.{$skin_id} .post-title', { fontFamily: '{$widget_info->title_font_user}', hover: true });<!--@end-->
+<!--@if($widget_info->content_font_family=='cufon'&&$widget_info->content_fonturl!=''&&$widget_info->content_font_user!='')-->
+Cufon.replace('.{$skin_id} .post-content', { fontFamily: '{$widget_info->content_font_user}' });<!--@end-->
+});
+</script>
+<!--@end-->
+
+{@ $skincssimgpath = getSiteUrl()."widgets/contentslist/skins"}
+
+<style type='text/css'>
+/************************************************************************************
+RESET
+*************************************************************************************/
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+	margin: 0;
+	padding: 0;
+}
+
+img, fieldset {
+	border: 0;
+}
+
+/* reset iphone text adjust */
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+.css3pie{behavior:url(widgets/contentslist/skins/Gallery01/PIE.htc)}
+
+/* Image rounded corners */
+.rounded-all { -moz-border-radius: 8px; -webkit-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; }
+.rounded-top { -moz-border-radius: 8px 8px 0 0; -webkit-border-radius: 8px 8px 0 0; -khtml-border-radius: 8px 8px 0 0; border-radius: 8px 8px 0 0; }
+.rounded-bottom { -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; -khtml-border-radius: 0 0 8px 8px; border-radius: 0 0 8px 8px; }
+.rounded-left { -moz-border-radius: 8px 0 0 0; -webkit-border-radius: 8px 0 0 0; -khtml-border-radius: 8px 0 0 0; border-radius: 8px 0 0 0; }
+.rounded-right { -moz-border-radius: 0 8px 0 0; -webkit-border-radius: 0 8px 0 0; -khtml-border-radius: 0 8px 0 0; border-radius: 0 8px 0 0; }
+
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-size: {$title_font_size};
+	font-family: {$title_font_family};
+	font-weight: bold;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color: {$content_font_color};
+	font-size: {$content_font_size};
+	font-family: {$content_font_family};
+	font-weight: normal;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#wrap_{$skin_id} {
+	width:100%;
+	height:100%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding: 0px;
+}
+
+#wrap_{$skin_id} .{$skin_id}_title {
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	padding: 6px 18px 7px 18px;
+	margin: 0px;
+	zoom: 1;
+	border: solid 1px {$widget_info->cl_grbdcolor};
+	font: bold 13px/110% {$title_font_family};
+	color: {$widget_info->cl_grfc};
+	background: {$widget_info->cl_grbgcolor}; /* Old browsers */
+	background: -moz-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")--> {$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")--> {$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end--> {$widget_info->cl_gr4th} 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,{$widget_info->cl_gr1st}),<!--@if($widget_info->cl_gr2nd != "N")--> color-stop({$widget_info->cl_gr2ndpos},{$widget_info->cl_gr2nd}),<!--@end--><!--@if($widget_info->cl_gr3rd != "N")--> color-stop({$widget_info->cl_gr3rdpos},{$widget_info->cl_gr3rd}),<!--@end--> color-stop(100%,{$widget_info->cl_gr4th})); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* IE10+ */
+	background: linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* W3C */
+	-pie-background: linear-gradient({$widget_info->cl_gr1st}, {$widget_info->cl_gr4th});
+}
+#wrap_{$skin_id} .{$skin_id}_title a {
+	color: {$widget_info->cl_grfc};
+	text-decoration: none;
+}
+#wrap_{$skin_id} .{$skin_id}_title:before {
+	border-width:8px;
+	border-color:{$widget_info->cl_grbdcolor};
+	-moz-border-radius: 8px 8px 0 0;
+	-webkit-border-radius: 8px 8px 0 0;
+	-khtml-border-radius: 8px 8px 0 0;
+	border-radius: 8px 8px 0 0;
+}
+
+#wrap_{$skin_id} ul.{$skin_id}_contents {
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	display: block;
+	padding: 6px 10px 7px 10px;
+	margin: 0px;
+	zoom: 1;
+	border-top: solid 0px {$widget_info->cl_grbdcolor};
+	border-right: solid 1px {$widget_info->cl_grbdcolor};
+	border-bottom: solid 1px {$widget_info->cl_grbdcolor};
+	border-left: solid 1px {$widget_info->cl_grbdcolor};
+	list-style: none;
+}
+/************************************************************************************
+WIDGET STYLES
+*************************************************************************************/
+#{$skin_id} {
+	padding: 0px;
+	margin: 0px auto;
+	width:100%;
+}
+#{$skin_id} .{$skin_id} {
+	margin: 0 0 35px;
+	position: relative;
+}
+#{$skin_id} .{$skin_id} .post-image {
+	width: auto;
+	margin: 5px 0 15px;
+}
+
+#{$skin_id} .{$skin_id} .post-image img{
+	padding: 4px;
+	width: auto\9; /* ie8 */
+	_width:100%; /* for IE6 */
+	max-width: 100%;
+	height: auto;
+	background: white;
+	border: solid 1px #CCC;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+#{$skin_id} .{$skin_id} .post-date {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	width: 52px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 12px 5px 0;
+	border: solid 1px {$widget_info->cl_grbdcolor};
+	background: white;
+	background: -webkit-gradient(linear, left top, left bottom, from(white), to(#ECEBEB));
+	background: -moz-linear-gradient(top, white, #ECEBEB);
+	background: linear-gradient(-90deg, white, #ECEBEB);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#{$skin_id} .{$skin_id} .post-date .month {
+	color: {$widget_info->cl_grfc};
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: block;
+	padding: 2px 0;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	left: -1px;
+	top: -1px;
+	border: solid 1px {$widget_info->cl_grbdcolor};
+	background: {$widget_info->cl_grbgcolor}; /* Old browsers */
+	background: -moz-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")--> {$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")--> {$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end--> {$widget_info->cl_gr4th} 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,{$widget_info->cl_gr1st}),<!--@if($widget_info->cl_gr2nd != "N")--> color-stop({$widget_info->cl_gr2ndpos},{$widget_info->cl_gr2nd}),<!--@end--><!--@if($widget_info->cl_gr3rd != "N")--> color-stop({$widget_info->cl_gr3rdpos},{$widget_info->cl_gr3rd}),<!--@end--> color-stop(100%,{$widget_info->cl_gr4th})); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* IE10+ */
+	background: linear-gradient(top, {$widget_info->cl_gr1st} 0%,<!--@if($widget_info->cl_gr2nd != "N")-->{$widget_info->cl_gr2nd} {$widget_info->cl_gr2ndpos},<!--@end--><!--@if($widget_info->cl_gr3rd != "N")-->{$widget_info->cl_gr3rd} {$widget_info->cl_gr3rdpos},<!--@end-->{$widget_info->cl_gr4th} 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="{$widget_info->cl_gr1st}", endColorstr="{$widget_info->cl_gr4th}",GradientType=0 ); /* IE6-9 */
+	-pie-background: linear-gradient({$widget_info->cl_gr1st}, {$widget_info->cl_gr4th});
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,.2);
+	box-shadow: 0 1px 0 rgba(0,0,0,.2);
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+}
+#{$skin_id} .{$skin_id} .post-date .day {
+	color: #666;
+	padding: 2px 0 1px;
+	font: bold 18px/100% Arial, Helvetica, sans-serif;
+	display: block;
+}
+#{$skin_id} .{$skin_id} .post-date .year {
+	color: #999;
+	padding: 0 0 4px;
+	font: 10px/100% Arial, Helvetica, sans-serif;
+	display: block;
+}
+#{$skin_id} .{$skin_id} .post-title {
+	margin: 0 0 5px;
+	padding: 5px 36px 0 0;
+	line-height: 1.4em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+#{$skin_id} .{$skin_id} .post-title a {
+	text-decoration: none;
+}
+#{$skin_id} .{$skin_id} .post-content{
+	display: block;
+	clear:both;
+	margin: 0 0 5px;
+	padding: 0;
+	-webkit-margin-before: 5px;
+	-webkit-margin-after: 5px;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+#{$skin_id} .{$skin_id} .post-meta {
+	color: #999;
+	font-size: 85%;
+	line-height: 120%;
+	margin: 0px;
+	padding: 0;
+	font-family:{$title_font_family};
+	text-align: left;
+	overflow:hidden;
+}
+
+#{$skin_id} .{$skin_id} .post-meta span {
+	margin-right: 7px;
+	overflow: visible !important;
+	float: left;
+	color:{$title_font_color};
+}
+
+#{$skin_id} .{$skin_id} .post-meta span a {
+	color:{$title_font_color};
+	text-decoration: none;
+}
+#{$skin_id} .{$skin_id} .post-meta span a:focus, #{$skin_id} .{$skin_id} .post-meta span a:hover, #{$skin_id} .{$skin_id} .post-meta span a:active {
+	color:red;
+	text-decoration: underline;
+}
+
+#{$skin_id} .{$skin_id} .post-meta span.post-date {
+	background: url('{$skincssimgpath}/Gallery01/images/date.gif') no-repeat 1px 3px;
+	padding: 2px 0 3px 18px;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-author {
+	background: url('{$skincssimgpath}/Gallery01/images/post-writer.png') no-repeat 1px 3px;
+	padding: 4px 0 3px 18px;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-category {
+	background: url('{$skincssimgpath}/Gallery01/images/post-category.png') no-repeat 2px 3px;
+	padding: 3px 0 3px 16px;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-tag {
+	background: url('{$skincssimgpath}/Gallery01/images/post-tag.png') no-repeat 2px 3px;
+	padding: 3px 0 3px 10px;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-comment {
+	background: url('{$skincssimgpath}/Gallery01/images/post-comment.png') no-repeat 2px 5px;
+	padding: 5px 0 3px 18px;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-exticon{
+	padding: 5px 0 3px 2px;
+	margin-right: 0px;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-exticon img{
+	vertical-align: middle;
+}
+#{$skin_id} .{$skin_id} .post-meta span.post-mid{
+	padding: 5px 0 3px 2px;
+	margin-left: 0px;
+}
+
+/* contentslider 위젯 : 배워서남준다(http://studyu.cafe24.com)*/
+</style>
+<!--[if gte IE 9]>
+  <style type="text/css">
+    #{$skin_id} .{$skin_id} .post-date .month {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+
+<!--@if($widget_info->items_shuffle=='Y')-->{@ shuffle($widget_info->content_items)}<!--@end-->
+
+<div id="{$skin_id}">
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<div class="{$skin_id} clearfix">
+		<!--@if($widget_info->show_thumbnail == 'Y'&&$item->getThumbnail())-->
+		<div class="post-image"><a href="<!--@if($widget_info->ptypto=='Y'&&$item->getPreview())-->{$item->getPreview()}<!--@else-->{$item->getLink()}<!--@end-->"<!--@if($widget_info->ptypto=='Y')--> rel='prettyPhoto[mixed]'<!--@end-->><img src="{$item->getPreview()}"></a></div><!--@end-->
+		<div class="">
+			<!--@if($widget_info->show_regdate=='Y')-->
+			<div class="post-date css3pie"><span class="month css3pie">{$item->getRegdate("M")}</span><span class="day">{$item->getRegdate("d")}</span><span class="year">{$item->getRegdate("Y")}</span></div><!--@end-->
+			<!--@if($widget_info->show_title == 'Y')-->
+			<div class="post-title textT1_{$skin_id}"><a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a></div><!--@end-->
+			<div class="post-meta">
+				<!--@if($widget_info->show_author=='Y')-->
+				<span class="post-author">{$item->getNickName()}</span><!--@end-->
+				<!--@if($widget_info->show_category=='Y' && $item->get('category_srl') )-->
+				<span class="post-category"><a href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}">{$item->getCategory()}</a>  </span><!--@end-->
+				<!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+				<span class="post-comment"><a href="{$item->getLink()}#comment">{$item->getCommentCount()}</a></span><!--@end-->
+				<!--@if($widget_info->show_icon=='Y')-->
+				<span class="post-exticon">{$item->printExtraImages()}</span><!--@end-->
+				<!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+				<span class="post-mid"><a href="<!--@if($item->contents_link)-->{$item->contents_link}<!--@else-->{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}<!--@end-->">{$item->getBrowserTitle()}</a></span><!--@end-->
+			</div>
+			<!--@if($widget_info->show_content == 'Y')-->
+			<div class="post-content textC1_{$skin_id}"><a href="{$item->getLink()}">{$item->getContent()}</a></div><!--@end-->
+		</div>
+	</div>
+<!--@end-->
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	if ($.browser.msie && $.browser.version < 7) return; // Don't execute code if it's IE6 or below cause it doesn't support it.
+	$(".fade").fadeTo(1, 1);
+	$(".fade").hover(function () {
+		$(this).fadeTo("fast", 0.33);
+	}, function () {
+		$(this).fadeTo("slow", 1);
+	});
+	<!--@if($widget_info->ptypto=='Y')-->
+	$("#{$skin_id} .post-image").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'pp_default'});
+	<!--@end-->
+	var img_w = $("#{$skin_id}").width()-10;
+	$('#{$skin_id} .{$skin_id} .post-image').css('width',img_w+'px');
+});
+</script>

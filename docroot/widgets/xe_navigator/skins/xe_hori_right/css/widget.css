@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/* Widget Tree */
+.widgetTree { width:100%; line-height: 1.6; background-color:#f9f9f9;border:1px solid #ebebeb;}		/* 전체 메뉴 페딩 */																													  
+.widgetTree *{ padding:0px 0px 0 0px;  }	   
+.widgetTree a strong{ letter-spacing:-1px; cursor:pointer; _cursor /**/:hand;}
+
+.widgetTree ul {position:relative; display:block;border-bottom: dotted 1px #ddd; padding:7px 0px 10px 0px !important; zoom:1;margin:1px 6px 0px 0px; }
+.widgetTree ul:first-child {border:0; }
+.widgetTree ul li{ list-style:none; position:relative; padding:2px 7px 2px 13px; white-space:nowrap;font-size:12px; }		/* 전체 메뉴 페딩 , 1차폰트 */
+.widgetTree ul li .nav_tree_label,
+.widgetTree ul li .sum{ position:relative; left:0px; _left /**/:0; top:0; font-style:normal;}
+.widgetTree ul li a {text-decoration:none; }
+.widgetTree ul li a.selected {font-weight:bold;}
+.widgetTree ul li button{ display:inline-block; position:relative; _left /**/:-16px; *top:-2px; width:13px; height:13px; *width:17px; *height:17px; margin:0 -13px 0 0; *margin:0 -17px -2px -2px; text-indent:-10000px; *text-indent:0; *font:0/0 Sans-serif; border:none; cursor:pointer; _cursor /**/:hand;}
+.widgetTree ul li ul{ padding:2px 0 5px 0px !important; margin:0 0 5px 3px; background-position:left top;}    /* 분리선 간격  */
+.widgetTree ul li ul li{font-size:11px; padding:0 0 3px 6px;background:url(../img/list.gif) no-repeat 0px 9px}																								    /* 2차폰트  */
+.widgetTree ul li.nav_tree_on button{ background-position:0 -13px; *background-position:2px -11px;}
+.widgetTree ul li.nav_tree_off button{ background-position:0 0; *background-position:2px 2px;}
+.widgetTree ul li.nav_tree_on ul{ display:block;}
+.widgetTree ul li.nav_tree_on ul li{ display:block;}
+.widgetTree ul li.nav_tree_off ul{ f}
+.widgetTree ul li.nav_tree_off ul li{ }
+.widgetTree .icon{ position:relative; left:0px;}
+
+/* widgetTree */
+.widgetTree{color:#7c7c7c;}
+.widgetTree a{color:#7c7c7c;}
+

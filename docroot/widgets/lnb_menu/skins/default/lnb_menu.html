@@ -1,0 +1,116 @@
+<!--%import("css/default.css")-->
+<!--// 설정된 컬러셋의 종류에 따라서 css파일을 import 합니다 -->
+<!--@if($widget_info->lnb_menu_colorset=="blue"||!$colorset)-->
+<!--%import("css/blue.css")-->
+<!--@elseif($widget_info->lnb_menu_colorset=="green"||!$colorset)-->
+<!--%import("css/green.css")-->
+<!--@elseif($widget_info->lnb_menu_colorset=="orange"||!$colorset)-->
+<!--%import("css/orange.css")-->
+<!--@elseif($widget_info->lnb_menu_colorset=="purple"||!$colorset)-->
+<!--%import("css/purple.css")-->
+<!--@elseif($widget_info->lnb_menu_colorset=="red"||!$colorset)-->
+<!--%import("css/red.css")-->
+<!--@elseif($widget_info->lnb_menu_colorset=="yellow"||!$colorset)-->
+<!--%import("css/yellow.css")-->
+<!--@else-->
+<!--%import("css/black.css")-->
+<!--@end-->
+{@ debugPrint($widget_info);}
+<!-- $menu_1depth는 XGENESIS Official Layout의 main_menu에 설정된 값을 사용 -->
+<!--@if($menu_1depth['list'])-->
+<!-- LNB 메뉴 -->
+<div id="lnbBox" class="{$widget_info->lnb_menu_colorset}">
+	<h1 class="{$widget_info->lnb_menu_colorset}">{$menu_1depth['link']}</h1><!-- 1차메뉴 -->
+	<ul id="lnb" class="{$widget_info->lnb_menu_colorset}">
+	{@ $idx = 1 }
+	<!--@foreach($menu_1depth['list'] as $k2 => $v2)-->
+		<!--@if($v2['text'])--><!-- 2차메뉴 -->
+		<li class="folder <!--@if($v2['selected'])-->on<!--@end-->">
+			<a href="{$v2['href']}" <!--@if($v2['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>
+			{$v2['text']}
+			</a>
+		</li>
+		<!-- main_menu 3차메뉴가 존재하면.. -->
+		<!--@if($v2['list'])-->
+			<ul>
+				<!--@foreach($v2['list'] as $k3 => $v3)-->
+					<!--@if($v3['text'])--><!-- 3차메뉴 -->
+						<li class="folder <!--@if($v3['selected'])-->on<!--@end-->">
+							<a href="{$v3['href']}" <!--@if($v3['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>
+							{$v3['text']}
+							</a>
+						</li>
+						<!-- main_menu 4차메뉴가 존재하면.. -->
+						<!--@if($v3['list'])-->
+						<ul>
+							<!--@foreach($v3['list'] as $k4 => $v4)-->
+								<!--@if($v4['text'])--><!-- 4차메뉴 -->
+									<li class="folder <!--@if($v4['selected'])-->on<!--@end-->">
+										<a href="{$v4['href']}" <!--@if($v4['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>
+										{$v4['text']}
+										</a>
+									</li>
+									<!-- main_menu 5차메뉴가 존재하면.. -->
+									<!--@if($v4['list'])-->
+									<ul>
+										<!--@foreach($v4['list'] as $k5 => $v5)-->
+											<!--@if($v5['text'])--><!-- 5차메뉴 -->
+												<li class="folder <!--@if($v5['selected'])-->on<!--@end-->">
+													<a href="{$v5['href']}" <!--@if($v5['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>
+													{$v5['text']}
+													</a>
+												</li>
+												<!-- main_menu 6차메뉴가 존재하면.. -->
+												<!--@if($v5['list'])-->
+												<ul>
+													<!--@foreach($v5['list'] as $k6 => $v6)-->
+														<!--@if($v6['text'])--><!-- 6차메뉴 -->
+															<li class="folder <!--@if($v6['selected'])-->on<!--@end-->">
+																<a href="{$v6['href']}" <!--@if($v6['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>
+																{$v6['text']}
+																</a>
+															</li>
+															<!-- main_menu 7차메뉴가 존재하면.. -->
+															<!--@if($v6['list'])-->
+															<ul>
+															<!--@foreach($v6['list'] as $k7 => $v7)-->
+																<!--@if($v7['text'])--><!-- 7차메뉴 -->
+																	<li class="folder <!--@if($v7['selected'])-->on<!--@end-->">
+																		<a href="{$v7['href']}" <!--@if($v7['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>
+																		{$v7['text']}
+																		</a>
+																		<!-- main_menu 8차메뉴가 존재하면.. -->
+																		<!--@if($v8['list'])-->
+																		
+																		<!--@end-->
+																	</li>
+																<!--@end-->
+															<!--@end-->
+															</ul><!-- //6차메뉴  -->
+															<!--@end-->
+														<!--@end-->
+													<!--@end-->
+												</ul><!-- //6차메뉴  -->
+												<!--@end-->
+											<!--@end-->
+										<!--@end-->
+									</ul><!-- //5차메뉴  -->
+									<!--@end-->
+								<!--@end-->
+							<!--@end-->
+						</ul><!-- //4차메뉴  -->
+						<!--@end-->
+					<!--@end-->
+				<!--@end-->
+			</ul>
+		<!--@end--><!-- //3차메뉴  -->
+		
+		{@$idx++}
+		<!--@end-->
+	<!--@end-->
+	</ul>
+	<div id="lnbBottom"></div>
+</div>
+<!--@end-->
+<!-- LNB 하단 광고 -->
+<div>{$widget_info->advertise_lnb_menu_bottom}</div>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin version="0.2">
+  <title xml:lang="ko">APYCOM Style 1</title>
+  <title xml:lang="en">APYCOM Style 1</title>
+  <description xml:lang="ko">APYCOM.COM 에서 배포하는 Style 1 메뉴 위젯입니다.</description>
+  <version>0.4</version>
+  <date>2011-04-25</date>
+  <author email_address="" link="http://study4u.hosting.paran.com">
+    <name xml:lang="ko">Study4U</name>
+	<name xml:lang="en">Study4U</name>
+  </author>
+  <colorset>
+    <color name="White_Smoke">
+      <title xml:lang="ko">White Smoke</title>
+	  <title xml:lang="en">White Smoke</title>
+    </color>
+    <color name="Deep_Sky_Blue">
+      <title xml:lang="ko">Deep Sky Blue</title>
+	  <title xml:lang="en">Deep Sky Blue</title>
+    </color>
+    <color name="Yellow_Green">
+      <title xml:lang="ko">Yellow Green</title>
+	  <title xml:lang="en">Yellow Green</title>
+    </color>
+    <color name="Orange_Red">
+      <title xml:lang="ko">Orange Red</title>
+	  <title xml:lang="en">Orange Red</title>
+    </color>
+    <color name="Dim_Gray">
+      <title xml:lang="ko">Dim Gray</title>
+	  <title xml:lang="en">Dim Gray</title>
+    </color>
+    <color name="Black">
+      <title xml:lang="ko">Black</title>
+	  <title xml:lang="en">Black</title>
+    </color>
+  </colorset>
+</skin>

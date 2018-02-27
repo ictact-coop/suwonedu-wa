@@ -1,0 +1,263 @@
+<load target="jquery.isotope.min.js" type="body" />
+<load target="style.css" />
+
+<block cond="!$widget_info->title_font_size">{@ $title_font_size = 14}</block>
+<block cond="$widget_info->title_font_size">{@ $title_font_size = $widget_info->title_font_size}</block>
+<block cond="!$widget_info->title_font_color">{@ $title_font_color = '#FFF'}</block>
+<block cond="$widget_info->title_font_color">{@ $title_font_color = $widget_info->title_font_color}</block>
+<block cond="$widget_info->title_font_family=='Default'">{@ $title_font_family = "돋움,Arial,Georgia,Times New Roman,Times,serif"}</block>
+<block cond="$widget_info->title_font_family!='Default'">{@ $title_font_family = $widget_info->title_font_family}</block>
+<block cond="$widget_info->title_font_user">{@ $title_font_family = $widget_info->title_font_user}</block>
+<block cond="!$widget_info->title_height">{@ $textT1_Height = $title_font_size + (int)($title_font_size/4)}</block>
+<block cond="$widget_info->title_height">{@ $textT1_Height = $widget_info->title_height}</block>
+<block cond="!$widget_info->content_font_size">{@ $content_font_size = 11}</block>
+<block cond="$widget_info->content_font_size">{@ $content_font_size = $widget_info->content_font_size}</block>
+<block cond="!$widget_info->content_font_color">{@ $content_font_color = '#99B81A'}</block>
+<block cond="$widget_info->content_font_color">{@ $content_font_color = $widget_info->content_font_color}</block>
+<block cond="$widget_info->content_font_family=='Default'">{@ $content_font_family = "돋움,Arial,Dotum,Helvetica,AppleGothic,Sans-serif"}</block>
+<block cond="$widget_info->content_font_family!='Default'">{@ $content_font_family = $widget_info->content_font_family}</block>
+<block cond="$widget_info->content_font_user">{@ $content_font_family = $widget_info->content_font_user}</block>
+<block cond="!$widget_info->content_height">{@ $textC1_Height = $widget_info->thumbnail_height-($textT1_Height+18)}</block>
+<block cond="$widget_info->content_height">{@ $textC1_Height = $widget_info->content_height}</block>
+
+{@ $Widthx2 = ($widget_info->thumbnail_width*2)}
+{@ $Heightx2 = ($widget_info->thumbnail_height*2)}
+{@ $maxWidth = ($widget_info->thumbnail_width*3)}
+{@ $maxHeight = ($widget_info->thumbnail_height*3)}
+
+{@ $skincssimgpath = getSiteUrl()."widgets/contentslider/skins/isoTope"}
+
+<style type="text/css">
+
+.element {
+	width: {$widget_info->thumbnail_width}px;
+	height: {$widget_info->thumbnail_height}px;
+	margin: 5px;
+	float: left;
+	overflow: hidden;
+	-webkit-border-top-right-radius: 12px;
+	-moz-border-radius-topright: 12px;
+	border-top-right-radius: 12px;
+}
+
+.element .number {
+  font-size: 14px;
+  font-weight: bold;
+  color: hsla(0,0%,0%,.5);
+  right: 0px;
+  top: 0px;
+  display: none;
+}
+
+.element .date {
+	position: absolute;
+	left: 5px;
+	top: 3px;
+	font-size: 11px;
+	height: 13px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+
+.element .title, .element .title span {
+	position: absolute;
+	top: 20px;
+	left: 5px;
+	font-size: {$title_font_size}px;
+	font-family: {$title_font_family};
+	color: {$title_font_color};
+	width: 97%;
+	height: {$textT1_Height}px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+	text-shadow: 0 0 10px white, 0 0 10px white;
+}
+
+.element.width2.height2 .title, .element.width2.height2 .title span{
+	top: 20px;
+	left: 5px;
+	font-size: {$title_font_size}px;
+	font-family: {$title_font_family};
+	width: 97%;
+	height: {$textT1_Height}px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+.element.large .title, .element.large .title span {
+	font-size: {$title_font_size}px;
+	font-family: {$title_font_family};
+	width: 97%;
+	height: {$textT1_Height}px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+
+.element .title a {
+	width: 97%;
+	text-decoration: none;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+
+.element .title a:hover, .element .title a:visited, .element .title a:focus {
+	width: 97%;
+	text-decoration: underline;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+
+.element .text {
+	top: 40px;
+	left: 5px;
+	width: 97%;
+	font-size: {$content_font_size}px;
+	font-family: {$content_font_family};
+	line-height: 16px;
+	color: {$content_font_color};
+	overflow: hidden;
+	position: absolute;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+	float: left;
+	clear:both;
+}
+.element.width2 .text {
+	top: 40px;
+	left: 5px;
+	width: 97%;
+	font-size: {$content_font_size}px;
+	line-height: 16px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+.element.width2.height2 .text {
+	top: 40px;
+	left: 5px;
+	width: 97%;
+	font-size: {$content_font_size}px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+.element.large .text {
+	top: 40px;
+	left: 5px;
+	width: 97%;
+	font-size: {$title_font_size}px;
+	line-height: 20px;
+}
+
+.element .text .iso_content{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/ellipsis.xml#ellipsis');
+}
+
+.variable-sizes .element.width2 {
+	width: {$Widthx2+12}px;
+}
+
+.variable-sizes .element.height2 {
+	height: {$Heightx2+12}px;
+}
+
+.variable-sizes .element.large .text {
+	width: 97%;
+	font-size: {$title_font_size}px;
+	line-height: 20px;
+}
+
+.element.large,
+.variable-sizes .element.large,
+.variable-sizes .element.large.width2.height2 {
+	width: {$maxWidth+24}px;
+	height: {$maxHeight+24}px;
+	z-index: 100;
+}
+
+</style>
+
+<div id="container" class="clickable {$widget_info->isotope_type} clearfix">
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<div class="element">
+		<div class="number">{$item->getDocumentSrl()}</div>
+		<div class="date">{$item->getRegdate("M,d")}&nbsp;by {$item->getNickName()}</div>
+		<!--@if($widget_info->show_title == 'Y')-->
+		<div class="title"><a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a></div><!--@end-->
+		<!--@if($widget_info->show_content == 'Y')-->
+		<div class="text">
+			<p class="iso_content">{$item->getContent()}</p>
+		</div><!--@end-->
+	</div>
+<!--@end-->
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$(function(){
+		var $container = $('#container');
+		$container.find('.element').each(function(){
+			var $this = $(this),
+			number = parseInt( $this.find('.number').text(), 10 );
+			if ( number % 7 % 2 === 1 ) {
+			$this.addClass('width2');
+			}
+			if ( number % 3 === 0 ) {
+			$this.addClass('height2');
+			}
+
+		});
+		$container.isotope({
+			itemSelector: '.element',
+			masonry : {
+				columnWidth : {$widget_info->thumbnail_width+12}
+			}
+		});
+<!--@if($widget_info->items_shuffle=='Y')-->
+		$container.isotope('shuffle');
+<!--@end-->
+		$container.delegate( '.element', 'click', function(){
+			$(this).toggleClass('large');
+			$container.isotope('reLayout');
+		});
+		$('#toggle-sizes').find('a').click(function(){
+			$container
+			.toggleClass('variable-sizes')
+			.isotope('reLayout');
+			return false;
+		});
+	});
+
+	var bgset = ["F4F4F4","FBFDF1","FEF6F6","FCF7FD","F6F7FE","F0F6F8","EFF9F2","FFFCDF","F8FDFF","fff9fd"];
+	var bdset = ["E7E7E7","DDEAA8","F9D5D5","EFDAF4","DCDFF6","DAEAEE","D5EDDD","FFEC15","9DD7E8","ffdceb"];
+	var ftset = ["696969","99B81A","D98383","AF69C0","7381EA","619DAC","6FB587","FF9900","0A8DBD","E8649D"];
+
+<!--@if($colorset=='random')-->
+	// add randomish colorset
+	$('#container').find('.element').each(function(){
+		var colorno = Math.floor(Math.random() * 10);
+		//$(this).addClass(colorbox);
+		$(this).css('background','#'+bgset[colorno]);
+		$(this).css('border','#'+bdset[colorno]+' solid 1px');
+		$(this).css('color','#'+ftset[colorno]);
+	});
+<!--@else-->
+	$('#container').find('.element').each(function(){
+		$(this).css('background','#'+bgset[{$colorset-1}]);
+		$(this).css('border','#'+bdset[{$colorset-1}]+' solid 1px');
+		$(this).css('color','#'+ftset[{$colorset-1}]);
+	});
+<!--@end-->
+});
+</script>

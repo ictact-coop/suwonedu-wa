@@ -1,0 +1,35 @@
+
+
+<div class="wrap_slideT">
+	<div id="{$widget_info->slider_name}">
+		<ul class="slideT slideT_data">
+		{@$_idx=0}
+		<!--@foreach($widget_info->content_items as $key => $item)-->
+			<li<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end-->>
+				<div class="slideT_div">
+					<a class="" <!--@if($item->getExtraVar6())-->href="{$item->getExtraVar6()}"<!--@else-->href="{$item->getLink()}"<!--@end--> <!--@if($widget_info->blank_type)-->target="_blank"<!--@end-->>{$item->getTitle($widget_info->subject_cut_size)}</a>
+					
+
+
+				</div>
+			</li>
+		{@$_idx++}
+		<!--@end-->
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+(function($){	
+  $(function(){
+   $('#{$widget_info->slider_name}').jCarouselLite({
+		vertical: true,
+		hoverPause:true,
+		visible: 1,
+		auto:7000,
+		speed:1000
+	});
+  });	
+}(jQuery))
+
+</script>

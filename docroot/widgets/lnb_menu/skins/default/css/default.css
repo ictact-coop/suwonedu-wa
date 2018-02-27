@@ -1,0 +1,14 @@
+/* LNB */
+#lnbBox {margin:0px 0 0px 0;overflow:hidden;padding:0 0 0 0px;}
+#lnbBox h1 {font-family:Malgun Gothic,sans-serif;font-size:12px;font-weight:bold;margin:0;padding-top:10px;text-align:center;height:30px}
+#lnbBox #lnbBottom {height:9px; padding:0 0 10px 0;}
+#lnb {font-family:Malgun Gothic,sans-serif;font-size:0.9em;line-height:16px;margin:0;padding:0 15px;}
+#lnb li.folder {list-style-image:none;list-style-position:outside;list-style-type:none;}
+#lnb li.folder a:hover {text-decoration:none;}
+#lnb li.folder a:focus {text-decoration:none;}
+#lnb li.folder a:visited { text-decoration:none; }
+#lnb li.folder a:active { text-decoration:none; }
+#lnb li.folder a { display:block;padding:5px 10px 5px 25px;}
+#lnb li.on a {font-weight:bold; }
+#lnb ul {list-style-image:none;list-style-position:outside;list-style-type:none;margin:0;padding:0 0 0 10px;}
+#lnb ul li.folder {margin:0px;padding:0; list-style-image:none;list-style-position:outside;list-style-type:none;}

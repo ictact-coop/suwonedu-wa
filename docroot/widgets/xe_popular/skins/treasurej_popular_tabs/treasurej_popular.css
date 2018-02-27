@@ -1,0 +1,32 @@
+@charset "utf-8";
+.tabs_items{height:25px; margin:0; padding:0 0 3px 0; border-bottom:1px solid #ccc; list-style:none}
+.tabs_items li{float:left; margin:0 -1px 0 0; padding:0; border:1px solid #dedede; border-bottom:none; font:bold 12px Arial, "돋움"}
+.tabs_items li:last-child{padding:0 1px}				
+.tabs_items li a{width:100%; margin:0; padding:8px 0 4px 0; display:block; text-align:center; color:#999; text-decoration:none; outline:none}
+.tabs_items li.tabs_active,.tabs_items li:active,.tabs_items li:focus,.tabs_items li:hover{background-color:#efefef; border-color:#ccc}
+.tabs_items li.tabs_active a,.tabs_items li a:active,.tabs_items li a:focus,.tabs_items li a:hover{color:#000}
+
+.tabs_inner{width:100%; clear:both; position:relative}
+.tabs_inner ul{margin:0; padding:0; list-style:none; display:none}
+.tabs_inner ul li{clear:both}
+.tabs_inner .tabs_active ul{display:block}
+.tabs_inner .tabs_active ul li{margin:0; padding:10px 0; border-top:1px dashed #ddd}
+.tabs_inner .tabs_active ul li:first-child{border-top:none}
+.tabs_inner .tabs_active ul li a{display:block}
+.tabs_inner .tabs_active ul li a p{margin:0; padding:0; display:block}
+.tabs_inner .tabs_active ul li a p.tabs_thumb{float:left; margin:0 10px 0 2px}
+.tabs_inner .tabs_active ul li a p.tabs_thumb img{margin:0; padding:0; border:0px solid #fff; }
+.tabs_inner .tabs_active ul li a p.tabs_thumb span.noimg{margin:0; padding:0; border:0px solid white; display:block; text-align:center}
+.tabs_inner .tabs_active ul li a p.tabs_thumb span.noimgtext{margin:40% 0 0 0; padding:0; display:block; font-size:11px; color:#999}
+.tabs_inner .tabs_active ul li a p.tabs_text{float:left; font-family:Arial, "돋움"; font-size:11px}
+.tabs_inner .tabs_active ul li a p.tabs_text span{margin:0; padding:0}
+.tabs_inner .tabs_active ul li a p.tabs_text span.tabs_title{display:block; margin-bottom:3px; font-weight:bold; color:#666}
+.tabs_inner .tabs_active ul li a p.tabs_text span.tabs_content{display:block; color:#999}
+.tabs_inner .tabs_active ul li a p.tabs_text span.tabs_date{display:block; color:#999; font-size:10px; font-style:italic}
+.tabs_inner .tabs_active ul li a p.tabs_text span.tabs_content2{color:#999}
+.tabs_inner .tabs_active ul li a p.tabs_text span.tabs_date2{color:#666}
+
+.tabs_inner .tabs_active ul li a:hover p.tabs_thumb img,.tabs_inner .tabs_active ul li a:hover p.tabs_thumb span.noimg{border:0px solid #efefef; }
+.tabs_inner .tabs_active ul li a:hover p.tabs_text span{color:#000}
+
+.lcr{clear:both; margin:0; padding:0}

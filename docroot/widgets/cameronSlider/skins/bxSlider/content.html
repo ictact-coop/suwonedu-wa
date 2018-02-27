@@ -1,0 +1,60 @@
+<load target="css/jquery.bxslider.css" />
+{@ Context::loadJavascriptPlugin('ui'); }
+<load cond="!$bxslider" target="js/jquery.bxslider.js" type="body" />
+{@ $csi = rand(10000,99999); $bxslider = 1}
+
+<ul id="bxslider{$csi}" class="bxslider">
+	<li loop="$widget_info->content_items=>$key,$item">
+		<!--@if($item->getLink()=='#')-->
+		<img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" />
+		<!--@else-->
+		<a href="{$item->getLink()}" target="_blank"|cond="$widget_info->hyperlink_target=='Y'"><img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" /></a>
+		<!--@endif-->
+	</li>
+</ul>
+
+<block cond="$widget_info->ani=='slide'">{@ $widget_info->ani='horizontal'}</block>
+<!--@if($widget_info->list_count>1)-->
+	<!--@if($widget_info->direction=='true')-->
+		{@ $direction='true'}
+	<!--@else-->
+		{@ $direction='false'}
+	<!--@endif-->
+	<!--@if($widget_info->pager=='true')-->
+		{@ $pager='true'}
+	<!--@else-->
+		{@ $pager='false'}
+	<!--@endif-->
+	<!--@if($widget_info->pause)-->
+		{@ $auto='true'}
+	<!--@else-->
+		{@ $auto='false'}
+	<!--@endif-->
+<!--@else-->
+	{@ $direction='false'; $pager='false'; $auto='false'}
+<!--@endif-->
+<!--@if($widget_info->option_view_arr[0]!='thumbnail' || ($widget_info->option_view_arr[0]=='thumbnail' && $widget_info->option_view_arr[1]))-->{@ $caption='true'}<!--@else-->{@ $caption='false'}<!--@endif-->
+
+<script>
+jQuery(document).ready(function($){
+	var $slider = $('#bxslider{$csi}');
+
+	$slider.bxSlider({
+		mode: '{$widget_info->ani}',
+		speed: 600,
+		easing: 'swing',
+		infiniteLoop: true,
+		auto: {$auto},
+		pager: {$pager},
+		controls: {$direction},
+		captions: {$caption},
+<!--@if($widget_info->pause)-->
+		pause : {$widget_info->pause}000,
+<!--@endif-->
+		nextText: '',
+		prevText: '',
+		touchEnabled: true,
+		oneToOneTouch: true
+	});
+});
+</script>

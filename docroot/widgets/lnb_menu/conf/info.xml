@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">XGENESIS - LNB Menu</title>
+    <description xml:lang="ko">
+    XGENESIS Official Layout에서 LNB 메뉴를 만들어 표시하는 위젯입니다.
+    XGENESIS Official Layout과 함께 사용할 때만 정상적으로 동작합니다.
+    </description>
+    <version>0.1.2</version>
+    <date>2011-02-08</date>
+    <author email_address="master@xgenesis.org" link="http://www.xgenesis.org">
+        <name xml:lang="ko">제디슨</name>
+    </author>
+
+    <extra_vars>
+    	<!-- 컬러셋 -->
+		<var id="lnb_menu_colorset" type="select">
+            <title xml:lang="ko">컬러셋</title>
+            <description xml:lang="ko">원하시는 컬러셋을 선택해주세요.선택된 컬러셋에 따라 기본적으로 사용하는 배경색과 버튼색이 달라집니다.</description>
+            <options value="black">
+                <title xml:lang="ko">검정색 (기본)</title>
+            </options>
+            <options value="blue">
+                <title xml:lang="ko">파란색</title>
+            </options>
+            <options value="green">
+                <title xml:lang="ko">녹색</title>
+            </options>
+            <options value="orange">
+                <title xml:lang="ko">오렌지색</title>
+            </options>
+            <options value="purple">
+                <title xml:lang="ko">보라색</title>
+            </options>
+            <options value="red">
+                <title xml:lang="ko">빨간색</title>
+            </options>
+            <options value="yellow">
+                <title xml:lang="ko">노란색</title>
+            </options>
+        </var>
+        <!-- 광고 -->
+		<var id="advertise_lnb_menu_bottom" type="textarea">
+	      	<title xml:lang="ko">[광고] LNB 메뉴 하단</title>
+	      	<description xml:lang="ko">LNB 메뉴 하단에 표시할 광고를 입력하세요.HTML을 사용할 수 있습니다.</description>
+    	</var>
+    </extra_vars>
+</widget>

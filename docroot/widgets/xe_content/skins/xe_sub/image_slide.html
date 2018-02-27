@@ -1,0 +1,60 @@
+
+
+<script type="text/javascript">
+	jQuery(function($){
+		 $(".{$widget_info->slider_name}").owlCarousel({
+			autoPlay : 7000,
+		stopOnHover : true,
+		navigation:true,
+		paginationSpeed : 1000,
+		goToFirstSpeed : 2000,
+		singleItem : true,
+		autoHeight : true
+      });
+	 });
+</script>
+<style type="text/css">
+  
+    .{$widget_info->slider_name} .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="owl-carousel {$widget_info->slider_name}">
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<div class="item">
+	
+
+       
+		<a class="slide_link" href="{$item->getLink()}" class="title" target="_blank"|cond="$widget_info->new_window"><img src="{$item->getThumbnail()}" alt="{$item->getTitle(20)}"></a>
+		<!--@for($j=0,$c=count($widget_info->option_view_arr);$j<$c;$j++)-->
+		 <!--@if($widget_info->option_view_arr[$j]=='title')-->
+		<div class="slide_title">
+			<a href="{$item->getLink()}" class="title" target="_blank"|cond="$widget_info->new_window">{$item->getTitle($widget_info->subject_cut_size)}</a>
+		</div>
+		<div class="wrap_replyNum">
+			<span class="slide_block"> BY : </span><a href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}" target="_blank"|cond="$widget_info->new_window">{$item->getNickName($widget_info->nickname_cut_size)}</a>
+
+            <!--@if($widget_info->option_view_arr[$j+1]=='regdate')-->
+             <span class="date"><span class="slide_block"> DATE : </span>{$item->getRegdate("M, d, Y")}</span>
+            <!--@end-->
+			<!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+                <span class="replyNum" title="Replies"><span class="slide_block"> COMMENT : </span><a href="{$item->getLink()}#comment" target="_blank"|cond="$widget_info->new_window">{$item->getCommentCount()}</a> </span>
+			<!--@elseif($widget_info->show_comment_count=='Y')-->
+				<span class="replyNum" title="Replies"><span class="slide_block"> COMMENT : </span>0</span>
+            <!--@end-->
+			
+		</div>
+		 <!--@else if($widget_info->option_view_arr[$j]=='content')-->
+			<div class="DWcontent">
+				<a href="{$item->getLink()}" class="title" target="_blank"|cond="$widget_info->new_window"> {$item->getContent()}</a>	
+			</div>
+		<!--@end-->
+
+	<!--@end-->
+	</div>
+<!--@end-->
+
+</div>

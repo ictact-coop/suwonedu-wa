@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="1.0">
+    <title xml:lang="ko">S4U Content 위젯 스킨 탭뷰슬라이드</title>
+    <description xml:lang="ko">S4U Content 위젯 스킨 탭뷰슬라이드입니다.
+    NHN (developers@xpressengine.com)
+    </description>
+    </description>
+    <version>1.0</version>
+    <date>2014-01-15</date>
+    <link>http://xpressengine.com/</link>
+<author email_address="muscoca@site4u.co.kr" link="http://site4u.co.kr/">
+        <name xml:lang="ko">pathos</name>
+    </author>
+
+    <colorset>
+        <color name="white">
+            <title xml:lang="ko">흰색 바탕용</title>
+            <title xml:lang="jp">白い背景用</title>
+            <title xml:lang="zh-CN">白色背景</title>
+            <title xml:lang="en">White Background</title>
+            <title xml:lang="vi">Nền sáng</title>
+            <title xml:lang="zh-TW">白色背景</title>
+            <title xml:lang="tr">Beyaz Arkaplan</title>
+        </color>
+    </colorset>
+</skin>

@@ -1,0 +1,74 @@
+<load target="css/camera.css" />
+{@ Context::loadJavascriptPlugin('ui'); }
+<load target="js/camera.js" type="body" />
+<load cond="!$jtouch" target="js/jquery.mobile.touch.min.js" type="body" />
+{@ $csi = rand(0,100); $jtouch = 1}
+
+<div id="camera_wrap_{$csi}" class="camera_wrap">
+    <div loop="$widget_info->content_items=>$key,$item" data-src="{$item->getThumbnail()}" data-link="{$item->getLink()}"|cond="$item->getLink()!='#'" data-target="_blank"|cond="$widget_info->hyperlink_target=='Y'">
+		<div cond="$widget_info->option_view_arr[1]" class="camera_caption fadeFromBottom">
+			<block loop="$widget_info->option_view_arr=>$k,$v">
+				<!--@if($v=='title')-->
+					<span style="font-weight:bold; font-size:1.2em">{$item->getTitle()}</span><br>
+				<!--@else if($v=='content')-->
+					{$item->getContent()}
+				<!--@endif-->
+			</block>
+		</div>
+	</div>
+</div>
+
+<!--@if($widget_info->ani=='slide')-->{@ $widget_info->ani='scrollLeft'}<!--@elseif($widget_info->ani=='fade')-->{@ $widget_info->ani='simpleFade'}<!--@endif-->
+<!--@if($widget_info->list_count>1)-->
+	<!--@if($widget_info->direction=='true')-->
+		{@ $direction='true'}
+	<!--@else-->
+		{@ $direction='false'}
+	<!--@endif-->
+	<!--@if($widget_info->pager=='true')-->
+		{@ $pager='true'}
+	<!--@else-->
+		{@ $pager='false'}
+	<!--@endif-->
+	<!--@if($widget_info->pause)-->
+		{@ $auto='true'}
+	<!--@else-->
+		{@ $auto='false'}
+	<!--@endif-->
+<!--@else-->
+	{@ $direction='false'; $pager='false'; $auto='false'}
+<!--@endif-->
+<!--@if($widget_info->option_view_arr[0]!='thumbnail' || ($widget_info->option_view_arr[0]=='thumbnail' && $widget_info->option_view_arr[1]))-->{@ $caption='true'}<!--@else-->{@ $caption='false'}<!--@endif-->
+<script>
+jQuery(document).ready(function($){
+	var $sWrap = $('#camera_wrap_{$csi}'),
+		sNext = $sWrap.find('.camera_next'),
+		sPrev = $sWrap.find('.camera_prev');
+
+	$sWrap.camera({
+		easing : 'easeInOutExpo',
+		fx: '{$widget_info->ani}',
+		height: '{$widget_info->slider_height}%',
+		minHeight: '200px',
+<!--@if($widget_info->pause)-->
+		time : {$widget_info->pause}000,
+<!--@endif-->
+		transPeriod: 1000,
+		pagination: {$pager},
+		navigation: {$direction},
+		thumbnails: false,
+		loader: 'none',
+		overlayer: false,
+		playPause: false,
+		pauseOnClick: false,
+		imagePath: '{getUrl('')}widgets/cameronSlider/skins/cameraSlider/images/'
+	});
+
+	$sWrap.on('swipeleft',function() {
+		sNext.trigger('click');
+	}).on('swiperight',function() {
+		sPrev.trigger('click');
+	});
+
+});
+</script>

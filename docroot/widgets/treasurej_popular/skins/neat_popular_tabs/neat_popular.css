@@ -1,0 +1,31 @@
+@charset "utf-8";
+.newClear:after{content:' '; display:block; clear:both; font-size:0; width:0; height:0; visibility:hidden; line-height:0}
+* html .newClear,:first-child+html .newClear{zoom:1}
+
+.neat-popular .tabs_items ul{margin:0; padding:0; list-style:none}
+.neat-popular .tabs_items li{float:left; margin:0 -1px 0 0; padding:0; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-size:13px; font-weight:700}
+.neat-popular .tabs_items li a{display:block; background-color:#fff; margin:0; padding:11px 0 11px 0; border:1px solid #dedede; border-bottom-color:#ccc; text-align:center; color:#999; text-decoration:none; cursor:pointer}
+.neat-popular .tabs_items a:hover{color:#fff; text-decoration:none}
+.neat-popular .tabs_items a.tabs_active{background-color:#ea5859; border-color:#ea5859; color:#fff}
+
+.neat-popular .tabs_inner{position:relative}
+.neat-popular .tabs_content{display:none}
+.neat-popular .tabs_active{display:block !important}
+.neat-popular .tabs_inner a{text-decoration:none; cursor:pointer; outline:none}
+.neat-popular .tabs_inner a:hover{text-decoration:none}
+.neat-popular .tabs_inner ul{margin:0; padding:0; list-style:none}
+.neat-popular .tabs_inner li{margin:0; padding:15px 0; border-top:1px dashed #ddd}
+.neat-popular .tabs_inner li:first-child{border-top:none}
+.neat-popular .tabs_inner li p{margin:0; padding:0; line-height:1.4; font-family:돋음,sans-serif; font-size:11px; color:#999}
+.neat-popular .tabs_inner li p.tabs_thumb{float:left; margin:0 10px 0 2px}
+
+.neat-popular .tabs_inner li p.tabs_thumb span.noimg{display:block; margin:0; padding:0; background-color:#f1f1f1; border:1px solid #e9e9e9; text-align:center; font-size:21px}
+.neat-popular .tabs_inner li p.tabs_thumb span i{color:#dedede}
+
+.neat-popular .tabs_inner li p.text_title{margin-bottom:4px; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-size:12px; font-weight:700; color:#555}
+.neat-popular .tabs_inner li p.text_date{color:#ea5859}
+.neat-popular .tabs_inner li p.tabs_text span.text_content2{color:#999}
+.neat-popular .tabs_inner li p.tabs_text span.text_date2{color:#666}
+.neat-popular .tabs_inner li a:hover p.text_title,
+.neat-popular .tabs_inner li a:focus p.text_title{color:#ea5859}
+.neat-popular .tabs_inner li a:hover p.text_content{color:#999}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">coin-slider 기본 스킨</title>
+    <description xml:lang="ko">coin-slider 이미지슬라이드 기본 스킨입니다.
+    </description>
+    <version>1.4</version>
+    <date>2010-11-27</date>
+    <link>http://epmakes.com</link>
+
+    <author email_address="chjh0628@naver.com" link="http://epmakes.com">
+        <name xml:lang="ko">EPMakes</name>
+    </author>
+
+    <colorset>
+        <color name="default">
+            <title xml:lang="ko">기본</title>
+        </color>
+        <color name="imagebutton01">
+            <title xml:lang="ko">이미지 이전/다음 버튼 1</title>
+        </color>
+        <color name="imagebutton02">
+            <title xml:lang="ko">이미지 이전/다음 버튼 2</title>
+        </color>
+        <color name="imagebutton03">
+            <title xml:lang="ko">이미지 이전/다음 버튼 3</title>
+        </color>
+        <color name="imagebutton04">
+            <title xml:lang="ko">이미지 이전/다음 버튼 4</title>
+        </color>
+    </colorset>
+</skin>

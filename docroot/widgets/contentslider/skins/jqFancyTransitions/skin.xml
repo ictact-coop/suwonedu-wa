@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">jqFancyTransitions 스킨</title>
+	<title xml:lang="en">jqFancyTransitions skin</title>
+
+    <description xml:lang="ko">jqFancyTransitions 스킨 입니다.</description>
+    <version>2.1.1</version>
+    <date>2011-04-20</date>
+    <link>http://study4u.hosting.paran.com/</link>
+
+    <author email_address="" link="http://study4u.hosting.paran.com/">
+        <name xml:lang="ko">Study4u</name>
+        <name xml:lang="en">Study4u</name>
+    </author>
+
+    <colorset>
+        <color name="Wave">
+            <title xml:lang="ko">Wave</title>
+            <title xml:lang="en">Wave</title>
+        </color>
+        <color name="Zipper">
+            <title xml:lang="ko">Zipper</title>
+            <title xml:lang="en">Zipper</title>
+        </color>
+        <color name="Curtain">
+            <title xml:lang="ko">Curtain</title>
+            <title xml:lang="en">Curtain</title>
+        </color>
+        <color name="RandomTop">
+            <title xml:lang="ko">RandomTop</title>
+            <title xml:lang="en">RandomTop</title>
+        </color>
+        <color name="FountainTop">
+            <title xml:lang="ko">FountainTop</title>
+            <title xml:lang="en">FountainTop</title>
+        </color>
+        <color name="CurtainAlternate">
+            <title xml:lang="ko">CurtainAlternate</title>
+            <title xml:lang="en">CurtainAlternate</title>
+        </color>
+        <color name="LeftTop">
+            <title xml:lang="ko">LeftTop</title>
+            <title xml:lang="en">LeftTop</title>
+        </color>
+        <color name="RightBottom">
+            <title xml:lang="ko">RightBottom</title>
+            <title xml:lang="en">RightBottom</title>
+        </color>
+	</colorset>
+</skin>

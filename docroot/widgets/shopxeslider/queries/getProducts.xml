@@ -1,0 +1,28 @@
+<query id="getProducts" action="select">
+    <tables>
+        <table name="products" />
+        <table name="documents" type="left join" >
+            <conditions>
+                <condition operation="equal" column="products.target_srl" default="documents.document_srl" />
+            </conditions>
+        </table>
+        <table name="document_categories" type="left join" >
+            <conditions>
+                <condition operation="equal" column="documents.category_srl" default="document_categories.category_srl" />
+            </conditions>
+        </table>
+    </tables>
+    <columns>
+        <column name="products.product_srl" alias="product_srl" />
+        <column name="products.price_sale" alias="price_sale" />
+        <column name="documents.document_srl" alias="document_srl" />
+    </columns>
+    <conditions>
+        <condition operation="in" column="documents.module_srl" var="module_srls" />
+        <condition operation="in" column="document_categories.title" var="category_names" pipe="and" />
+    </conditions>
+    <navigation>
+        <list_count var="list_count" default="10" />
+        <index var="sort_index" default="documents.regdate" order="desc" />
+    </navigation>
+</query>

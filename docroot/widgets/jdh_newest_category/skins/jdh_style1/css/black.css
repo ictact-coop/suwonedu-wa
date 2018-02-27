@@ -1,0 +1,16 @@
+.latest1_black { width:100%; padding-bottom:15px; overflow:hidden; position:relative;}
+.latest1_black h2 { margin:0; display:block; height:21px; padding:9px 0 0 15px; margin-bottom:12px; color:#a8e24f; background:url(../images/black/lineNotice.gif) no-repeat left bottom; font-size:1em;}
+
+.latest1_black ul { margin:0; padding:0; }
+.latest1_black ul li { height:20px; background:url(../images/black/bulletD0.gif) no-repeat 5px 5px; padding-left:15px; overflow:hidden; list-style:none; white-space:nowrap;}
+
+.latest1_black ul li .title a { color:#818181; text-decoration:none; }
+.latest1_black ul li .title a:hover { text-decoration:underline; }
+.latest1_black ul li .title span.comment { color:#FE6700; font:.9em Tahoma; }
+.latest1_black ul li .title span.comment a { color:#FE6700; font:.9em Tahoma; }
+
+.latest1_black ul li .date { color:#a8e24f; font:.8em Tahoma; white-space:nowrap; margin-right:0px; float:right;}
+
+.latest1_black .more { position:absolute; top:12px; right:0px; color:#a8e24f; font:.8em Tahoma;}
+.latest1_black a.more { text-decoration:none;} 
+.latest1_black a.more:hover { text-decoration:underline;} 

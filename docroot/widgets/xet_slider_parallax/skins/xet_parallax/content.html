@@ -1,0 +1,36 @@
+<load target="css/style.css" />
+<load target="js/modernizr.custom.28468.js" />
+<load target="js/jquery.cslider.js" />
+       
+<style type="text/css">
+.parallax-slider { border-top-color:{$widget_info->theme_color}; border-bottom-color:{$widget_info->theme_color}; background:<!--@if($widget_info->bg_img)-->url({$widget_info->bg_img})<!--@end--><!--@if($widget_info->bg_color)-->{$widget_info->bg_color}<!--@end--> }
+.parallax-slide .parallax-link { color:{$widget_info->theme_color}; border-color:{$widget_info->theme_color}; }
+.parallax-dots span { background:{$widget_info->theme_color}; }
+.parallax-arrows span {background:{$widget_info->theme_color}; }
+</style>
+
+<div id="parallax-slider" class="parallax-slider" style="height:{$widget_info->img_height}px;">
+	<div class="parallax-slide" loop="$widget_info->content_items=>$key,$item" cond="$item->getThumbnail()">
+		<h2 style="color:{$widget_info->subject_color}"|cond="$widget_info->subject_color && $widget_info->subject_color != 'transparent'">{$item->getTitle($widget_info->subject_cut_size)}</h2>
+		<p style="color:{$widget_info->content_color}"|cond="$widget_info->content_color && $widget_info->content_color != 'transparent'">{$item->getContent($widget_info->content_cut_size)}</p>
+		<a href="{$item->getLink()}" class="parallax-link">Read more</a>
+		<div class="parallax-img">
+			<img src="{$item->getThumbnail($widget_info->thumbnail_width,$widget_info->thumbnail_height,$widget_info->thumbnail_type)}" alt="" />
+		</div>
+	</div>	
+	<nav class="parallax-arrows">
+		<span class="parallax-arrows-prev"></span>
+		<span class="parallax-arrows-next"></span>
+	</nav>
+</div>
+      
+<script type="text/javascript">
+	jQuery(window).load(function() {		
+		jQuery('#parallax-slider').prslider({
+			current		: 0,
+			bgincrement	: 50,
+			autoplay	: {$widget_info->slider_type},
+			interval	: {$widget_info->slider_interval}
+		});	
+	});
+</script>

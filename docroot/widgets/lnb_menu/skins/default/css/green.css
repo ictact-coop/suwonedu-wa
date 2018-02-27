@@ -1,0 +1,8 @@
+/* LNB - 컬러셋설정 */
+#lnbBox.green{ background:#F4F4F4 url(../images/green/lnb_bg.gif) repeat-y;}
+#lnbBox h1.green{ color:#000000;background:#FFFFFF url(../images/green/h1_lnb_bg.gif) no-repeat scroll 0 0;}
+#lnbBox.green #lnbBottom {background:#FFFFFF url(../images/green/lnb_bg_bottom.gif) no-repeat scroll 0 0;}
+#lnb.green li.folder a:hover { background-color:#F3F2F0; color:#3a66a2; font-weight:bold;}
+#lnb.green li.folder a:focus { background-color:#F3F2F0; }
+#lnb.green li.folder a {border-bottom:1px solid #DFDFDF; background:transparent url(../images/bul_folder.gif) no-repeat scroll 5px 50%;color:#555555;}
+#lnb.green li.on a {background:#FAF9F8 url(../images/bul_folder_on.gif) no-repeat scroll 5px 50%;color:#3A66A2;}

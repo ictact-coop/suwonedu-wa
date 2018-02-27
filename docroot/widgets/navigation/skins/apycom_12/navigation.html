@@ -1,0 +1,346 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "apycom12".mt_rand()}
+{@$menu_id = "apycom12"}
+
+<!--@if($colorset=="Steel_Blue")-->
+{@$color1st = "#fff"}
+{@$color2nd = "#717171"}
+<!--%import("js/Steel_Blue.js")-->
+<!--@elseif($colorset=="Forest_Green")-->
+{@$color1st = "#fff"}
+{@$color2nd = "#717171"}
+<!--%import("js/Forest_Green.js")-->
+<!--@elseif($colorset=="Gray")-->
+{@$color1st = "#000"}
+{@$color2nd = "#C6C6C6"}
+<!--%import("js/Gray.js")-->
+<!--@elseif($colorset=="Sienna")-->
+{@$color1st = "#dccfbf"}
+{@$color2nd = "#806244"}
+<!--%import("js/Sienna.js")-->
+<!--@elseif($colorset=="Teal")-->
+{@$color1st = "#fff"}
+{@$color2nd = "#1C90AD"}
+<!--%import("js/Teal.js")-->
+<!--@else-->
+{@$color1st = "#fff"}
+{@$color2nd = "#717171"}
+<!--%import("js/Black.js")-->
+<!--@end-->
+
+{@$skincssimgpath = getSiteUrl()."widgets/navigation/skins/apycom_12/images/".$colorset}
+<style type="text/css">
+/* menu::base */
+div#{$skin_id} #{$menu_id} {
+    height: 46px;
+    padding-left: 24px;
+    background: url('{$skincssimgpath}/left.png') no-repeat;
+    _background: url('{$skincssimgpath}/left.gif') no-repeat;
+    width:auto;
+}
+
+div#{$skin_id} #{$menu_id} ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+div#{$skin_id} #{$menu_id} ul.{$menu_id} {
+    padding-right: 24px;
+    background: url('{$skincssimgpath}/right.png') no-repeat right 0;
+    _background: url('{$skincssimgpath}/right.gif') no-repeat right 0;    
+}
+
+div#{$skin_id} #{$menu_id} li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: left;
+    z-index: 9;
+    width: auto;
+}
+div#{$skin_id} #{$menu_id} ul ul li {
+    z-index: 9;
+}
+div#{$skin_id} #{$menu_id} li div {
+    list-style: none;
+    float: left;
+    position: absolute;
+    z-index: 11;
+    top: 39px;
+    left: -18px;
+    -left: 4px;
+    visibility: hidden;
+    width: 180px;
+	  margin: 0px 0 0 -4px;
+    padding: 0; 
+    background: url('{$skincssimgpath}/submenu-top.png') no-repeat 0px 0;
+    -background: url('{$skincssimgpath}/submenu-top.gif') no-repeat 0px 0; 
+}
+div#{$skin_id} #{$menu_id} ul ul {
+	  z-index: 12;
+	  width: 180px;
+    padding: 0px 0px 12px 0px;
+    -padding: 0px 0px 3px 0px;    
+    background: url('{$skincssimgpath}/submenu-bottom.png') no-repeat 0px bottom;
+    -background: <!--@if($colorset=="Gray")-->#676766<!--@else-->#E4E4E2<!--@end--> none; /* Gray = #676766 */      
+    margin: 14px 0 0 0;   
+    -margin: 5px 0 0 0;      
+}
+div#{$skin_id} #{$menu_id} li:hover>div {
+    visibility: visible;
+}
+
+div#{$skin_id} #{$menu_id} a {
+    position: relative;
+    z-index: 10;
+    height: 38px;
+    display: block;
+    float: left;
+    line-height: 38px;
+    text-decoration: none;
+    margin-top: 1px;
+    white-space: nowrap;
+    width: auto;
+    padding-right:5px;
+    text-align:center;
+}
+div#{$skin_id} #{$menu_id} span {
+    margin-top: 2px;
+    padding-left: 15px;
+    color: {$color1st}; /* color 1st */
+    font: normal 13px Tahoma;
+    background: none;
+    line-height: 38px;	
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 0;
+    text-align: center;
+}
+
+/* menu::level1 */
+div#{$skin_id} #{$menu_id} a {
+    padding: 0 15px 0 0;
+    line-height: 38px;
+    height: 46px;
+    _margin-right: 1px;
+    background: none;
+    font-weight:bold;    
+
+}
+div#{$skin_id} #{$menu_id} span {
+    font-weight:bold; 
+}
+div#{$skin_id} #{$menu_id} a:hover{
+    background-image: url('{$skincssimgpath}/selected-sub.png');
+    background-repeat: repeat-x;
+    background-position: right -1px;    
+    -background: url('{$skincssimgpath}/selected-sub.gif') repeat-x right -1px; 
+}
+div#{$skin_id} #{$menu_id} li.current a,
+div#{$skin_id} #{$menu_id} ul.{$menu_id}>li:hover>a {
+    background-image: url('{$skincssimgpath}/selected-sub.png');
+    background-repeat: repeat-x;
+    background-position: right -1px;  
+    -background: url('{$skincssimgpath}/selected-sub.gif') repeat-x right -1px; 
+}
+div#{$skin_id} #{$menu_id} a:hover span{
+	  color: <!--@if($colorset=="Gray")-->#fff<!--@else-->#000000<!--@end-->; /* Gray = #fff */
+}	
+div#{$skin_id} #{$menu_id} ul.{$menu_id}>li:hover>a span {
+	  color: <!--@if($colorset=="Gray")-->#fff<!--@else-->#000000<!--@end-->; /* Gray = #fff */
+}
+div#{$skin_id} #{$menu_id} li {}
+div#{$skin_id} #{$menu_id} li.last { background: none; }
+
+
+/* menu::level2 */
+div#{$skin_id} #{$menu_id} ul ul li {
+    background-image: url('{$skincssimgpath}/sep-sub.png');
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    margin: 0;
+    padding: 0;
+}
+div#{$skin_id} #{$menu_id} ul ul li:hover {
+    background-image: url('{$skincssimgpath}/sub-item-hover.gif');
+    background-color: {$color2nd}; /* color 2nd */
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+div#{$skin_id} #{$menu_id} ul ul a {
+	  color: <!--@if($colorset=="Gray")-->#fff<!--@else-->#000000<!--@end-->; /* Gray = #fff */
+    height: auto;
+    float: none;
+    display: block;
+    line-height: 25px;
+    font-size: 13px;
+    z-index: -1;
+    padding: 6px 0 6px 0px;
+    white-space: normal;
+    width: 166px;
+    margin: 0 0px 0 13px;
+    background: none;
+}
+    
+div#{$skin_id} #{$menu_id} ul ul a span {
+    color: <!--@if($colorset=="Gray")-->#fff<!--@else-->#000000<!--@end-->; /* Gray = #fff */
+	  padding: 0 3px;
+    line-height: 25px;
+    font-size: 13px;
+    font-weight: normal;
+    margin:0;    
+}
+div#{$skin_id} #{$menu_id} li.current ul a,
+div#{$skin_id} #{$menu_id} li.current ul a span {
+    background: none;
+}
+div#{$skin_id} #{$menu_id} ul ul a:hover {
+	background: none;
+  color: <!--@if($colorset=="Gray")-->#000<!--@elseif($colorset=="Sienna")-->#dccfbf<!--@else-->#fff<!--@end-->; /* Gray = #000 Sienna = #dccfbf */
+}
+div#{$skin_id} #{$menu_id} ul ul a:hover span {
+  background: none;
+  color: <!--@if($colorset=="Gray")-->#000<!--@elseif($colorset=="Sienna")-->#dccfbf<!--@else-->#fff<!--@end-->; /* Gray = #000 Sienna = #dccfbf */
+}
+div#{$skin_id} #{$menu_id} ul ul a.parent {
+  background: url('{$skincssimgpath}/submenu-pointer.png') no-repeat right top;
+  -background: url('{$skincssimgpath}/submenu-pointer.gif') no-repeat right top;  
+  margin-right: -1px;
+}
+div#{$skin_id} #{$menu_id} ul ul a.parent span {
+  padding-right: 26px;
+}
+div#{$skin_id} #{$menu_id} ul ul a.parent:hover {
+  background: url('{$skincssimgpath}/submenu-pointer-hover.gif') no-repeat right top;
+  -background: url('{$skincssimgpath}/submenu-pointer.gif') no-repeat right top;  
+}
+div#{$skin_id} #{$menu_id} ul ul a.parent:hover span {
+}
+div#{$skin_id} #{$menu_id} ul ul span {
+	
+    margin-top: 0;
+    text-align: left;
+}
+div#{$skin_id} #{$menu_id} ul ul li.last { background: none; }
+div#{$skin_id} #{$menu_id} ul ul li {
+    width: 100%;
+}
+
+/* menu::level3 */
+
+div#{$skin_id} #{$menu_id} ul ul div {
+	  width: 180px;
+	  padding: 0;
+    background: url('{$skincssimgpath}/subsubmenu-top.png') no-repeat 0px 0;
+    -background: url('{$skincssimgpath}/subsubmenu-top.gif') no-repeat 0px 0; 	  
+    margin: -32px 0 0 198px !important;
+    margin: -32px 0 0 176px;
+}
+div#{$skin_id} #{$menu_id} ul ul ul {
+    padding: 11px 0px 9px 0px;	
+    margin: 20px 0 0 0; 
+}
+div#{$skin_id} #{$menu_id} ul ul div li {
+    position:relative;
+    top:-10px;
+}
+
+/* lava lamp */
+div#{$skin_id} #{$menu_id} li.back {
+    background: url('{$skincssimgpath}/selected-sub.png') no-repeat 0 0;
+    -background: url('{$skincssimgpath}/selected-sub.gif') no-repeat 0 0;    
+    width: 5px;
+    height: 46px;
+    z-index: 8;
+    position: absolute;
+    padding: 0;
+    margin: 0px 0 0 0;
+}
+
+
+div#{$skin_id} #{$menu_id} li.back .left {
+    padding:0;
+    width:auto;
+    background: url('{$skincssimgpath}/selected-sub.png') repeat-x right 0;
+    -background: url('{$skincssimgpath}/selected-sub.gif') repeat-x right 0;     
+    height: 46px;
+    margin: 0 0 0 5px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+}
+
+div#copyright {
+	display:none;
+}
+div#{$skin_id} {
+	background:{$widget_info->bgcolor};
+}
+div#{$skin_id} #{$menu_id} {
+	position:relative;
+	width:{$widget_info->nav_width}px;
+	z-index:{$widget_info->zindex};
+}
+</style>
+
+<div id="{$skin_id}">
+<div id="{$menu_id}">
+    <ul class="{$menu_id}">
+	{@$last_key = end(array_keys($widget_info->menu_list))}
+	<!--@foreach($widget_info->menu_list as $key => $value)-->
+	<!--@if($key == $last_key)-->
+		<!--@if($value['link'])-->
+		<li class="last <!--@if($value['selected']==1)-->active current<!--@end-->" style="margin-right:10px;"><a href="{$value['href']}" class="parent" <!--@if($value['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value['link']}</span></a>
+			<!--@if($value['list'])-->
+			<div><ul>
+			<!--@foreach($value['list'] as $key1 => $val1)--><!--@if($val1['link'])-->
+				<li><a href="{$val1['href']}" <!--@if($val1['list'])-->class="parent"<!--@end--> <!--@if($val1['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$val1['link']}</span></a>
+					<!--@if($val1['list'])-->
+					<div><ul>
+					<!--@foreach($val1['list'] as $key2 => $val2)--><!--@if($val2['link'])-->
+						<li><a href="{$val2['href']}" <!--@if($val2['list'])-->class="parent"<!--@end--> <!--@if($val2['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$val2['link']}</span></a>
+							<!--@if($val2['list'])-->
+							<div><ul>
+							<!--@foreach($val2['list'] as $key3 => $val3)--><!--@if($val3['link'])-->
+								<li><a href="{$val3['href']}" <!--@if($val3['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$val3['link']}</span></a></li><!--@end--><!--@end-->
+							</ul></div><!--@end-->
+						</li><!--@end--><!--@end-->
+					</ul></div><!--@end-->
+				</li><!--@end--><!--@end-->
+			</ul></div><!--@end-->
+		</li><!--@end-->
+	<!--@else-->
+		<!--@if($value['link'])-->
+		<li <!--@if($value['selected']==1)-->class="active current"<!--@end-->><a href="{$value['href']}" class="parent" <!--@if($value['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value['link']}</span></a>
+			<!--@if($value['list'])-->
+            <div><ul>
+			<!--@foreach($value['list'] as $key1 => $value1)--><!--@if($value1['link'])-->
+                <li><a href="{$value1['href']}" <!--@if($value1['list'])-->class="parent"<!--@end--> <!--@if($value1['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value1['link']}</span></a>
+					<!--@if($value1['list'])-->
+                    <div><ul>
+					<!--@foreach($value1['list'] as $key2 => $value2)--><!--@if($value2['link'])-->
+                        <li><a href="{$value2['href']}" <!--@if($value2['list'])-->class="parent"<!--@end--> <!--@if($value2['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value2['link']}</span></a>
+							<!--@if($value2['list'])-->
+                            <div><ul>
+							<!--@foreach($value2['list'] as $key3 => $value3)--><!--@if($value3['link'])-->
+                                <li><a href="{$value3['href']}" <!--@if($value3['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$value3['link']}</span></a></li><!--@end--><!--@end-->
+                            </ul></div><!--@end-->
+                        </li><!--@end--><!--@end-->
+                    </ul></div><!--@end-->
+                </li><!--@end--><!--@end-->
+            </ul></div><!--@end-->
+        </li><!--@end-->
+	<!--@end-->
+	<!--@end--> 
+	</ul>
+</div>
+</div>
+<script type="text/javascript">
+jQuery("div#{$skin_id}").parent().parent().css('overflow', '');
+</script>
+<div id="copyright">Copyright &copy; 2011 <a href="http://apycom.com/">Apycom jQuery Menus</a></div>

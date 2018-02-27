@@ -1,0 +1,327 @@
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<!--// 위젯이나 레이아웃에서 로딩된 js 중복 체크 -->
+<!--@foreach(Context::getJsFile() as $key => $jsfile)-->
+	<!--@if(preg_match('/jquery.isotope.min.js/i',$jsfile['file']))-->{@$isotjs='Y'}<!--@end-->
+	<!--@if(preg_match('/jquery.prettyPhoto.js/i',$jsfile['file']))-->{@$ptyptojs='Y'}<!--@end-->
+	<!--@if(preg_match('/flowplayer-3.2.6.min.js/i',$jsfile['file']))-->{@$flowjs='Y'}<!--@end-->
+	<!--@if(preg_match('/cufon-yui.js/i',$jsfile['file']))-->{@$cufonjs='Y'}<!--@end-->
+<!--@end-->
+
+<!--@if($isotjs!='Y')--><!--%import("../isoTope/jquery.isotope.min.js")--><!--@end-->
+<!--%import("../isoTope/prettyPhoto.css")-->
+<!--%import("../isoTope/jquery.prettyPhoto.js")-->
+<!--@if($flowjs!='Y'&&$widget_info->ptypto=='Y')--><!--%import("../isoTope/flowplayer-3.2.6.min.js")--><!--@end-->
+<!--@if($cufonjs!='Y'&&$widget_info->cufon == 'Y')--><!--%import("../isoTope/cufon-yui.js")--><!--@end-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$slide_id = mt_rand()}
+{@$skin_id = "isoTope02_".$slide_id}
+
+<!--@if(!$widget_info->title_font_size)-->{@ $title_font_size = '14px'}
+<!--@else-->{@ $title_font_size = $widget_info->title_font_size}<!--@end-->
+<!--@if(!$widget_info->title_font_color)-->{@ $title_font_color = '#171717'}
+<!--@else-->{@ $title_font_color = $widget_info->title_font_color}<!--@end-->
+<!--@if($widget_info->title_font_family=='Default')-->{@ $title_font_family = "굴림,Arial,'Lucida Grande','Lucida Sans Unicode',sans-serif"}
+<!--@else-->{@ $title_font_family = $widget_info->title_font_family}<!--@end-->
+<!--@if($widget_info->title_font_user)-->{@ $title_font_family = $widget_info->title_font_user}<!--@end-->
+<!--@if(!$widget_info->title_height)-->{@ $textT1_Height = 18}
+<!--@else-->{@ $textT1_Height = $widget_info->title_height}<!--@end-->
+
+<!--@if(!$widget_info->content_font_size)-->{@ $content_font_size = '11px'}
+<!--@else-->{@ $content_font_size = $widget_info->content_font_size}<!--@end-->
+<!--@if(!$widget_info->content_font_color)-->{@ $content_font_color = '#000'}
+<!--@else-->{@ $content_font_color = $widget_info->content_font_color}<!--@end-->
+<!--@if($widget_info->content_font_family=='Default')-->{@ $content_font_family = "굴림,Arial,Helvetica,AppleGothic,Sans-serif"}
+<!--@else-->{@ $content_font_family = $widget_info->content_font_family}<!--@end-->
+<!--@if($widget_info->content_font_user)-->{@ $content_font_family = $widget_info->content_font_user}<!--@end-->
+<!--@if(!$widget_info->content_height)-->{@ $textC1_Height = 50}
+<!--@else-->{@ $textC1_Height = $widget_info->content_height}<!--@end-->
+
+{@$thumbnail_width = $widget_info->thumbnail_width}
+{@$thumbnail_height = $widget_info->thumbnail_height}
+
+<!--@if($widget_info->show_thumbnail == "Y")-->
+{@ $thumbnail_width = $thumbnail_width}
+{@ $thumbnail_height = $thumbnail_height}
+<!--@end-->
+
+{@ $Widthx2 = ($thumbnail_width*2)+4}
+{@ $Heightx2 = ($thumbnail_height*2)+4}
+{@ $maxWidth = ($thumbnail_width*3)+8}
+{@ $maxHeight = ($thumbnail_height*3)+8}
+
+<!--@if($widget_info->title_font_family=='webfont'&&$widget_info->title_fonturl!='')-->
+<style>
+	.wf-active .post-title {
+		font-family: '{$widget_info->title_font_user}';
+	}
+</style>
+<script src="http://www.google.com/jsapi"></script>
+<script>
+	google.load( "webfont", "1" );
+	google.setOnLoadCallback(function() {
+		WebFont.load({ custom: {
+			families: [ "{$widget_info->title_font_user}" ],
+			urls: [ "{$widget_info->title_fonturl}" ]
+		}});
+	});
+</script>
+<!--@end-->
+<!--@if($widget_info->content_font_family=='webfont'&&$widget_info->content_fonturl!='')-->
+<style>
+	.wf-active .post-content {
+		font-family: '{$widget_info->content_font_user}';
+	}
+</style>
+<script src="http://www.google.com/jsapi"></script>
+<script>
+	google.load( "webfont", "1" );
+	google.setOnLoadCallback(function() {
+		WebFont.load({ custom: {
+			families: [ "{$widget_info->content_font_user}" ],
+			urls: [ "{$widget_info->content_fonturl}" ]
+		}});
+	});
+</script>
+<!--@end-->
+
+<!--@if($widget_info->title_font_family=='cufon'&&$widget_info->title_fonturl!='')-->
+<script type="text/javascript" src="{$widget_info->title_fonturl}"></script><!--@end-->
+<!--@if($widget_info->content_font_family=='cufon'&&$widget_info->content_fonturl!='')-->
+<script type="text/javascript" src="{$widget_info->content_fonturl}"></script><!--@end-->
+
+<!--@if($widget_info->cufon == 'Y'&&$widget_info->fonturl=='Y')-->
+<script type="text/javascript">
+jQuery(function($){
+<!--@if($widget_info->title_font_family=='cufon'&&$widget_info->title_fonturl!=''&&$widget_info->title_font_user!='')-->
+Cufon.replace('.{$skin_id} .post-title', { fontFamily: '{$widget_info->title_font_user}', hover: true });<!--@end-->
+<!--@if($widget_info->content_font_family=='cufon'&&$widget_info->content_fonturl!=''&&$widget_info->content_font_user!='')-->
+Cufon.replace('.{$skin_id} .post-content', { fontFamily: '{$widget_info->content_font_user}' });<!--@end-->
+});
+</script>
+<!--@end-->
+
+{@ $skincssimgpath = getSiteUrl()."widgets/contentslist/skins"}
+
+<style type="text/css">
+/************************************************************************************
+RESET
+*************************************************************************************/
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+	margin: 0;
+	padding: 0;
+}
+
+img, fieldset {
+	border: 0;
+}
+
+/* reset iphone text adjust */
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+.css3pie{behavior:url(widgets/contentslist/skins/Gallery01/PIE.htc)}
+
+/* Image rounded corners */
+.rounded-all { -moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+.rounded-top { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px; }
+.rounded-bottom { -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px; }
+.rounded-left { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px; }
+.rounded-right { -moz-border-radius-topright: 12px; -webkit-border-top-right-radius: 12px; -khtml-border-top-right-radius: 12px; border-top-right-radius: 12px; }
+
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-size: {$title_font_size};
+	font-family: {$title_font_family};
+	font-weight: bold;
+	text-decoration: none;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color: {$content_font_color};
+	font-size: {$content_font_size};
+	font-family: {$content_font_family};
+	font-weight: normal;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.{$skin_id} {
+	width: {$widget_info->thumbnail_width}px;/* 넓이 */
+	height: {$widget_info->thumbnail_height}px;/* 높이 */
+	margin: 2px;
+	overflow: hidden;
+	position: relative;
+	background: {$widget_info->cl_grbgcolor};
+	color: #222;
+	background:url('{$skincssimgpath}/isoTope/images/loading3.gif') no-repeat center center;
+}
+
+.{$skin_id} .post-image {
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+
+.{$skin_id} .post-image img {
+	width: {$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+}
+
+.{$skin_id}.large .large-image{
+	position: relative;
+	top: 0px;
+	clear:both;
+}
+
+.{$skin_id} .description {
+	display:none;
+	background: url('{$skincssimgpath}/isoTope/images/t60.png') repeat;
+	width: {$maxWidth-30}px;
+	height: {$textT1_Height+$textC1_Height}px;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	padding: 15px;
+}
+
+.{$skin_id} .post-title {
+	display:none;
+	position:relative;
+	width:auto;
+	height:{$textT1_Height}px;
+	clear:both;
+}
+.{$skin_id} .post-content {
+	display:none;
+	position:relative;
+	width:auto;
+	height:{$textC1_Height}px;
+	padding: 5px 0px;
+	clear: both;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-moz-binding: url('{$skincssimgpath}/Gallery01/ellipsis.xml#ellipsis');
+}
+
+.variable-sizes .{$skin_id}.width2 { width: {$Widthx2}px;}/* 2x이미지 넓이 */
+.variable-sizes .{$skin_id}.width2 img { width: {$Widthx2}px;}/* 2x이미지 넓이 */
+.variable-sizes .{$skin_id}.height2 { height: {$Heightx2}px;}/* 2x이미지 높이 */
+.variable-sizes .{$skin_id}.height2 img { height: {$Heightx2}px;}/* 2x이미지 높이 */
+
+.{$skin_id}.large,
+.variable-sizes .{$skin_id}.large,
+.variable-sizes .{$skin_id}.large.width2.height2 {
+	width: {$maxWidth}px;/* 큰이미지 넓이 */
+	height: {$maxHeight}px;/* 큰이미지 높이 */
+	z-index: 100;
+}
+.{$skin_id}.large img,
+.variable-sizes .{$skin_id}.large img,
+.variable-sizes .{$skin_id}.large.width2.height2 img{
+  width: {$maxWidth}px;/* 큰이미지 넓이 */
+  height: {$maxHeight}px;/* 큰이미지 높이 */
+}
+
+.clickable .{$skin_id}:hover {
+  cursor: pointer;
+}
+
+.{$skin_id} .no_image {
+	display:block;
+	background:url('{$skincssimgpath}/Gallery01/images/no_image.png') no-repeat center center;
+}
+
+</style>
+
+
+<!--// 내용출력 -->
+<div id="{$skin_id}" class="clickable {$widget_info->isotope_type} clearfix">
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<div class="{$skin_id} rounded-right isotope-item<!--@if($widget_info->show_filter == 'Y')--> {$item->variables['mid']}<!--@end-->">
+		<div class="number" style="display:none">{$key}</div>
+
+		<!--@if($item->getImageMax()&&$widget_info->show_thumbnail == "Y")-->
+		<div class="post-image"><img src="{$item->getImageMax()}" class="rounded-right css3pie" width="{$thumbnail_width}" height="{$thumbnail_height}"></div>
+		<div class="large-image" style="display:none"><img src="{$item->getImageMax()}" width="{$maxWidth}" height="{$maxHeight}" class="rounded-right css3pie"></div>
+		<!--@else-->
+		<div class="post-image"><img src="{$skincssimgpath}/isoTope/images/blank.gif" style="width:{$thumbnail_width}px; height:{$thumbnail_height}px;" class="no_image" /></div>
+		<div class="large-image" style="display:none"><img src="{getSiteUrl()}common/img/blank.gif" style="width:{$maxWidth}px; height:{$maxHeight}px;" class="no_image" /></div>
+		<!--@end-->
+		<div class="description">
+			<!--@if($widget_info->show_title == 'Y')-->
+	        <div class="post-title textT1_{$skin_id}"><a href="{$item->getLink()}">{strip_tags($item->getTitle($widget_info->subject_cut_size))}</a></div><!--@end-->
+
+			<!--@if($widget_info->show_content == 'Y')-->
+			<div class="post-content textC1_{$skin_id}"><a href="{$item->getLink()}">{$item->getContent()}</a></div><!--@end-->
+		</div>
+	</div>
+<!--@end-->
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	var $container = $('#{$skin_id}');
+	$('#toggle-sizes a').click(function(){
+		$container
+		.toggleClass('variable-sizes')
+		.isotope('reLayout');
+		return false;
+	});
+
+	$container.find('.{$skin_id}').live('click', function() {
+		$(this).toggleClass('large');
+		$(this).find('img').removeClass("hover").stop();
+		$(this).find('.large-image').show('fast');
+		$(this).find('.description').show('fast');
+		$(this).find('.post-title').show('fast');
+		$(this).find('.post-content').show('fast');
+		$container.isotope('reLayout');
+		$(this).find('.post-image').hide();
+	});
+	$container.find('.large').live('click', function() {
+		$(this).find('.post-image').show('fast');
+		$(this).find('.large-image').hide();
+		$(this).find('.description').hide();
+		$(this).find('.post-title').hide();
+		$(this).find('.post-content').hide();
+	});
+
+	$(function(){
+		$container.find('.{$skin_id}').each(function(){
+			var number = parseInt( $(this).find('.number').text(), 10 );
+			if ( number % 7 % 2 === 1 ) {
+				$(this).addClass('width2');
+			}
+			if ( number % 3 === 0 ) {
+				$(this).addClass('height2');
+			}
+		});
+		$container.isotope({
+			itemSelector: '.{$skin_id}',
+			masonry : {
+				columnWidth : {$thumbnail_width+4}
+			}
+		});
+
+		<!--@if($widget_info->items_shuffle=='Y')-->
+		$container.isotope('shuffle');
+		<!--@end-->
+	});
+});
+</script>
+
+

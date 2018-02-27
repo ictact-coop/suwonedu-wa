@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+
+/* image_slideA.html css  */
+.widgetTable_DW { width:100%; position:relative; border:0;border-bottom:1px solid #e9e9e9;border-collapse: collapse;}
+
+.widgetTable_DW td{ border:0; line-height:28px; white-space:nowrap; vertical-align:middle; padding:6px 5px 6px 5px;border-top:1px solid #e9e9e9;}
+.widgetTable_DW .dw_0 td,
+.widgetTable_DW .dw_2 td,
+.widgetTable_DW .dw_4 td,
+.widgetTable_DW .dw_6 td,
+.widgetTable_DW .dw_8 td,
+.widgetTable_DW .dw_10 td,
+.widgetTable_DW .dw_12 td,
+.widgetTable_DW .dw_14 td{background:#f9f9f9;border-top:1px solid #e9e9e9;}
+.widgetTable_DW td.title{ width:100%; white-space:normal;}
+.widgetTable_DW td .board{ padding-right:5px;margin-right:2px;} 
+.widgetTable_DW td .notice{ padding-right:5px;margin-right:2px;}
+.widgetTable_DW td .category{ padding-right:5px;margin-right:2px; font-weight:normal;}
+.widgetTable_DW td .replyNum a{ font:10px Tahoma;}
+.widgetTable_DW td .trackbackNum a{ font:10px Tahoma;}
+.widgetTable_DW td.summary{ white-space:normal;}
+.widgetTable_DW td.time{font-family:Tahoma;padding-right:3px;color:#999;}
+.widgetTable_DW a{color:#666;}
+.in_title{line-height:24px;height:24px;overflow:hidden;}
+
+
+
+
+
+
+
+
+
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.clearLeft{clear:left;}
+.clearRight{clear:right;}
+.clear{clear:both;}
+.clearBoth{position:relative;*zoom:1;}
+.clearBoth:after{content:"";display:block;clear:both;}
+.margin_none{margin-right:0 !important;}
+.widgetZineDW{margin:0;padding:0;list-style:none; border-bottom:1px solid #ddd;color:#666}
+.widgetZineDW a{color:#666}
+.widgetGallery{padding:4px;}
+.dw_li{position:relative;*zoom:1;border-bottom:0;background:#f7f7f7}
+.dw_li:after{content:"";display:block;clear:both}
+.thumbArea{float:left;}
+.dw_li p{margin:0;padding:0;}
+.dw_li p.thumbArea{padding-right:10px;}
+.dw_li p.titleArea{padding:8px 5px 0 0;line-height:20px;}
+.Zin_Extra{display:block;}
+.in_title{line-height:24px;height:24px;overflow:hidden;}
+.widget_DW{margin:0;padding:0;list-style:none;}
+.widget_DW1{padding-top:10px;border:0;}
+.widget_DW li{padding-left:7px;background:url(../img/list.gif) no-repeat left 11px}			/* sub, sub2 용 블릿  */
+/* 갤러리 */
+.DWGallery{margin:0;padding:0;list-style:none;}
+.DWGallery_li{float:left;*zoom:1;width:50%;margin:0;padding:0;padding-bottom:10px;}	  
+
+.DWGallery_li4{width:25%}
+
+
+  /* gallery 제목 컨텐츠 간격 */
+.DWGallery_div{padding:0 5px 0 0px;}
+.DWGallery_div span {line-height: 14px; }
+
+
+.margin_right_none .DWGallery_div{padding:0 0px 0 5px;}
+.DWGallery .DWGallery_div{padding:0 5px;}
+.DWWrapImg{margin:0;padding:0;position:relative;}
+.DWtitle3{font-size:12px;font-weight:normal; line-height:16px;display:block; padding-top:6px; white-space:nowrap;text-overflow:ellipsis; overflow:hidden; height:22px;}	    /* gallery3 제목 컨텐츠 간격 */
+.DWGallery_li4 .DWtitle{padding-left:5px;}
+.DWRep{position:absolute;top:0px;left:5px;width:48px;height:48px;display:none;*display:none !important;}
+.box_x2 .DWRep{left:9px;}
+/* .fa42{font-size:48px !important;opacity: 0.8; filter: alpha(opacity=80);}	  */
+.DW_Replies{position:absolute;left:3px;top:12px;color:#fff !important;width:32px;text-align:center;display:block;}
+.DWWrapImg_sub {margin:0;padding:0;position:relative;}
+
+.DWWrapImg_sub .DW_img{width:100%; }
+
+ .DWGallery .DWcontent{padding-left:0px; display:block;overflow:hidden;font-size:11px;line-height:14px;}		   /* gallery3 컨텐츠 폰트 */
+
+.DWWrapImg_sub img.DW_img{width:100%;vertical-align:middle}
+.DWWrapImg_sub a.thumb{padding:5px;background:#fff;display:inline-block;}			
+.DWWrapImg_sub .DWRep,
+.ZineDW .DWGallery_sub .DWRep{}
+.DWRep{position:absolute;text-align:bottom; }
+
+
+/* 이미지 + 제목 + 내용 */
+.ZineDW{margin:0;padding:0;list-style:none;border-bottom:1px solid #e9e9e9;}
+.line-wrapper .ZineDW{border:0;}
+.ZineDW li{border-top:1px solid #e9e9e9;}
+.ZineDW .DWGallery_div{padding:7px 0 ;}
+.ZineDW .DWGallery_sub{padding:5px 0 3px 0 !important;}
+
+
+/* 이미지 + 제목 + 내용 width값 2개 삭제 */
+.ZineDW li .DWWrapImg {width:55px;float:left;}
+.ZineDW .DWGallery_sub .DWWrapImg{padding:5px;margin-right:10px;}
+
+.ZineDW .DWGallery_sub .DWWrapImg .thumb{padding:0px;background:#fff;display:inline-block;}
+.ZineDW .DWtitle,
+.ZineDW .DWcontent{padding-left:0px; display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis; overflow:hidden; height:18px !important;}
+
+
+.ZineDW .DWtitle{height:18px;margin-bottom:0px;}
+.ZineDW .DWtitleB{font-weight:normal; line-height:15px;padding-top:0px; display:block; white-space:nowrap;text-overflow:ellipsis; overflow:hidden; height:18px !important;}	/* doorweb_conten > xe_sub > image_title_content 제목, 디자인팁*/
+.ZineDW .DWtitle a{line-height:18px;display:block;font-size:12px !important;font-weight:bold;}
+.ZineDW .DWtitleB a{padding-top:0px}
+.ZineDW .DWcontent{height:16px;line-height:18px;font-size:11px;}
+.ZineDW .DWRep{left:3px;}
+.ZineDW .wrap_date{color:#999;}
+.ZineDW .wrap_date .slide_block{color:#666;}
+.ZineDW img{vertical-align:middle;}
+
+
+/* 이미지 + 제목 xe스타일 padding 값 줄임 소형슬라이더와 썸네일 페딩 맞춤 */
+.DWwidgetThumb_sub .wrap_Thumb{padding:0px;margin:0;background:#fff;display:inline-block;}
+.DWwidgetThumb_sub img.DW_img{width:100%;vertical-align:middle}
+.sub_DW_none{height:72px;display:inline-block;background:#ededed;line-height:72px;}
+
+@media screen and (max-width:759px){
+.owl-small .slide_link{height:170px;}
+.owl-small .date{display:none;}
+}
+@media only screen and (min-width: 533px) and (max-width: 639px) { 
+.owl-small .slide_link{height:140px;}
+.owl-small .date,
+.owl-small .wrap_replyNum .replyNum{display:block;padding:0;}
+}
+@media screen and (max-width:532px){
+.DWwidgetThumb{height:auto;position:relative;overflow:hidden;}
+.ZineDW li {width:100%;}								/* sub2 이미지 + 제목 xe스타일 수정 */
+.DWwidgetThumb .wrap_Thumb{margin:0;padding:0;margin-bottom:10px;text-align: center;position:relative;left:0;margin-left:0;}
+.DWGallery .DWWrapImg{height:auto;position:relative;overflow:hidden;}
+.DWGallery .DWWrapImg .thumb{margin:0;padding:0;text-align: center;position:relative;left:0;margin-left:0;}
+.owl-small .slide_link{height:auto;}
+.owl-small .date{display:inline-block;}
+.DWGallery_li4{width:50%}
+/* gallery 이미지 + 제목 xe스타일 수정 */
+.DWGallery_div span div{clear:both; line-height: 14px; padding-left:5px;}
+}
+@media screen and (max-width:380px){
+.owl-carousel .date{display:none;}
+
+}

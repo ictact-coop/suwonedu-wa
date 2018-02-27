@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin version="0.2">
+  <title xml:lang="ko">APYCOM Style 7</title>
+  <title xml:lang="en">APYCOM Style 7</title>
+  <description xml:lang="ko">APYCOM.COM 에서 배포하는 Style 7 메뉴 위젯입니다.</description>
+  <version>0.4</version>
+  <date>2011-04-25</date>
+  <author email_address="" link="http://study4u.hosting.paran.com">
+    <name xml:lang="ko">Study4U</name>
+	<name xml:lang="en">Study4U</name>
+  </author>
+  <colorset>
+    <color name="White">
+      <title xml:lang="ko">White</title>
+	  <title xml:lang="en">White</title>
+    </color>
+    <color name="Royal_Blue">
+      <title xml:lang="ko">Royal Blue</title>
+	  <title xml:lang="en">Royal Blue</title>
+    </color>
+    <color name="Lime">
+      <title xml:lang="ko">Lime</title>
+	  <title xml:lang="en">Lime</title>
+    </color>
+    <color name="Orange">
+      <title xml:lang="ko">Orange</title>
+	  <title xml:lang="en">Orange</title>
+    </color>
+    <color name="Fire_Brick">
+      <title xml:lang="ko">Fire Brick</title>
+	  <title xml:lang="en">Fire Brick</title>
+    </color>
+    <color name="Gray">
+      <title xml:lang="ko">Gray</title>
+	  <title xml:lang="en">Gray</title>
+    </color>
+  </colorset>
+</skin>

@@ -1,0 +1,22 @@
+<div > 
+    <ul>
+{@$i=0}
+<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+    <li style="display: inline-block !important; "><a href="#tab-{$i+1+$mtrand}" >{$tab->title}</a></li>
+{@$i++}
+<!--@end-->
+</ul>
+</div>
+<div class="widgetDivider">
+{@$i=0}
+<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+    
+    
+        {@$widget_info->content_items = $tab->content_items}
+      
+        <!--#include("_tab_none.html")-->
+ 
+{@$i++}
+
+<!--@end-->
+</div>

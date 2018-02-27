@@ -1,0 +1,331 @@
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+<!--%import("js/style.css")-->
+<!--%import("js/haccordion.js")-->
+
+{@$nayjs=0}
+<!--@foreach(Context::getJsFile() as $key => $jsfile)-->
+	{@$filename = strtolower($jsfile['file'])}
+	<!--@if(substr($filename,0,2)=='./')-->
+		{@$filename = substr($filename,2)}
+	<!--@end-->
+	<!--@if(preg_match('/jwplayer.js/',$filename))-->
+		{@$nayjs=1}
+	<!--@end-->
+<!--@end-->
+<!--@if($nayjs==0)-->
+	<!--%import("js/jwplayer.js")-->
+<!--@end-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "Studiobox_".mt_rand()}
+{@$Studiobox_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#fff'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "돋움,'Trebuchet MS',Arial,Helvetica,san-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(23px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 23}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 11}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#fff'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, Arial, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 내용 높이(50px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$textC1_Height = 50}
+<!--@else-->
+{@$textC1_Height = $widget_info->content_height}
+<!--@end-->
+
+{@$sdbcpage = "sdbcpage_".$skin_id}
+
+{@ $peek_width = 50}
+{@ $nav_size = ($widget_info->list_count*($widget_info->slider_img_bdsize*2))+(($widget_info->list_count-1)*$peek_width)}
+
+{@ $slide_width = $widget_info->slider_img_width+$nav_size}
+
+{@$hpanelcaption=0}
+<!--@if($widget_info->show_title=='Y'&&$widget_info->show_content!='Y')-->
+{@$hpanelcaption = $textT1_Height+20}
+<!--@elseif($widget_info->show_title=='Y'&&$widget_info->show_content=='Y')-->
+{@$hpanelcaption = $textT1_Height}
+<!--@end-->
+<!--@if($widget_info->show_content=='Y')-->
+{@$hpanelcaption = $hpanelcaption+$textC1_Height}
+<!--@end-->
+
+{@ $Studioboxinfo = getSiteUrl()."widgets/contentslider/skins/Studiobox/js/player.swf"}
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	height: {$textC1_Height}px;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.Studiobox_a{ outline: none; text-decoration: none; }
+.Studiobox_a:hover{ text-decoration: none; }
+.Studiobox_a img{ border: none; }
+
+.clear {clear:both;}
+
+div#{$sdbcpage}{
+	width: {$slide_width}px; /* 940px */
+	margin: 0px auto;
+}
+
+div.haccordion{
+padding: 0;
+}
+
+div.haccordion ul{
+margin: 0;
+padding: 0;
+list-style: none;
+overflow: hidden; /*leave as is*/
+}
+
+div.haccordion li{
+margin: 0;
+padding: 0;
+display: block; /*leave as is*/
+width: 100%; /*For users with JS disabled: Width of each content*/
+height: {$widget_info->slider_img_height}px; /*For users with JS disabled: Height of each content*/
+overflow: hidden; /*leave as is*/
+float: left; /*leave as is*/
+}
+
+div.haccordion li .hpanel{
+width: 100%; /*For users with JS disabled: Width of each content*/
+height: {$widget_info->slider_img_height}px;  /*For users with JS disabled: Height of each content*/
+}
+
+div.hpanelimage {
+	float:right;
+}
+
+div.hpanelcaption {
+	margin-top:-{$hpanelcaption}px;
+	float:right;
+	padding:10px;
+	width: {$widget_info->slider_img_width-100}px;
+}
+
+div#{$Studiobox_id} {
+margin-top:5px;
+}
+
+div#{$Studiobox_id} li{
+margin:0; /*Spacing between each LI container*/
+border: {$widget_info->slider_img_bdsize}px solid {$widget_info->slider_img_bdcolor};	/* 슬라이드 테투리 두께와 색 지정 */
+}
+
+div#{$Studiobox_id} li .hpanel img{
+width:{$widget_info->slider_img_width}px;
+height:{$widget_info->slider_img_height}px;
+}
+
+div#{$Studiobox_id} li .hpanel{
+padding: 0; /*Padding inside each content*/
+background: #fff;
+}
+div#{$Studiobox_id} .hpanelcaption p, div#{$Studiobox_id} .sdocontent p{
+margin:2px;
+}
+</style>
+
+<!-- Accordion initialize -->	
+<script type="text/javascript">
+haccordion.setup({
+	accordionid: '{$Studiobox_id}', 
+	paneldimensions: {peekw:'{$peek_width}px', fullw:'{$widget_info->slider_img_width}px', h:'{$widget_info->slider_img_height}px'},
+	selectedli: [-1, true], 
+	collapsecurrent: false
+});
+</script>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+{@$img_idx=1}
+
+<div id="{$sdbcpage}">
+	<div id="{$Studiobox_id}" class="haccordion">
+		<ul>
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	{@$Studioboxno = "Studioboxplayer".$skin_id}
+	{@$Studioboxsubtitle = $item->getSubTitle()}
+	{@$Studioboxpreviewfile = $item->getPreview()}
+		<!--@if($widget_info->target_ext_var=='link')-->
+			<!--@if($item->getPlayer())-->
+			{@$Studioboxfileinfo = $item->getPlayer()}
+			<!--@else-->
+				<!--@if($item->getLink())-->
+					{@$Studioboxfileinfo = $item->getLink()}
+				<!--@else-->
+					{@$Studioboxfileinfo = ""}
+				<!--@end-->
+			<!--@end-->
+		<!--@elseif($widget_info->target_ext_var!='link')-->
+			<!--@if($item->getPlayer())-->
+			{@$Studioboxfileinfo = $item->getPlayer()}
+			<!--@else-->
+			{@$Studioboxfileinfo = ""}
+			<!--@end-->
+		<!--@end-->
+
+<!--@if($Studioboxfileinfo!="")-->
+			<li>
+				<div class="hpanel">
+					<div class="hpanelimage" id="{$Studioboxno}">Loading the player ...</div>
+				</div>
+			</li>
+		<script type="text/javascript">
+			jwplayer("{$Studioboxno}").setup({
+				flashplayer: "{$Studioboxinfo}",
+				file: "{$Studioboxfileinfo}",
+				<!--@if(preg_match('/\.(jpg|gif|png)$/',$Studioboxpreviewfile))-->
+				image: '{$Studioboxpreviewfile}',
+				<!--@end-->
+				width: {$widget_info->slider_img_width},
+				height: {$widget_info->slider_img_height},
+				plugins: {sharing: { link: false }},
+				<!--@if($Studioboxsubtitle)-->
+				plugins: "captions", "captions.file": "{$Studioboxsubtitle}", dock:true,
+				<!--@end-->
+				stretching: "exactfit",
+				wmode: "opaque",
+				autostart: false
+			});
+		</script>
+
+<!--@elseif($Studioboxfileinfo=="")-->
+			<li>
+				<div class="hpanel">
+					<!--@if($item->getImgslider())-->
+					<div class="hpanelimage">
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' title='{$item->getTitle($widget_info->subject_cut_size)}'/>
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@else-->
+			<a class="no_image" title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@elseif($item->getThumbnail())-->
+			<a title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@else-->
+			<a class="no_image" title='{$item->getTitle($widget_info->subject_cut_size)}' />
+			<!--@end-->
+		<!--@end-->
+							<img src="{$item->getImgslider()}" height="{$widget_info->slider_img_height}" width="{$widget_info->slider_img_width}" />
+						</a>
+					</div>
+					<!--@if($widget_info->show_content_title=='Y')-->
+					<div class="hpanelcaption">
+						<p class="textT1_{$skin_id}"><a href="{$item->getLink()}" title='{$item->getTitle($widget_info->subject_cut_size)}'>{$item->getTitle($widget_info->subject_cut_size)}</a></p>
+						<p class="textC1_{$skin_id}">{$item->getContent(100)}</p>
+					</div>
+					<!--@end-->
+					<!--@else-->
+					<div class="sdocontent">
+						<p class="textT1_{$skin_id}"><a href="{$item->getLink()}" title='{$item->getTitle($widget_info->subject_cut_size)}'>{$item->getTitle($widget_info->subject_cut_size)}</a></p>
+						<p class="textC1_{$skin_id}">{$item->getContent(1500)}</p>
+					</div>
+					<!--@end-->
+				</div>
+			</li>
+<!--@end-->
+<!--@end-->
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$("#{$Studiobox_id}").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+});
+</script>

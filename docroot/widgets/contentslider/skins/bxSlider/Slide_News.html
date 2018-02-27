@@ -1,0 +1,415 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = mt_rand()}
+{@$slide_id = "bxSlider_".$skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 12}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "돋움,Georgia,Times New Roman,Times,serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(25px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 25}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 11}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,Dotum,Helvetica,AppleGothic,Sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+{@$bxWindowWidth = $widget_info->thumbnail_width+($widget_info->thumbnail_bdsize*2)}
+{@$bxWindowHeight = $widget_info->thumbnail_height+($widget_info->thumbnail_bdsize*2)}
+
+{@$bxContentWidth = $widget_info->navigation_size - $bxWindowWidth - 10}
+
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/bxSlider/images"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	line-height: {$title_font_size}px;
+	text-align:center;
+	overflow:hidden;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	font-weight: normal;
+	height: {$textC1_Height}px;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+/*전체 넓이*/
+#bxSwrapper_{$skin_id} {
+	width:{$widget_info->navigation_size}px;
+<!--@if($widget_info->navigation_control=='Y')-->
+	height:{$bxWindowHeight+24}px;
+<!--@else-->
+	height:{$bxWindowHeight}px;
+<!--@end-->
+	margin:0 auto;
+	font: 12px "Courier";
+	font-family: "Courier New" 12px; /*silly ie fix*/
+}
+
+#{$slide_id} {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	height:{$bxWindowHeight}px;
+	float: left;
+
+}
+
+#{$slide_id} li {
+	padding: 0;
+	margin: 0;
+	height:{$bxWindowHeight}px;
+}
+
+#bxSwrapper_{$skin_id} a, #bxSwrapper_{$skin_id} a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+/* 이미지 출력부분 */
+#bxSwrapper_{$skin_id} .bxImage_{$skin_id} {
+	float: left;
+	margin-right: 10px;
+	border: {$widget_info->thumbnail_bdsize}px solid {$widget_info->thumbnail_bdcolor};	/* 썸네일 테투리 두께와 색 지정 */
+	width:{$widget_info->thumbnail_width}px; /* important */
+	height:{$widget_info->thumbnail_height}px; /* important */
+}
+
+/* 제목+카테고리 출력부분 */
+#bxSwrapper_{$skin_id} .bxTitle_{$skin_id} {
+	float: left;
+	width:{$bxContentWidth}px;
+	height:{$textT1_Height}px;
+	margin-top:0px;
+	margin-bottom:0px;
+	letter-spacing:-1px;
+	text-align:center;
+	overflow:hidden;
+}
+
+/* 내용 출력부분 */
+#bxSwrapper_{$skin_id} .bxContent_{$skin_id} {
+	line-height: 1.5em;
+	width: {$bxContentWidth}px;
+	margin-top:5px;
+	float: left;
+	overflow:hidden;
+}
+
+/* gray, blue, green, orange, purple, red, yellow */
+/*next button*/
+#bxSwrapper_{$skin_id} .bx-next {
+	position:absolute;
+	top:<!--@if($widget_info->show_title=='Y')-->30%<!--@else-->40%<!--@end-->;
+	right:-40px;
+	z-index:999;
+	width: 30px;
+	height: 30px;
+	text-indent: -999999px;
+	background: url('{$skincssimgpath}/gray_next.png') no-repeat 0 -30px;
+}
+
+/*previous button*/
+#bxSwrapper_{$skin_id} .bx-prev {
+	position:absolute;
+	top:<!--@if($widget_info->show_title=='Y')-->30%<!--@else-->40%<!--@end-->;
+	left:-40px;
+	z-index:999;
+	width: 30px;
+	height: 30px;
+	text-indent: -999999px;
+	background: url('{$skincssimgpath}/gray_prev.png') no-repeat 0 -30px;
+}
+
+/*pager links*/
+#bxSwrapper_{$skin_id} .bx-pager a {
+	margin-right: 5px;
+	color: #fff;
+	padding: 3px 8px 3px 6px;
+	font-size: 12px;
+	zoom:1;
+	background: url('{$skincssimgpath}/gray_pager.png') no-repeat 0 -20px;
+	text-decoration: none;
+}
+
+/*auto start button*/
+#bxSwrapper_{$skin_id} .bx-auto .start {
+	background: url('{$skincssimgpath}/gray_auto.png') no-repeat 0 2px;
+	padding-left: 13px;
+}
+
+/*auto stop button*/
+#bxSwrapper_{$skin_id} .bx-auto .stop {
+	background: url('{$skincssimgpath}/gray_auto.png') no-repeat 0 -14px;
+	padding-left: 13px;
+}
+
+/*
+ * End color scheme styles
+ */
+
+
+/*next/prev button hover state*/
+#bxSwrapper_{$skin_id} .bx-next:hover,
+#bxSwrapper_{$skin_id} .bx-prev:hover {
+	background-position: 0 0;
+}
+
+/*pager links hover and active states*/
+#bxSwrapper_{$skin_id} .bx-pager .pager-active,
+#bxSwrapper_{$skin_id} .bx-pager a:hover {
+	background-position: 0 0;
+}
+
+/*pager wrapper*/
+#bxSwrapper_{$skin_id} .bx-pager {
+	text-align:center;
+	padding-top: 7px;
+	font-size:12px;
+	color:#666;
+}
+
+/*captions*/
+#bxSwrapper_{$skin_id} .bx-captions {
+	text-align:center;
+	font-size: 12px;
+	padding: 7px 0;
+	color: #666;
+}
+
+/*auto controls*/
+#bxSwrapper_{$skin_id} .bx-auto {
+	text-align: center;
+	padding-top: 15px;
+}
+
+#bxSwrapper_{$skin_id} .bx-auto a {
+	color: #666;
+	font-size: 12px;
+}
+#bxSwrapper_{$skin_id} .clear {
+	clear: both;
+}
+
+#{$slide_id} .lightbox_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/magnify.png') no-repeat center center;
+}
+
+#{$slide_id} .lightbox_video {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/video.png') no-repeat center center;
+}
+
+#{$slide_id} .no_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/no_image.png') no-repeat center center;
+}
+
+#{$slide_id} .open_doc {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/document.png') no-repeat center center;
+}
+
+</style>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('#{$slide_id}').bxSlider({
+			mode: 'fade', // 'horizontal', 'vertical', 'fade'
+			infiniteLoop: true,
+			auto: {$widget_info->slide_auto},
+			autoHover: true,
+			bxMaxHeight: {$bxWindowHeight},
+			pager: <!--@if($widget_info->navigation_control=='Y')-->true<!--@else-->false<!--@end-->,
+			pause: {$widget_info->slide_delay},
+			controls: <!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->
+		});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	if ($.browser.msie && $.browser.version < 7) return; // Don't execute code if it's IE6 or below cause it doesn't support it.
+	$(".fade").fadeTo(1, 1);
+	$(".fade").hover(function () {
+		$(this).fadeTo("fast", 0.33);
+	}, function () {
+		$(this).fadeTo("slow", 1);
+	});
+	$("#{$slide_id}").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+
+	$("a[rel^='prettyPhoto']").each(function() {
+		var $image = jQuery(this).contents("img");
+		$newclass = 'no_image';
+		if($(this).attr('href').toLowerCase().match(/youtube\.com\/watch/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/vimeo\.com/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(mov|swf)/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(jpg|gif|jpeg|png)/i)) $newclass = 'lightbox_image';
+		else $(this).removeClass("fade");
+		var $padding_x = parseInt($image.css('padding-left')) + parseInt($image.css('padding-right')),
+			$padding_y = parseInt($image.css('padding-top')) + parseInt($image.css('padding-bottom')),
+			$margin_x = parseInt($image.css('margin-left')) + parseInt($image.css('margin-right')),
+			$margin_y = parseInt($image.css('margin-top')) + parseInt($image.css('margin-bottom')),
+			$border_x = parseInt($image.css('border-left-width')) + parseInt($image.css('border-right-width')),
+			$border_y = parseInt($image.css('border-top-width')) + parseInt($image.css('border-bottom-width'));
+		$height = parseInt($image.height()) + $margin_x + $padding_x + $border_x;
+		$width = parseInt($image.width()) + $margin_y +  $padding_y + $border_y;
+		$pos =  $image.position();
+		$(this).addClass($newclass).css({height:$height, width:$width, top:$pos.top, left:$pos.left});
+	});
+<!--@end-->
+	});
+</script>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+<div id="bxSwrapper_{$skin_id}">
+<ul id="{$slide_id}">
+<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($widget_info->show_content_title=='N')-->
+			<!--@if($item->getThumbnail())-->
+	<li>
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+			<img src="{$item->getImgslider()}" width="{$widget_info->slider_img_width}" height="{$widget_info->slider_img_height}" <!--@if($widget_info->img_fade=='Y'&&$widget_info->open_article!='N')-->class='fade'<!--@end--> />
+		</a>
+		<div class="clear"></div>
+	</li>
+			<!--@end-->
+		<!--@else-->
+	<li>
+			<!--@if($item->getThumbnail())-->
+			<div class="bxImage_{$skin_id}">
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel="prettyPhoto[mixed]"/>
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+			<img src="{$item->getThumbnail()}" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" <!--@if($widget_info->img_fade=='Y'&&$widget_info->open_article!='N')-->class='fade'<!--@end--> />
+		</a></div>
+			<!--@end-->
+			<p class="bxTitle_{$skin_id} textT1_{$skin_id}"><strong><a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a></strong><br></p>
+			<p class="bxContent_{$skin_id} textC1_{$skin_id}"><a href="{$item->getLink()}">{$item->getContent($widget_info->content_cut_size)} More</a></p>
+		<div class="clear"></div>
+	</li>
+		<!--@end-->
+<!--@end-->
+</ul>
+</div>

@@ -1,0 +1,100 @@
+<!--%import("./css/default.css")-->
+<!--%import("./css/nivo-slider.css")-->
+         <div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+            {@
+            $one_i=@explode(",", $one_i);
+            $two_i=@explode(",", $two_i);
+            $three_i=@explode(",", $three_i);
+            $four_i=@explode(",", $four_i);
+            $five_i=@explode(",", $five_i)
+            }
+			<!--@if(!$delay_p)-->
+			{@
+			$delay_p="3000"
+			}
+			<!--@end-->
+            <!--@if($count_p=="1")-->
+                <a href="{$one_i[1]}"><img src="{$one_i[0]}" data-thumb="{$one_i[0]}" title="{$one_i[2]}"/></a>
+            <!--@elseif($count_p=="2")-->
+                 <a href="{$one_i[1]}"><img src="{$one_i[0]}" data-thumb="{$one_i[0]}" title="{$one_i[2]}"/></a>
+                 <a href="{$two_i[1]}"><img src="{$two_i[0]}" data-thumb="{$two_i[0]}" title="{$two_i[2]}"/></a>
+            <!--@elseif($count_p=="3")-->
+                <a href="{$one_i[1]}"><img src="{$one_i[0]}" data-thumb="{$one_i[0]}" title="{$one_i[2]}"/></a>
+                <a href="{$two_i[1]}"><img src="{$two_i[0]}" data-thumb="{$two_i[0]}" title="{$two_i[2]}"/></a>
+                <a href="{$three_i[1]}"><img src="{$three_i[0]}" data-thumb="{$three_i[0]}" title="{$three_i[2]}"/></a>
+            <!--@elseif($count_p=="4")-->
+                <a href="{$one_i[1]}"><img src="{$one_i[0]}" data-thumb="{$one_i[0]}" title="{$one_i[2]}"/></a>
+                <a href="{$two_i[1]}"><img src="{$two_i[0]}" data-thumb="{$two_i[0]}" title="{$two_i[2]}"/></a>
+                <a href="{$three_i[1]}"><img src="{$three_i[0]}" data-thumb="{$three_i[0]}" title="{$three_i[2]}"/></a>
+                <a href="{$four_i[1]}"><img src="{$four_i[0]}" data-thumb="{$four_i[0]}" title="{$four_i[2]}"/></a>
+            <!--@elseif($count_p=="5")-->
+                <a href="{$one_i[1]}"><img src="{$one_i[0]}" data-thumb="{$one_i[0]}" title="{$one_i[2]}"/></a>
+                <a href="{$two_i[1]}"><img src="{$two_i[0]}" data-thumb="{$two_i[0]}" title="{$two_i[2]}"/></a>
+                <a href="{$three_i[1]}"><img src="{$three_i[0]}" data-thumb="{$three_i[0]}" title="{$three_i[2]}"/></a>
+                <a href="{$four_i[1]}"><img src="{$four_i[0]}" data-thumb="{$four_i[0]}" title="{$four_i[2]}"/></a>
+                <a href="{$five_i[1]}"><img src="{$five_i[0]}" data-thumb="{$five_i[0]}" title="{$five_i[2]}"/></a>     
+            <!--@end-->
+            </div>
+
+    </div>
+	<span class="data" style="display:hidden;" data-time="{$delay_p}"></span>
+    <!--%import("jquery.js")-->
+    <!--%import("nivo.js")-->
+	<!--@if($effect_p=="2")-->
+	<script>
+	 //Default settings
+    $.fn.nivoSlider.defaults = {
+        slices: 15,
+        boxCols: 8,
+        boxRows: 4,
+        animSpeed: 500,
+        pauseTime: $(".data").data("time"),
+        startSlide: 0,
+        directionNav: true,
+        controlNav: true,
+        controlNavThumbs: false,
+        pauseOnHover: true,
+        manualAdvance: false,
+        prevText: 'Prev',
+        nextText: 'Next',
+        randomStart: false,
+        beforeChange: function(){},
+        afterChange: function(){},
+        slideshowEnd: function(){},
+        lastSlide: function(){},
+        afterLoad: function(){}
+    };
+	</script>
+	<!--@elseif($effect_p=="1")-->
+	<script>
+	 //Default settings
+    $.fn.nivoSlider.defaults = {
+        effect: 'random',
+        slices: 15,
+        boxCols: 8,
+        boxRows: 4,
+        animSpeed: 500,
+        pauseTime: $(".data").data("time"),
+        startSlide: 0,
+        directionNav: true,
+        controlNav: true,
+        controlNavThumbs: false,
+        pauseOnHover: true,
+        manualAdvance: false,
+        prevText: 'Prev',
+        nextText: 'Next',
+        randomStart: false,
+        beforeChange: function(){},
+        afterChange: function(){},
+        slideshowEnd: function(){},
+        lastSlide: function(){},
+        afterLoad: function(){}
+    };
+	</script>
+<!--@end-->
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>

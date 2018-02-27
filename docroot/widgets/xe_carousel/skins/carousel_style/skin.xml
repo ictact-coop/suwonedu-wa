@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">좌우로 움직이는 갤러리형태의 Carousel 위젯스킨</title>	
+	<description xml:lang="ko">좌우로 움직이는 갤러리형태의 Carousel 위젯스킨입니다. 이미지가 있는 글들만 노출이 됩니다.</description>	
+    <version>0.1</version>
+    <date>2014-04-16</date>
+    <link>http://www.webconsoft.co.kr</link>
+	<author email_address="travelposts@naver.com" link="http://www.webconsoft.co.kr">
+		<name xml:lang="ko">웹콘소프트</name>
+	</author>
+	<colorset>
+		<color name="normal">
+			<title xml:lang="ko">기본 컬러</title>
+		</color>
+	</colorset>
+</skin>

@@ -1,0 +1,53 @@
+
+<div class="widgetZine_DW">
+	<ul class="ZineDW">
+	{@$_idx=0}
+		<!--@foreach($widget_info->content_items as $key => $item)-->
+		<li<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end--> class="over_rep">
+			<div class="DWGallery_div DWGallery_sub clearBoth">
+			
+				<p class="DWWrapImg">
+					 <a href="{$item->getLink()}" class="thumb" target="_blank"|cond="$widget_info->new_window">
+					<!--@if($item->getThumbnail())-->
+					<img src="{$item->getThumbnail()}" alt="{$item->getTitle(20)}" />
+					<!--@else-->
+					<span class="DW_none"><img src="img/none_img.gif" alt="none image"></span>
+					<!--@end-->
+					</a>
+					<!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+					<span class="DWRep">
+						<i class="fa fa42 fa-comments"></i><a href="{$item->getLink()}#comment" class="DW_Replies DW_Arial"><span>{$item->getCommentCount()}</span></a>
+					</span>
+					<!--@elseif($widget_info->show_comment_count=='Y')-->
+					<span class="DWRep">
+						<i class="fa fa42 fa-comments"></i><span class="DW_Replies HB_Arial">0</span>
+					</span>
+					<!--@end-->
+				</p>
+			
+			<!--@for($j=0,$c=count($widget_info->option_view_arr);$j<$c;$j++)-->
+			<!--@if($widget_info->option_view_arr[$j]=='title')-->
+			<span class="DWtitle DWtitleB">
+				<a href="{$item->getLink()}" class="title" target="_blank"|cond="$widget_info->new_window">{$item->getTitle($widget_info->subject_cut_size)}</a>
+			</span>
+			 <span class="DWcontent wrap_date"><span class="slide_block"> DATE : </span>{$item->getRegdate("M, d, Y")}</span>
+			<!--@else if($widget_info->option_view_arr[$j]=='content')-->
+			<span class="DWcontent">
+				<a href="{$item->getLink()}" class="title" target="_blank"|cond="$widget_info->new_window"> {$item->getContent()}</a>	
+			</span>
+			
+			<!--@end-->
+			<!--@end-->
+				
+			</div>
+		</li>
+		{@$_idx++}
+		<!--@end-->
+	</ul>
+	<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+	<ul class="widgetNavigator">
+		<li><button type="button" class="prev png_bg" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.widgetNavigator').prev('ul.DWGallery'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+		<li><button type="button" class="next png_bg" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.widgetNavigator').prev('ul.DWGallery'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+	</ul>
+	<!--@end-->
+</div>

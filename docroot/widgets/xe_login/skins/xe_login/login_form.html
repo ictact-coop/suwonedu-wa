@@ -1,0 +1,90 @@
+<!--// colorset의 값에 따라 css 파일을 import 한다 -->
+<!--@if($colorset=="black")-->
+    <!--%import("css/black.css")-->
+<!--@elseif($colorset=="white")-->
+    <!--%import("css/white.css")-->
+<!--@else-->
+    <!--%import("css/default.css")-->
+<!--@end-->
+
+<!--%import("./filter/login.xml")-->
+<!--%import("./filter/openid_login.xml")-->
+<!--%import("./js/login.js")-->
+
+<script type="text/javascript">
+    var keep_signed_msg = "{$lang->about_keep_signed}";
+    xAddEventListener(window, "load", function(){ doFocusUserId("fo_login_widget"); });
+</script>
+
+<div id="loginForm" class="loginFormA">
+		<!-- login box -->
+		<div class="loginBox">
+			<div class="top"></div>
+			<div class="cont_log">
+				<fieldset id="login" class="loginForm">
+				<form action="{getUrl('','act','procMemberLogin')}" namr="#" method="post" ruleset="@login" id="fo_login_widget" >
+				<input type="hidden" name="act" value="procMemberLogin" />
+                    	<input type="hidden" name="success_return_url" value="{htmlspecialchars(getRequestUriByServerEnviroment())}" />
+		                <input type="hidden" name="xe_validator_id" value="widgets/login_info/skins/xe_official/login_form/1" />
+					<div class="inputB">
+						<input type="text" name="user_id" title="user id" class="loginId" onmousedown="if(this.className == 'loginId') {this.className='loginIdOn';} this.focus();" onfocus="if(this.className == 'loginId') {this.className='loginIdOn';} this.focus();" onblur="if(this.value != '') {this.className == 'loginIdOn'; } else if(this.className == 'loginIdOn') {this.className='loginId';}" />
+
+						<input type="password" name="password" title="password" class="loginPass" class="loginPass" onmousedown="if(this.className == 'loginPass') {this.className='loginPassOn';} this.focus();" onfocus="if(this.className == 'loginPass') {this.className='loginPassOn';} this.focus();" onblur="if(this.value != '') {this.className == 'loginPassOn'; } else if(this.className == 'loginPassOn') {this.className='loginPass';}" />
+						<!--@if($member_config->enable_ssl=='Y')-->
+						<p class="securitySignIn <!--@if($ssl_mode)-->SSL<!--@else-->noneSSL<!--@end-->">
+							<a href="#" onclick="toggleSecuritySignIn(); return false;">{$lang->security_sign_in}</a>
+						</p>
+						<!--@end-->
+
+					</div>
+
+					<input type="submit" class="submit" value="{$lang->cmd_login}" />		<!-- 로그인 버튼 , 레이아웃 컬러셋 적용 -->
+
+					<div class="clear"></div>
+
+					 <ul class="keep_wrap">
+					<li class="keepLogin">
+						<input type="checkbox" name="keep_signed" id="keepid" value="Y" onclick="if(this.checked) return confirm(keep_signed_msg);" style="position:relative; top:2px;"/>
+						<label for="keepid">{$lang->keep_signed}</label>
+					</li>
+
+					<li class="signup" >
+					<a href="{getUrl('act','dispMemberSignUpForm')}">{$lang->cmd_signup}</a>
+					</li>
+					</ul>
+
+					<ul class="help">
+						<li><a href="{getUrl('act','dispMemberFindAccount')}">{$lang->cmd_find_member_account} </a></li>
+						<li><a href="{getUrl('act','dispMemberResendAuthMail')}">{$lang->cmd_resend_auth_mail}</a></li>
+						<!--@if($member_config->enable_openid=='Y')--><li class="openid"><a href="javascript:void(0);" onclick="openidToggle('loginForm');">OpenID</a></li><!--@end-->
+					</ul>
+					<div class="clear"></div>
+				</form>
+				</fieldset>
+
+				<fieldset id="openid_login" class="openidForm">
+				<!--@if($member_config->enable_openid=='Y')-->
+				<form action="{getUrl('module','member','act','procMemberOpenIDLogin')}" method="post" onsubmit="return procFilter(this, openid_login)">
+				  <div class="idpwWrap">
+					<div class="idpw">
+					  <input type="text" name="openid" class="openid_user_id" />
+					</div>
+					<input type="submit" class="submitopenid" value=" " />
+				  </div>
+					<ul class="help">
+						<li><a href="{getUrl('act','dispMemberFindAccount')}">{$lang->cmd_find_member_account}</a></li>
+						<li><a href="{getUrl('act','dispMemberResendAuthMail')}">{$lang->cmd_resend_auth_mail}</a></li>
+						<li class="openid"><a href="javascript:void(0);" onclick="openidToggle('loginForm');"><strong>OpenID</strong></a></li>
+					</ul>
+					<div class="clear"></div>
+				</form>
+				</fieldset>
+				<!--@end-->
+			</div>
+			<div class="bottom"></div>
+
+		</div>
+</div>
+<script type="text/javascript">
+  xAddEventListener(window, "load", function(){ doFocusUserId("fo_login_widget"); });
+</script>

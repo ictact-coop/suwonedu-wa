@@ -1,0 +1,384 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "Galleriffic_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(15px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$grf2TiHT = 25}
+<!--@else-->
+{@$grf2TiHT = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용 높이(50px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$grf2ConHT = 50}
+<!--@else-->
+{@$grf2ConHT = $widget_info->content_height}
+<!--@end-->
+
+<!--// 슬라이드 이미지 높이 + 테두리 -->
+{@$slider_img_width=$widget_info->slider_img_width+($widget_info->slider_img_bdsize*2)}
+{@$slider_img_height=$widget_info->slider_img_height+($widget_info->slider_img_bdsize*2)}
+
+<!--// 슬라이드 박스 간격 (0px) -->
+{@$tablespace=0}
+
+<!--// 전체넓이 = 네비게이션 넓이 + 간격 + 슬라이드 이미지 넓이 -->
+{@$slider_width=$slider_img_width+$tablespace+$widget_info->navigation_size}
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 14}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "돋움,'Trebuchet MS', Verdana, sans-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 11}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, Arial, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/Galleriffic/js"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+/* Default 스킨 전체 레이어 */
+#{$slide_id}_page {
+	width: {$slider_width}px;
+	margin: 0 auto;
+}
+
+div.content_{$skin_id} {
+	display: block;
+	float: left;
+	width: {$slider_img_width}px;
+}
+div.content_{$skin_id} a, div.navigation_{$skin_id} a {
+	text-decoration: none;
+	color: #777;
+}
+div.content_{$skin_id} a:focus, div.content_{$skin_id} a:hover, div.content_{$skin_id} a:active {
+	text-decoration: underline;
+}
+div.controls_{$skin_id} {
+	margin-top: 5px;
+	height: 23px;
+}
+div.controls_{$skin_id} a {
+	padding: 5px;
+}
+div.controls_{$skin_id} div.ss-controls {
+	float: left;
+}
+div.controls_{$skin_id} div.nav-controls {
+	float: right;
+}
+div.slideshow-container_{$skin_id} {
+	position: relative;
+	clear: both;
+	height: {$slider_img_height}px; /* 슬라이더 높이 */
+}
+div.loader_{$skin_id} {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url('{$skincssimgpath}/loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: {$slider_img_width}px;
+	height: {$slider_img_height}px;
+}
+div.slideshow_{$skin_id} {
+
+}
+div.slideshow_{$skin_id} span.image-wrapper_{$skin_id} {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+div.slideshow_{$skin_id} a.advance-link {
+	display: block;
+	width: {$slider_img_width}px;
+	height: {$slider_img_height}px; /* 슬라이더 높이 */
+	line-height: {$slider_img_height}px; /* 변경하지 마세요. */
+	text-align: center;
+}
+div.slideshow_{$skin_id} a.advance-link:hover, div.slideshow_{$skin_id} a.advance-link:active, div.slideshow_{$skin_id} a.advance-link:visited {
+	text-decoration: none;
+}
+div.slideshow_{$skin_id} img {
+	vertical-align: middle;
+	border: {$widget_info->slider_img_bdsize}px solid {$widget_info->slider_img_bdcolor};	/* 슬라이드 테투리 두께와 색 지정 */
+}
+div.caption-container_{$skin_id} {
+	position: relative;
+	clear: left;
+	height: {$grf2TiHT+$grf2ConHT}px; /* 갭션 높이 */
+}
+span.image-caption_{$skin_id} {
+	display: block;
+	position: absolute;
+	width: {$slider_img_width}px;										/* 내용 넓이 */
+	top: 0;
+	left: 0;
+}
+div.captionContent_{$skin_id} {
+	padding: 12px;
+}
+div.image-title_{$skin_id} {
+	font-weight: bold;
+	<!--@if($widget_info->title_height)-->
+	height: {$widget_info->title_height}px;
+	<!--@end-->
+}
+
+div.image-desc_{$skin_id} {
+	line-height: 1.3em;
+	padding-top: 12px;
+	<!--@if($widget_info->content_height)-->
+	height: {$widget_info->content_height}px;
+	<!--@end-->
+}
+
+ul.thumbsImages_{$skin_id} {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+ul.thumbsImages_{$skin_id} li {
+	float: left;
+	padding: 0;
+	margin: 5px 10px 5px 0;
+	list-style: none;
+}
+a.thumbImg_{$skin_id} {
+	padding: 2px;
+	display: block;
+	border: {$widget_info->thumbnail_bdsize}px solid {$widget_info->thumbnail_bdcolor};	/* 썸네일 테투리 두께와 색 지정 */
+}
+ul.thumbsImages_{$skin_id} li.selected a.thumbImg_{$skin_id} {
+	background: #000;
+}
+a.thumbImg_{$skin_id}:focus {
+	outline: none;
+}
+ul.thumbsImages_{$skin_id} img {
+	border: none;
+	display: block;
+}
+/* 썸네일 박스 */
+div.navigation_{$skin_id} {
+	width: {$widget_info->navigation_size}px;
+	float: left;
+	margin-right: {$tablespace}px;					/* 슬라이드 박스 간격 */
+}
+div.navigation_{$skin_id} div.top {
+	margin-bottom: 12px;
+	height: 11px;
+}
+div.navigation_{$skin_id} div.bottom {
+	margin-top: 12px;
+}
+/* 페이지 버튼 */
+div.paginationBtn_{$skin_id} {
+	clear: both;
+}
+div.paginationBtn_{$skin_id} a, div.paginationBtn_{$skin_id} span.current, div.paginationBtn_{$skin_id} span.ellipsis {
+	display: block;
+	float: left;
+	margin-right: 2px;
+	padding: 4px 7px 2px 7px;
+	border: 1px solid #ccc;
+}
+div.paginationBtn_{$skin_id} a:hover {
+	background-color: #eee;
+	text-decoration: none;
+}
+div.paginationBtn_{$skin_id} span.current {
+	font-weight: bold;
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}
+div.paginationBtn_{$skin_id} span.ellipsis {
+	border: none;
+	padding: 5px 0 3px 2px;
+}
+
+</style>
+
+<script type="text/javascript">
+	document.write('<style>.noscript { display: none; }</style>');
+</script>
+{@$_imgidx=0}
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+	{@shuffle($widget_info->content_items)}
+<!--@end-->
+<div id="{$slide_id}_page">
+
+	<div id="thumbsImg_{$skin_id}" class="navigation_{$skin_id}">
+		<ul class="thumbsImages_{$skin_id} noscript">
+			<!--@foreach($widget_info->content_items as $key => $item)-->
+			<!--@if($item->getThumbnail())-->
+			<li>
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+				<a class="thumbImg_{$skin_id}" name="{$_imgidx++}" href="{$item->getLink()}" alt="{$item->getImgslider()}" title='{$item->getTitle($widget_info->subject_cut_size)} #크게보기' rel="prettyPhoto">
+			<!--@else-->
+				<a class="thumbImg_{$skin_id}" name="{$_imgidx++}" href="{$item->getPreview()}" alt="{$item->getImgslider()}" title='{$item->getTitle($widget_info->subject_cut_size)} #크게보기' rel="prettyPhoto">
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+				<a class="thumbImg_{$skin_id}" name="{$_imgidx++}" alt="{$item->getImgslider()}" href="{$item->getDocumentSrl()}" title='{$item->getTitle($widget_info->subject_cut_size)} #내용보기'>
+		<!--@else-->
+				<a class="thumbImg_{$skin_id}" name="{$_imgidx++}" href="{$item->getImgslider()}" alt="{$item->getLink()}" title='{$item->getTitle($widget_info->subject_cut_size)} #다음그림'>
+		<!--@end-->
+					<img src="{$item->getThumbnail()}" alt='{$item->getTitle($widget_info->subject_cut_size)} #{$_imgidx}' />
+				</a>
+				<!--@if($widget_info->show_content_title=='Y')-->
+				<div class="captionContent_{$skin_id}">
+					<div class="image-title_{$skin_id} textT1_{$skin_id}">
+					<a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a></div>
+					<div class="image-desc_{$skin_id} textC1_{$skin_id}">
+					<a href="{$item->getLink()}">{$item->getContent($widget_info->content_cut_size)}</a></div>
+				</div><!--@end-->
+			</li>
+			<!--@end--><!--@end-->
+		</ul>
+	</div>
+
+	<div id="gallery_{$skin_id}" class="content_{$skin_id}">
+		<!--@if($widget_info->show_control=='Y')-->
+		<div id="controls_{$skin_id}" class="controls_{$skin_id}"></div><!--@end-->
+		<div class="slideshow-container_{$skin_id}">
+			<div id="loading_{$skin_id}" class="loader_{$skin_id}"></div>
+			<div id="slideshow_{$skin_id}" class="slideshow_{$skin_id}"></div>
+		</div>
+		<!--@if($widget_info->show_content_title=='Y')-->
+		<div id="caption_{$skin_id}" class="caption-container_{$skin_id}"></div><!--@end-->
+	</div>
+
+	<div style="clear: both;"></div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+
+		var onMouseOutOpacity = 0.67;
+		jQuery('#thumbsImg_{$skin_id} ul.thumbsImages_{$skin_id} li').opacityrollover({
+			mouseOutOpacity:   onMouseOutOpacity,
+			mouseOverOpacity:  1.0,
+			fadeSpeed:         'fast',
+			exemptionSelector: '.selected'
+		});
+				
+		var gallery = jQuery('#thumbsImg_{$skin_id}').galleriffic({
+			delay:                     {$widget_info->slide_delay},
+			numThumbs:                 {$widget_info->cols_list_count},
+			preloadAhead:              {$widget_info->list_count},
+			enableTopPager:            <!--@if($widget_info->navigation_control=='Y')-->true<!--@else-->false<!--@end-->,
+			enableBottomPager:         false,
+			maxPagesToShow:            3,
+			imageContainerSel:         '#slideshow_{$skin_id}',
+			controlsContainerSel:      '#controls_{$skin_id}',
+			captionContainerSel:       '#caption_{$skin_id}',
+			loadingContainerSel:       '#loading_{$skin_id}',
+			renderSSControls:          <!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->,
+			renderNavControls:         <!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->,
+			playLinkText:              'Play Slideshow',
+			pauseLinkText:             'Pause Slideshow',
+			prevLinkText:              '&lsaquo; Previous Photo',
+			nextLinkText:              'Next Photo &rsaquo;',
+			nextPageLinkText:          'Next &rsaquo;',
+			prevPageLinkText:          '&lsaquo; Prev',
+			enableHistory:             false,
+			autoStart:                 {$widget_info->slide_auto},
+			syncTransitions:           true,
+			defaultTransitionDuration: 100,
+			skinidno:				   '{$skin_id}',
+			openArticle:			   '{$widget_info->open_article}',
+			ptyPotoTheme:			   '{$widget_info->ptypoto_theme}',
+			onSlideChange:             function(prevIndex, nextIndex) {
+				// 'this' refers to the gallery, which is an extension of $('#thumbs')
+				this.find('ul.thumbsImages_{$skin_id}').children()
+					.eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+					.eq(nextIndex).fadeTo('fast', 1.0);
+			},
+			onPageTransitionOut:       function(callback) {
+				this.fadeTo('fast', 0.0, callback);
+			},
+			onPageTransitionIn:        function() {
+				this.fadeTo('fast', 1.0);
+			}
+		});
+		gallery.find('a.thumbImg_{$skin_id}').hover(function(e) {
+			gallery.clickHandler(e, this);
+		});
+	});
+</script>

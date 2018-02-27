@@ -1,0 +1,59 @@
+<!--%import("js/fade.js")-->
+<!--%import("js/wowSlider.js")-->
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "wowSlider_".mt_rand()}
+{@$slide_id = $skin_id}
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/wowSlider/js"}
+
+<style type="text/css" media="screen">
+#wowslider-container {zoom: 1; position: relative; width:{$widget_info->slider_img_width+2}px; height:{$widget_info->slider_img_height+2}px; margin:0; z-index:100;}
+#wowslider-images{position: absolute;width:{$widget_info->slider_img_width}px;height:{$widget_info->slider_img_height}px;overflow:hidden;cursor:pointer;}
+#wowslider-images img{top:0;left:0;border:none 0;}
+#wowslider-container a{outline: none; border: none;}
+* html #wowslider-container a.ws_next,* html #wowslider-container a.ws_prev{display:block}
+#wowslider-container:hover a.ws_next, #wowslider-container:hover a.ws_prev {display:block}
+a#vlb{display:none}
+.cheer_border { position:absolute; border:1px solid #000; opacity:0.1;width:{$widget_info->slider_img_width-2}px;height:{$widget_info->slider_img_height-2}px;overflow:hidden;}
+</style>
+
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+{@$imgidx=0}
+<div id="wowslider-container">
+	<div id="wowslider-images" style="border:1px solid #868686">
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+	<!--@if($item->getThumbnail())-->
+<a href="{$item->getDocumentSrl()}" class='open_doc' /><img src="{$item->getImgslider()}" id="wows{$imgidx++}" <!--@if($widget_info->show_title=='Y')-->title="{$title}"<!--@end-->></a>
+	<!--@end--><!--@end-->
+</div>
+{@$img_idx=0}
+
+</div>
+
+<script type="text/javascript">
+
+var wowSlider=new WowSlider({
+	effect:"{$colorset}",
+	prev:"",
+	next:"",
+	duration:1000,
+	delay:{$widget_info->slide_delay},
+	outWidth:{$widget_info->slider_img_width},
+	outHeight:{$widget_info->slider_img_height},
+	width:{$widget_info->slider_img_width},
+	height:{$widget_info->slider_img_height},
+	caption:<!--@if($widget_info->show_content_title=='Y')-->true<!--@else-->false<!--@end-->,
+	controls:<!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->,
+	autoPlay:{$widget_info->slide_auto},
+	bullets:<!--@if($widget_info->navigation_control=='Y')-->true<!--@else-->false<!--@end-->
+});
+	jQuery(document).ready(function($){
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$("#wowslider-images").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+	});
+</script>

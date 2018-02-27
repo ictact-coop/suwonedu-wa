@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+	<title xml:lang="ko">sejin7940 달력 (sejin7940_calender)</title>
+	<title xml:lang="zh-CN">日历</title>
+	<title xml:lang="jp">カレンダー表示</title>
+	<title xml:lang="en">Calendar (modified by sejin7940)</title>
+	<title xml:lang="es">Mostrar Calendario</title>
+	<title xml:lang="ru">Отображение календаря</title>
+	<title xml:lang="zh-TW">日曆</title>
+	<description xml:lang="ko">달력을 표시하고 등록된 글이 있는 날에 표시와 링크를 해줍니다.</description>
+	<description xml:lang="zh-CN">显示日历,发表主题日期将跟日历相关联。</description>
+	<description xml:lang="jp">カレンダーを表示して書き込みがあった日にリンクを張ります。</description>
+	<description xml:lang="en">This widget displays a calendar, and if there is an article submitted, the date will be highlighted with its url link.</description>
+	<description xml:lang="es">Este widget muestra el calendario, y si hay documentos agregados, la fecha se verá con un color más claro enlazado con URL.</description>
+	<description xml:lang="ru">Этот виджет отображает календарь, и если отправляется статья, данные будут выделены их ссылкой.</description>
+	<description xml:lang="zh-TW">顯示日曆，發表主題的日期會跟日曆產生連結。</description>
+	<version>1.0</version>
+	<date>2011-02-13</date>
+
+	<author email_address="sejin7940@nate.com" link="http://www.sejin7940.co.kr">
+		<name xml:lang="ko">sejin7490  (원본소스 - zero)</name>
+		<name xml:lang="zh-CN">sejin7940 ( source : zero)</name>
+	</author>
+
+	<extra_vars>
+       <var id="multi">
+            <type>select</type>
+            <name xml:lang="ko">출력할 달</name>
+            <options>
+                <value>0</value>
+                <name xml:lang="ko">이번달</name>
+            </options>
+            <options>
+                <value>-1</value>
+                <name xml:lang="ko">지난달</name>
+            </options>
+            <options>
+                <value>1</value>
+                <name xml:lang="ko">다음달</name>
+            </options>
+        </var>
+
+		<var id="date_var">
+            <type>select</type>
+            <name xml:lang="ko">연결할 변수값</name>
+            <options>
+                <value>regdate</value>
+                <name xml:lang="ko">등록일</name>
+            </options>
+            <options>
+                <value>update</value>
+                <name xml:lang="ko">최근수정일</name>
+            </options>
+            <options>
+                <value>extra_vars1</value>
+                <name xml:lang="ko">확장변수1</name>
+            </options>
+            <options>
+                <value>extra_vars2</value>
+                <name xml:lang="ko">확장변수2</name>
+            </options>
+            <options>
+                <value>extra_vars3</value>
+                <name xml:lang="ko">확장변수3</name>
+            </options>
+            <options>
+                <value>extra_vars4</value>
+                <name xml:lang="ko">확장변수4</name>
+            </options>
+            <options>
+                <value>extra_vars5</value>
+                <name xml:lang="ko">확장변수5</name>
+            </options>
+            <options>
+                <value>extra_vars6</value>
+                <name xml:lang="ko">확장변수6</name>
+            </options>
+            <options>
+                <value>extra_vars7</value>
+                <name xml:lang="ko">확장변수7</name>
+            </options>
+            <options>
+                <value>extra_vars8</value>
+                <name xml:lang="ko">확장변수8</name>
+            </options>
+            <options>
+                <value>extra_vars9</value>
+                <name xml:lang="ko">확장변수9</name>
+            </options>
+            <options>
+                <value>extra_vars10</value>
+                <name xml:lang="ko">확장변수10</name>
+            </options>
+			<options>
+                <value>extra_vars11</value>
+                <name xml:lang="ko">확장변수11</name>
+            </options>
+            <options>
+                <value>extra_vars12</value>
+                <name xml:lang="ko">확장변수12</name>
+            </options>
+            <options>
+                <value>extra_vars13</value>
+                <name xml:lang="ko">확장변수13</name>
+            </options>
+            <options>
+                <value>extra_vars14</value>
+                <name xml:lang="ko">확장변수14</name>
+            </options>
+            <options>
+                <value>extra_vars15</value>
+                <name xml:lang="ko">확장변수15</name>
+            </options>
+            <options>
+                <value>extra_vars16</value>
+                <name xml:lang="ko">확장변수16</name>
+            </options>
+            <options>
+                <value>extra_vars17</value>
+                <name xml:lang="ko">확장변수17</name>
+            </options>
+            <options>
+                <value>extra_vars18</value>
+                <name xml:lang="ko">확장변수18</name>
+            </options>
+            <options>
+                <value>extra_vars19</value>
+                <name xml:lang="ko">확장변수19</name>
+            </options>
+            <options>
+                <value>extra_vars20</value>
+                <name xml:lang="ko">확장변수20</name>
+            </options>
+        </var>
+
+		<var id="srl">
+			<type>mid</type>
+			<name xml:lang="ko">대상 모듈</name>
+			<name xml:lang="zh-CN">模块对象</name>
+			<name xml:lang="jp">モジュール</name>
+			<name xml:lang="en">Target Module</name>
+			<name xml:lang="es">Módulo objetivo</name>
+			<name xml:lang="zh-TW">目標模組</name>
+			<name xml:lang="ru">Модуль назначения</name>
+			<description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+			<description xml:lang="zh-CN">将把所选模块作为关联对象。</description>
+			<description xml:lang="jp">チェックされたモジュールに登録されたコンテンツ（書き込み）を対象とします。</description>
+			<description xml:lang="en">The target articles will be the ones submitted in the selected module.</description>
+			<description xml:lang="es">Los documentos del módulo seleccionado serán objetivos.</description>
+			<description xml:lang="ru">Статьи назначения будут теми, что были размещены в выбранном модуле.</description>
+			<description xml:lang="zh-TW">將所選擇的模組當做連結目標。</description>
+		</var>
+	</extra_vars>
+</widget>

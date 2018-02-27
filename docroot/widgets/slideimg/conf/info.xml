@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<widget version="0.2"> 
+	<title xml:lang="ko">이미지 슬라이드 위젯</title> 
+	<description xml:lang="ko">여러가지 종합 슬라이드 효과를 담았습니다.</description> 
+	<version>1.1.2</version> 
+	<date>업데이트 : 2014년 09월 08일</date> 
+	<author email_address="admin@leedm.me" link="http://software.creffect.com"> 
+		<name xml:lang="ko">크리펙트 소프트웨어, 이동민(Lee Dong-Min)</name> 
+	</author> 
+
+ 	<extra_vars>
+		<var id="delay_p">
+ 			<name xml:lang="ko">슬라이더 간격</name> 
+ 			<type>text</type>
+ 			<description xml:lang="ko">슬라이더가 넘어가는 간격을 설정합니다. (1000=1초, 500 = 0.5초, 10000 = 10초 기본 = 3초)</description> 
+ 		</var>
+		<var id="effect_p" type="select">
+ 			<name xml:lang="ko">슬라이더 효과 유무</name> 
+ 			<options>
+				<value>1</value>
+				<name xml:lang="ko">유</name>
+			</options>
+			<options>
+				<value>2</value>
+				<name xml:lang="ko">무</name>
+			</options>
+		</var>
+
+  		<var id="count_p" type="select">
+ 			<name xml:lang="ko">페이지 수</name> 
+ 			<options>
+				<value>1</value>
+				<name xml:lang="ko">1</name>
+			</options>
+			<options>
+				<value>2</value>
+				<name xml:lang="ko">2</name>
+			</options>
+			<options>
+				<value>3</value>
+				<name xml:lang="ko">3</name>
+			</options>
+			<options>
+				<value>4</value>
+				<name xml:lang="ko">4</name>
+			</options>
+			<options>
+				<value>5</value>
+				<name xml:lang="ko">5</name>
+			</options>
+ 			<description xml:lang="ko">표시할 페이지 수를 정합니다.</description> 
+ 		</var>
+
+ 		<var id="one_i">
+ 			<name xml:lang="ko">첫번째 이미지</name> 
+ 			<type>text</type>
+ 			<description xml:lang="ko">첫번째로 나올 이미지를 설정합니다. 콤마로 구분 (이미지주소, 연결할 링크, 이미지 설명)</description> 
+ 		</var>
+
+ 		<var id="two_i">
+ 			<name xml:lang="ko">두번째 이미지</name> 
+ 			<type>text</type>
+ 			<description xml:lang="ko">두번째로 나올 이미지를 설정합니다. 콤마로 구분 (이미지주소, 연결할 링크, 이미지 설명)</description> 
+ 		</var>
+
+  		<var id="three_i">
+ 			<name xml:lang="ko">세번째 이미지</name> 
+ 			<type>text</type>
+ 			<description xml:lang="ko">세번째로 나올 이미지를 설정합니다. 콤마로 구분 (이미지주소, 연결할 링크, 이미지 설명)</description> 
+ 		</var>
+
+   		<var id="four_i">
+ 			<name xml:lang="ko">네번째 이미지</name> 
+ 			<type>text</type>
+ 			<description xml:lang="ko">네번째로 나올 이미지를 설정합니다. 콤마로 구분 (이미지주소, 연결할 링크, 이미지 설명)</description> 
+ 		</var>
+
+   		<var id="five_i">
+ 			<name xml:lang="ko">다섯번째 이미지</name> 
+ 			<type>text</type>
+ 			<description xml:lang="ko">다번째로 나올 이미지를 설정합니다. 콤마로 구분 (이미지주소, 연결할 링크, 이미지 설명)</description> 
+ 		</var>
+	</extra_vars>
+
+</widget> 

@@ -1,0 +1,489 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "LofNews_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// 설정된 컬러셋의 종류에 따라서 css파일을 import 합니다 -->
+<!--// js 파일 import -->
+<!--%import("js/mootools.svn.js")-->
+<!--%import("js/lofslidernews.mt11.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--[if lte IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  DD_belatedPNG.fix('.lof-main-item-desc');
+</script>
+<![endif]-->
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 14}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#fff'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "돋움,'Trebuchet MS',Trebuchet,Arial,Verdana,sans-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(25px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 14}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#fff'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,Arial, Helvetica, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 내용 높이(40px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$textC1_Height = 40}
+<!--@else-->
+{@$textC1_Height = $widget_info->content_height}
+<!--@end-->
+
+<!--// 네비게이션 높이 = 썸네일 높이 * 썸네일 갯수  -->
+{@$nav_height = ($widget_info->thumbnail_height+26) * $widget_info->cols_list_count}
+
+<!--// 배경 이미지 경로 -->
+{@ $skincssimgpath = getSiteUrl()."widgets/contentslider/skins/Lof_SliderNews/images"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	line-height: {$title_font_size}px;
+	text-align:left;
+	overflow:hidden;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	font-weight: normal;
+	line-height: {$content_font_size}px;
+	height: {$textC1_Height}px;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+/* CSS Document */
+.lof-slidecontent_{$skin_id}{
+	position:relative;
+	overflow:hidden;
+	border:#F4F4F4 solid 1px;
+	width:{$widget_info->slider_img_width+$widget_info->navigation_size}px; /* 전체 넓이 */
+	height:{$nav_height}px; /* 전체 높이 : 300 */
+}
+.lof-slidecontent_{$skin_id} .preload{
+	height:100%;
+	width:100%;
+	background:#FFF;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:100000;
+	color:#FFF;
+	text-align:center
+}
+.lof-slidecontent_{$skin_id} .preload div{
+	height:100%;
+	width:100%;
+	background:transparent url('{$skincssimgpath}/load-indicator.gif') no-repeat scroll 50% 50%;
+}
+/* main flash */
+.lof-slidecontent_{$skin_id} .lof-main-wapper{
+	margin-right:auto;
+	overflow:hidden;
+	background:transparent url('{$skincssimgpath}/load-indicator.gif') no-repeat scroll 50% 50%;
+	padding:0px;
+	height:100%;
+	width:{$widget_info->slider_img_width}px;  /* 슬라이드 이미지 넓이 */
+	position:relative;
+	overflow:hidden;
+}
+
+.lof-slidecontent_{$skin_id} .lof-main-wapper .lof-main-item_{$skin_id}{
+	overflow:hidden;
+	padding:0px;
+	margin:0px;
+	height:100%;
+	width:100%;
+	position:absolute;
+}
+.lof-slidecontent_{$skin_id} .lof-main-wapper .lof-main-item_{$skin_id} img{
+	padding:0px;	
+	width:{$widget_info->slider_img_width}px;  /* 슬라이드 이미지 넓이 */
+}
+
+.lof-slidecontent_{$skin_id} .lof-main-item-desc{
+	z-index:100;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	width:{$widget_info->slider_img_width}px;  /* 캡션박스 넓이 */
+	background:url('{$skincssimgpath}/transparent_bg.png');
+
+	/* filter:0.7(opacity:60) */
+}
+
+.lof-slidecontent_{$skin_id} .lof-main-item-desc p{
+	margin:0 5px;
+	padding:0px;
+}
+
+.lof-slidecontent_{$skin_id} .lof-main-item-desc h3 a{
+	margin:0 5px;
+	padding:0px 0px;
+}
+
+/* item navigator */
+.lof-slidecontent_{$skin_id} ul.lof-navigator{
+	top:<!--@if($colorset=="Right")-->-100px<!--@else-->0px<!--@end-->;
+	padding:0;
+	margin:0;
+	position:absolute;
+	width:100%;
+}
+
+.lof-slidecontent_{$skin_id} ul.lof-navigator li{
+	cursor:hand; 
+	cursor:pointer;
+	list-style:none;
+	width:100%;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator-outer{
+	position:absolute;
+	right:0;
+	top:0px;
+	z-index:100;
+	height:{$nav_height}px; /* 왼쪽 썸네일 박스 높이 */
+	width:{$widget_info->navigation_size+15}px; /* 왼쪽 썸네일 박스 넓이 */
+	overflow:hidden;
+	color:#FFF
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li.active{
+	background:url('{$skincssimgpath}/arrow-bg.png') no-repeat scroll left center; 
+	color:#FFF
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li:hover{
+	
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li h3{
+	color:#FFF;
+	padding:10px 0 0 !important; /* 여백 */
+	margin:0;
+	font-size:11px; /* 썸네일 박스 제목 크기 */
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li div{
+	background:url('{$skincssimgpath}/transparent_bg.png');
+	color:#FFF;
+	height:100%;
+	position:relative;
+	margin-left:15px;
+	padding-left:0px; /* 여백 */
+	border-top:1px solid #E1E1E1;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li.active div{
+	background:url('{$skincssimgpath}/grad-bg.gif');
+	color:#FFF;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li div a{
+	color:#FFF;
+	text-decoration: none;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li div a:hover{
+	color:#FFF;
+	text-decoration:underline;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li img{
+	height:{$widget_info->thumbnail_height}px; /* 썸네일 높이 */
+	width:{$widget_info->thumbnail_width}px; /* 썸네일 넓이 */
+	margin: 10px; /* 여백 */
+	float:left;
+	padding:3px;
+	border:#C5C5C5 solid 1px;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li.active img{
+	border:##6C8E5C  solid 1px;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li h3 a{
+	color:#FFF;
+	font-size:11px; /* 썸네일 박스 제목 크기 */
+	text-decoration: none;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li h3 a:hover{
+	color:#FFF;
+	text-decoration:underline;
+}
+
+.lof-slidecontent_{$skin_id} .lof-navigator li.active h3{
+	color:#FFF;
+}
+
+.lof-slidecontent_{$skin_id} .lof-next{
+	position:absolute;
+	top:0;
+	height:30px;
+	background:#F9F9F9;
+	display:block;
+	width:100%;
+}
+
+.lof-slidecontent_{$skin_id} .lof-previous{
+	position:absolute;
+	bottom:0;
+	height:30px;
+	background:#F9F9F9;
+	display:block;
+	width:100%;
+}
+
+<!--@if($colorset=="Right")-->
+.lof-snleft_{$skin_id} .lof-main-wapper{
+	margin-left:auto;
+	margin-right:inherit;
+	clear:both;
+	height:{$nav_height}px; /* 높이 */
+}
+
+.lof-snleft_{$skin_id} .lof-navigator-outer{
+	left:0;
+	top:0;
+	right:inherit;
+}
+	
+.lof-snleft_{$skin_id} .lof-navigator li.active{
+	background:url('{$skincssimgpath}/arrow-bg2.gif') center right no-repeat;
+	}
+
+.lof-snleft_{$skin_id} .lof-navigator li div{
+	margin-left:inherit;
+	margin-right:15px;
+}
+	
+.lof-snleft_{$skin_id} .lof-navigator li.active div{
+	margin-left:inherit;
+	margin-right:15px;
+	background:url('{$skincssimgpath}/grad-bg2.gif'); 
+}
+<!--@end-->
+
+#{$slide_id} .lightbox_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/magnify.png') no-repeat center center;
+}
+
+#{$slide_id} .lightbox_video {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/video.png') no-repeat center center;
+}
+
+#{$slide_id} .no_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/no_image.png') no-repeat center center;
+}
+
+#{$slide_id} .open_doc {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	background:url('{$skincssimgpath}/document.png') no-repeat center center;
+}
+
+</style>
+
+{@$_imgidx=0}
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+	{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+<div id="{$slide_id}" class="lof-slidecontent_{$skin_id} lof-snleft_{$skin_id}">
+	<div class="preload" style="visibility: hidden; zoom: 1; opacity: 0; "><div></div></div>
+
+	<div class="lof-main-wapper">
+		<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($item->getThumbnail())-->
+		<div class="lof-main-item_{$skin_id}" style="display: block; visibility: visible; zoom: 1; opacity: 0.998621875; ">
+        		<img src="{$item->getImgslider()}" title='{$item->getTitle($widget_info->subject_cut_size)}' height="{$nav_height}px" width="{$widget_info->slider_img_width}px">
+
+				<!--@if($widget_info->show_content_title=='Y')-->
+				<div class="lof-main-item-desc">
+                <h3 class="textT1_{$skin_id}"><a href="{$item->getDocumentSrl()}" title='{$item->getTitle($widget_info->subject_cut_size)}' />{$item->getTitle($widget_info->subject_cut_size)}</a></h3>
+                <p class="textC1_{$skin_id}"><a href="{$item->getDocumentSrl()}">{$item->getContent($widget_info->content_cut_size)}</a></p>
+				</div><!--@end-->
+        </div> 
+		<!--@end-->
+		<!--@end-->
+	</div>
+
+	<div class="lof-navigator-outer">
+  		<ul class="lof-navigator">
+			<!--@foreach($widget_info->content_items as $key => $item)-->
+			<!--@if($item->getThumbnail())-->
+			<li style="height: {$widget_info->thumbnail_height+26}px;">
+            	<div>
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+					<img src="{$item->getThumbnail()}" <!--@if($widget_info->img_fade=='Y'&&$widget_info->open_article!='N')-->class='fade'<!--@end--> />
+					</a>
+                	<h3>{$item->getTitle($widget_info->subject_cut_size)}</h3>
+                  	<span>{$item->getRegdate("d.M.Y")}</span> </br> <a href="{$item->getLink()}">More</a>
+                </div>    
+            </li>
+			<!--@end--><!--@end-->
+        </ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var _lofmain =  $('{$slide_id}');
+	var _lofscmain = _lofmain.getElement('.lof-main-wapper');
+	var _lofnavigator = _lofmain.getElement('.lof-navigator-outer .lof-navigator');
+	var object = new LofFlashContent( 
+		_lofscmain, _lofnavigator, _lofmain.getElement('.lof-navigator-outer'), {
+			fxObject		: {transition:Fx.Transitions.Quad.easeInOut,  duration:800},
+			interval		: {$widget_info->slide_delay},
+			direction		: 'opacity',
+			mainItemSelector: 'div.lof-main-item_{$skin_id}',
+			autoStart		: {$widget_info->slide_auto},
+			auto			: {$widget_info->slide_auto},
+			navItemsDisplay	: {$widget_info->cols_list_count},
+			startItem		: 0,
+			navItemHeight	: {$widget_info->thumbnail_height+26}
+		});
+	object.start( true, _lofmain.getElement('.preload') );
+</script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	if ($.browser.msie && $.browser.version < 7) return; // Don't execute code if it's IE6 or below cause it doesn't support it.
+	$(".fade").fadeTo(1, 1);
+	$(".fade").hover(function () {
+		$(this).fadeTo("fast", 0.33);
+	}, function () {
+		$(this).fadeTo("slow", 1);
+	});
+	$(".lof-slidecontent_{$skin_id} .lof-navigator").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+
+	$("a[rel^='prettyPhoto']").each(function() {
+		var $image = jQuery(this).contents("img");
+		$newclass = 'no_image';
+		if($(this).attr('href').toLowerCase().match(/youtube\.com\/watch/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/vimeo\.com/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(mov|swf)/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(jpg|gif|jpeg|png)/i)) $newclass = 'lightbox_image';
+		else $(this).removeClass("fade");
+		var $padding_x = parseInt($image.css('padding-left')) + parseInt($image.css('padding-right')),
+			$padding_y = parseInt($image.css('padding-top')) + parseInt($image.css('padding-bottom')),
+			$margin_x = parseInt($image.css('margin-left')) + parseInt($image.css('margin-right')),
+			$margin_y = parseInt($image.css('margin-top')) + parseInt($image.css('margin-bottom')),
+			$border_x = parseInt($image.css('border-left-width')) + parseInt($image.css('border-right-width')),
+			$border_y = parseInt($image.css('border-top-width')) + parseInt($image.css('border-bottom-width'));
+		$height = parseInt($image.height()) + $margin_x + $padding_x + $border_x;
+		$width = parseInt($image.width()) + $margin_y +  $padding_y + $border_y;
+		$pos =  $image.position();
+		$(this).addClass($newclass).css({height:$height, width:$width, top:$pos.top, left:$pos.left});
+	});
+<!--@end-->
+	});
+</script>

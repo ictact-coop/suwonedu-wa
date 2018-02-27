@@ -1,0 +1,26 @@
+<query id="getMemberListWithinGroup" action="select">
+    <tables>
+        <table name="member" alias="member"/>
+        <table name="member_group_member" alias="member_group"/>
+    </tables>
+    <columns>
+    	<column name="member.*" />
+    	<column name="LEFT(RIGHT(member.birthday, 4), 2)" alias="birth_month" />
+    	<column name="RIGHT(member.birthday, 2)" alias="birth_mday" />
+    	<column name="RIGHT(member.birthday, 4)" alias="birth_month_mday" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_group.group_srl" var="selected_group_srl" notnull="notnull" />
+        <condition operation="equal" column="member.member_srl" var="member_group.member_srl" pipe="and" notnull="notnull" />
+        <group pipe="and">
+	    	<condition operation="more" column="RIGHT(birthday, 4)" var="w_from_birthday" />
+			<condition operation="less" column="RIGHT(birthday, 4)" var="w_to_birthday" pipe="and"/>
+        </group>
+    </conditions>
+    <navigation>
+    	<index var="sort_index" default="RIGHT(member.birthday, 4)" order="asc" />
+    	<list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

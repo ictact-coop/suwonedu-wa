@@ -1,0 +1,371 @@
+<!--%import("js/custom.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>DD_belatedPNG.fix('.ie6fix');</script>
+<![endif]--> 
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "Newscast_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 26}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "돋움,'Trebuchet MS',Arial,Helvetica,san-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 11}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, Arial, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+{@$widget_width = $widget_info->navigation_size}
+{@$nav_size = $widget_info->navigation_size+43}
+{@$nav_size1 = $widget_info->navigation_size-40}
+{@$slide_width1 = $widget_info->slider_img_width-40}
+
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/Newscast/js"}
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	line-height: {$title_font_size}px;
+	text-align:left;
+	overflow:hidden;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#Newscast_page{$skin_id} {
+position:relative;
+width:{$nav_size}px;
+margin:0 auto;
+clear: both;
+padding-left:0px !important; /*ie6fix*/
+z-index:1;
+}
+
+/* Small reset */
+.Newscast_flipped_main {
+margin:0;
+padding:0;
+}
+
+/*fadeslider*/
+.Newscast_fadeslider .Newscast_featured{
+width:100%;
+border:none;
+}
+
+.Newscast_flipped_main .Newscast_slidecontrolls{
+position:absolute;
+width:10px;
+right:-15px;
+bottom:0;
+}
+
+.Newscast_flipped_main .Newscast_slidecontrolls span{
+height:10px;
+padding:2px 0;
+width:10px;
+display:block;
+cursor: pointer;
+}
+
+/*accordion slider*/
+.Newscast_featured img{
+display:block;
+position: relative;
+z-index: 2;
+}
+
+.Newscast_flipped_main .Newscast_sliderheading{
+display:block;
+}
+
+.Newscast_flipped_main .Newscast_heading_clone{
+position: absolute;
+z-index: 4;
+bottom:0px;
+left:20px;
+font-size: 13px;
+text-transform: uppercase;
+padding:0;
+margin: 0;
+}
+
+.Newscast_featured a, .Newscast_featured a img, .Newscast_featured img{
+text-decoration: none;
+border:none;
+}
+
+.Newscast_flipped_main .Newscast_featured1{
+border:none;
+display: block;
+}
+
+.bottom_right_rounded_corner, .bottom_left_rounded_corner{
+position: absolute;
+z-index: 50;
+display: block;
+height:7px;
+width:7px;
+bottom:0px !important; /* ie6fix */
+left:0px;
+bottom:-1px;
+}
+
+.Newscast_flipped_main .bottom_right_rounded_corner{
+right:0px !important; /* ie6fix */
+right:-1px;
+left:auto;
+}
+
+/*generic*/
+
+.rounded{
+-moz-border-radius: 5px;
+-webkit-border-radius:5px;
+border-radius:5px;
+}
+
+.Newscast_sliderheading {
+font-weight:normal;
+letter-spacing:0px;
+line-height:1.2em;
+padding-bottom:0px;
+position:relative;
+}
+
+.clearboth{
+clear:both;
+}
+
+/*Featuread Area*/
+#Newscast_featured, .Newscast_featured, .Newscast_fadeout { 
+height:{$widget_info->slider_img_height}px; 			/*this changes the height of the image slider*/
+}
+
+#Newscast_feature_wrap{
+width:{$widget_info->navigation_size+2}px; /* 959px */
+position: relative;
+margin-left:0px;
+}
+
+#Newscast_featured{
+position: relative;
+width:{$widget_info->navigation_size}px; /* 957px */
+overflow: hidden;
+border:1px solid #aaa;
+}
+
+.Newscast_featured{
+width:{$widget_info->slider_img_width}px; /* 700px */
+position:absolute;
+top:0;
+left:0;
+overflow: hidden;
+display:none;
+border-left:1px solid #aaa;  
+background: #fff url('{$skincssimgpath}/preload.gif') no-repeat center center;
+}
+
+.Newscast_flipped_main .Newscast_feature_excerpt{
+width:{$slide_width1}px; /* 660px */
+position: absolute;
+display: block;
+bottom: 0;
+left:0;
+z-index: 3;
+padding:5px 20px;
+font-size: 11px;
+line-height:1.2em;
+cursor: pointer;
+border-top:1px solid #eee;
+}
+
+.Newscast_flipped_main .Newscast_fadeslider .Newscast_feature_excerpt{
+width:{$widget_info->navigation_size}px; /* 917px */
+}
+
+.Newscast_flipped_main .Newscast_fadeout{
+position:absolute;
+width:200px;
+display:block;
+right:0px;
+z-index: 4;
+background: transparent url('{$skincssimgpath}/overlay.png') repeat-y right top;
+}
+
+.preloading_background{
+background: transparent url('{$skincssimgpath}/preload.gif') no-repeat 50% 50%;
+}
+
+.bottom_left_rounded_corner{
+background: transparent url('{$skincssimgpath}/rounded.png') no-repeat left bottom;
+}
+.bottom_right_rounded_corner{
+background: transparent url('{$skincssimgpath}/rounded.png') no-repeat right bottom;
+}
+
+.Newscast_position_excerpt, .Newscast_flipped_main #Newscast_featured .Newscast_feature_excerpt {
+background:none repeat scroll 0 0 #FFFFFF;
+}
+
+.Newscast_flipped_main #Newscast_featured a{
+color:#444;
+}
+
+</style>
+
+<script type='text/javascript'>
+jQuery(document).ready(function($){
+
+	var php_autorotation = 1;
+		php_autorotation = php_autorotation == 2 ? false : true;
+	
+	// accordion slider
+	$("#Newscast_featured").not('.Newscast_fadeslider').kricordion({
+			slides: '.Newscast_featured',		// wich element inside the container should serve as slide
+			animationSpeed: 500,		// animation duration in milliseconds
+			autorotation: php_autorotation,			// autorotation true or false?
+			autorotationSpeed: {$widget_info->slide_delay/1000},		// duration between autorotation switch in Seconds
+			event: 'mouseover',			// event to focus a slide: mouseover or click
+			imageShadow:true,			// should the image get a drop shadow to the left
+			easing: 'easeOutQuart',		// easing method
+			imageShadowStrength:0.5		// how dark should that shadow be, recommended values: between 0.3 and 0.8, allowed between 0 and 1
+	});
+
+	// fading slider
+	$('.Newscast_fadeslider').kriesi_fade_slider({
+			slides: '.Newscast_featured',				// wich element inside the container should serve as slide
+			animationSpeed: 500,				// animation duration in milliseconds
+			autorotation: php_autorotation,					// autorotation true or false?
+			autorotationSpeed: {$widget_info->slide_delay/1000},				// duration between autorotation switch in Seconds
+			appendControlls: '#Newscast_feature_wrap'	//element to append the controlls to
+	});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$(".Newscast_featured").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+})
+
+</script>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+{@$img_idx=1}
+
+<div id="Newscast_page{$skin_id}"> 
+
+<div id="Newscast_feature_wrap">
+	<div id="Newscast_featured" class='ptypto'>
+		<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($item->getThumbnail())-->
+		<div class="Newscast_featured featured">
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+			<!--@if($widget_info->show_content_title=='Y')-->
+				<span class='Newscast_feature_excerpt'>
+					<strong class='Newscast_sliderheading textT1_{$skin_id}'>{$item->getTitle($widget_info->subject_cut_size)}</strong>
+					<span class='Newscast_slidercontent textC1_{$skin_id}'>{$item->getContent($widget_info->content_cut_size)}</span>
+				</span>
+			<!--@end-->
+				<img src='{$item->getImgslider()}' alt='{$item->getTitle($widget_info->subject_cut_size)}' title='{$item->getTitle($widget_info->subject_cut_size)}' height='{$widget_info->slider_img_height}' width='{$widget_info->slider_img_width}' />
+			</a>
+		</div>
+		<!--@end-->
+		<!--@end-->
+	</div>
+	<span class='bottom_right_rounded_corner ie6fix'></span>
+	<span class='bottom_left_rounded_corner ie6fix'></span>
+</div>
+
+</div>

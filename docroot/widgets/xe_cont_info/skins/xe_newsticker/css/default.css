@@ -1,0 +1,17 @@
+.updatenews { line-height:25px; height:25px; overflow:hidden; clear:both; white-space:nowrap; position:relative; margin:0; padding:0; }
+.updatenews .noti_txt {position:absolute;padding:1px 5px 0 0; }
+.updatenews_icon {position:relative;padding:5px 5px 0 0; }
+/* bootstrap.css  * {	box-sizing: border-box; 와 충돌 */
+.updatenews .updatenews_obj {box-sizing:content-box;  -webkit-box-sizing: content-box;   -moz-box-sizing: content-box; height:25px; padding:0px 0 0 66px; white-space:nowrap; overflow:hidden; }
+.updatenews .updatenews_box { margin:0; padding:0; white-space:nowrap; overflow:hidden; position:absolute; top:0;}
+.updatenews .updatenews_box div { divst-style:none; height:25px; overflow:hidden; white-space:nowrap; }
+.updatenews .updatenews_box .updatenews_board { text-decoration:none;  margin:0 8pt 0 0pt; text-decoration:none; color:#7b7b7b; font-weight:normal;}
+.updatenews .updatenews_box .updatenews_title {  text-decoration:none; position:relative;top:-2px; }		 /* 폰트 Arial 사용시 top:-2추가 */
+.updatenews .updatenews_box .updatenews_title:hover { text-decoration:underline; }
+.updatenews .updatenews_box .updatenews_category { color:#555; text-decoration:none; }
+.updatenews .updatenews_box .updatenews_category:hover { text-decoration:underline; }
+.updatenews .updatenews_box .updatenews_comment { color:#FE6700;  }
+.updatenews .updatenews_box .updatenews_trackback { color:#66C;}
+.updatenews .updatenews_box .updatenews_date { color:#999; padding:0;}			/* 가로 여백 줄임  */
+.updatenews .updatenews_box .updatenews_author,
+.updatenews .updatenews_box .updatenews_author a { color:#555;  }

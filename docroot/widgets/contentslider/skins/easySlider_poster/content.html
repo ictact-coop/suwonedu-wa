@@ -1,0 +1,68 @@
+<!--%import("js/easySlider1.7.js")-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "easySlider_".mt_rand()}
+{@$eslider_id = $skin_id}
+
+
+<!--// 슬라이드 이미지 높이 + 테두리 -->
+{@$slider_img_width=$widget_info->slider_img_width+($widget_info->slider_img_bdsize*2)}
+{@$slider_img_height=$widget_info->slider_img_height+($widget_info->slider_img_bdsize*2)}
+
+<!--@if($widget_info->show_control=='Y' && $widget_info->navigation_control=='Y')-->
+{@$nav_width = $slider_img_width}
+{@$nav_height = $slider_img_height+40}
+<!--@elseif($widget_info->show_control=='Y' && $widget_info->navigation_control=='N')-->
+{@$nav_width = $slider_img_width+60}
+{@$nav_height = $slider_img_height}
+<!--@elseif($widget_info->show_control=='N')-->
+{@$nav_width = $slider_img_width}
+{@$nav_height = $slider_img_height}
+<!--@end-->
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/easySlider/images"}
+
+<style type="text/css">
+#easySlider_container_{$eslider_id}{margin:0;position:relative;text-align:left;width:{$nav_width}px;height:{$nav_height}px;background:transparent;margin-bottom:2em;}
+#easySlider_content_{$eslider_id}{position:relative;}
+/* Easy Slider */
+#{$skin_id} ul, #{$skin_id} li{margin:0;padding:0;list-style:none;}
+#{$skin_id} li{width:{$slider_img_width}px;height:{$slider_img_height}px;overflow:hidden;}	
+</style>
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+<div id="easySlider_container_{$eslider_id}">
+	<div id="easySlider_content_{$eslider_id}">
+		<div id="{$skin_id}">
+			<ul>
+			<!--@foreach($widget_info->content_items as $key => $item)-->
+			<!--@if($item->getThumbnail())-->
+				<li>
+                
+<a href="{$item->getLink()}"/><img src="{$item->getImgslider()}" title='{$item->getTitle($widget_info->subject_cut_size)}' alt='{$item->getContent($widget_info->subject_cut_size)}' /></a>
+				</li>
+			<!--@end-->
+			<!--@end-->
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$('#{$skin_id}').easySlider({
+		auto: true,
+		continuous: true,
+		controlsShow:false,
+		speed: '{$widget_info->slide_delay}',
+		numeric: false,
+		prevId: 'prevBtn_{$eslider_id}',
+		nextId: 'nextBtn_{$eslider_id}',
+		firstId: 'firstBtn_{$eslider_id}',
+		lastId: 'lastBtn_{$eslider_id}',
+		numericId: 'controls_{$eslider_id}'
+	});
+
+});
+</script>

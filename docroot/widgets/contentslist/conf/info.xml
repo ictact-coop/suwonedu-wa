@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+	<title xml:lang="ko">Contents List 위젯</title>
+	<title xml:lang="en">Contents List widgets</title>
+	<description xml:lang="ko">최근 게시된 글을 출력하는 위젯입니다.</description>
+	<version>0.5</version>
+	<date>2011-12-17</date>
+
+	<author email_address="davaosung@yahoo.com" link="http://studyu.cafe24.com/">
+		<name xml:lang="ko">배워서남준다</name>
+		<name xml:lang="en">Study4U</name>
+	</author>
+
+	<extra_vars>
+		<group>
+			<title xml:lang="ko">1. 추출 대상</title>
+			<title xml:lang="en">1. Target</title>
+			<var id="module_srls">
+				<type>module_srl_list</type>
+				<name xml:lang="ko">대상 모듈</name>
+				<name xml:lang="en">Target Module</name>
+				<description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+			</var>
+			<var id="news_type" type="select">
+				<name xml:lang="ko">추출대상</name>
+				<name xml:lang="en">Target</name>
+				<options>
+					<value>document</value>
+					<name xml:lang="ko">게시물</name>
+					<name xml:lang="en">document</name>
+				</options>
+				<options>
+					<value>comment</value>
+					<name xml:lang="ko">댓글</name>
+					<name xml:lang="en">comment</name>
+				</options>
+			</var>
+
+			<var id="list_title" type="text">
+				<name xml:lang="ko">위젯 박스 제목</name>
+				<name xml:lang="en">Widget Title</name>
+				<description xml:lang="ko">위젯박스 상단에 출력되는 제목을 입력하세요.</description>
+			</var>
+			<var id="list_count" type="text">
+				<name xml:lang="ko">목록수</name>
+				<name xml:lang="en">Number of Lists</name>
+				<description xml:lang="ko">출력될 목록의 수를 정하실 수 있습니다. (기본 5개)</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">2. 목록 상세 설정</title>
+			<title xml:lang="en">2. List setup</title>
+			<var id="list_type" type="select-multi-order">
+				<name xml:lang="ko">표시 항목</name>
+				<name xml:lang="en">Display Target</name>
+				<options default="false">
+					<value>thumbnail</value>
+					<name xml:lang="ko">섬네일</name>
+					<name xml:lang="en">Thumbnail</name>
+				</options>
+				<options default="false">
+					<value>show_browser_title</value>
+					<name xml:lang="ko">게시판 이름</name>
+					<name xml:lang="en">Article Name</name>
+				</options>
+				<options default="false">
+					<value>show_category</value>
+					<name xml:lang="ko">분류 표시</name>
+					<name xml:lang="en">Category</name>
+				</options>
+				<options init="true">
+					<value>show_title</value>
+					<name xml:lang="ko">제목</name>
+					<name xml:lang="en">Title</name>
+				</options>
+				<options default="false">
+					<value>show_content</value>
+					<name xml:lang="ko">내용</name>
+					<name xml:lang="en">Content</name>
+				</options>
+				<options init="true">
+					<value>show_comment_count</value>
+					<name xml:lang="ko">댓글수</name>
+					<name xml:lang="en">Comment Count</name>
+				</options>
+				<options default="false">
+					<value>show_author</value>
+					<name xml:lang="ko">글쓴이</name>
+					<name xml:lang="en">Author</name>
+				</options>
+				<options default="false">
+					<value>show_regdate</value>
+					<name xml:lang="ko">등록일</name>
+					<name xml:lang="en">Regdate</name>
+				</options>
+				<options>
+					<value>show_icon</value>
+					<name xml:lang="ko">아이콘 표시</name>
+					<name xml:lang="en">Show Icon</name>
+				</options>
+			</var>
+
+			<var id="duration_new" type="text">
+				<name xml:lang="ko">new 표시 시간 (hours)</name>
+				<name xml:lang="en">Duration of indication for new item in hours</name>
+				<description xml:lang="ko">새로 등록된 게시물의 new 표시시간을 정할 수 있습니다. (시간 단위)</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">3. 정렬</title>
+			<title xml:lang="en">3. Sort</title>
+			<var id="order_target" type="select">
+				<name xml:lang="ko">정렬 대상</name>
+				<name xml:lang="en">Target to be sorted</name>
+				<description xml:lang="ko">등록된 순서 또는 변경된 순서로 정렬을 할 수 있습니다.</description>
+				<options>
+					<value>list_order</value>
+					<name xml:lang="ko">최신 등록순</name>
+					<name xml:lang="en">Newest Submitted Order</name>
+				</options>
+				<options>
+					<value>update_order</value>
+					<name xml:lang="ko">최근 변경순</name>
+					<name xml:lang="en">Newest Modified Order</name>
+				</options>
+			</var>
+			<var id="order_type" type="select">
+				<name xml:lang="ko">정렬 방법</name>
+				<name xml:lang="en">Sorting Type</name>
+				<description xml:lang="ko">정렬대상을 내림차순 또는 올림차순으로 정렬할 수 있습니다.</description>
+				<options>
+					<value>desc</value>
+					<name xml:lang="ko">내림차순</name>
+					<name xml:lang="en">Descending order</name>
+				</options>
+				<options>
+					<value>asc</value>
+					<name xml:lang="ko">올림차순</name>
+					<name xml:lang="en">Ascending order</name>
+				</options>
+			</var>
+			<var id="items_shuffle" type="select">
+				<name xml:lang="ko">게시물 순서 섞기</name>
+				<name xml:lang="en">Shuffle newest document</name>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">예(기본)</name>
+					<name xml:lang="en">Yes(default)</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">아니요</name>
+					<name xml:lang="en">No</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">4. 제목 출력시 Font Size, Font-Family, Font Color를 지정할 수 있습니다.\n\n(비워두시면 기본값을 사용합니다)</title>
+			<title xml:lang="en">4. You can set the Font Size, Type, Color to display title.\n\n(blank value will use default value)</title>
+
+			<var id="subject_cut_size" type="text">
+				<name xml:lang="ko">제목 글자수</name>
+				<name xml:lang="en">Length of Subject</name>
+				<description xml:lang="ko">제목 글자수를 지정할 수 있습니다. (0또는 비워두시면 자르지 않습니다)</description>
+				<description xml:lang="en">Length of Subject can be assigned. (0 or blank value will not restrict the length)</description>
+			</var>
+
+			<var id="title_font_family" type="select">
+				<name xml:lang="ko">제목 글씨체</name>
+				<name xml:lang="en">Font family of Subject</name>
+				<description xml:lang="ko">제목 글씨체를 지정할 수 있습니다.</description>
+				<description xml:lang="en">Font family of Subject can be assigned.</description>
+				<options>
+					<value>Default</value>
+					<name xml:lang="ko">기본값</name>
+					<name xml:lang="en">Default</name>
+				</options>
+				<options>
+					<value>Dotum</value>
+					<name xml:lang="ko">돋움</name>
+					<name xml:lang="en">Dotum</name>
+					</options>
+				<options>
+					<value>Gulim</value>
+					<name xml:lang="ko">굴림</name>
+					<name xml:lang="en">Gulim</name>
+				</options>
+				<options>
+					<value>Batang</value>
+					<name xml:lang="ko">바탕</name>
+					<name xml:lang="en">Batang</name>
+				</options>
+				<options>
+					<value>Gungsuh</value>
+					<name xml:lang="ko">궁서</name>
+					<name xml:lang="en">Gungsuh</name>
+				</options>
+				<options>
+					<value>Tahoma</value>
+					<name xml:lang="ko">Tahoma</name>
+					<name xml:lang="en">Tahoma</name>
+				</options>
+				<options>
+					<value>Verdana</value>
+					<name xml:lang="ko">Verdana</name>
+					<name xml:lang="en">Verdana</name>
+				</options>
+				<options>
+					<value>Helvetica</value>
+					<name xml:lang="ko">Helvetica</name>
+					<name xml:lang="en">Helvetica</name>
+				</options>
+				<options>
+					<value>Georgia</value>
+					<name xml:lang="ko">Georgia</name>
+					<name xml:lang="en">Georgia</name>
+				</options>
+				<options>
+					<value>Sans-serif</value>
+					<name xml:lang="ko">Sans-serif</name>
+					<name xml:lang="en">Sans-serif</name>
+				</options>
+				<options>
+					<value>webfont</value>
+					<name xml:lang="ko">웹폰트</name>
+					<name xml:lang="en">WebFont</name>
+				</options>
+				<options>
+					<value>cufon</value>
+					<name xml:lang="ko">Cufon</name>
+					<name xml:lang="en">Cufon</name>
+				</options>
+			</var>
+
+			<var id="title_fonturl" type="text">
+				<name xml:lang="ko">폰트 경로</name>
+				<name xml:lang="en">URL of Font</name>
+				<description xml:lang="ko">제목 글씨체에서 웹폰트 또는 Cufon을 선택하였다면, 이곳에 웹폰트 또는 Cufon 경로를 입력하세요. http 를 포함한 전체 경로. 예: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+				<description xml:lang="en">Ex: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+			</var>
+
+			<var id="title_font_user" type="text">
+				<name xml:lang="ko">제목 글꼴 직접 입력</name>
+				<name xml:lang="en">Set Title of font family</name>
+				<description xml:lang="ko">cufon 이름 또는 제목 글꼴을 정의합니다.(예:'맑은 고딕','Malgun Gothic',Helvetica,Sans-serif)\n (") 따옴표는 사용할 수 없습니다.</description>
+				<description xml:lang="en">You may set the title of font family.</description>
+			</var>
+
+			<var id="title_font_size" type="text">
+				<name xml:lang="ko">제목 문자 크기</name>
+				<name xml:lang="en">Font size of Subject</name>
+				<description xml:lang="ko">제목 글자 크기를 지정할 수 있습니다. 단위(px,em,%)를 포함해서 입력하세요. 기본값: 13px</description>
+				<description xml:lang="en">Font size of Subject can be assigned.</description>
+			</var>
+
+			<var id="title_font_color" type="text">
+				<name xml:lang="ko">제목 글자색</name>
+				<name xml:lang="en">Set Title of font color</name>
+				<description xml:lang="ko">제목 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+				<description xml:lang="en">You may set the title of font color.</description>
+			</var>
+
+			<var id="title_height" type="text">
+				<name xml:lang="ko">제목 높이</name>
+				<name xml:lang="en">Height of Title</name>
+				<description xml:lang="ko">제목 출력시 높이를 지정할 수 있습니다.</description>
+				<description xml:lang="en">You may set the height of Title.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">5. 내용 출력시 Font Size, Font-Family, Font Color를 지정할 수 있습니다.\n\n(비워두시면 기본값을 사용합니다)</title>
+			<title xml:lang="en">5. You can set the Font Size, Type, Color to display content.\n\n(blank value will use default value)</title>
+
+			<var id="content_cut_size" type="text">
+				<name xml:lang="ko">내용 글자수</name>
+				<name xml:lang="en">Content Length</name>
+				<description xml:lang="ko">내용 글자수를 지정할 수 있습니다. (기본값 200)</description>
+				<description xml:lang="en">Length of Content can be assigned. (200 as default)</description>
+			</var>
+
+			<var id="content_font_family" type="select">
+				<name xml:lang="ko">내용 글씨체</name>
+				<name xml:lang="en">Font family of Content</name>
+				<description xml:lang="ko">내용 글씨체를 지정할 수 있습니다.</description>
+				<description xml:lang="en">Font family of Content can be assigned.</description>
+				<options>
+					<value>Default</value>
+					<name xml:lang="ko">기본값</name>
+					<name xml:lang="en">Default</name>
+				</options>
+				 <options>
+					<value>Dotum</value>
+					<name xml:lang="ko">돋움</name>
+					<name xml:lang="en">Dotum</name>
+				</options>
+				<options>
+					<value>Gulim</value>
+					<name xml:lang="ko">굴림</name>
+					<name xml:lang="en">Gulim</name>
+				</options>
+				<options>
+					<value>Batang</value>
+					<name xml:lang="ko">바탕</name>
+					<name xml:lang="en">Batang</name>
+				</options>
+				<options>
+					<value>Gungsuh</value>
+					<name xml:lang="ko">궁서</name>
+					<name xml:lang="en">Gungsuh</name>
+				</options>
+				<options>
+					<value>Tahoma</value>
+					<name xml:lang="ko">Tahoma</name>
+					<name xml:lang="en">Tahoma</name>
+				</options>
+				<options>
+					<value>Verdana</value>
+					<name xml:lang="ko">Verdana</name>
+					<name xml:lang="en">Verdana</name>
+				</options>
+				<options>
+					<value>Helvetica</value>
+					<name xml:lang="ko">Helvetica</name>
+					<name xml:lang="en">Helvetica</name>
+				</options>
+				<options>
+					<value>Georgia</value>
+					<name xml:lang="ko">Georgia</name>
+					<name xml:lang="en">Georgia</name>
+				</options>
+				<options>
+					<value>Sans-serif</value>
+					<name xml:lang="ko">Sans-serif</name>
+					<name xml:lang="en">Sans-serif</name>
+				</options>
+				<options>
+					<value>webfont</value>
+					<name xml:lang="ko">웹폰트</name>
+					<name xml:lang="en">WebFont</name>
+				</options>
+				<options>
+					<value>cufon</value>
+					<name xml:lang="ko">Cufon</name>
+					<name xml:lang="en">Cufon</name>
+				</options>
+			</var>
+
+			<var id="content_fonturl" type="text">
+				<name xml:lang="ko">폰트 경로</name>
+				<name xml:lang="en">URL of Font</name>
+				<description xml:lang="ko">내용 글씨체에서 웹폰트 또는 Cufon을 선택하였다면, 이곳에 웹폰트 또는 Cufon 경로를 입력하세요. http 를 포함한 전체 경로. 예: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+				<description xml:lang="en">Ex: http://www.cufonfonts.com/js/titilliumtext.cufonfonts.js</description>
+			</var>
+
+			<var id="content_font_user" type="text">
+				<name xml:lang="ko">내용 글꼴 직접 입력</name>
+				<name xml:lang="en">Set Content of font family</name>
+				<description xml:lang="ko">cufon 이름 또는 내용 글꼴을 정의합니다.(예:'맑은 고딕','Malgun Gothic',Helvetica,Sans-serif)\n (") 따옴표는 사용할 수 없습니다.</description>
+				<description xml:lang="en">You may set the content of font family.</description>
+			</var>
+
+			<var id="content_font_size" type="text">
+				<name xml:lang="ko">내용 문자 크기</name>
+				<name xml:lang="en">Font size of Content</name>
+				<description xml:lang="ko">내용 문자 크기를 지정할 수 있습니다. 단위(px,em,%)를 포함해서 입력하세요. 기본값: 11px</description>
+				<description xml:lang="en">Font size of Content can be assigned.</description>
+			</var>
+
+			<var id="content_font_color" type="text">
+				<name xml:lang="ko">내용 글자색</name>
+				<name xml:lang="en">Set Content of font color</name>
+				<description xml:lang="ko">내용 글자색를 직접 정의할 수 있습니다. (예: 'red' 또는 '#000')</description>
+				<description xml:lang="en">You may set the content of font color.</description>
+			</var>
+
+			<var id="content_height" type="text">
+				<name xml:lang="ko">내용 높이</name>
+				<name xml:lang="en">Height of Content</name>
+				<description xml:lang="ko">내용 출력시 높이를 지정할 수 있습니다.</description>
+				<description xml:lang="en">You may set the height of Content.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">7. 컬러셋</title>
+			<title xml:lang="en">7. Colorset</title>
+			<var id="cl_colorset" type="select">
+				<name xml:lang="ko">컬러셋</name>
+				<name xml:lang="en">Colorset</name>
+				<description xml:lang="ko">컬러셋 이외의 다른 색을 사용하려면, '직접입력'을 선택하세요. 입력하지 않으면 기본값을 사용합니다.</description>
+				<description xml:lang="en">Choose colorset</description>
+				<options>
+					<name xml:lang="ko">Random</name>
+					<name xml:lang="en">Random</name>
+					<value>random</value>
+				</options>
+				<options>
+					<value>red</value>
+					<name xml:lang="ko">Red</name>
+					<name xml:lang="en">Red</name>
+				</options>
+				<options>
+					<value>orange</value>
+					<name xml:lang="ko">Orange</name>
+					<name xml:lang="en">Orange</name>
+				</options>
+				<options>
+					<value>neon</value>
+					<name xml:lang="ko">Neon</name>
+					<name xml:lang="en">Neon</name>
+				</options>
+				<options>
+					<value>pink</value>
+					<name xml:lang="ko">Pink</name>
+					<name xml:lang="en">Pink</name>
+				</options>
+				<options>
+					<value>olive</value>
+					<name xml:lang="ko">Olive</name>
+					<name xml:lang="en">Olive</name>
+				</options>
+				<options>
+					<value>yellow</value>
+					<name xml:lang="ko">Yellow</name>
+					<name xml:lang="en">Yellow</name>
+				</options>
+				<options>
+					<value>shape</value>
+					<name xml:lang="ko">Shape</name>
+					<name xml:lang="en">Shape</name>
+				</options>
+				<options>
+					<value>purple</value>
+					<name xml:lang="ko">Purple</name>
+					<name xml:lang="en">Purple</name>
+				</options>
+				<options>
+					<value>brown</value>
+					<name xml:lang="ko">Brown</name>
+					<name xml:lang="en">Brown</name>
+				</options>
+				<options>
+					<value>black</value>
+					<name xml:lang="ko">Black</name>
+					<name xml:lang="en">Black</name>
+				</options>
+				<options>
+					<value>white</value>
+					<name xml:lang="ko">White</name>
+					<name xml:lang="en">White</name>
+				</options>
+				<options>
+					<value>wax</value>
+					<name xml:lang="ko">Wax</name>
+					<name xml:lang="en">Wax</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">내맘대로</name>
+					<name xml:lang="en">Manual</name>
+				</options>
+			</var>
+
+			<var id="cl_gradient" type="select">
+				<name xml:lang="ko">그라디언트 사용</name>
+				<name xml:lang="en">Gradient?</name>
+				<description xml:lang="ko">그라디언트 사용 여부를 선택하세요.</description>
+				<description xml:lang="en">Choose gradient</description>
+				<options>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">Use</name>
+					<value>Y</value>
+				</options>
+				<options>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">Not use</name>
+					<value>N</value>
+				</options>
+			</var>
+			<var id="cl_gr1st" type="color">
+				<name xml:lang="ko">1st 그라디언트 0%</name>
+				<name xml:lang="en">1st Gradient 0% color</name>
+				<description xml:lang="ko">그라디언트 0%색을 입력하세요.RGB 컬러로 #을 포함해야 합니다. 기본값: #ffffff</description>
+				<description xml:lang="en">Input Gradient 0% color</description>
+			</var>
+			<var id="cl_gr2ndpos" type="text">
+				<name xml:lang="ko">2nd 그라디언트 위치</name>
+				<name xml:lang="en">2nd Gradient position</name>
+				<description xml:lang="ko">2nd 그라디언트 위치를 입력하세요. %포함해서 입력하세요. 기본값: 50%</description>
+				<description xml:lang="en">Input 2nd Gradient position</description>
+			</var>
+			<var id="cl_gr2nd" type="color">
+				<name xml:lang="ko">2nd 그라디언트</name>
+				<name xml:lang="en">2nd Gradient color</name>
+				<description xml:lang="ko">2nd 그라디언트 색을 입력하세요. 사용시 #을 포함해서 입력하세요. 입력하지 않으면 사용되지 않습니다.</description>
+				<description xml:lang="en">Input 2nd Gradient color</description>
+			</var>
+			<var id="cl_gr3rdpos" type="text">
+				<name xml:lang="ko">3rd 그라디언트 위치</name>
+				<name xml:lang="en">3rd Gradient position</name>
+				<description xml:lang="ko">3rd 그라디언트 위치를 입력하세요. %포함해서 입력하세요. 기본값: 51%</description>
+				<description xml:lang="en">Input 3rd Gradient position</description>
+			</var>
+			<var id="cl_gr3rd" type="color">
+				<name xml:lang="ko">3rd 그라디언트</name>
+				<name xml:lang="en">3rd Gradient color</name>
+				<description xml:lang="ko">3rd 그라디언트 색을 입력하세요. 사용시 #을 포함해서 입력하세요. 입력하지 않으면 사용되지 않습니다.</description>
+				<description xml:lang="en">Input 3rd Gradient color</description>
+			</var>
+			<var id="cl_gr4th" type="color">
+				<name xml:lang="ko">4th 그라디언트 100%</name>
+				<name xml:lang="en">4th Gradient 100% color</name>
+				<description xml:lang="ko">그라디언트 100%색을 입력하세요. RGB 컬러로 #을 포함해야 합니다. 기본값: #f2f2f2</description>
+				<description xml:lang="en">Input Gradient 100% color</description>
+			</var>
+			<var id="cl_grfc" type="color">
+				<name xml:lang="ko">글씨색</name>
+				<name xml:lang="en">Font Color</name>
+				<description xml:lang="ko">글씨 색을 지정하세요. RGB 컬러로 #을 포함해야 합니다. 기본값: #000000</description>
+				<description xml:lang="en">Input text color</description>
+			</var>
+			<var id="cl_grbdcolor" type="color">
+				<name xml:lang="ko">테두리색</name>
+				<name xml:lang="en">Border color</name>
+				<description xml:lang="ko">테두리 색을 입력하세요. RGB 컬러로 #을 포함해야 합니다. 기본값: #ffffff</description>
+				<description xml:lang="en">Input border color</description>
+			</var>
+			<var id="cl_grbdsize" type="text">
+				<name xml:lang="ko">테두리 두께</name>
+				<name xml:lang="en">Border Size</name>
+				<description xml:lang="ko">테두리 두께을 입력하세요. 기본값: 1px</description>
+				<description xml:lang="en">Input border size</description>
+			</var>
+			<var id="cl_shadow" type="select">
+				<name xml:lang="ko">Shadow</name>
+				<name xml:lang="en">Shadow</name>
+				<description xml:lang="ko">테두리의 그림자 효과 사용 여부를 선택하세요.</description>
+				<description xml:lang="en">Choose shadow</description>
+				<options>
+					<name xml:lang="ko">사용함</name>
+					<name xml:lang="en">Use</name>
+					<value>Y</value>
+				</options>
+				<options>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">Not use</name>
+					<value>N</value>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">8. 썸네일</title>
+			<title xml:lang="en">8. Thumbnail</title>
+
+			<var id="thumbnail_type" type="select">
+				<name xml:lang="ko">썸네일 생성 방법</name>
+				<name xml:lang="en">Thumbnail Type</name>
+				<description xml:lang="ko">썸네일 생성 방법을 선택할 수 있습니다. (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+				<description xml:lang="en">Thumbnail Type may be set here.</description>
+				<options>
+					<value>crop</value>
+					<name xml:lang="ko">Crop (채우기)</name>
+					<name xml:lang="en">Crop</name>
+				</options>
+				<options>
+					<value>ratio</value>
+					<name xml:lang="ko">Ratio (비율 맞추기)</name>
+					<name xml:lang="en">Ratio</name>
+				</options>
+			</var>
+			<var id="thumbnail_width" type="text">
+				<name xml:lang="ko">썸네일 가로크기</name>
+				<name xml:lang="en">Width of Thumbnail</name>
+				<description xml:lang="ko">출력될 이미지의 가로크기를 정하실 수 있습니다. (기본 100)</description>
+				<description xml:lang="en">You can set the width of thumbnail. (100 as default)</description>
+			</var>
+			<var id="thumbnail_height" type="text">
+				<name xml:lang="ko">썸네일 세로크기</name>
+				<name xml:lang="en">Height of Thumbnail</name>
+				<description xml:lang="ko">이미지의 세로 크기를 지정할 수 있습니다. (기본 75)</description>
+				<description xml:lang="en">You can set the height of thumbnail. (75 as default)</description>
+			</var>
+			<var id="image_maxwidth" type="text">
+				<name xml:lang="ko">큰이미지 가로크기</name>
+				<name xml:lang="en">Width of Image</name>
+				<description xml:lang="ko">큰 이미지의 가로크기를 정하실 수 있습니다. (기본 400)</description>
+				<description xml:lang="en">You can set the width of Big image. (400 as default)</description>
+			</var>
+			<var id="image_maxheight" type="text">
+				<name xml:lang="ko">큰이미지 세로크기</name>
+				<name xml:lang="en">Height of Image</name>
+				<description xml:lang="ko">큰 이미지의 세로 크기를 지정할 수 있습니다. (기본 300)</description>
+				<description xml:lang="en">You can set the height of Big image. (300 as default)</description>
+			</var>
+			<var id="ptypto" type="select">
+				<name xml:lang="ko">PrettyPhoto</name>
+				<name xml:lang="en">PrettyPhoto</name>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">사용안함</name>
+					<name xml:lang="en">Not Use</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">사용</name>
+					<name xml:lang="en">Use</name>
+				</options>
+			</var>
+		</group>
+		<group>
+			<title xml:lang="ko">9. 추가옵션</title>
+			<title xml:lang="en">9. Extra option</title>
+
+			<var id="isotope_type" type="select">
+				<name xml:lang="ko">isotope Type</name>
+				<name xml:lang="en">isotope Type</name>
+				<description xml:lang="ko">isotope 스킨에만 사용되는 옵션입니다.</description>
+				<description xml:lang="en">This option can use isotope skin only.</description>
+				<options>
+					<value>clickable</value>
+					<name xml:lang="ko">고정된 크기</name>
+					<name xml:lang="en">fixed size</name>
+				</options>
+				<options>
+					<value>variable-sizes</value>
+					<name xml:lang="ko">가변된 크기</name>
+					<name xml:lang="en">variable sizes</name>
+				</options>
+			</var>
+			<var id="show_filter" type="select">
+				<name xml:lang="ko">게시판 분류</name>
+				<name xml:lang="en">Filtering</name>
+				<description xml:lang="ko">게시판 이름으로 컨텐츠 목록을 보이거나 숨길 수 있습니다.</description>
+				<description xml:lang="en">This option can hide and show the contents via the browser title.</description>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">출력하지 않음</name>
+					<name xml:lang="en">No Display</name>
+				</options>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">출력</name>
+					<name xml:lang="en">Display</name>
+				</options>
+			</var>
+		</group>
+	</extra_vars>
+</widget>

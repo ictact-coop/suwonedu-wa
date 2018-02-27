@@ -1,0 +1,23 @@
+
+div.hpanelcaption {
+	background:url('trans.png');
+}
+
+div.hpanelcaption a {color:#fff;text-decoration:none;}
+div.hpanelcaption a:hover {text-decoration:none;}
+
+div.sdocontent {
+	color:#000;
+	background:transparent;
+	height:100%;
+}
+
+div.sdocontent a {color:#fff; text-decoration: none; }
+
+div.sdocontent a:hover {text-decoration:none;}
+
+.enT1 { font-family:Georgia,serif; font-size:20px; font-variant: small-caps; text-transform:none; font-weight:100; line-height:140%; margin:0; padding:15px; }
+
+.enT3 { font-family: times, Times New Roman, times-roman, georgia, serif; font-size: 28px; line-height: 40px; letter-spacing: -1px; font-style:italic; margin:0; padding:15px; }
+
+.kr06 { font:12px Tahoma, Geneva, sans-serif; line-height:170%; color:#fff; margin:0; padding:15px; }

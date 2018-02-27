@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">Nivo Slider 스킨</title>
+	<title xml:lang="en">Nivo Slider skin</title>
+
+    <description xml:lang="ko">Nivo Slider 스킨입니다.</description>
+    <version>2.1.1</version>
+    <date>2011-04-20</date>
+    <link>http://study4u.hosting.paran.com/</link>
+
+    <author email_address="" link="http://study4u.hosting.paran.com/">
+        <name xml:lang="ko">Study4u</name>
+        <name xml:lang="en">Study4u</name>
+    </author>
+
+    <colorset>
+        <color name="random">
+            <title xml:lang="ko">random</title>
+            <title xml:lang="en">random</title>
+        </color>
+        <color name="fold">
+            <title xml:lang="ko">fold</title>
+            <title xml:lang="en">fold</title>
+        </color>
+        <color name="fade">
+            <title xml:lang="ko">fade</title>
+            <title xml:lang="en">fade</title>
+        </color>
+        <color name="sliceDown">
+            <title xml:lang="ko">sliceDown</title>
+            <title xml:lang="en">sliceDown</title>
+        </color>
+        <color name="sliceDownLeft">
+            <title xml:lang="ko">sliceDownLeft</title>
+            <title xml:lang="en">sliceDownLeft</title>
+        </color>
+        <color name="sliceUp">
+            <title xml:lang="ko">sliceUp</title>
+            <title xml:lang="en">sliceUp</title>
+        </color>
+        <color name="sliceUpLeft">
+            <title xml:lang="ko">sliceUpLeft</title>
+            <title xml:lang="en">sliceUpLeft</title>
+        </color>
+        <color name="sliceUpDown">
+            <title xml:lang="ko">sliceUpDown</title>
+            <title xml:lang="en">sliceUpDown</title>
+        </color>
+        <color name="sliceUpDownLeft">
+            <title xml:lang="ko">sliceUpDownLeft</title>
+            <title xml:lang="en">sliceUpDownLeft</title>
+        </color>
+	</colorset>
+</skin>

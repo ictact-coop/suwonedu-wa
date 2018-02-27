@@ -1,0 +1,227 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "jqFcT_".mt_rand()}
+{@$slider_id = $skin_id}
+
+<!--%import("js/jqFancyTransitions.1.8.js")-->
+<!--%import("../prettyPhoto/prettyPhoto.css")-->
+<!--%import("../prettyPhoto/jquery.prettyPhoto.js")-->
+
+<!--[if IE 6]>
+<script src="../prettyPhoto/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  DD_belatedPNG.fix('.ft-title, .ft-prev img, .ft-next img');
+</script>
+<![endif]-->
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#0697D6'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "'Lucida Sans Unicode', 'Lucida Grande', Garuda, sans-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(25px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 13}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, Arial, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 내용 높이(50px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$textC1_Height = 50}
+<!--@else-->
+{@$textC1_Height = $widget_info->content_height}
+<!--@end-->
+
+<!--// 슬라이드 이미지 높이 + 테두리 -->
+{@$slider_img_width=$widget_info->slider_img_width+($widget_info->slider_img_bdsize*2)}
+{@$slider_img_height=$widget_info->slider_img_height+($widget_info->slider_img_bdsize*2)}
+
+<!--// 슬라이드 박스 간격 (10px) -->
+{@$tablespace=10}
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/jqFancyTransitions"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	line-height: {$title_font_size}px;
+	text-align:left;
+	overflow:hidden;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	font-weight: normal;
+	line-height: {$content_font_size}px;
+	height: {$textC1_Height}px;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#{$slider_id} {
+	margin:0 auto;
+	border: {$widget_info->slider_img_bdsize}px solid {$widget_info->slider_img_bdcolor};
+	-moz-border-radius: 5px;
+}
+#{$slider_id} .ft-title {
+	padding: 10px 5px;
+	width: {$widget_info->slider_img_width-10}px;
+	text-align: left;
+	font-size: {$content_font_size}px;	/* 제목 폰트 크기 */
+	font-family: {$content_font_family};
+	line-height: {$content_font_size}px;
+	color:{$content_font_color};	/* 글꼴 색깔 */
+}
+</style>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+{@shuffle($widget_info->content_items)}
+<!--@end-->
+
+<div id="{$slider_id}">
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+		<!--@if($item->getThumbnail())-->
+	<img src="{$item->getImgslider()}" alt='<!--@if($widget_info->show_title=="Y")-->
+	{$item->getTitle($widget_info->subject_cut_size)}<!--@end--><br>
+	<!--@if($widget_info->show_content=="Y")-->{$item->getContent($widget_info->content_cut_size)}<!--@end-->' />
+
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a />
+			<!--@end-->
+		<!--@end-->
+			</a>
+		<!--@end-->
+	<!--@end-->
+</div>
+<!--@if($colorset=='Wave')-->
+{@$effect='wave'}
+<!--@elseif($colorset=='Zipper')-->
+{@$effect='zipper'}
+<!--@else-->
+{@$position='curtain'}
+<!--@end-->
+
+<!--@if($colorset=='CurtainAlternate')-->
+{@$position='curtain'}
+<!--@elseif($colorset=='FountainTop'||$colorset=='RandomTop'||$colorset=='LeftTop')-->
+{@$position='top'}
+<!--@elseif($colorset=='RightBottom')-->
+{@$position='bottom'}
+<!--@else-->
+{@$position='alternate'}
+<!--@end-->
+
+<!--@if($colorset=='CurtainAlternate')-->
+{@$direction='alternate'}
+<!--@elseif($colorset=='FountainTop')-->
+{@$direction='fountain'}
+<!--@elseif($colorset=='LeftTop')-->
+{@$direction='left'}
+<!--@elseif($colorset=='RightBottom')-->
+{@$direction='right'}
+<!--@else-->
+{@$direction='random'}
+<!--@end-->
+
+<script> 
+ jQuery(document).ready(function($) {
+	$('#{$slider_id}').jqFancyTransitions({
+		effect: '{$effect}', // wave, zipper, curtain
+		width: {$slider_img_width}, // width of panel
+		height: {$slider_img_height}, // height of panel
+		strips: 20, // number of strips
+		delay: {$widget_info->slide_delay}, // delay between images in ms
+		stripDelay: 50, // delay beetwen strips in ms
+		titleOpacity: 0.4, // opacity of title
+		titleSpeed: 1000, // speed of title appereance in ms
+		position: '{$position}', // top, bottom, alternate, curtain
+		direction: '{$direction}', // left, right, alternate, random, fountain, fountainAlternate
+		navigation: <!--@if($widget_info->show_control=='Y')-->true<!--@else-->false<!--@end-->, // prev and next navigation buttons
+		pagebutton: <!--@if($widget_info->navigation_control=='Y')-->true<!--@else-->false<!--@end-->, // prev and next navigation buttons
+		links: <!--@if($widget_info->open_article=='N')-->false<!--@else-->true<!--@end-->
+	});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	$("#{$slider_id}").find("a:not(.ft-prev,.ft-next)").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+<!--@end-->
+ });
+</script> 

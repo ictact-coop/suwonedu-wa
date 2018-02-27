@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+	.bankinfo {
+		clear:both;
+		overflow:hidden;
+	
+		border:1px solid #ddd;
+		border-top-color:#ececec;
+		border-left-color:#ececec;
+		margin:0px 0px 10px;
+		background-color:#fff;
+		
+	}
+		.bankinfo div {
+			clear:both;
+		}
+			.bankinfo .title {
+				padding:6px 15px 6px 15px;
+				color:#535353;
+				font-size:14px;
+			
+				letter-spacing:0px;
+		
+				margin-bottom:2px;
+				background-color:#fff;							/* 제목 배경 컬러 */
+				border-bottom:1px solid #eee;
+			
+				
+			}
+			.bankinfo div ul {
+				clear:both;
+				font-size:110%;
+				padding:8px 10px 10px;
+				letter-spacing:-0.1px;
+			}
+				.bankinfo div ul li {
+					list-style:none;
+					line-height:22px;
+				}
+					.bankinfo div ul li strong {
+						color:#444;
+					}
+						.bankinfo div ul li span {
+							padding-right:5px;
+						}
+							.bankinfo a strong {
+								color:#222;
+								font-weight:normal;
+							}

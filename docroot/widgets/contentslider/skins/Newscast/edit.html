@@ -1,0 +1,68 @@
+{@$page_id = "Newscast_".mt_rand()}
+
+{@$nav_width = $widget_info->navigation_size+43}
+{@$nav_height = $widget_info->slider_img_height}
+
+<style type="text/css">
+#{$page_id} {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	padding: 5px;
+	margin: 0 auto;
+	width: {$nav_width}px; /* 전체 넓이 */
+	height: {$nav_height}px; /* 전체 높이 */
+	border:solid 1px;
+	border-color:#dacaae;
+	background-color:#FBFDF1;
+	text-align:justify;
+	clear: both;
+}
+#{$page_id} h3 { margin:10px; text-align: center; width:100%; vertical-align: middle; color:red;font-family:Tahoma;font-size:9pt; }
+#{$page_id} p { margin:5px; text-align: center; width:100%; vertical-align: middle; color:blue;font-family:Tahoma;font-size:9pt; }
+#{$page_id} li { margin:10px; width:100%; vertical-align: middle; color:red;font-family:Tahoma;font-size:9pt; }
+#{$colorset}_Slides{position:absolute;bottom:56px;right:18px;background:#fff;border: 1px solid #E1E1E1;width:300px;padding: 10px;}
+#option_{$page_id} {background: #F6F6F6;border: 1px solid #E1E1E1;color:red;font-family:Tahoma;font-size:9pt;display: block;
+	text-align: center;width:150px;padding: 5px 7px;position:absolute;bottom:17px;right:17px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.textE1 {color:red;font-family:Tahoma;font-size:9pt;text-decoration:blink;text-transform:capitalize;}
+</style>
+
+
+<div id="{$page_id}" style="color:#99B81A">
+	<TABLE cellSpacing="0" cellPadding="11px" width="100%" height="100%" border="0">
+	<TBODY>
+	<TR>
+	<TD style="border:solid 1px;border-color:#FFFFFF;background-color:#f5f1e8;">
+		<TABLE cellSpacing="0" cellPadding="15px" width="100%" height="100%" border="0">
+		<TBODY>
+		<TR>
+		<TD bgColor="#fcfaf7" align="center">
+			<font color=#977334>
+			<h3>Newscast Display Area</h3>
+			<p>실제 출력 크기와 약간의 차이가 있을 수 있습니다.</p>
+			</font>
+			<span id="option_{$page_id}" 
+			onclick="document.getElementById('{$colorset}_Slides').style.display = 'block'" onmouseover="document.getElementById('{$colorset}_Slides').style.display = 'block'" onmouseout="document.getElementById('{$colorset}_Slides').style.display = 'none'" style="CURSOR:hand">적용되는 옵션 확인하기</span>
+		</TD>
+		</TR>
+		</TBODY>
+		</TABLE>
+	</TD>
+	</TR>
+	</TBODY>
+	</TABLE>
+</div>
+
+<div id="{$colorset}_Slides" title="Newscast : {$colorset}" style="display:none;">
+	<p>적용된 옵션</p>
+	<li>슬라이드 총 갯수 : {$widget_info->list_count}</li>
+	<li class="textE1">슬라이드 크기    : {$widget_info->slider_img_width} , {$widget_info->slider_img_height}</li>
+	<li class="textE1">네비게이션 넓이 : {$widget_info->navigation_size}</li>
+	<li>이미지 클릭 대상 : <!--@if($widget_info->open_article=='Y')-->게시글<!--@elseif($widget_info->open_article=='Z')-->이미지원본<!--@else-->사용안함<!--@end--></li>
+	<li>슬라이드 속도 : {$widget_info->slide_delay}</li>
+	<li>제목 표시 : <!--@if($widget_info->show_title=='Y')-->출력(기본)<!--@else-->출력안함<!--@end--></li>
+</div>

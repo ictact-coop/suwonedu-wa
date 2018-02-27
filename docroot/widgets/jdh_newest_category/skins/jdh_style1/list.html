@@ -1,0 +1,53 @@
+<!--// 설정된 컬러셋의 종류에 따라서 css파일을 import 합니다 -->
+<!--@if($colorset=="black")-->
+    <!--%import("css/black.css")-->
+<!--@elseif($colorset=="white")-->
+    <!--%import("css/white.css")-->
+<!--@elseif($colorset=="default")-->
+    <!--%import("css/default.css")-->
+<!--@else-->
+	<!--%import("css/default.css")-->
+<!--@end-->
+<div  <!--@if($widget_info->design_middle)-->style="float:left;background:url({$widget_info->design_middle});background-repeat:repeat-y;"<!--@end-->>
+<div class="latest1_{$colorset}">
+	<!--@if($widget_info->design_top)-->
+		<!--@if($widget_info->module_name)-->
+			<a href="{getUrl('','mid',$widget_info->module_name)}" onfocus="this.blur()">
+				<img src="{$widget_info->design_top}" border="0">
+			</a>
+		<!--@else-->
+			<img src="{$widget_info->design_top}" border="0">
+		<!--@end--> 
+	<!--@else-->
+		<!--@if($widget_info->title)-->
+			<h2>{$widget_info->title}</h2>
+		<!--@end-->
+	<!--@end-->
+    <!--@if($widget_info->design_img)-->
+		<div style="width:145px;float:left;"><a href="{$widget_info->more_link}"><img src="{$widget_info->design_img}" border='0'></a></div>
+	<!--@end-->
+	<div>
+	<ul>
+        <!--@foreach($widget_info->document_list as $oDocument)-->
+        <li>
+	  	  <!--@if($widget_info->display_regdate == 'Y')-->
+          <span class="date">[{$oDocument->getRegdate("m-d")}]</span>
+		  <!--@end-->
+          <span class="title">
+            <a href="{$oDocument->getPermanentUrl()}#{$oDocument->getCommentCount()&category={$widget_info->category_srl}}">{$oDocument->getTitle($widget_info->subject_cut_size)}</a>
+            <!--@if($oDocument->getCommentCount())-->
+              <span class="comment">[<a href="{$oDocument->getPermanentUrl()&category={$widget_info->category_srl}}#comment">{$oDocument->getCommentCount()}</a>]</span>
+            <!--@end-->
+
+            {$oDocument->printExtraImages($widget_info->duration_new)}
+          </span>
+
+        </li>
+        <!--@end-->
+    </ul>
+	</div>
+    <!--@if($widget_info->title && $widget_info->more_link && !$widget_info->design_top)-->
+    <a href="{$widget_info->more_link}" class="more">more</a>
+    <!--@end-->
+</div>
+</div><!--@if($widget_info->design_bottom)--><div><img src="{$widget_info->design_bottom}"></div><!--@end-->

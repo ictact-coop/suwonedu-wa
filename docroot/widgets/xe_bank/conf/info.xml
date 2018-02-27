@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+	<title xml:lang="ko">xe_무통장 입금계좌 위젯</title>
+	<version>0.1</version>
+	<date>2013-12-13</date>
+	<author email_address="wds0119@empal.com" link="http://homebox-tm.com/">
+		<name xml:lang="ko">HomeBox™</name>
+	</author>
+
+	<extra_vars>
+		<group>
+		<!--////////////////////////////////////////// 무통장 입금계좌 설정 ////////////////////////////////////////////-->
+			<title xml:lang="ko">무통장 입금계좌 설정</title>
+				<var id="bank_name01" type="text">
+					<title xml:lang="ko">은행명 01</title>
+					<description xml:lang="ko">은행명을 입력해주세요. (예 : 농협은행)</description>
+				</var>
+				<var id="bank_num01" type="text">
+					<title xml:lang="ko">은행 계좌번호 01</title>
+					<description xml:lang="ko">은행 계좌번호를 입력해주세요. (예 : 645-02-123456)</description>
+				</var>
+				<var id="bank_name02" type="text">
+					<title xml:lang="ko">은행명 02</title>
+					<description xml:lang="ko">은행명을 입력해주세요. (예 : 농협은행)</description>
+				</var>
+				<var id="bank_num02" type="text">
+					<title xml:lang="ko">은행 계좌번호 02</title>
+					<description xml:lang="ko">은행 계좌번호를 입력해주세요. (예 : 645-02-123456)</description>
+				</var>
+				<var id="bank_info" type="text">
+					<title xml:lang="ko">예금주</title>
+					<description xml:lang="ko">예금주명을 입력해주세요. (예 : 홍길동)</description>
+				</var>
+		</group>
+	</extra_vars>
+</widget>

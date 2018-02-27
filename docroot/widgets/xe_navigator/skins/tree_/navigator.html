@@ -1,0 +1,46 @@
+<!--%import("./js/navigator.js")-->
+<style>
+.widgetTree{margin:15px 0 0 15px; line-height: 1.6;}  /* 메뉴 자간 xe스타일 */
+#dashe_line {border-bottom: dotted 1px #ddd; padding:0px 0px 13px 0px;margin:0px 15px 15px 0px;}		/* 분리선 */
+#dashe_line:last-child	{border:none;}
+.widgetTree ul li a:first-child {font-size:11px; font-weight: normal; padding-left:5px;}
+</style>
+
+{@ $_pDepth = 0;}
+<!--@if($colorset == "black" || $colorset == "white")-->
+<!--%import(".css/widget.css")-->
+<!--@end-->
+<div style="background-color:#fff;border:1px solid #ebebeb;" class="widgetContainer<!--@if($colorset=="black")-->black<!--@end-->" >
+	<div class="widgetTree">
+		<ul>
+			<!--@foreach($widget_info->arranged_menu as $key => $val)-->
+			<!--@if($val->text)-->
+			<!--@if($_pDepth > $val->depth)-->
+			<!--@for($i=$val->depth; $i<$_pDepth; $i++)-->
+		</ul>
+		</li>
+		<!--@end-->
+		{@ $_pDepth = $val->depth}
+		<!--@end-->
+		<li style="list-style:none;font-weight: bold; " class="<!--@if($val->last)-->nav_tree_last<!--@end--> <!--@if($val->expand)-->nav_tree_on<!--@else-->nav_tree_off<!--@end-->" id="menu_parent_{$val->node_srl}" >
+		<!--@if($val->child_count)-->
+		<!--@if($val->expand)-->
+		<span type="button" class="menu_{$val->node_srl}">+</span>
+		<!--@else-->
+		<span type="button" class="menu_{$val->node_srl}" ></span>
+		<!--@end-->
+		<!--@end-->
+		<a href="{$val->href}" class="nav_tree_label <!--@if($val->selected)-->selected<!--@end-->" <!--@if($val->open_window =='Y')-->target="_blank" <!--@end-->>{$val->link}</a>
+		<!--@if($val->child_count)-->
+		{@$_pDepth++}
+		
+		</li>
+		<ul id="dashe_line">
+			<!--@else-->
+			</li>
+			<!--@end-->
+			<!--@end-->
+			<!--@end-->
+		</ul>
+	</div>
+</div>

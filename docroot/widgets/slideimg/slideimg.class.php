@@ -1,0 +1,26 @@
+<?php
+ 
+    class slideimg extends WidgetHandler{
+ 
+        function proc($args) {
+ 
+            // 템플릿의 스킨 경로를 지정 (skin, colorset에 따른 값을 설정)
+            $tpl_path = sprintf('%sskins/%s', $this->widget_path, $args->skin);
+			Context::set('effect_p', $args->effect_p);
+			Context::set('delay_p', $args->delay_p);
+            Context::set('count_p', $args->count_p);
+            Context::set('one_i', $args->one_i);
+            Context::set('two_i', $args->two_i);
+            Context::set('three_i', $args->three_i);
+            Context::set('four_i', $args->four_i);
+            Context::set('five_i', $args->five_i);
+ 
+            // 템플릿 파일명
+            $tpl_file = 'skin';
+            // 템플릿 컴파일
+            $oTemplate = &TemplateHandler::getInstance();
+            return $oTemplate->compile($tpl_path, $tpl_file);
+    }
+}
+ 
+?>

@@ -1,0 +1,24 @@
+/*next button*/
+.bx-next {
+	background: url(gray_next.png) no-repeat 0 -30px;
+}
+
+/*previous button*/
+.bx-prev {
+	background: url(gray_prev.png) no-repeat 0 -30px;
+}
+
+/*pager links*/
+.bx-pager a {
+	background: url(gray_pager.png) no-repeat 0 -20px;
+}
+
+/*auto start button*/
+.bx-auto .start {
+	background: url(gray_auto.png) no-repeat 0 2px;
+}
+
+/*auto stop button*/
+.bx-auto .stop {
+	background: url(gray_auto.png) no-repeat 0 -14px;
+}

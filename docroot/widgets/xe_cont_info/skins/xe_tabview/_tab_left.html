@@ -1,0 +1,87 @@
+  <style type="text/css" >
+	
+	.widgetDividerB:after { clear: both; display: block; height: 0; content:"."; font-size: 0; }
+	.r-tabs .lefttab .r-tabs-nav .r-tabs-tab {
+	margin-right: 3px;
+	position: relative;
+	left: 1px;
+	top: 0px;
+	}
+	.lefttab {position:relative;float:left; top:0px; width:110px; margin:0; z-index:100;}
+	.r-tabs .lefttab .r-tabs-nav .r-tabs-anchor {
+	margin-bottom: 0px;
+	display: block;
+	margin-left: 0px;
+	margin-bottom: 3px;
+	margin-right: 3px;
+	padding: 10px 5px 10px 12px;
+}
+ .r-tabs .lefttab .r-tabs-nav {
+	width:110px; 
+	border-bottom:none;
+}
+
+ .r-tabs .lefttab .r-tabs-nav .r-tabs-state-active {
+	margin-bottom: 3px;
+	margin-right: -1px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #fff;
+}
+ .r-tabs .lefttab .r-tabs-tab {  
+ width:108px; 
+    list-style: none;
+display: block ;
+margin: 0 ;
+	*display: block;
+}
+
+ .r-tabs .lefttab .r-tabs-panel {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccct;
+	border-left: 1px solid #ccc;
+	margin: 0px;
+	margin-top: 0px;
+}
+.widgetDividerB{ margin:0;
+				border-top: 1px solid #ccc;
+				position:relative;float:left;
+				width: -webkit-calc(100% - 110px);
+				width:calc(100% - 110px);
+				 z-index:90;
+				}
+				
+@media only screen and (max-width: 673px) {
+	.widgetDividerB{ width:100%;}
+	.r-tabs .lefttab{
+        display: none;
+    }
+    .r-tabs .r-tabs-nav {
+        display: none;
+    }
+    .r-tabs .r-tabs-accordion-title {
+        display: block;
+    }
+}
+
+</style>
+   <div class="lefttab"> <ul>
+{@$i=0}
+<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+   <li><a href="#tab-{$i+1+$mtrand}" >{$tab->title}</a></li>
+{@$i++}
+<!--@end-->
+</ul>
+</div>
+<div class="widgetDividerB">
+{@$i=0}
+<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+    
+        {@$widget_info->content_items = $tab->content_items}
+        <!--#include("_tab_none.html")-->
+  
+{@$i++}
+<!--@end-->
+</div>
+    

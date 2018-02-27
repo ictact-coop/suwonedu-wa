@@ -1,0 +1,26 @@
+@charset "utf-8";
+.newClear:after{content:' '; display:block; clear:both; font-size:0; width:0; height:0; visibility:hidden; line-height:0}
+* html .newClear,:first-child+html .newClear{zoom:1}
+.doorweb-popular{font-family:"Helvetica Neue", "Apple SD 산돌고딕 Neo", "Apple SD Gothic Neo", "나눔고딕", "Nanum Gothic", "돋움", "Dotum", Helvetica, Arial, sans-serif;}
+.doorweb-popular .tabs_items{-webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;background:#e6e6e6;-webkit-box-shadow: inset 0 0 1px 1px #d3d3d3, inset 0 0 0 0 #d3d3d3;-moz-box-shadow: inset 0 0 1px 1px #d3d3d3, inset 0 0 0 0 #d3d3d3;box-shadow: inset 0 0 1px 1px #d3d3d3, inset 0 0 0 0 #d3d3d3;}
+.doorweb-popular .tabs_items ul{margin:0; padding:0; list-style:none}
+.doorweb-popular .tabs_items li{float:left; padding:0; padding: 0;margin: 0;font-size: 14px; font-weight:700;width:50%;}
+.doorweb-popular .tabs_items li a{display:block; margin:0; padding:0;line-height:42px; text-align:center; color:#333; text-decoration:none; cursor:pointer;position:relative;}
+.doorweb-popular .tabs_items a:hover{text-decoration:none}
+.doorweb-popular .tabs_items a.tabs_active{background:#fff;-webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;border: 1px solid;line-height:40px;*height:40px; border-color: #e5e6e9 #dfe0e4 #d0d1d5;}
+.doorweb-popular .tabs_items a.tabs_active:before{ top: 100%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; border-top-color:#d0d1d5; border-width: 10px; left: 50%; margin-left: -10px;}
+.doorweb-popular .tabs_items a.tabs_active:after{ top: 100%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; border-top-color: #fff; border-width: 9px; left: 50%; margin-left: -9px;}
+
+.doorweb-popular .tabs_inner{position:relative;padding:15px 0 0 0;}
+.doorweb-popular .tabs_content{display:none}
+.doorweb-popular .tabs_active{display:block !important}
+.doorweb-popular .tabs_inner a{}
+.doorweb-popular .tabs_inner a:hover{text-decoration:underline}
+.doorweb-popular .tabs_inner ul{margin:0; padding:0; list-style:none}
+.doorweb-popular .tabs_inner li{padding-left: 10px;background: url(img/list.gif) no-repeat left 11px;line-height:24px;height:24px;}
+.doorweb-popular .tabs_inner li span,
+.doorweb-popular .tabs_inner li a{display:block;height:24px;overflow:hidden;}
+
+
+
+.doorweb-popular .replyNum{color: #526bbe;padding-left:4px;font-size:10px;vertical-align:top;}

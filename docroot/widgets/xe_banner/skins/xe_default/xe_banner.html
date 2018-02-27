@@ -1,0 +1,21 @@
+<script>
+    jQuery.noConflict()(function(){jQuery(".btn-close").click(function(e){jQuery(e.currentTarget).closest("div.xe-widget-wrapper").animate({height:0,opacity:0},1e3,function(){jQuery(this).css("display","none")})})});
+</script>
+<load target="./css/banner.css"/>
+<div class="vitual-banner-container">
+<div class="banner-container">
+    <a href="{$context->urls}" >
+	
+	<div class="img" style="margin-right:5px;">
+        <img src="{$context->src}" style="{$context->margin}"/>
+    </div>
+    <div class="content">
+        <div class="context">
+            <h1>{$context->title}</h1>
+            <p>{$context->content}</p>
+        </div>
+    </div>
+  
+    </a>
+</div>
+</div>

@@ -1,0 +1,279 @@
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "esyAcodion_".mt_rand()}
+{@$slide_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--[if lte IE 6]>
+<script src="easyAccordion/DD_belatedPNG_0.0.8a.js"></script>
+<script>
+  DD_belatedPNG.fix('.easy-accordion dt');
+</script>
+<![endif]-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 18}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "Georgia, 'Times New Roman', Times, serif, '돋움'"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 11}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#000'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "돋움,'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, Arial, sans-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 배경 이미지 경로 -->
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/easyAccordion/js"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	text-decoration: none;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	text-decoration: none;
+	text-align:left;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#accordion_{$skin_id}{margin:0 auto; display:block; overflow:hidden; position: relative; top: 0px; width:{$widget_info->list_count*64+392}px; height: 195px; padding:0px; margin: 0 auto;}
+#accordion_{$skin_id} dl{width:{$widget_info->list_count*64+392}px; height: 195px;}
+#accordion_{$skin_id}{padding:1px;background:#fff;}
+/* 슬라이드 목록 제목 */
+#accordion_{$skin_id} dt{height:56px;line-height:44px;text-align:right;padding:10px 15px 0 0;font-size:1.1em;font-weight:bold;font-family: Tahoma, Geneva, sans-serif, "맑은 고딕";text-transform:uppercase;letter-spacing:1px;background:#fff url('{$skincssimgpath}/slide-title-inactive-2.jpg') 0 0 no-repeat;color:#26526c}
+#accordion_{$skin_id} dt.active{cursor:pointer;color:#fff;background:#fff url('{$skincssimgpath}/slide-title-active-2.jpg') 0 0 no-repeat}
+#accordion_{$skin_id} dt.hover{color:#68889b;}
+#accordion_{$skin_id} dt.active.hover{color:#fff}
+/* 게시글 내용 출력 부분 */
+#accordion_{$skin_id} dd{
+	padding:0 25px 0 25px;
+	background:url('{$skincssimgpath}/slide.jpg') bottom left repeat-x;
+	border:1px solid #dbe9ea;
+	border-left:0;
+	margin-right:3px;
+	line-height: 20px;
+}
+#accordion_{$skin_id} .slide-number{color:#68889b;left:10px;font-weight:bold}
+#accordion_{$skin_id} .active .slide-number{color:#fff;}
+#accordion_{$skin_id} a {color:#68889b;text-decoration: none;}
+#accordion_{$skin_id} a:focus, #accordion_{$skin_id} a:hover, #accordion_{$skin_id} a:active {
+	text-decoration: underline;
+}
+/* 제목 */
+#accordion_{$skin_id} h2{
+	width: 346px;
+	margin: 10px 0 10px 0;
+	padding: 0 0 5px 0;
+	vertical-align: top;
+	border-bottom: 2px solid #434343;
+}
+/* 내용 */
+#accordion_{$skin_id} dd .accordion-content{
+	width: 346px;
+	height: 195px;
+	float: left;
+	vertical-align: top;
+	text-decoration: none;
+	text-align:justify;
+}
+/* 썸네일 */
+#accordion_{$skin_id} dd img {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:right;
+}
+/* 게시글 제목 아래 날짜 */
+#accordion_{$skin_id} .regdate { position: absolute; top:5px;right:5px;color:#f4e46b; float: right; font-size: 9px;}
+#accordion_{$skin_id} .regdate a, #accordion_{$skin_id} .regdate a:link, #accordion_{$skin_id} .regdate a:visited { color: #f4e46b; text-decoration: none; }
+#accordion_{$skin_id} .regdate:hover, #accordion_{$skin_id} .regdate a:hover { color: #e8d965; }
+#accordion_{$skin_id} #Published { height: 15px; width: 420px; overflow: hidden; }
+#accordion_{$skin_id} .cats { float: left; font-size: 90%; color: #1c333d; text-decoration: none;}
+#accordion_{$skin_id} .cats a { color: #1c333d; text-decoration: none;}
+#accordion_{$skin_id} .more{padding-top:2px;display:block;float: right; text-decoration: none;}
+
+/* Image rounded corners */
+#accordion_{$skin_id} .rounded-all { -moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; display: block; }
+
+#accordion_{$skin_id} .lightbox_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float: right;
+	margin:0 0 0 10px;
+	background:url('{$skincssimgpath}/magnify.png') no-repeat center center;
+	border:{$widget_info->thumbnail_bdsize}px solid {$widget_info->thumbnail_bdcolor};
+}
+
+#accordion_{$skin_id} .lightbox_video {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float: right;
+	margin:0 0 0 10px;
+	background:url('{$skincssimgpath}/video.png') no-repeat center center;
+	border:{$widget_info->thumbnail_bdsize}px solid {$widget_info->thumbnail_bdcolor};
+}
+
+#accordion_{$skin_id} .no_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:right;
+	margin:0 0 0 10px;
+	background:url('{$skincssimgpath}/no_image.png') no-repeat center center;
+	border:{$widget_info->thumbnail_bdsize}px solid {$widget_info->thumbnail_bdcolor};
+}
+
+#accordion_{$skin_id} .open_doc {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:right;
+	margin:0 0 0 10px;
+	background:url('{$skincssimgpath}/document.png') no-repeat center center;
+	border:{$widget_info->thumbnail_bdsize}px solid {$widget_info->thumbnail_bdcolor};
+}
+
+</style>
+
+{@$_imgidx=0}
+<div id="accordion_{$skin_id}">
+	<dl>
+	<!--@foreach($widget_info->content_items as $key => $item)-->
+	<dt <!--@if($_imgidx > $widget_info->list_count)--> style="display:none"<!--@end-->><!--@if($widget_info->easyAccordion_title[$_imgidx])-->{$widget_info->easyAccordion_title[$_imgidx]}<!--@else-->{$item->getTitle(20)}<!--@end--></dt>
+	<dd <!--@if($_imgidx > $widget_info->list_count)--> style="display:none"<!--@end-->>
+		<!--@if($widget_info->show_title=='Y')-->
+		<h2>
+			<span class="title1 textT1_{$skin_id}"><a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a></span>
+			<span class="regdate">{$item->getRegdate("M-d,Y")}</span>
+		</h2>
+		<!--@end-->
+		<div class="accordion-content textC1_{$skin_id}">
+		<!--@if($item->getThumbnail())-->
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel='prettyPhoto[mixed]' />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+			<img src="{$item->getThumbnail()}" name="{$_imgidx}" class="rounded-all <!--@if($widget_info->img_fade=='Y'&&$widget_info->open_article!='N')-->fade<!--@end-->" />
+			</a>
+		<!--@end--><a href="{$item->getLink()}">{$item->getContent($widget_info->content_cut_size)}</a>
+		</div>
+	</dd>
+	{@$_imgidx++}
+	<!--@end-->
+	</dl>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+	$('#accordion_{$skin_id}').easyAccordion({ 
+			autoStart: {$widget_info->slide_auto},
+			slideInterval: {$widget_info->slide_delay},
+			slideNum:true
+	});
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	if ($.browser.msie && $.browser.version < 7) return; // Don't execute code if it's IE6 or below cause it doesn't support it.
+	$(".fade").fadeTo(1, 1);
+	$(".fade").hover(function () {
+		$(this).fadeTo("fast", 0.33);
+	}, function () {
+		$(this).fadeTo("slow", 1);
+	});
+	$("#accordion_{$skin_id}").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+
+	$("a[rel^='prettyPhoto']").each(function() {
+		var $image = jQuery(this).contents("img");
+		$newclass = 'no_image';
+		if($(this).attr('href').toLowerCase().match(/youtube\.com\/watch/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/vimeo\.com/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(mov|swf)/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(jpg|gif|jpeg|png)/i)) $newclass = 'lightbox_image';
+		else $(this).removeClass("fade");
+		var $padding_x = parseInt($image.css('padding-left')) + parseInt($image.css('padding-right')),
+			$padding_y = parseInt($image.css('padding-top')) + parseInt($image.css('padding-bottom')),
+			$margin_x = parseInt($image.css('margin-left')) + parseInt($image.css('margin-right')),
+			$margin_y = parseInt($image.css('margin-top')) + parseInt($image.css('margin-bottom')),
+			$border_x = parseInt($image.css('border-left-width')) + parseInt($image.css('border-right-width')),
+			$border_y = parseInt($image.css('border-top-width')) + parseInt($image.css('border-bottom-width'));
+		$height = parseInt($image.height()) + $margin_x + $padding_x + $border_x;
+		$width = parseInt($image.width()) + $margin_y +  $padding_y + $border_y;
+		$pos =  $image.position();
+		$(this).addClass($newclass).css({height:$height, width:$width, top:$pos.top, left:$pos.left});
+	});
+<!--@end-->
+
+});
+</script>

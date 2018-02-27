@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">Gallery01 스킨</title>
+    <title xml:lang="en">Gallery01 skin</title>
+    <description xml:lang="ko">겔러리용 스킨 첫번째입니다.</description>
+    <version>0.2</version>
+    <date>2011-12-17</date>
+    <link>http://studyu.cafe24.com/</link>
+
+    <author email_address="" link="http://studyu.cafe24.com/">
+        <name xml:lang="ko">Study4U</name>
+        <name xml:lang="en">Study4U</name>
+   </author>
+
+    <colorset>
+        <color name="default">
+            <title xml:lang="ko">default</title>
+            <title xml:lang="en">default</title>
+        </color>
+	</colorset>
+</skin>

@@ -1,0 +1,27 @@
+<!--// 설정된 컬러셋의 종류에 따라서 css파일을 import 합니다 -->
+<!--@if($colorset=="black")-->
+    <!--%import("css/black.css")-->
+<!--@else-->
+    <!--%import("css/white.css")-->
+<!--@end-->
+
+<div class="latest_{$colorset}2">
+    <ul>
+        <!--@foreach($widget_info->document_list as $oDocument)-->
+        <li>
+	 
+          <div class="title" style="width:450px; float:left;">
+            <a href="{$oDocument->getPermanentUrl()}#{$oDocument->getCommentCount()}">{$oDocument->getTitle($widget_info->subject_cut_size)}</a>
+            <!--@if($oDocument->getCommentCount())-->
+              <span class="comment">[<a href="{$oDocument->getPermanentUrl()}#comment">{$oDocument->getCommentCount()}</a>]</span>
+            <!--@end-->
+
+            {$oDocument->printExtraImages($widget_info->duration_new)}
+          </div>
+			<!--@if($widget_info->display_regdate == 'Y')-->
+          <div style="width:80px; text-align:right; float:right">{$oDocument->getRegdate("Y-m-d")}</div>
+			<!--@end-->
+        </li>
+        <!--@end-->
+    </ul>
+</div>

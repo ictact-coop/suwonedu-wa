@@ -1,0 +1,347 @@
+<!--%import("prettyPhoto.css")-->
+<!--%import("jquery.prettyPhoto.js")-->
+
+<!--[if IE 6]>
+<script src="DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  DD_belatedPNG.fix('.ptyPoto-head .date,.ptyPoto-head .comments,.ptyPoto-head .author');
+</script>
+<![endif]-->
+
+<!--// 멀티스킨 사용을 위해 변수 또는 ID 랜덤 지정 -->
+{@$skin_id = "ptyPoto".mt_rand()}
+{@$eslider_id = $skin_id}
+
+<!--// prettyPhoto 테마 -->
+<!--@if(!$widget_info->ptypoto_theme)-->
+{@$prettyPhoto_theme = "pp_default"}
+<!--@else-->
+{@$prettyPhoto_theme = $widget_info->ptypoto_theme}
+<!--@end-->
+
+<!--// 제목 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->title_font_size)-->
+{@$title_font_size = $widget_info->title_font_size}
+<!--@else-->
+{@$title_font_size = 17}
+<!--@end-->
+
+<!--@if($widget_info->title_font_color)-->
+{@$title_font_color = $widget_info->title_font_color}
+<!--@else-->
+{@$title_font_color = '#222'}
+<!--@end-->
+
+<!--@if($widget_info->title_font_family!="Default")-->
+{@$title_font_family = $widget_info->title_font_family}
+<!--@else-->
+{@$title_font_family = "굴림,'Trebuchet MS',Arial,Helvetica,san-serif"}
+<!--@end-->
+
+<!--// 제목 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->title_font_user!="")-->
+{@$title_font_family = $widget_info->title_font_user}
+<!--@end-->
+
+<!--// 제목+카테고리 높이(50px) -->
+<!--@if(!$widget_info->title_height)-->
+{@$textT1_Height = 23}
+<!--@else-->
+{@$textT1_Height = $widget_info->title_height}
+<!--@end-->
+
+<!--// 내용의 폰트 크기와 글꼴 정의 -->
+<!--@if($widget_info->content_font_size)-->
+{@$content_font_size = $widget_info->content_font_size}
+<!--@else-->
+{@$content_font_size = 13}
+<!--@end-->
+
+<!--@if($widget_info->content_font_color)-->
+{@$content_font_color = $widget_info->content_font_color}
+<!--@else-->
+{@$content_font_color = '#666'}
+<!--@end-->
+
+<!--@if($widget_info->content_font_family!="Default")-->
+{@$content_font_family = $widget_info->content_font_family}
+<!--@else-->
+{@$content_font_family = "굴림,Arial, Helevtica, Verdana, san-serif"}
+<!--@end-->
+
+<!--// 내용 폰트 직접 입력인 경우 -->
+<!--@if($widget_info->content_font_user!="")-->
+{@$content_font_family = $widget_info->content_font_user}
+<!--@end-->
+
+<!--// 내용 높이(50px) -->
+<!--@if(!$widget_info->content_height)-->
+{@$textC1_Height = 50}
+<!--@else-->
+{@$textC1_Height = $widget_info->content_height}
+<!--@end-->
+
+<!--// 전체 넓이 = 썸네일 가로 + 여백 + 네비게이션 가로 넓이 -->
+{@$widget_width = $widget_info->navigation_size+$widget_info->thumbnail_width+22}
+
+<!--// 전체 높이 = 썸네일 세로 ( 제목 높이 + 카테고리 + 내용 높이 ) -->
+{@$nav_height = $textT1_Height+23+$textC1_Height}
+<!--@if($nav_height>($widget_info->thumbnail_height+12))-->
+{@$widget_height = ($nav_height+10)}
+<!--@else-->
+{@$widget_height = ($widget_info->thumbnail_height+12)}
+<!--@end-->
+
+{@$skincssimgpath = getSiteUrl()."widgets/contentslider/skins/prettyPhoto/images"}
+
+<style type="text/css">
+.textT1_{$skin_id}, .textT1_{$skin_id} a, .textT1_{$skin_id} a:visited {
+	color:{$title_font_color};
+	font-family: {$title_font_family};
+	font-size: {$title_font_size}px;
+	font-weight: bold;
+	text-decoration: none;
+	height: {$textT1_Height}px;
+	<!--@if($widget_info->show_title=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textT1_{$skin_id} a:hover, .textT1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+.textC1_{$skin_id}, .textC1_{$skin_id} a, .textC1_{$skin_id} a:visited {
+	text-align:justify;
+	color:{$content_font_color};
+	font-family: {$content_font_family};
+	font-size: {$content_font_size}px;
+	font-weight: normal;
+	text-decoration: none;
+	height: {$textC1_Height}px;
+	<!--@if($widget_info->show_content=='Y')-->display:block;<!--@else-->display:none;<!--@end-->
+}
+.textC1_{$skin_id} a:hover, .textC1_{$skin_id} a:focus {
+	text-decoration: underline;
+}
+
+#{$skin_id}_page {
+	width: {$widget_width}px; /* 전체 넓이 */
+	padding: 0 0 20px 0px;
+	float: left;
+	margin: 0 20px 0 0;
+	overflow: hidden;
+	line-height: 23px;
+}
+
+.{$skin_id} {
+	position: relative;
+	float: left;
+	width: 100%;
+	clear: both;
+	padding: 0 0 10px 0px;
+	overflow: hidden;
+	height: {$widget_height}px;
+}
+
+/* 썸네일 왼쪽 정렬 */
+.{$skin_id} .previewimage{
+	border:1px solid #E1E1E1;
+	float: left;
+	height: {$widget_info->thumbnail_height}px;
+	margin: 4px 10px 10px 0; /* 여백 */
+	padding: 5px; /* 안쪽 여백 */
+	width: {$widget_info->thumbnail_width}px;
+	display: block;
+}
+
+.{$skin_id} .rounded {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.{$skin_id} .previewimage img {
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
+/* 캡션박스 출력 */
+.{$skin_id} .ptyPoto-content{
+	float: left;
+	width: {$widget_info->navigation_size}px; /* 캡션박스 넓이 = 네비게이션 가로 넓이 */
+	overflow: hidden;
+}
+
+/* 제목 */
+.{$skin_id} .ptyPoto-content .ptyPoto-heading { /* fix */
+	clear: both;
+	font-weight: normal;
+	letter-spacing: 0.4px;
+	line-height: 1.4em;
+	padding-bottom: 0px;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+/* 날짜/코멘트/저자 */
+.{$skin_id} .ptyPoto-content .ptyPoto-head {
+	float: left;
+	width: 100%;
+	padding-bottom: 4px;
+	font-size: 11px;
+	clear: both; /* fix */
+	overflow: hidden;
+}
+
+.{$skin_id} .ptyPoto-content .ptyPoto-head p {
+	width: 90px;
+	padding-left: 26px;
+	float: left;
+	display: block;
+	margin: 0; /* fix */
+}
+
+.{$skin_id} .ptyPoto-content .ptyPoto-head a {
+	color:{$title_font_color};
+	text-decoration: none;
+}
+.{$skin_id} .ptyPoto-content .ptyPoto-head a:hover {
+	text-decoration: underline;
+}
+
+.{$skin_id} .ptyPoto-content .ptyPoto-head .date{background: transparent url('{$skincssimgpath}/icon-date.png') no-repeat -3px top;}
+.{$skin_id} .ptyPoto-content .ptyPoto-head .comments{background: transparent url('{$skincssimgpath}/icon-comment.png') no-repeat -3px top;}
+.{$skin_id} .ptyPoto-content .ptyPoto-head .author{background: transparent url('{$skincssimgpath}/icon-author.png') no-repeat -2px top;}
+
+.{$skin_id} .ptyPoto-content .ptyPoto-text{
+	line-height: 18px;
+	clear: both; /* fix */
+	margin: 0; /* fix */
+}
+
+.{$skin_id} .lightbox_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	display: block;
+	background:url('{$skincssimgpath}/magnify.png') no-repeat center center;
+}
+
+.{$skin_id} .lightbox_video {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	display: block;
+	background:url('{$skincssimgpath}/video.png') no-repeat center center;
+}
+
+.{$skin_id} .no_image {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	display: block;
+	background:url('{$skincssimgpath}/no_image.png') no-repeat center center;
+}
+
+.{$skin_id} .open_doc {
+	width:{$widget_info->thumbnail_width}px;
+	height:{$widget_info->thumbnail_height}px;
+	float:left;
+	display: block;
+	background:url('{$skincssimgpath}/document.png') no-repeat center center;
+}
+
+</style>
+
+<!--@if($widget_info->content_items_shuffle=='Y')-->
+	{@shuffle($content_items)}
+<!--@end-->
+<div id="{$skin_id}_page">
+<!--@foreach($content_items as $key => $item)-->
+<div class="{$skin_id}">
+	<div class="previewimage rounded">
+		<!--@if($widget_info->open_article=='Z')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getPreview()}" rel="prettyPhoto[mixed]"/>
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@elseif($widget_info->open_article=='Y')-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getLink()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@else-->
+			<a href="{$item->getDocumentSrl()}" class="open_doc" />
+			<!--@end-->
+		<!--@else-->
+			<!--@if($widget_info->target_ext_var=='link'&&$item->getLinkedType()!=''||$widget_info->target_ext_var=='image'&&$item->getLinkedType()!='')-->
+			<a href="{$item->getDocumentSrl()}" rel='prettyPhoto[mixed]' />
+			<!--@elseif($item->getThumbnail())-->
+			<a />
+			<!--@else-->
+			<a class="no_image" />
+			<!--@end-->
+		<!--@end-->
+		<!--@if($item->getThumbnail())-->
+		<img src="{$item->getThumbnail()}" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" title='{$item->getTitle($widget_info->subject_cut_size)}' alt='{$item->getTitle($widget_info->subject_cut_size)} by {$item->getNickName()}' <!--@if($widget_info->img_fade=='Y'&&$widget_info->open_article!='N')-->class='fade'<!--@end--> />
+		<!--@else-->
+		<img src="{$skincssimgpath}/blank.gif" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" title='{$item->getTitle($widget_info->subject_cut_size)}' alt='{$item->getTitle($widget_info->subject_cut_size)} by {$item->getNickName()}' <!--@if($widget_info->img_fade=='Y'&&$widget_info->open_article!='N')-->class='fade'<!--@end--> />
+		<!--@end-->
+		</a>
+	</div>
+	<div class="ptyPoto-content"> 
+		<div class="ptyPoto-heading textT1_{$skin_id}">
+			<a href="{$item->getDocumentSrl()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+		</div>
+		<div class="ptyPoto-head">
+			<p class="date">{$item->getRegdate("M d, Y")}</p>
+			<!--@if($item->getCommentCount())-->
+			<p class="comments"><a href="{$item->getDocumentSrl()}">{$item->getCommentCount()} Comments</a></p><!--@end-->
+			<p class="author">by {$item->getNickName()}</p>
+		</div>
+		<div class="ptyPoto-text textC1_{$skin_id}">
+			<a href="{$item->getDocumentSrl()}">{$item->getContent($widget_info->content_cut_size)}</a>
+		</div>
+	</div>
+</div>
+<div style="clear: both;"></div>
+<!--@end-->
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+<!--@if($widget_info->open_article!='N'||$widget_info->target_ext_var=='link'||$widget_info->target_ext_var=='image')-->
+	if ($.browser.msie && $.browser.version < 7) return; // Don't execute code if it's IE6 or below cause it doesn't support it.
+	$(".fade").fadeTo(1, 1);
+	$(".fade").hover(function () {
+		$(this).fadeTo("fast", 0.33);
+	}, function () {
+		$(this).fadeTo("slow", 1);
+	});
+	$(".previewimage").find("a[rel^='prettyPhoto']").prettyPhoto({theme:'{$prettyPhoto_theme}'});
+
+	$("a[rel^='prettyPhoto']").each(function() {
+		var $image = jQuery(this).contents("img");
+		$newclass = 'no_image';
+		if($(this).attr('href').toLowerCase().match(/youtube\.com\/watch/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/vimeo\.com/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(mov|swf)/i)) $newclass = 'lightbox_video';
+		else if($(this).attr('href').toLowerCase().match(/(jpg|gif|jpeg|png)/i)) $newclass = 'lightbox_image';
+		else $(this).removeClass("fade");
+		var $padding_x = parseInt($image.css('padding-left')) + parseInt($image.css('padding-right')),
+			$padding_y = parseInt($image.css('padding-top')) + parseInt($image.css('padding-bottom')),
+			$margin_x = parseInt($image.css('margin-left')) + parseInt($image.css('margin-right')),
+			$margin_y = parseInt($image.css('margin-top')) + parseInt($image.css('margin-bottom')),
+			$border_x = parseInt($image.css('border-left-width')) + parseInt($image.css('border-right-width')),
+			$border_y = parseInt($image.css('border-top-width')) + parseInt($image.css('border-bottom-width'));
+		$height = parseInt($image.height()) + $margin_x + $padding_x + $border_x;
+		$width = parseInt($image.width()) + $margin_y +  $padding_y + $border_y;
+		$pos =  $image.position();
+		$(this).addClass($newclass).css({height:$height, width:$width, top:$pos.top, left:$pos.left});
+	});
+<!--@end-->
+});
+</script>
