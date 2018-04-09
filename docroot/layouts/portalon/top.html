@@ -2,62 +2,62 @@
 
 <script  type="text/javascript">
 
-		
-		
+
+
 		// add favorit
 		function bookmarksite(title,url) {
-			   if (window.sidebar) // firefox 
-			   window.sidebar.addPanel(title, url, ""); 
+			   if (window.sidebar) // firefox
+			   window.sidebar.addPanel(title, url, "");
 			   else if(window.opera && window.print)
-			 
-			   { // opera 
-				  var elem = document.createElement('a'); 
-				  elem.setAttribute('href',url); 
-				  elem.setAttribute('title',title); 
-				  elem.setAttribute('rel','sidebar'); 
-				  elem.click(); 
-			   } 
+
+			   { // opera
+				  var elem = document.createElement('a');
+				  elem.setAttribute('href',url);
+				  elem.setAttribute('title',title);
+				  elem.setAttribute('rel','sidebar');
+				  elem.click();
+			   }
 			  else if(document.all) // ie
 			   window.external.AddFavorite(url, title);
 			  else{alert('Ctrl + D 키를 누르시면 즐겨찾기에 추가하실 수 있습니다.');// chrome
 			}
-		}	
+		}
 
 </script>
 
 
 
-<!-- 메인 충돌 top.html 로 이동 --> 		 
+<!-- 메인 충돌 top.html 로 이동 -->
 
 
 <div class="header_top_middle" style="height:auto;" >
 
 
 <div id="head_box3" class="body_width" style="color:#6B6B6B; line-height:24px; ">		<!-- gnb 별도 폰트 사이즈 적용 -->
-			<div class="head_w" style=""> 
-				<div class="head_wrap head_tip" style="">	
-				   <ul class="head_tip" id="head_tip_r" >	
+			<div class="head_w" style="">
+				<div class="head_wrap head_tip" style="">
+				   <ul class="head_tip" id="head_tip_r" >
 				   <li style="float:left;">
 				  <span id="gnb_bt" >
-								<!--@if($layout_info->favo_on == 'Y')--> 			
+								<!--@if($layout_info->favo_on == 'Y')-->
 
 								<!--@if($layout_info->favorit_url&&$layout_info->favorit_name)-->
                                 <a onClick="javascript:xe_bookmarksite('{$layout_info->favorit_name}', '{$layout_info->favorit_url}')" class="xe_favori"><i class="fa11 fa fa-star"></i> &nbsp;{$lang->xe_favorites}&nbsp;</a>
                                 <!--@else-->
 				                <a href="javascript:bookmarksite('XE스타일', 'http://www.xestyle.com')" ><i class="fa11 fa fa-star"></i> &nbsp;{$lang->xe_favorites}&nbsp;</a>
-                                <!--@end-->		 
-		                        
+                                <!--@end-->
+
 								<!--@else--><!--@end-->
-	  
-								</span>		
+
+								</span>
 						</li>
 						</ul>
 
 
-			<ul class="head_tip">	
-			<li class="" style="float:right; ">	 								
-								
-								<!-- gnb 로그인 -->	  																												   
+			<ul class="head_tip">
+			<li class="" style="float:right; ">
+
+								<!-- gnb 로그인 -->
 
 			<span id="gnb_bt" >
 	<span id="familysite">
@@ -65,63 +65,63 @@
     <a href="http://www.wasuwon.net/" target="_blank" class="on">평생학습웹진 와</a>
     <a href="http://nuguna.suwonedu.org/" target="_blank">누구나학교</a>
     <a href="http://cafe.daum.net/3rd-Age" target="_blank">뭐라도학교</a>
-	<a href="http://suwonedu2011.blog.me/" target="_blank">거북이공방</a>    
-    
+	<a href="http://suwonedu2011.blog.me/" target="_blank">거북이공방</a>
+
     </span>
 		 <!--@if($layout_info->gnb_home == 'Y')-->
 			<a href="<!--@if($layout_info->home_url)-->{$layout_info->home_url}<!--@else-->portalon<!--@end-->" title="메인페이지 바로가기" onfocus=this.blur()><i class="fa11 fa fa-home"></i>&nbsp;{$lang->xe_home}&nbsp;&nbsp;</a>
 		<!--@else--><!--@end-->
 
-		
-		<!--@if($layout_info->log_on == 'Y' || $layout_info->log_on=='')--> 			
-		<!--@if($layout_info->member)--> 
+
+		<!--@if($layout_info->log_on == 'Y' || $layout_info->log_on=='')-->
+		<!--@if($layout_info->member)-->
 	    <!--@if($is_logged)-->
-			<a href="{getUrl('act','dispMemberLogout')}"></a>																												 
+			<a href="{getUrl('act','dispMemberLogout')}"></a>
 		<!--@else-->
 			<a href="#modal" onclick="jQuery('#modal').css('display','block');" accesskey="L" ></a>
 		<!--@end-->
 		<!--@else-->
 		<!--@if($is_logged)-->
-				
+
 				<a href="{getUrl('act','dispMemberLogout')}" title="로그아웃" onfocus=this.blur()>&nbsp;<i class="fa11 fa fa-unlock"></i>&nbsp; 로그아웃&nbsp;</a>
 		<!--@else-->
 		<!--@if($layout_info->social_log == 'Y')-->
 		<a href="{getUrl('act', 'dispSocialxeLoginForm','mid', snslogin)}" onfocus=this.blur()>&nbsp; <i class="fa11 fa fa-thumbs-up"></i>&nbsp; {$lang->xe_sns_log}&nbsp;</a><!--@else--><!--@end-->
-		<a href="{getUrl('act', 'dispMemberLoginForm')}" id="<!--@if($layout_info->log_modal == 'Y')-->ly_btn<!--@else--><!--@end-->" onfocus=this.blur()>&nbsp; <i class="fa11 fa fa-unlock-alt"></i>&nbsp; 로그인&nbsp;</a>			
-		<!--@end-->					
-		<!--@end-->	 																																	   
-		
-																																									  
+		<a href="{getUrl('act', 'dispMemberLoginForm')}" id="<!--@if($layout_info->log_modal == 'Y')-->ly_btn<!--@else--><!--@end-->" onfocus=this.blur()>&nbsp; <i class="fa11 fa fa-unlock-alt"></i>&nbsp; 로그인&nbsp;</a>
+		<!--@end-->
+		<!--@end-->
+
+
 		<!--@if(!$is_logged)-->
-		<!--@if($layout_info->register == 'Y' || $layout_info->register=='')--> 	 							
-	    
+		<!--@if($layout_info->register == 'Y' || $layout_info->register=='')-->
+
 			<a id="mob_del" href="{getUrl('act','dispMemberSignUpForm','mid', article)}" onfocus=this.blur() >&nbsp; <i class="fa11 fa fa-pencil"></i>&nbsp; 회원가입&nbsp;</a>
-        <!--@else--><!--@end-->	 
-		<!--@else-->  				
-		<!--@if($layout_info->profile)-->	   				 
+        <!--@else--><!--@end-->
+		<!--@else-->
+		<!--@if($layout_info->profile)-->
 		<!--@else-->
 			 <a href="{getUrl('act','dispMemberInfo','mid', article)}" title="회원정보보기" onfocus=this.blur()> <i class="fa11 fa fa-user"></i>&nbsp;  내프로필&nbsp;</a>
 			 <a cond="$logged_info->is_admin=='Y'" href="{getUrl('','module','admin')}" target="_blank" title="관리자페이지" onfocus=this.blur()>&nbsp;<i class="fa11 fa fa-gear"></i>&nbsp; {$lang->xe_management}&nbsp;</a>
-		 <!--@end-->		
-		 <!--@end-->														   									  
+		 <!--@end-->
+		 <!--@end-->
 
 		 <!--@else--><!--@end--> <!-- //log_on -->
-		 
+
 		 <!--@if($layout_info->gnb_mail == 'Y' || $layout_info->gnb_mail=='')-->
 			 <a id="mob_del" class="gnb_email" href="<!--@if($layout_info->gnb_mail_link)-->{$layout_info->gnb_mail_link}<!--@else-->mailto:{$layout_info->mailto2}<!--@end-->" title="메일 보내기" onfocus=this.blur()>&nbsp;&nbsp;<i class="fa11 fa fa-envelope"></i> &nbsp;{$lang->xe_email} &nbsp;</a>
 		 <!--@else--><!--@end-->
 
-                  
+
            <span cond="$layout_info->lang_on=='Y'" style="margin-left:10px; float:left; z-index:4000; position:relative;top:-3px"> <include target="lang/include.selector.lang.html" /></span>
-                    
-		 </span>		
-								
-					
-					
-				
+
+		 </span>
+
+
+
+
 					</li><!-- .mini-cart -->
 				</ul><!-- .head_tip -->
-				
+
 
 		</div><!-- .head_wrap -->
 	</div><!-- .head_w -->
@@ -129,7 +129,7 @@
 
 </div><!-- .head_box3 -->
 
-</div>					
+</div>
 
 
 
@@ -149,77 +149,81 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
 
 
 <div id="wrapper">
-		<div class="header-wrapper">			
+		<div class="header-wrapper">
 
 		<div id="head_box" class="body_width" role="banner" style="">
-			<div class=""> 
-				<div class="head_wrap" >	 					
-					
-
-																									
-					 												  
+			<div class="">
+				<div class="head_wrap">
+					{@ $logo_img = '' }
+          <!--@if($layout_info->logo_top)-->
+          	{@ $logo_img = $layout_info->logo_top}
+          <!--@else-->
+          	{@ $logo_img = 'img/logo.png'}
+          <!--@end-->
 					<div id="logo" >
-						<a href="<!--@if($layout_info->logo_url)-->{$layout_info->logo_url}<!--@else-->portalon<!--@end-->" title="PortalOn" rel="home" ><img src="<!--@if($layout_info->logo_top)-->{$layout_info->logo_top}<!--@else-->img/logo.png<!--@end-->" class="header_logo" alt="PortalOn"/></a>
+						<a href="<!--@if($layout_info->logo_url)-->{$layout_info->logo_url}<!--@else-->portalon<!--@end-->" title="PortalOn" rel="home" >
+							<img src="{$logo_img}" class="header_logo" alt="PortalOn"/>
+						</a>
 					</div><!-- .logo -->
-					
+
 			<!-- 통합 검색 -->
 			<!--@if($layout_info->sch_on=='ON')-->
-			<div class="right-links" >	 						 
+			<div class="right-links" >
 			<ul  class="head_tip">
-			 
-			<li class="mini-cart" >								
-			  
+
+			<li class="mini-cart" >
+
 			 <span class="m_search">
 			   <form action="{getUrl()}" method="get" class="search"  no-error-return-url="true" >
                <input type="hidden" name="vid" value="{$vid}" />
 			   <input type="hidden" name="mid" value="blog_new" />
-               <input type="hidden" name="where" value="document" />	   
+               <input type="hidden" name="where" value="document" />
                <input type="hidden" name="act" value="IS" />
-               <input type="hidden" name="search_target" value="title_content" />  
-			   <input name="is_keyword" type="text" title="" class="search_input" />	        
+               <input type="hidden" name="search_target" value="title_content" />
+			   <input name="is_keyword" type="text" title="" class="search_input" />
 			   <button type="submit" style="padding-top:3px; width:26px; height:26px; cursor:pointer;"><i class="fa18 fa fa-search" /></i></button>
-             </form> 
-		     </span>	 	
-            
-             
-             
+             </form>
+		     </span>
+
+
+
 
 			</li><!-- .mini-cart -->
 			</ul><!-- .head_tip -->
 			</div><!-- .right-links -->
 
 			<!--@elseif($layout_info->sch_on=='BAN')-->
-			
+
 			<div class="right-links" style="position:relative; top:<!--@if($layout_info->gnb_ban_h)-->{$layout_info->gnb_ban_h}<!--@else-->24<!--@end-->px; left:<!--@if($layout_info->gnb_ban_l)-->{$layout_info->gnb_ban_l}<!--@else-->0<!--@end--> ">
-							<ul id="" class="" >	
+							<ul id="" class="" >
                        <li id="" class="" >
                                <!--  xe/widgets/navigator/skins/tree  xe_tree 아닌 tree 추후 보완 현재 중앙분리선 제거 배너용으로만 사용가능 -->
-                               {$layout_info->xe_hori_right}	
-							   
-                        </li>				                        								
-                           </ul>  <!-- site-navigation -->		
+                               {$layout_info->xe_hori_right}
+
+                        </li>
+                           </ul>  <!-- site-navigation -->
                      </div> <!-- .left-links -->
 			<!--@else-->
-			<div class="right-links" >	 						 
+			<div class="right-links" >
 			<ul  class="head_tip">
-			 
-			<li class="mini-cart" >								
-			  
-			
-			 
+
+			<li class="mini-cart" >
+
+
+
 
 			</li><!-- .mini-cart -->
 			</ul><!-- .head_tip -->
 			</div><!-- .right-links -->
-			
+
 			<!--@end-->
-				  				
-			
+
+
 
 
 		</div><!-- .large-12 -->
-	</div><!-- .row -->	
+	</div><!-- .row -->
 
-</div><!-- .header -->	
-</div><!-- .header-wrapper -->	
-</div>	<!-- wrapper -->		  
+</div><!-- .header -->
+</div><!-- .header-wrapper -->
+</div>	<!-- wrapper -->
