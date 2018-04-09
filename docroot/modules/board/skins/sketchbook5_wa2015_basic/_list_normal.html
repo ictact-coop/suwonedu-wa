@@ -1,0 +1,142 @@
+<!--@if($order_type=="desc")-->
+{@
+$order_icon="down";
+$order_type="asc";
+}
+<!--@else-->
+{@
+$order_icon="up";
+$order_type="desc";
+}
+<!--@end-->
+
+{@
+	$mi->thumbnail_width = 205;
+	$mi->thumbnail_height = 150;
+    $mi->gall_tl_cut = 50;
+    $mi->content_cut_size = 80;
+}
+
+<!-- autolink 주소 복사 스크립 -->
+<script language="JavaScript">
+<!--
+function copy(url) {
+ window.clipboardData.setData("Text",url);
+ alert('주소가 복사되었습니다.');
+}
+//-->
+</script>
+<style type="text/css">
+<block cond="$mi->use_category!='Y'">
+#bd_lst{margin-top:0}
+</block>
+<block cond="$mi->lst_viewer=='Y'">
+#bd_lst .hx{position:relative;text-decoration:none}
+</block>
+#bd_lst .cate span,#bd_lst .author span,#bd_lst .last_post small{max-width:{$mi->normal_lst_tdW}px}
+
+#tmb_lst li{float:left; width:200px; height:300px; margin-right:30px;}
+#tmb_lst .no_img{width:200px;<!--@if($mi->thumbnail_type=='crop')-->height:{$mi->thumbnail_height}px;line-height:{$mi->thumbnail_height}px<!--@else-->height:{$mi->thumbnail_width}px;line-height:{$mi->thumbnail_width}px<!--@end-->}
+#tmb_lst .deco_img{background-image:url({$mi->deco_img})}
+#tmb_lst .tmb_wrp,#tmb_lst.frame_style .tmb_wrp{max-width:{$mi->thumbnail_width}px;{$mi->thumb_css} }
+<block cond="$mi->tmb_hover_bg">
+.tmb_wrp .info{background:#{$mi->color};color:#FFF;<!--@if($mi->tmb_hover_bg=='3')-->filter:alpha(opacity=80);opacity:.8<!--@end-->}
+</block>
+<block cond="$mi->gall_deg">
+#tmb_lst .tmb_wrp{ -moz-transition:-moz-transform .5s;-webkit-transition:-webkit-transform .5s;transition:transform .5s}
+#tmb_lst .tmb_wrp:hover{z-index:1;-ms-transform:rotate(0) !important;-moz-transform:rotate(0) !important;-webkit-transform:rotate(0) !important;transform:rotate(0) !important}
+</block>
+
+@media screen and (max-width:533px){
+<!--@if($mi->thumbnail_width > 280)-->
+#tmb_lst li{width:100%}
+<!--@elseif($mi->thumbnail_width > 140)-->
+#tmb_lst li{width:46%;padding:0 2% 4%}
+<!--@else-->
+#tmb_lst li{width:33%}
+<!--@end-->
+}
+
+#Topic {margin:0 0 30px 0; padding:0; overflow:hidden; height:290px;}
+#Topic li {list-style:none; padding:15px; border:1px solid #CCC; margin:0 6px 4px; height:290px;}
+#Topic img {border:1px solid #333}
+#Topic span {color:#999; font-size:11px}
+</style>
+
+
+
+<p cond="!$document_list && !$notice_list" class="no_doc">{$lang->no_documents}</p>
+
+<!--// 공지사항(Topic)을 갤러리형식으로 노출 -->
+<ul id="Topic" cond="$notice_list">
+<li loop="$notice_list=>$no,$document" cond="$category_list[$document->get('category_srl')]->selected||$category==''" class="span4">
+	<div class="tmb_wrp" style="background-color:#000;" >
+		<!--// 썸네일 -->
+		<span cond="!$document->thumbnailExists()" class="no_img tmb">No Image</span>
+		<block cond="$document->thumbnailExists()"><a href="{getUrl('document_srl',$document->document_srl,'listStyle',$listStyle, 'cpage','')}" ><img class="tmb" src="{$document->getThumbnail($mi->thumbnail_width, $mi->thumbnail_height, $mi->thumbnail_type)}" alt="" /></a></block>
+	</div>
+	<!--// 제목 -->
+	<p style="font-weight:bold; height:30px;"><a href="{getUrl('document_srl',$document->document_srl,'listStyle',$listStyle, 'cpage','')}" style="color:#333; text-decoration:none" >{$document->getTitle($mi->gall_tl_cut)}</a></p>
+    <p><a href="{getUrl('document_srl',$document->document_srl,'listStyle',$listStyle, 'cpage','')}" style="color:#333; text-decoration:none" >{$document->getSummary($mi->content_cut_size)}</a> <span>{$document->getRegdate('Y.m.d')}</span></p>
+</li>
+</ul>
+
+<div style="border-bottom:1px solid #ccc; padding-bottom:5px; ">
+<div style=" float:left; font-size:14px; font-weight:bold; color:#ee7600"><i class="icon-file-text-alt"></i> 전체리스트</div>
+<div style="float:right">TOTAL : <span style="font-weight:bold; color:#ee7600">{number_format($total_count)}</span> DB</div>
+<div style="clear:both"></div>
+</div>
+<table cond="$document_list || $notice_list" class="bd_lst bd_tb_lst bd_tb">
+	<caption class="blind">List of Articles</caption>
+
+	<tbody>
+		
+		<!--// Normal -->
+		<tr loop="$document_list=>$no,$document" class="select"|cond="$document_srl==$document->document_srl" cond="$document->variables[status]!='SECRET'||$logged_info->is_admin=='Y'||$logged_info->member_srl==$document->variables[member_srl]">
+			<block loop="$list_config=>$key,$val">
+
+			<block cond="$val->type=='title' && $val->idx==-1">
+			<td cond="!$mi->show_cate && $mi->use_category=='Y' && $category==''" class="cate"><span style="padding:2px 5px; font-size:12px; border-radius:3px; border:1px solid #CCC; background-color:{$category_list[$document->get('category_srl')]->color}"|cond="$category_list[$document->get('category_srl')]->color!='transparent'">{$category_list[$document->get('category_srl')]->title}</span></td>
+			<td class="title">
+				<!--// 제목 -->
+				<!--@if(!$mi->preview || (@!in_array('tx',$mi->preview) && !$document->thumbnailExists()))-->
+				<a <!--@if(!$mi->link_board)-->href="{getUrl('document_srl',$document->document_srl,'listStyle',$listStyle,'cpage','')}"<!--@else-->href="{$document->getExtraEidValue('link_url')}" target="_blank"<!--@end--> class="hx" data-viewer="{getUrl('document_srl',$document->document_srl,'listStyle','viewer','page','')}">
+					{$document->getExtraEidValue('title_sub')}  {$document->getTitle($mi->subject_cut_size)}
+				</a>
+				<!--@else-->
+				<a <!--@if(!$mi->link_board)-->href="{getUrl('document_srl',$document->document_srl,'listStyle',$listStyle,'cpage','')}"<!--@else-->href="{$document->getExtraEidValue('link_url')}" target="_blank"<!--@end--> class="hx bubble no_bubble<!--@if(@!in_array('tx',$mi->preview))--> only_img<!--@end-->" data-viewer="{getUrl('document_srl',$document->document_srl,'listStyle','viewer','page','')}">
+					{$document->getTitle($mi->subject_cut_size)}
+					<span cond="!$document->isSecret()" class="wrp">
+						<img cond="$document->thumbnailExists() && @in_array('img',$mi->preview)" src="{$document->getThumbnail($mi->thumbnail_width,$mi->thumbnail_height,$mi->thumbnail_type)}" alt="" />
+						<span class="speech">{htmlspecialchars($document->getSummary($mi->preview_tx))}</span><i class="edge"></i>
+						<!--// ie8; --><i class="ie8_only bl"></i><i class="ie8_only br"></i>
+					</span>
+				</a>
+				<!--@end-->
+				<block cond="!$mi->link_board">
+				<a cond="$document->getCommentCount()" href="{getUrl('document_srl', $document->document_srl)}#{$document->document_srl}_comment" class="replyNum" title="{$lang->comment}">{$document->getCommentCount()}</a>
+				<a cond="$document->getTrackbackCount()" href="{getUrl('document_srl', $document->document_srl)}#{$document->document_srl}_trackback" class="trackbackNum" title="{$lang->trackback}">{$document->getTrackbackCount()}</a>
+				</block>
+				<!--첨부파일 이미지 들어있던 자리-->
+				<a cond="$mi->link_board && $document->isEditable()" class="link_modify" href="{getUrl('document_srl',$document->document_srl)}">{$lang->cmd_modify}</a>
+			</td>
+			</block>
+			<td class="author" cond="$val->type=='nick_name' && $val->idx==-1"><span><a href="#popup_menu_area" class="member_{$document->get('member_srl')}" onclick="return false">{$document->getNickName()}</a></span></td>
+			<td class="author" cond="$val->type=='user_id' && $val->idx==-1"><span>{$document->getUserID()}</span></td>
+			<td class="author" cond="$val->type=='user_name' && $val->idx==-1"><span>{$document->getUserName()}</span></td>
+			<td class="time" cond="$val->type=='regdate' && $val->idx==-1" title="{getTimeGap($document->get('regdate'), "H:i")}">{$document->getRegdate('Y.m.d')}</td>
+			<td class="time last_update m_no" cond="$val->type=='last_update' && $val->idx==-1">{zdate($document->get('last_update'),'Y.m.d')}</td>
+			<td class="time last_post m_no" cond="$val->type=='last_post' && $val->idx==-1">
+				<block cond="(int)($document->get('comment_count'))>0">
+					<a href="{getUrl('document_srl',$document->document_srl)}#{$document->document_srl}_comment" title="{getTimeGap($document->get('last_update'), "H:i")}">{zdate($document->get('last_update'),'Y.m.d')}<small cond="$document->getLastUpdater()">(by {$document->getLastUpdater()})</small></a>
+				</block>
+				<block cond="(int)($document->get('comment_count'))==0">&nbsp;</block>
+			</td>
+			<td cond="$val->type=='readed_count' && $val->idx==-1" class="m_no">{$document->get('readed_count')>0?$document->get('readed_count'):'0'}</td>
+			<td cond="$val->type=='voted_count' && $val->idx==-1" class="m_no">{$document->get('voted_count')!=0?$document->get('voted_count'):'0'}</td>
+			<td cond="$val->idx!=-1" class="<!--@if($val->eid=='link_url')-->link_url<!--@else-->m_no<!--@end-->"><!--@if($val->eid=='rating')--><span class="starRating" title="{$document->getExtraValueHTML($val->idx)}{$lang->score}"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></span><!--@else-->{$document->getExtraValueHTML($val->idx)}<!--@end--></td>
+			</block>
+			<td cond="$grant->manager" class="check m_no"><input type="checkbox" name="cart" value="{$document->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" /></td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,14 @@
+<!--#include("_header.html")-->
+<div class="message_box" style="border-top:2px solid #333;">
+	<h3>{$lang->confirm_delete}</h3>
+	<form action="./" method="get" onsubmit="return procFilter(this, delete_document)">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="page" value="{$page}" />
+		<input type="hidden" name="document_srl" value="{$document_srl}" />
+		<div style="text-align: center; padding: 10px 0;">
+			<input type="submit" value="{$lang->cmd_delete}" class="form-button bold form-button-default form-button-blue"/>
+			<button type="button" onclick="history.back()" class="form-button bold form-button-default form-button-grey">{$lang->cmd_cancel}</button>
+		</div>
+	</form>
+</div>
+<!--#include("_footer.html")-->

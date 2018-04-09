@@ -1,0 +1,266 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: ng;
+    font-style: normal;
+    font-weight: 700;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+    src: local(※), url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2) format('x-woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family: ng;
+    font-style: normal;
+    font-weight: 400;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+    src: local(※), url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2) format('x-woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: ng;
+    font-style: normal;
+    font-weight: 800;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot);
+    src: local(※), url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff2) format('x-woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+
+.board{ font-family:ng; font-size:12px;}
+.board .iText,
+.board textarea,
+.board select{border:1px solid}
+.board label{cursor:pointer}
+.board img{border:0}
+/* Board Header */
+.boardHeader h1{padding: 10px 0; font-size:24px; margin: 0;}
+.boardHeader .boardDescription{padding:15px;position:relative; border:1px solid #ddd;border-radius: 5px;}
+
+/* Board List Form */
+.boardListForm{margin:0;line-height:normal}
+.boardListForm *{margin:0;padding:0}
+.boardListForm fieldset{border:0;clear:both}
+.boardListForm fieldset:after{content:"";display:block;float:none;clear:both}
+.boardListForm legend{position:absolute;width:0;height:0;overflow:hidden;font:0/0 Sans-serif;visibility:hidden}
+/* Board List */
+.boardList{border:0;border-top:2px solid;width:100%; font-family:ng;}
+.boardList a{text-decoration:none}
+.boardList a:hover,
+.boardList a:active,
+.boardList a:focus{text-decoration:underline}
+.boardList .inputCheck{width:13px;height:13px}
+
+.boardList th{border:0;border-bottom:1px solid;padding:13px 6px;white-space:nowrap;text-align:center;line-height:normal;font-weight:normal}
+.boardList th.title{width:100%}
+.boardList th a .sort{vertical-align:middle;margin:0 5px}
+.boardList td{border:0;border-bottom:1px solid;padding:12px 6px;white-space:nowrap;text-align:center;line-height:normal;vertical-align:top}
+.boardList td.title{width:100%;white-space:normal;text-align:left; font-weight:bold;}
+.boardRead{position: relative;}
+
+/* Extra Var Table */
+.extraVarsList{width:100%;border:0;border-bottom:1px solid;margin-bottom:15px; font-family:ng;}
+.extraVarsList caption{text-align:right}
+.extraVarsList em{font-style:normal;font-weight:normal}
+.extraVarsList th,
+.extraVarsList td{border:0;padding: 10px 10px;text-align:left;border-top:1px solid;vertical-align:center;}
+.extraVarsList th{white-space:nowrap; padding-left: 20px;}
+.extraVarsList td{width:80%}
+.extraVarsList td p{display:block;*display:block;margin:3px 0}
+.extraVarsList td *{vertical-align:middle}
+.extraVarsList td li{display:inline;margin-right:10px}
+.extraVarsList td .iText{padding:6px;font-size:12px;width:99%;display:block}
+.extraVarsList td .inputNum{padding:3px 4px;font-size:12px;width:50px;border:1px solid}
+.extraVarsList td .inputCheck{width:13px;height:13px;margin-right:5px}
+.extraVarsList td select{font-size:12px}
+.extraVarsList td textarea{padding:3px 4px;font-size:12px;width:96%;display:block;overflow:auto}
+.extraVarsList .info_btn{position: relative; padding: 15px 10px; text-align: left; cursor: pointer;}
+.extraVarsList .info_p{padding: 2%; width: 95.5%;}
+.extraVarsList .info_box{padding:5px 0; border-bottom:2px solid #333; text-align: center;}
+/* 확장 변수 폼 */
+.extraVarsList tr td input,
+.extraVarsList tr td textarea{font-size:12px;border-radius: 3px;}
+.extraVarsList tr td .text{border:1px solid;border-color:#ddd;padding:6px;margin-right:10px;width:99%}
+.extraVarsList tr td .email_address{border:1px solid;border-color:#ddd;padding:6px;margin-right:10px;width:300px}
+.extraVarsList tr td .homepage{border:1px solid;border-color:#ddd;padding:6px;margin-right:10px;width:300px}
+.extraVarsList tr td .tel{border:1px solid;border-color:#ddd;padding:6px;margin-right:10px;width:60px;margin-right:10px}
+.extraVarsList tr td .textarea{border:1px solid;border-color:#ddd;padding:6px;margin-right:10px;width:90%;height:80px}
+.extraVarsList tr td ul{margin:0;padding:0;list-style:none}
+.extraVarsList tr td ul li{display:inline-block;margin-right:10px}
+.extraVarsList tr td ul li input{margin-right:5px;vertical-align:middle}
+.extraVarsList tr td .date{border:1px solid;border-color:#ddd;padding:6px;margin-right:0px;width:100px}
+.extraVarsList tr td .address{border:1px solid;border-color:#ddd;padding:6px;margin-right:5px;width:300px}
+.extraVarsList tr td select{border:1px solid;border-color:#ddd;padding:6px;}
+.extraVarsList tr td a span{ padding: 5px 10px; border:1px solid;border-color:#ddd; font-family:ng;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    
+    font-weight: bold; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    font-weight: bold; text-align:center; text-decoration:none; 
+    color: #444444; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: #f3f3f3;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#e8e8e8));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(white), to(#e8e8e8));
+    background: -moz-linear-gradient(center top, white, #e8e8e8);
+    background: linear-gradient(#ffffff, #e8e8e8);
+    
+    border-radius: 3px;
+    border: 1px solid transparent; 
+    border-color: #d0d0d0;}
+.extraVarsList tr td input[type="button"]{padding: 5px 10px; border:1px solid;border-color:#ddd; font-family:ng;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    
+    font-weight: bold; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    font-weight: bold; text-align:center; text-decoration:none; 
+    color: #444444; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: #f3f3f3;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#e8e8e8));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(white), to(#e8e8e8));
+    background: -moz-linear-gradient(center top, white, #e8e8e8);
+    background: linear-gradient(#ffffff, #e8e8e8);
+    
+    border-radius: 3px;
+    border: 1px solid transparent; 
+    border-color: #d0d0d0;}
+.extraVarsList tr td input[type="button"]:hover{
+    border-color: #bebebe;
+    background: #eeeeee;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#dedede));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(white), to(#dedede));
+    background: -moz-linear-gradient(center top, white, #dedede);
+    background: linear-gradient(#ffffff, #dedede);
+}
+.extraVarsList tr td a{ text-decoration: none;}
+.extraVarsList tr td textarea{width:100%; font-family:ng;}
+/* Pagination */
+.pagination{padding:15px 0;margin:0;text-align:center; font-family:ng;}
+.pagination *{margin:0;padding:0}
+.pagination img{border:0}
+.pagination a,
+.pagination strong{position:relative;display:inline-block;text-decoration:none;line-height:normal;color:#4d4d4d;font-family:Tahoma, Sans-serif;margin:0;padding:2px 6px;font-size:11px;vertical-align:middle}
+.pagination strong{color:#ff3636 !important;border:1px solid #e7e7e7}
+.pagination a.prev,
+.pagination a.prevEnd,
+.pagination a.next,
+.pagination a.nextEnd{font-weight:normal !important;margin:0 !important;white-space:nowrap;text-decoration:none !important;border:1px solid #e7e7e7;background-image:url(../img/common/arrowPagination.gif);background-repeat:no-repeat}
+.pagination a.prevEnd{padding-left:14px;background-position:left center}
+.pagination a.nextEnd{padding-right:14px;background-position:right center}
+
+.etc{float: left;}
+.form-button {
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    
+    font-weight: bold; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    font-weight: bold; text-align:center; text-decoration:none; 
+    border: 1px solid transparent; border-radius: 3px; 
+}
+.form-button-default {
+    height: 33px; line-height: 33px; padding: 0 15px;
+    font-size: 12px; 
+}
+.form-button-blue {
+    color: #fff; text-shadow: 0 -px 0 rgba(0, 0, 0, 0.25);
+    border-color: #2f426f;
+    background: #3c5fa8;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#476fc2), to(#314f8e));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(#476fc2), to(#314f8e));
+    background: -moz-linear-gradient(center top, #476fc2, #314f8e);
+    background: linear-gradient(#476fc2, #314f8e);
+}
+.form-button-blue:hover {
+    border-color: #0055a7;
+    background: #016bdc;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#008aea), to(#024dcf));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(#008aea), to(#024dcf));
+    background: -moz-linear-gradient(center top, #008aea, #024dcf);
+    background: linear-gradient(#008aea, #024dcf);
+}
+.form-button-blue:active {
+    border-color: #0055a7; 
+    background: #016bdc; 
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#008aea), to(#024dcf)); 
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(#008aea), to(#024dcf)); 
+    background: -moz-linear-gradient(center top, #008aea, #024dcf); 
+    background: linear-gradient(#008aea, #024dcf);
+    
+    -webkit-box-shadow: inset 0 0 10px #083379; 
+    -moz-box-shadow: inset 0 0 10px #083379; 
+    box-shadow: inset 0 0 10px #083379;
+}
+
+.form-button-dec {
+    height: 33px; line-height: 31px; padding: 0 15px;
+    font-size: 14px; 
+}
+.form-button-grey { 
+    color: #444444; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: #f3f3f3;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#e8e8e8));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(white), to(#e8e8e8));
+    background: -moz-linear-gradient(center top, white, #e8e8e8);
+    background: linear-gradient(#ffffff, #e8e8e8);
+    
+    border-radius: 3px;
+    border: 1px solid transparent; 
+    border-color: #d0d0d0;
+}
+.form-button-grey:hover {
+    border-color: #bebebe;
+    background: #eeeeee;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#dedede));
+    background: -webkit-linear-gradient(0% 0%, 0% 100%, from(white), to(#dedede));
+    background: -moz-linear-gradient(center top, white, #dedede);
+    background: linear-gradient(#ffffff, #dedede);
+}
+.form-button-grey:active {box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);}
+.message_box{padding: 20px 30px; text-align: center; background-color: #eee; border-bottom: 1px solid #ddd;}
+
+/* 반응형 */
+@media all and (max-width:481px) {
+    .board{margin: 10px 0;}
+    .extraVarsList th{width:20%;}
+    .extraVarsList td{width:80%;}
+    .reading,.check,.checkbox{display:none;}
+    .extraVarsList tr td .tel{width:98%;}
+    .extraVarsList th{padding: 0 10px; text-align: center;}
+    .extraVarsList tr td .address{width:96%;}
+    .extraVarsList tr td a span{ width: 100%;}
+    .extraVarsList tr td select{width:90%;}
+    .m_btn{ width: 100%; margin: 3px 0;}
+    .no_btn{display:none;}
+   .reading,.check,.checkbox{display:none;}
+}
+@media all and (min-width:481px) and (max-width:1024px) {
+    /* 481px 이상 1024px 이하 해상도에서 실행할 CSS 코드를 여기에 작성 */
+   .board{margin: 10px;}
+   .extraVarsList th{width:20%;}
+   .extraVarsList td{width:80%;}
+   .extraVarsList tr td .address{width:65%;}
+}

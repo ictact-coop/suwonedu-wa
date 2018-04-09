@@ -1,0 +1,83 @@
+{@
+	if(!$module_info->content_use) $module_info->content_use = 'y'
+}
+<block cond="$module_info->content_use == 'n'"><!--%import("insert.xml")--></block>
+<block cond="$module_info->content_use == 'y'"><!--%import("../../tpl/filter/insert.xml")--></block>
+<style>
+	.extraVarsList ul{padding:0; margin: 0; width: 100%;}
+	.extraVarsList ul li{padding:8px 0; margin: 0; float: left; display:block;}
+	.extraVarsList ul .th{width: 20%; background-color: #eee;}
+	.extraVarsList ul .td{width: 80%;}
+</style>
+<form  action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="boardWrite">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
+	<input type="hidden" name="document_srl" value="{$document_srl}" />
+	<input type="hidden" name="password" class="iText userPw" value="{date("Ymd")}"/>
+	<input type="hidden" name="status" value="SECRET">
+    <div class="extraVarsList" style="border-top:2px solid #333;">
+		<!--// 개인정보취급정보 -->
+	    <ul loop="$extra_keys=>$key,$val" cond="$val->eid=='agree'">
+	    	{@
+	    		if(!$module_info->info_rows) $module_info->info_rows = 3;
+	    		}
+	        <li class="th">{$val->name} <em cond="$val->is_required=='Y'">*</em></li>
+	        <li class="td">
+	        	<p><textarea rows="{$module_info->info_rows}" name="agree_info" style="padding: 10px;">{$module_info->info_p}</textarea></p>
+	        	{$val->getFormHTML()}
+	    	</li>
+	    </ul>
+		<!--// 제목 -->
+		<ul cond="!$module_info->title_message">
+	        <li class="th">{$lang->title}</li>
+	        <li class="td">
+				<!--@if($oDocument->getTitleText())-->
+				<input type="text" name="title" id="postTitle" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
+				<!--@else-->
+				<input type="text" name="title" id="postTitle" class="iText" value="" title="{$lang->title}" onfocus="if(this.value==this.title) this.value='';" />
+				<!--@end-->
+	        </li>
+	    </ul>
+		<block cond="$module_info->title_message">
+			<!--@if($oDocument->getTitleText())-->
+			<input type="hidden" name="title" id="postTitle" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
+			<!--@else-->
+			<input type="hidden" name="title" id="postTitle" class="iText" value="{$module_info->title_message}" title="{$lang->title}" onfocus="if(this.value==this.title) this.value='';" />
+			<!--@end-->
+		</block>
+		<!--// 글쓴이 -->	
+		<ul cond="!$module_info->writer_message">
+	        <li class="th">{$lang->writer}</li>
+	        <li class="td"><input type="text" name="nick_name" class="iText userName" value="" title="{$lang->writer}" onfocus="if(this.value==this.title)this.value='';return false;" /></li>
+	    </ul>
+	    <input type="hidden" name="nick_name" value="{$module_info->writer_message}" cond="$module_info->writer_message"/>
+		<!--// 메일 -->
+		<ul cond="!$module_info->email_message">
+	        <li class="th">{$lang->email_address}</li>
+	        <li class="td"><input type="text" name="email_address" class="iText emailAddress" value="" title="{$lang->email_address}"  onfocus="if(this.value==this.title)this.value='';return false;" /></li>
+	    </ul>
+	    <input type="hidden" name="email_address" value="{$module_info->email_message}" cond="$module_info->email_message"/>
+		<!--// 사용자정의 -->
+	    <!--@if(count($extra_keys))-->
+	        {@
+	            $oDocumentController = &getController('document');
+	            $oDocumentController->addXmlJsFilter($module_info->module_srl);
+	        }
+	    <ul loop="$extra_keys=>$key,$val" cond="$val->eid!='agree'">
+	        <li class="th">{$val->name} <!--@if($val->is_required=='Y')--><em>*</em><!--@end--></li>
+	        <li class="td">
+	        	{$val->getFormHTML()}
+	    	</li>
+	    </ul>
+	    <!--@end-->
+		<!--// 내용 -->
+	    <ul cond="$module_info->content_use == 'y'">
+	    	<li class="th">내용</li>
+	    	<li class="td">{$oDocument->getEditor()}</li>
+	    </ul>
+    </div>
+	<p style="text-align: center;">
+		<span class="btn"><a href="{getUrl('document_srl','')}">취소</a></span>
+		<span class="btn"><input type="submit" value="보내기" class="btn_send" /></span>
+	</p>
+</form>

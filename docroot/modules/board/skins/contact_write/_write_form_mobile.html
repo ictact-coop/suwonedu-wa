@@ -1,0 +1,109 @@
+<!--@if($module_info->colorset == "black")-->
+	<!--%import("css/m_board_black.css")-->
+<!--@else-->
+	<!--%import("css/m_board.css")-->
+<!--@end-->
+<!--%import("insert.xml")-->
+<load target="../../../../common/js/jquery.min.js" usecdn="true" index="-100006" />
+<load target="../../../../common/js/xe.min.js" usecdn="true" index="-100006" />
+<load target="../../../../common/js/x.min.js" usecdn="true" index="-100006" />
+<load target="../../tpl/js/board.js" />
+
+<form action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="boardWrite" >
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
+	<input type="hidden" name="document_srl" value="{$document_srl}" />
+	<input type="hidden" name="password" value="{date('hndisy')}"/>
+	<input type="hidden" name="status" value="SECRET">
+    <table cellspacing="0" summary="Extra Form" class="extraVarsList" style="border-top:2px solid #333;">
+	<block cond="!$is_logged && $module_info->info_use == ''">
+	<!--// 개인정보취급정보 -->
+	<block cond="$module_info->info_open == 'n'"><!--%import("down.js")--></block>
+    <tr loop="$extra_keys=>$key,$val" cond="$val->eid=='agree'">
+    	{@
+    		if(!$module_info->info_rows) $module_info->info_rows = 3;
+    		}
+        <th scope="col" colspan="2" class="info_btn">
+        	{$val->name}
+        	<span class="form-button form-button-default form-button-grey" style="position:absolute; top:5px; right:10px;" cond="$module_info->info_open == 'n'">약관보기</span>
+        	<em cond="$val->is_required=='Y'">*</em>
+    	</th>
+    <tr>
+    </tr>
+        <td class="info_box" colspan="2">
+        	<textarea rows="{$module_info->info_rows}" name="agree_info" class="info_p" style="display: none;"|cond="$module_info->info_open == 'n'">{$module_info->info_p}</textarea>
+        	<p>{$val->getFormHTML()}</p>
+    	</td>
+    </tr>
+    </block>
+	<!--// 제목 -->
+	<tr cond="!$module_info->title_message">
+        <th scope="row" cond="!$module_info->title_name">{$lang->title}</th>
+        <th scope="row" cond="$module_info->title_name">{$module_info->title_name}</th>
+     <tr>
+ 	</tr>  
+        <td>
+			<!--@if($oDocument->getTitleText())-->
+			<input type="text" name="title" id="postTitle" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
+			<!--@else-->
+			<input type="text" name="title" id="postTitle" class="iText" value="" title="{$lang->title}" onfocus="if(this.value==this.title) this.value='';" />
+			<!--@end-->
+        </td>
+    </tr>
+	<block cond="$module_info->title_message">
+		<!--@if($oDocument->getTitleText())-->
+		<input type="hidden" name="title" id="postTitle" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
+		<!--@else-->
+		<input type="hidden" name="title" id="postTitle" class="iText" value="{$module_info->title_message}" title="{$lang->title}" onfocus="if(this.value==this.title) this.value='';" />
+		<!--@end-->
+	</block>
+	<!--// 글쓴이 -->	
+	<tr cond="!$module_info->writer_message">
+        <th scope="row" cond="!$module_info->writer_name">{$lang->writer}</th>
+        <th scope="row" cond="$module_info->writer_name">{$module_info->writer_name}</th>
+     <tr>
+ 	</tr>  
+        <td><input type="text" name="nick_name" class="iText userName" value="" title="{$lang->writer}" onfocus="if(this.value==this.title)this.value='';return false;" /></td>
+    </tr>
+    <input type="hidden" name="nick_name" value="{$module_info->writer_message}" cond="$module_info->writer_message"/>
+	<!--// 메일 -->
+	<tr cond="!$module_info->email_message">
+        <th scope="row" cond="!$module_info->email_name">{$lang->email_address}</th>
+        <th scope="row" cond="$module_info->email_name">{$module_info->email_name}</th>
+     <tr>
+ 	</tr>  
+        <td><input type="text" name="email_address" class="iText emailAddress" value="" title="{$lang->email_address}"  onfocus="if(this.value==this.title)this.value='';return false;" /></td>
+    </tr>
+    <input type="hidden" name="email_address" value="{$module_info->email_message}" cond="$module_info->email_message"/>
+	<!--// 사용자정의 -->
+    <!--@if(count($extra_keys))-->
+        {@
+            $oDocumentController = &getController('document');
+            $oDocumentController->addXmlJsFilter($module_info->module_srl);
+        }
+    <block loop="$extra_keys=>$key,$val" cond="$val->eid!='agree'">
+    <tr>
+        <th scope="row">{$val->name} <!--@if($val->is_required=='Y')--><em>*</em><!--@end--></th>
+     <tr>
+ 	</tr>   
+        <td>
+        	{$val->getFormHTML()}
+    	</td>
+    </tr>
+    </block>
+    <!--@end-->
+	<!--// 내용 -->
+	{@
+		if(!$module_info->content_use) $module_info->content_use = 'y';
+	}
+    <tr cond="$module_info->content_use == 'y'">
+    	<th scope="row">{$lang->content}</th>
+     <tr>
+ 	</tr> 
+    	<td>{$oDocument->getEditor()}</td>
+    </tr>
+    </table>
+	<p style="text-align: center;">
+		<input type="submit" value="{$lang->cmd_submit}" class="form-button form-button-default form-button-blue m_btn" />
+	</p>
+</form>

@@ -1,0 +1,54 @@
+<!--@if($order_type=="desc")-->
+{@
+$order_icon="down";
+$order_type="asc";
+}
+<!--@else-->
+{@
+$order_icon="up";
+$order_type="desc";
+}
+<!--@end-->
+
+<p cond="!$document_list && !$notice_list" class="no_doc">{$lang->no_documents}</p>
+<table cond="$document_list || $notice_list" class="bd_lst bd_tb_lst bd_tb">
+	<caption class="blind">List of Articles</caption>
+		<thead class="bg_f_f9">
+		<!--// 테이블 헤더 -->
+		<tr>
+			<block loop="$list_config=>$key,$val">
+			<block cond="$val->type=='title' && $val->idx==-1">
+			<th scope="col" class="title"><span><a href="{getUrl('sort_index','title','order_type',$order_type)}"><!--@if(!$mi->link_board)-->단체명<!--@else-->{$lang->link_site}<!--@end--><i cond="$sort_index=='title'" class="arrow {$order_icon}"></i></a></span></th>
+			</block>
+			<th cond="$val->idx==-1" style="width:200px;">연락처/소재지</th>
+            <th cond="$val->idx==-1" style="width:40px;">링크</th>
+			</block>
+			<th scope="col" cond="$grant->manager" class="m_no"><span><input type="checkbox" onclick="XE.checkboxToggleAll({ doClick:true });" class="iCheck" title="Check All" /></span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--// Notice -->
+		
+		<!--// Normal -->
+		<tr loop="$document_list=>$no,$document" class="select"|cond="$document_srl==$document->document_srl" cond="$document->variables[status]!='SECRET'||$logged_info->is_admin=='Y'||$logged_info->member_srl==$document->variables[member_srl]">
+			<block loop="$list_config=>$key,$val">
+			<block cond="$val->type=='title' && $val->idx==-1">
+
+			<td class="title">
+				<!--// 제목 -->
+				<a <!--@if(!$mi->link_board)-->href="{getUrl('document_srl',$document->document_srl,'listStyle',$listStyle,'cpage','')}"<!--@else-->href="{$document->getExtraEidValue('link_url')}" target="_blank"<!--@end--> class="hx" data-viewer="{getUrl('document_srl',$document->document_srl,'listStyle','viewer','page','')}">
+					{$document->getTitle($mi->subject_cut_size)}
+				</a>
+
+				<!--첨부파일 이미지 들어있던 자리-->
+				<a cond="$mi->link_board && $document->isEditable()" class="link_modify" href="{getUrl('document_srl',$document->document_srl)}">{$lang->cmd_modify}</a>
+			</td>
+			</block>
+			
+			<td class="supervision" cond="$val->idx==-1" style="width:200px; overflow:hidden">{$document->getExtraEidValue('phone')}<br><span style=" display:block;word-break: keep-all;word-wrap: break-word;width:200px; overflow:hidden; text-overflow:ellipsis">{$document->getExtraEidValue('address')}</span></td>
+            <td cond="$val->idx==-1" style="width:40px; text-align:center; padding-right:0;"><a href="{$document->getExtraEidValue('link')}" target="_blank"><i class="xi-check-homeout"></i> </a></td>
+			</block>
+			<td cond="$grant->manager" class="check m_no"><input type="checkbox" name="cart" value="{$document->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" /></td>
+		</tr>
+	</tbody>
+</table>

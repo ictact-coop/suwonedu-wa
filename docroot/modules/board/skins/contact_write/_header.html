@@ -1,0 +1,25 @@
+<!--@if(!$module_info->colorset)-->
+    {@$module_info->colorset = "white"}
+<!--@end-->
+<!--%import("css/board.css")-->
+
+<!--@if($module_info->colorset == "black")-->
+	<!--%import("css/black.css")-->
+<!--@else-->
+	<!--%import("css/white.css")-->
+<!--@end-->
+<block cond="$module_info->cufon=='y'">
+	<!--// Cufon -->
+	<load target="font/cufon-yui.js" />
+	<load target="font/ngb.font.js" />
+	<script type="text/javascript">
+		Cufon.replace('.boardHeader h1')('.extraVarsList th');
+	</script>
+</block>
+{$module_info->header_text}
+
+<div class="board">
+    <div class="boardHeader">
+		<h1 cond="$module_info->title">{$module_info->title}</h1>
+		<p class="boardDescription" cond="$module_info->comment">{$module_info->comment}</p>
+    </div>

@@ -1,0 +1,68 @@
+<div class="boardRead" cond="$oDocument->isGranted()">
+	<p>
+		<h3 cond="$module_info->title_message">{$oDocument->getTitle()}</h3>
+		<span style="position: absolute; right: 0; top:10px;">{$oDocument->getRegdate('Y.m.d')} {$oDocument->getRegdate('H:i:s')}</span>
+	</p>
+    <table border="1" cellspacing="0" summary="Extra Form" class="extraVarsList" style="border-top:2px solid #333;">
+    <tr cond="!$module_info->title_message">
+        <th cond="!$module_info->title_name">{$lang->title}</th>
+        <th cond="$module_info->title_name">{$module_info->title_name}</th>
+        <td>{$oDocument->getTitle()}</td>
+    </tr>
+    <tr cond="!$module_info->writer_message">
+        <th cond="!$module_info->writer_name">{$lang->writer}</th>
+        <th cond="$module_info->writer_name">{$module_info->writer_name}</th>
+        <td>{$oDocument->getNickName()}</td>
+    </tr>
+    <tr cond="!$module_info->email_message">
+        <th cond="!$module_info->email_name">{$lang->email_address}</th>
+        <th cond="$module_info->email_name">{$module_info->email_name}</th>
+        <td><a href="mailto:{$oDocument->get('email_address')}">{$oDocument->get('email_address')}</a></td>
+    </tr>
+    <!--@if($oDocument->isExtraVarsExists() && (!$oDocument->isSecret() || $oDocument->isGranted()) )-->
+	    <!--@foreach($oDocument->getExtraVars() as $key => $val)-->
+	    <tr>
+	        <th>{$val->name}</th>
+	        <td>{$val->getValueHTML()}&nbsp;</td>
+	    </tr>
+	    <!--@end-->
+    <!--@end-->
+   <tr cond="$module_info->content_use=='y'">
+        <th>{$lang->content}</th>
+        <td>{$oDocument->getContent(false)}</td>
+    </tr>
+    <!--@if($oDocument->hasUploadedFiles())-->
+    <tr>
+        <th>{$lang->uploaded_file} ({$oDocument->get('uploaded_count')})</th>
+        <td>
+            {@ $uploaded_list = $oDocument->getUploadedFiles() }
+            <!--@foreach($uploaded_list as $key => $file)-->
+            <a href="{getUrl('')}{$file->download_url}" style="text-decoration: none;">{$file->source_filename}</a>
+            <span class="file_info">[File Size:{FileHandler::filesize($file->file_size)}/Download:{number_format($file->download_count)}]</span><br/>
+            <!--@end-->
+        </td>
+    </tr>
+    <!--@end-->
+    </table>
+    <div class="btnArea" style="text-align: right;" cond="$grant->manager">
+        <!--@if($oDocument->isEditable())-->
+        <a href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}" class="form-button form-button-default form-button-blue">{$lang->cmd_delete}</a>
+        <!--@end-->
+        <span class="etc">
+            <a href="{getUrl('document_srl','')}" class="form-button form-button-default form-button-grey">{$lang->cmd_list}</a>
+        </span>
+    </div>
+</div>
+<blcok cond="!$grant->manager">
+	<blcok cond="$module_info->sucess_message_alt == ''">
+		{@
+			if(!$module_info->sucess_message) $module_info->sucess_message = '" 발송되었습니다. 감사합니다. "'
+		}
+		<h4 class="message_box" >{$module_info->sucess_message}</h4>
+	</blcok>
+	<p style="text-align: center;" cond="$module_info->view_btn == ''">
+		{@ if(!$module_info->home_btn_name) $module_info->home_btn_name = '홈 바로가기' }
+	    <a href="{getUrl('document_srl','')}" class="form-button form-button-default form-button-blue" >{$lang->cmd_back}</a>
+	    <a href="{getUrl()}" class="form-button form-button-default form-button-grey">{$module_info->home_btn_name}</a>
+	</p>
+</blcok>

@@ -1,0 +1,102 @@
+<include target="_header.html" cond="$act=='dispBoardWrite'" />
+
+<block cond="$module_info->content_use == 'n'"><!--%import("insert.xml")--></block>
+<block cond="$module_info->content_use == 'y'"><!--%import("../../tpl/filter/insert.xml")--></block>
+
+<include cond="Mobile::isMobileCheckByAgent()" target="_write_form_mobile.html" />
+
+<form action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="boardWrite" cond="!Mobile::isMobileCheckByAgent()" >
+	<input type="hidden" name="mid" value="{$mid}" />
+	<!--@if(!$oDocument->getContentText() && $module_info->content_default)-->
+	<input type="hidden" name="content" value="{htmlspecialchars($module_info->content_default)}" />
+	<!--@else-->
+	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
+	<!--@end-->
+	<input type="hidden" name="document_srl" value="{$document_srl}" />
+	<input type="hidden" name="password" value="{date('hndisy')}"/>
+	<input type="hidden" name="status" value="SECRET">
+    <table cellspacing="0" summary="Extra Form" class="extraVarsList" style="border-top:2px solid #333;">
+	<block cond="!$is_logged && $module_info->info_use == ''">
+	<!--// 개인정보취급정보 -->
+	<block cond="$module_info->info_open == 'n'"><!--%import("down.js")--></block>
+    <tr loop="$extra_keys=>$key,$val" cond="$val->eid=='agree'">
+    	{@
+    		if(!$module_info->info_rows) $module_info->info_rows = 3;
+    		}
+        <th scope="col" colspan="2" class="info_btn">
+        	{$val->name}
+        	<span class="form-button form-button-default form-button-grey no_btn" style="position:absolute; top:5px; right:10px;" cond="$module_info->info_open == 'n'">약관보기</span>
+        	<em cond="$val->is_required=='Y'">*</em>
+    	</th>
+    <tr>
+    </tr>
+        <td class="info_box" colspan="2">
+        	<textarea rows="{$module_info->info_rows}" name="agree_info" class="info_p" style="display: none;"|cond="$module_info->info_open == 'n'">{$module_info->info_p}</textarea>
+        	<p>{$val->getFormHTML()}</p>
+    	</td>
+    </tr>
+    </block>
+	<!--// 제목 -->
+	<tr cond="!$module_info->title_message">
+        <th scope="row" cond="!$module_info->title_name">{$lang->title}</th>
+        <th scope="row" cond="$module_info->title_name">{$module_info->title_name}</th>
+        <td>
+			<!--@if($oDocument->getTitleText())-->
+			<input type="text" name="title" id="postTitle" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
+			<!--@else-->
+			<input type="text" name="title" id="postTitle" class="iText" value="" title="{$lang->title}" onfocus="if(this.value==this.title) this.value='';" />
+			<!--@end-->
+        </td>
+    </tr>
+	<block cond="$module_info->title_message">
+		<!--@if($oDocument->getTitleText())-->
+		<input type="hidden" name="title" id="postTitle" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
+		<!--@else-->
+		<input type="hidden" name="title" id="postTitle" class="iText" value="{$module_info->title_message}({date("Ymd-his")})" title="{$lang->title}" onfocus="if(this.value==this.title) this.value='';" />
+		<!--@end-->
+	</block>
+	<block cond="!$is_logged">
+	<!--// 글쓴이 -->	
+	<tr cond="!$module_info->writer_message">
+        <th scope="row" cond="!$module_info->writer_name">{$lang->writer}</th>
+        <th scope="row" cond="$module_info->writer_name">{$module_info->writer_name}</th>
+        <td><input type="text" name="nick_name" class="iText userName" value="" title="{$lang->writer}" onfocus="if(this.value==this.title)this.value='';return false;" /></td>
+    </tr>
+    <input type="hidden" name="nick_name" value="{$module_info->writer_message}" cond="$module_info->writer_message"/>
+	<!--// 메일 -->
+	<tr cond="!$module_info->email_message">
+        <th scope="row" cond="!$module_info->email_name">{$lang->email_address}</th>
+        <th scope="row" cond="$module_info->email_name">{$module_info->email_name}</th>
+        <td><input type="text" name="email_address" class="iText emailAddress" value="" title="{$lang->email_address}"  onfocus="if(this.value==this.title)this.value='';return false;" /></td>
+    </tr>
+    <input type="hidden" name="email_address" value="{$module_info->email_message}" cond="$module_info->email_message"/>
+    </block>
+	<!--// 사용자정의 -->
+    <!--@if(count($extra_keys))-->
+        {@
+            $oDocumentController = &getController('document');
+            $oDocumentController->addXmlJsFilter($module_info->module_srl);
+        }
+    <tr loop="$extra_keys=>$key,$val" cond="$val->eid!='agree'">
+        <th scope="row">{$val->name} <!--@if($val->is_required=='Y')--><em>*</em><!--@end--></th>
+        <td>
+        	{$val->getFormHTML()}
+    	</td>
+    </tr>
+    <!--@end-->
+	<!--// 내용 -->
+	{@
+		if(!$module_info->content_use) $module_info->content_use = 'y';
+	}
+    <tr cond="$module_info->content_use == 'y'">
+    	<th scope="row">{$lang->content}</th>
+    	<td>{$oDocument->getEditor()}</td>
+    </tr>
+    </table>
+	<p style="text-align: center;">
+		<input type="submit" value="{$lang->cmd_submit}" class="form-button form-button-default form-button-blue m_btn" />
+		<a href="{getUrl('document_srl','')}" class="form-button form-button-default form-button-grey no_btn" cond="!$grant->manager">{$lang->cmd_cancel}</a>
+		<a href="javascript:history.go(-1)" class="form-button form-button-default form-button-grey no_btn" cond="$grant->manager">{$lang->cmd_list}</a>
+	</p>
+</form>
+<include target="_footer.html" cond="$act=='dispBoardWrite'" />

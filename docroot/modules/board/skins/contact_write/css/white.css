@@ -1,0 +1,50 @@
+@charset "utf-8";
+.btn{opacity:.7}
+/* Board Reset */
+.board{background:#fff;color:#333}
+.board .iText,
+.board textarea,
+.board select{background:#fff;color:#333;border-color:#ddd;}
+.board .document_popup_menu a,
+.board .comment_popup_menu a{color:#8b8b8b}
+.board .boardNavigation{border-color:#bababa}
+/* Board Header */
+.boardHeader a{color:#4d4d4d}
+.boardHeader .boardDescription{background:#f8f8f8}
+/* Board Information */
+.boardInformation em,
+.boardInformation strong{color:#ff6600}
+/* Board List Form */
+.boardListForm em,
+.boardListForm strong{color:#ff3636}
+/* Board List */
+.boardList{border-color:#333}
+.boardList a{color:#4d4d4d}
+.boardList .jumpTo button{background-color:#eee;border-color:#ccc;color:#000}
+.boardList .replyNum{color:#ff3636}
+.boardList .trackbackNum{color:#66c}
+.boardList .replyAnchor{color:#06C}
+.boardList th{border-color:#dcdcdc;color:#4d4d4d}
+.boardList th a{color:#66c}
+.boardList td{border-color:#eee;color:#4d4d4d}
+.boardList td.title a.forum:link,
+.boardList td.recommend{color:#ff3636}
+.boardList td.summary .thumb{border-color:#ddd;background:#fff}
+.boardList td .category{color:#888;}
+.boardList td .by{color:#ccc}
+
+/* Time */
+.time *{color:#666}
+.time dt{background:#fff}
+
+/* Extra Var Table */
+.extraVarsList{border-color:#ddd}
+.extraVarsList caption{color:#999}
+.extraVarsList em{color:#ff6600}
+.extraVarsList th,
+.extraVarsList td{border-color:#ddd}
+.extraVarsList th{background:#f4f4f4}
+.extraVarsList td{background:#fff}
+.extraVarsList td .inputNum{border-color:#ccc}
+.extraVarsList tr td a{ text-decoration: none; color:#0072bc;}
+.extraVarsList tr td .file_info{color: #666;}

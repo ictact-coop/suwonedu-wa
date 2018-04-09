@@ -1,0 +1,118 @@
+<div class="cmt_editor" style="margin-top:30px"|cond="$mi->cmt_wrt_position=='cmt_wrt_btm' && $oDocument->getCommentcount()">
+
+<label for="editor_{$oDocument->document_srl}" class="cmt_editor_tl fl" style="font-size:12px; font-weight:bold; color:#999">이번호에 대한 느낌 남기기</label>
+
+
+<!--@if($grant->write_comment && $oDocument->isEnableComment())-->
+<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="bd_wrt cmt_wrt clear">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+	<input type="hidden" name="comment_srl" value="" />
+	<input type="hidden" name="content" value="" />
+	<div cond="$mi->cmt_wrt=='editor'" class="wysiwyg">{$oDocument->getCommentEditor()}</div>
+	<div cond="$mi->cmt_wrt=='simple'" class="simple_wrt">
+		<img cond="$logged_info->profile_image->src" class="profile img" src="{$logged_info->profile_image->src}" alt="profile" />
+		<span cond="!$logged_info->profile_image->src" class="profile img no_img">?</span>
+		<div class="text">
+			<input type="hidden" name="use_html" value="Y" />
+			<input type="hidden" id="htm_{$oDocument->document_srl}" value="n" />
+			<textarea id="editor_{$oDocument->document_srl}" cols="50" rows="4"></textarea>
+		</div>
+		<input type="submit" value="{$lang->cmd_submit}" class="bd_btn" />
+	</div>
+	<div class="edit_opt clear" style="display:none"|cond="$mi->cmt_wrt!='editor'">
+		<block cond="!$is_logged">
+		<span class="itx_wrp">
+			<label for="nick_name_{$oDocument->document_srl}" style="font-size:12px;">{$lang->writer}</label>
+			<input type="text" name="nick_name" id="nick_name_{$oDocument->document_srl}" class="itx n_p" />
+		</span>
+		<span class="itx_wrp">
+			<label for="password_{$oDocument->document_srl}" style="font-size:12px;">{$lang->password}</label>
+			<input type="password" name="password" id="password_{$oDocument->document_srl}" class="itx n_p" />
+		</span>
+		<span class="itx_wrp">
+			<label for="email_address_{$oDocument->document_srl}" style="font-size:12px;">{$lang->email_address}</label>
+			<input type="text" name="email_address" id="email_address_{$oDocument->document_srl}" class="itx m_h" />
+		</span>
+		<span>
+			<block cond="$mi->use_status!='PUBLIC'">
+			<input type="checkbox" name="is_secret" value="Y" id="is_secret_{$oDocument->document_srl}" checked="checked"|cond="@in_array('secret',$mi->wrt_opt)" style="margin-left:20px; margin-top:7px;"/>
+			<label for="is_secret_{$oDocument->document_srl}" style="font-size:12px;">관리자만 보기</label>
+			</block>
+		</span>
+		</block>
+        <input cond="$mi->cmt_wrt=='editor'" type="submit" value="{$lang->cmd_submit}" class="bd_btn fr" />
+		<div class="opt_chk">
+			<block cond="$is_logged">
+			<input type="checkbox" name="notify_message" value="Y" id="notify_message_{$oDocument->document_srl}" checked="checked"|cond="@in_array('notify',$mi->wrt_opt)" style="margin-top:4px;" />
+			<label for="notify_message_{$oDocument->document_srl}" style="font-size:12px;">{$lang->notify}</label>
+			</block>
+		</div>
+	</div>
+</form>
+
+<!--// 대댓글 -->
+<div cond="$rd_idx==0" id="re_cmt">
+	<label for="editor_2" class="cmt_editor_tl fl"><i class="fa fa-share fa-flip-vertical re"></i><strong>{$lang->write_comment}</strong></label>
+	<div class="editor_select fr">
+		<a class="wysiwyg m_no" href="#"><em class="fa fa-info-circle bd_info_icon"></em> {$lang->use_wysiwyg}</a>
+		<a class="close" href="#" onclick="jQuery('#re_cmt').fadeOut().parent().find('.re_comment').focus();return false"><i class="fa fa-times"></i> {$lang->cmd_close}</a>
+	</div>
+	<form action="./" method="post" onsubmit="return procFilter(this,insert_comment)" class="bd_wrt clear">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+		<input type="hidden" name="content" value="" />
+		<input type="hidden" name="parent_srl" value="" />
+		<input type="hidden" name="use_html" value="Y" />
+		<div class="simple_wrt">
+			<input type="hidden" id="htm_2" value="n" />
+			<textarea id="editor_2" cols="50" rows="8"></textarea>
+		</div>
+		<div class="edit_opt">
+			<block cond="!$is_logged">
+			<span class="itx_wrp">
+				<label for="nick_name">{$lang->writer}</label>
+				<input type="text" name="nick_name" id="nick_name" class="itx n_p" />
+			</span>
+			<span class="itx_wrp">
+				<label for="password">{$lang->password}</label>
+				<input type="password" name="password" id="password" class="itx n_p" />
+			</span>	
+			<span class="itx_wrp">
+				<label for="email_address">{$lang->email_address}</label>
+				<input type="text" name="email_address" id="email_address" class="itx m_h" />
+			</span>	
+			<span class="itx_wrp">
+				<label for="homepage">{$lang->homepage}</label>
+				<input type="text" name="homepage" id="homepage" class="itx m_h" />
+			</span>
+			</block>
+            <input type="submit" value="{$lang->cmd_submit}" class="bd_btn fr" />
+		</div>
+		<span class="opt_chk">
+			<block cond="$is_logged">
+				<input type="checkbox" name="notify_message" value="Y" id="notify_message" checked="checked"|cond="@in_array('notify',$mi->wrt_opt)" />
+				<label for="notify_message">{$lang->notify}</label>
+			</block>
+			<block cond="$mi->use_status!='PUBLIC'">
+				<input type="checkbox" name="is_secret" value="Y" id="is_secret" checked="checked"|cond="@in_array('secret',$mi->wrt_opt)" />
+				<label for="is_secret">{$lang->secret}</label>
+			</block>
+		</span>
+	</form>
+</div>
+
+<!--@else-->
+<div class="bd_wrt clear">
+	<div class="simple_wrt">
+		<span class="profile img no_img">?</span>
+		<div class="text">
+			<a cond="!$is_logged" class="cmt_disable bd_login" href="#">{$lang->write_comment} {$lang->msg_not_permitted} {$lang->bd_login}</a>
+			<div cond="$is_logged" class="cmt_disable bd_login">{$lang->write_comment} {$lang->msg_not_permitted}</div>
+		</div>
+		<input type="button" value="{$lang->cmd_submit}" disabled="disabled" class="bd_btn" />
+	</div>
+</div>
+<!--@end-->
+
+</div>

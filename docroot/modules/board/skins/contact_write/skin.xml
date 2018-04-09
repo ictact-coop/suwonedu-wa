@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">Contact Board</title>
+    <title xml:lang="en">Contact Board</title>
+    <title xml:lang="jp">お問い合せ掲示板</title>
+    <description xml:lang="ko">
+        - 제조사 : 이시스스토어
+        *************1.11**************
+        - 모바일에서도 개인정보취급방침 약관보기 접기/펴기 추가
+        *************1.12**************
+        - 확장변수 input박스 스타일 오류수정
+        - 글 작성시 미리 입력된 글 출력 추가
+     
+    </description>
+    <version>1.12</version>
+    <date>2012-08-27</date>
+    <link>http://www.2sisstore.com/</link>
+    <author email_address="help@2sisdesign.com" link="http://www.2sisstore.com/">
+        <name xml:lang="ko">2SISSTORE</name>
+    </author>
+    
+    <license>GPL v2 or later</license>
+
+    <colorset>
+        <color name="white" src="screenshot/white.gif">
+            <title xml:lang="ko">하얀색(기본)</title>
+            <title xml:lang="jp">白（デフォルト）</title>
+            <title xml:lang="zh-CN">白色（基本）</title>
+            <title xml:lang="en">White (default)</title>
+            <title xml:lang="vi">White (Mặc định)</title>
+            <title xml:lang="es">Blanco (por defecto)</title>
+            <title xml:lang="zh-TW">白色(預設)</title>
+            <title xml:lang="tr">Beyaz (varsayılan)</title>
+        </color>
+        <color name="black" src="screenshot/black.gif">
+            <title xml:lang="ko">검은색</title>
+            <title xml:lang="jp">黒</title>
+            <title xml:lang="en">Black</title>
+            <title xml:lang="vi">Black</title>
+            <title xml:lang="ru">Черного</title>
+            <title xml:lang="es">Negro</title>
+            <title xml:lang="zh-CN">黑色</title>
+            <title xml:lang="zh-TW">黑色</title>
+            <title xml:lang="tr">Siyah</title>
+        </color>
+    </colorset>
+    <extra_vars>
+		<group>
+		<title xml:lang="ko">전체 설정</title>
+		<title xml:lang="en">All Setup</title>
+		<title xml:lang="jp">すべての設定</title>
+        <var name="title" type="text">
+            <title xml:lang="ko">게시판 제목</title>
+            <title xml:lang="jp">掲示板タイトル</title>
+            <title xml:lang="zh-CN">版面标题</title>
+            <title xml:lang="en">Title of Board</title>
+            <title xml:lang="vi">Tiêu đề của Board</title>
+            <title xml:lang="es">Title of Board</title>
+            <title xml:lang="zh-TW">討論板標題</title>
+            <title xml:lang="tr">Pano Başlığı</title>
+        </var>
+        <var name="comment" type="textarea">
+            <title xml:lang="ko">게시판 상세 설명</title>
+            <title xml:lang="jp">掲示板の詳細</title>
+            <title xml:lang="zh-CN">版面详细说明</title>
+            <title xml:lang="en">Description of Board</title>
+            <title xml:lang="vi">Mô tả</title>
+            <title xml:lang="es">Description of Board</title>
+            <title xml:lang="zh-TW">討論板說明</title>
+            <title xml:lang="tr">Pano Tanımı</title>
+        </var>
+        <var name="subject_cut_size" type="text">
+            <title xml:lang="ko">제목 글자수</title>
+            <title xml:lang="jp">タイトルの文字数</title>
+            <title xml:lang="zh-CN">标题字数</title>
+            <title xml:lang="en">Length of Subject</title>
+            <title xml:lang="vi">Độ dài tiêu đề</title>
+            <title xml:lang="es">Length of Subject</title>
+            <title xml:lang="zh-TW">標題字數</title>
+            <title xml:lang="tr">Konu Uzunluğu</title>
+            <description xml:lang="ko">제목 글자수를 지정할 수 있습니다. (0또는 비워주시면 자르지 않습니다)</description>
+            <description xml:lang="jp">タイトルの文字数を設定します（「0」または空欄の場合は、文字数を制限しません）。</description>
+            <description xml:lang="zh-CN">可以指定标题字数(0或留空为不限)。</description>
+            <description xml:lang="en">You may set length of title. (0 or blank value will not restrict the length)</description>
+            <description xml:lang="vi">You may set length of title. (0 or blank value will not restrict the length)</description>
+            <description xml:lang="es">You may set length of title. (0 or blank value will not restrict the length)</description>
+            <description xml:lang="zh-TW">可指定標題字數(0或留白為不限制)。</description>
+            <description xml:lang="tr">Başlık uzunluğunu seçebilirsiniz. (0 ya da boş bir değer uzunluğu kısıtlamayacaktır.)</description>
+        </var>
+        <var name="info_use" type="select">
+            <title xml:lang="ko">개인정보취급방침</title>
+            <title xml:lang="en">Privacy Policy</title>
+            <title xml:lang="jp">プライバシーポリシー</title>
+            <options value="">
+                <title xml:lang="ko">출력</title>
+                <title xml:lang="en">display</title>
+                <title xml:lang="vi">Hiển thị</title>
+                <title xml:lang="jp">表示</title>
+                <title xml:lang="zh-CN">显示</title>
+                <title xml:lang="es">display</title>
+                <title xml:lang="zh-TW">顯示</title>
+                <title xml:lang="tr">görüntüle</title>
+            </options>
+            <options value="n">
+                <title xml:lang="ko">출력하지 않음</title>
+                <title xml:lang="en">not display</title>
+                <title xml:lang="vi">Không hiển thị</title>
+                <title xml:lang="jp">非表示</title>
+                <title xml:lang="zh-CN">不显示</title>
+                <title xml:lang="es">not display</title>
+                <title xml:lang="zh-TW">隱藏</title>
+                <title xml:lang="tr">görüntüleme</title>
+            </options>
+        </var>
+        <var name="info_open" type="select">
+            <title xml:lang="ko">접기/펴기 ┘</title>
+            <title xml:lang="en">open/close ┘</title>
+            <options value="y">
+                <title xml:lang="ko">펴기</title>
+                <title xml:lang="en">open</title>
+            </options>
+            <options value="n">
+                <title xml:lang="ko">접기</title>
+                <title xml:lang="en">close</title>
+            </options>
+        </var>
+        <var name="info_p" type="textarea">
+            <title xml:lang="ko">개인정보취급방침 내용 ┘</title>
+            <title xml:lang="en">Privacy Policy string ┘</title>
+            <title xml:lang="jp">プライバシーポリシーの内容 ┘</title>
+            <description xml:lang="ko">개인정보취급방침을 입력해주세요. 사용자정의에서 사용자 정의이름을 agree으로 만드시면 동의를 받을수 있습니다. 해당 취급방침내용은 db에 저장 되지는 않습니다.</description>
+            <description xml:lang="en">Enter Privacy Policy string.You should create user defined value with id 'agree' if you want to checkbox appear.</description>
+            <description xml:lang="jp">プライバシーポリシーを入力してください。拡張変数で管区長変数名をagreeにするとプライバシーポリシーに対する同意を得ることができます。プライバシーポリシーの内容はDBに保存されません。</description>
+        </var>
+        <var name="info_rows" type="text">
+            <title xml:lang="ko">줄수 ┘</title>
+            <title xml:lang="en">Show lines ┘</title>
+            <title xml:lang="jp">行数 ┘</title>
+            <description xml:lang="ko">보여줄 내용의 줄수를 입력해주세요.(기본 3)</description>
+            <description xml:lang="en">Enter line number to show.(default 3)</description>
+            <description xml:lang="jp">表示する内容の行数を入力してください。（基本：３）</description>
+        </var>
+        <var name="sucess_message_alt" type="select">
+            <title xml:lang="ko">완료메세지</title>
+            <title xml:lang="en">Complete Message</title>
+            <title xml:lang="jp">完了メッセージ</title>
+            <options value="">
+                <title xml:lang="ko">출력</title>
+                <title xml:lang="en">display</title>
+                <title xml:lang="vi">Hiển thị</title>
+                <title xml:lang="jp">表示</title>
+                <title xml:lang="zh-CN">显示</title>
+                <title xml:lang="es">display</title>
+                <title xml:lang="zh-TW">顯示</title>
+                <title xml:lang="tr">görüntüle</title>
+            </options>
+            <options value="n">
+                <title xml:lang="ko">출력하지 않음</title>
+                <title xml:lang="en">not display</title>
+                <title xml:lang="vi">Không hiển thị</title>
+                <title xml:lang="jp">非表示</title>
+                <title xml:lang="zh-CN">不显示</title>
+                <title xml:lang="es">not display</title>
+                <title xml:lang="zh-TW">隱藏</title>
+                <title xml:lang="tr">görüntüleme</title>
+            </options>
+        </var>
+        <var name="sucess_message" type="textarea">
+            <title xml:lang="ko">완료 메세지 문구 ┘</title>
+            <title xml:lang="en">Complete Message string ┘</title>
+            <title xml:lang="jp">完了メッセージの内容┘</title>
+            <description xml:lang="ko">글을 쓴 후 보여질 메세지를 입력해 주세요.</description>
+            <description xml:lang="en">String that will be shown after submity.</description>
+            <description xml:lang="jp">書き込みが終わった後に表示するメッセージを入力してください。</description>
+        </var>
+        <var name="view_btn" type="select">
+            <title xml:lang="ko">뒤로가기/홈 버튼</title>
+            <title xml:lang="en">Go back/Home Button</title>
+            <title xml:lang="jp">もどる/ホームボタン</title>
+            <options value="">
+                <title xml:lang="ko">출력</title>
+                <title xml:lang="en">display</title>
+                <title xml:lang="vi">Hiển thị</title>
+                <title xml:lang="jp">表示</title>
+                <title xml:lang="zh-CN">显示</title>
+                <title xml:lang="es">display</title>
+                <title xml:lang="zh-TW">顯示</title>
+                <title xml:lang="tr">görüntüle</title>
+            </options>
+            <options value="n">
+                <title xml:lang="ko">출력하지 않음</title>
+                <title xml:lang="en">not display</title>
+                <title xml:lang="vi">Không hiển thị</title>
+                <title xml:lang="jp">非表示</title>
+                <title xml:lang="zh-CN">不显示</title>
+                <title xml:lang="es">not display</title>
+                <title xml:lang="zh-TW">隱藏</title>
+                <title xml:lang="tr">görüntüleme</title>
+            </options>
+        </var>
+        <var name="home_btn_name" type="text">
+            <title xml:lang="ko">홈버튼 문구수정 ┘</title>
+            <title xml:lang="en">Home Button string ┘</title>
+            <title xml:lang="jp">ホームボタン文字修正 ┘</title>
+        </var>
+        <var name="cufon" type="select">
+            <title xml:lang="ko">이미지 폰트사용</title>
+            <title xml:lang="en">Use Image Font</title>
+            <title xml:lang="jp">イメージフォント使用</title>
+            <options value="n">
+                <title xml:lang="ko">출력하지 않음</title>
+                <title xml:lang="en">not display</title>
+                <title xml:lang="vi">Không hiển thị</title>
+                <title xml:lang="jp">非表示</title>
+                <title xml:lang="zh-CN">不显示</title>
+                <title xml:lang="es">not display</title>
+                <title xml:lang="zh-TW">隱藏</title>
+                <title xml:lang="tr">görüntüleme</title>
+            </options>
+            <options value="y">
+                <title xml:lang="ko">출력</title>
+                <title xml:lang="en">display</title>
+                <title xml:lang="vi">Hiển thị</title>
+                <title xml:lang="jp">表示</title>
+                <title xml:lang="zh-CN">显示</title>
+                <title xml:lang="es">display</title>
+                <title xml:lang="zh-TW">顯示</title>
+                <title xml:lang="tr">görüntüle</title>
+            </options>
+        </var>
+        </group>
+		<group>
+		<title xml:lang="ko">* 기본 폼 삭제(입력시 해당메시지/이메일로 대체되면서 기본폼에서 빠지게 됩니다.)</title>
+		<title xml:lang="en">* Delete default values(such as writer, e-mail address. these fields will be not shown and will be replaced with pre-defined value if pre-defined value exists)</title>
+		<title xml:lang="jp">基本形式の削除(入力する場合、入力したメッセージ/メールに変更されます。)</title>
+        <var name="title_message" type="text">
+            <title xml:lang="ko">제목</title>
+            <title xml:lang="en">Title</title>
+            <title xml:lang="jp">タイトル</title>
+            <description xml:lang="ko">제목을 사용안할떄 대처할 제목, 메일보내기/리스트 타이틀에 고정제목으로 사용됩니다.</description>
+            <description xml:lang="en">Enter pre-defined Title value</description>
+            <description xml:lang="jp">タイトルが入力されてない場合の基本タイトルになります（メール送信/リストタイトル）</description>
+        </var>
+        <var name="writer_message" type="text">
+            <title xml:lang="ko">글쓴이</title>
+            <title xml:lang="en">Writer</title>
+            <title xml:lang="jp">作成者</title>
+            <description xml:lang="ko">대체할 글쓴이 값을 넣어주세요.</description>
+            <description xml:lang="en">Enter pre-defined Writer value</description>
+        </var>
+        <var name="email_message" type="text">
+            <title xml:lang="ko">이메일주소</title>
+            <title xml:lang="en">E-mail address</title>
+            <title xml:lang="jp">メールアドレス</title>
+            <description xml:lang="ko">대체할 이메일 값을 넣어주세요.</description>
+            <description xml:lang="en">Enter pre-defined E-mail address value</description>
+        </var>
+        <var name="content_use" type="select">
+            <title xml:lang="ko">본문</title>
+            <title xml:lang="en">Content</title>
+            <title xml:lang="jp">本文</title>
+            <options value="y">
+                <title xml:lang="ko">출력</title>
+                <title xml:lang="en">display</title>
+                <title xml:lang="vi">Hiển thị</title>
+                <title xml:lang="jp">表示</title>
+                <title xml:lang="zh-CN">显示</title>
+                <title xml:lang="es">display</title>
+                <title xml:lang="zh-TW">顯示</title>
+                <title xml:lang="tr">görüntüle</title>
+            </options>
+            <options value="n">
+                <title xml:lang="ko">출력하지 않음</title>
+                <title xml:lang="en">not display</title>
+                <title xml:lang="vi">Không hiển thị</title>
+                <title xml:lang="jp">非表示</title>
+                <title xml:lang="zh-CN">不显示</title>
+                <title xml:lang="es">not display</title>
+                <title xml:lang="zh-TW">隱藏</title>
+                <title xml:lang="tr">görüntüleme</title>
+            </options>
+        </var>
+		<var name="content_default" type="textarea">
+			<title xml:lang="ko">글 작성시 미리 입력된 글 출력 ┘</title>
+			<description xml:lang="ko">글쓰기 화면에서 처음에 미리 입력된 글을 출력하는 기능입니다. HTML을 사용 할 수 있습니다.</description>
+		</var>
+        </group>
+        <group>
+        <title xml:lang="ko">* 기존 이름 변경(입력시 기존 제목,글쓴이,이메일 라는 타이틀이 변경하실수 있습니다.)</title>
+        <title xml:lang="en">* Change default form caption(such as Title, Writer, E-mail)</title>
+        <title xml:lang="jp">基本名称変更(入力する場合には「タイトル」、「作成者」、「メールアドレス」の名称を変更できます。)</title>
+        <var name="title_name" type="text">
+            <title xml:lang="ko">제목</title>
+            <title xml:lang="en">Title</title>
+            <title xml:lang="jp">タイトル</title>
+        </var>
+        <var name="writer_name" type="text">
+            <title xml:lang="ko">글쓴이</title>
+            <title xml:lang="en">Writer</title>
+            <title xml:lang="jp">作成者</title>
+        </var>
+        <var name="email_name" type="text">
+            <title xml:lang="ko">이메일주소</title>
+            <title xml:lang="en">E-mail address</title>
+            <title xml:lang="jp">メールアドレス</title>
+        </var>
+        </group>
+    </extra_vars>
+</skin>
+
