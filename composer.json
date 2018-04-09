@@ -1,0 +1,19 @@
+{
+    "name": "ictact-coop/suwonedu-wa",
+    "description": "wa website",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yeongtaek, Hong",
+            "email": "mozodev@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "start": "php -S localhost:8888 -t docroot"
+    },
+    "config": {
+        "process-timeout": 0
+    }
+}
