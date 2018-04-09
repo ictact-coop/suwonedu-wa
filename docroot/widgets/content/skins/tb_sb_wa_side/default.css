@@ -1,0 +1,4 @@
+.siderecent{ margin:10px 0; padding:10px 20px 20px; border:1px solid #EEE; border-radius:5px}
+.siderecent>li{margin:0; padding:0}
+.siderecent>li>a{margin:0; padding:3px 0; font-size:12px; display:block}
+.siderecent>.nav-header{ margin:0}

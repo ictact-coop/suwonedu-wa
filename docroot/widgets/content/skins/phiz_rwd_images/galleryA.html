@@ -1,0 +1,46 @@
+<ul class="phizGalleryA">
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clearLeft"<!--@end--> style="<!--@if($_idx >= $widget_info->list_count)-->display:none;<!--@end-->width:{100/$widget_info->cols_list_count}%;">
+		<div  class="<!--@if($widget_info->thumbnail_margin=='yes')-->thumbnail1<!--@else-->thumbnail<!--@end-->">
+			<!--@foreach($widget_info->option_view_arr as $k => $v)-->
+				<!--@if($v=='thumbnail')-->
+				<div class="thumb-wrap">
+					<a href="{$item->getLink()}" class="thumb" target="_blank"|cond="$widget_info->new_window">
+						<!--@if($item->getThumbnail())-->
+							<img src="{$item->getThumbnail()}"/>
+						<!--@else-->
+							<span class="imgNone">{$lang->none_image}</span>
+						<!--@end-->
+					</a>
+				</div>
+				<!--@end-->
+				<!--@if($v=='title')-->
+				<div class="caption">
+					<p class="title"><a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window">{$item->getTitle($widget_info->subject_cut_size)}</a>
+						<!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+							<span><em class="replyNum" title="Replies"><a href="{$item->getLink()}#comment">[{$item->getCommentCount()}]</a></em></span>
+						<!--@end-->
+					</p>
+						<!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+							<p class="category">{$item->getCategory()}</p>
+						<!--@end-->
+						<!--@else if($v=='nickname')-->
+							<a href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}">{$item->getNickName()}</a>
+						<!--@else if($v=='regdate')-->
+							<span class="date">{$item->getRegdate("Y-m-d")}</span>
+				</div>
+				<!--@end-->
+			<!--@end-->
+		</div>
+	</li>
+{@$_idx++}
+<!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<ul class="phizNavigator">
+    <li><button type="button" class="prev" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.phizNavigator').prev('ul.phizGalleryA'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+    <li><button type="button" class="next" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.phizNavigator').prev('ul.phizGalleryA'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+</ul>
+<!--@end-->

@@ -1,0 +1,13 @@
+.sk5_content a,.sk5_content button{color:#333;text-decoration:none;-ms-transition:all .4s;-moz-transition:all .4s;-webkit-transition:all .4s;transition:all .4s;}.sk5_content a:hover{color:#000;text-decoration:underline}.sk5_content a:visited{color:#666}
+
+.sk5_normal{width:100%;color:#555;font-size:11px;border-spacing:0}
+.sk5_normal thead{background:#f9f9f9;background:-webkit-gradient(linear,0% 0%,0% 100%,from(white),to(#F9F9F9));background:-moz-linear-gradient(top,white,#F9F9F9);}
+.sk5_normal th{color:#666;text-shadow:0 0 1px rgba(0,0,0,.1);border-top:1px solid #CCC;border-bottom:1px solid #BBB;-webkit-box-shadow:inset 0 -1px 0 #FFF;box-shadow:inset 0 -1px 0 #FFF;padding:8px 12px;margin:0}
+.sk5_normal tbody td{border-bottom:1px solid #EEE;padding:4px 12px 4px 0;text-align:center;white-space:nowrap;}
+.sk5_normal tbody td.title{font-size:12px;text-align:left;width:100%}
+.sk5_normal tbody tr:hover{background:#F9F9F9;border-color:#DDD}
+.sk5_normal .replyNum a,.sk5_normal .trackbackNum a{color:#C33;font-style:normal;padding-left:2px;font:10px Tahoma;white-space:nowrap}
+.sk5_normal .trackbackNum a{color:#33C}
+.sk5_pg{margin-top:10px;text-align:center}
+.sk5_pg button{display:inline-block;min-width:12px;height:24px;padding:0 6px;border:1px solid transparent;border-radius:2px;font:12px/2em Tahoma;background-color:transparent;cursor:pointer;}
+.sk5_pg button:hover,.sk5_pg button:focus{background:#F9F9F9;border-color:#AAA;color:#555}

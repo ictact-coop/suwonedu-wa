@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">Sketchbook5 Style Content</title>
+	<description xml:lang="ko">Sketchbook5 게시판 스타일 최신글 위젯</description>
+	<version>1.0</version>
+	<date>2013-02-09</date>
+	<link>http://www.wincomi.com</link>
+
+	<author email_address="wincomi@me.com" link="http://www.wincomi.com">
+		<name xml:lang="ko">윈컴이</name>
+	</author>
+	<colorset>
+		<color name="">
+			<title xml:lang="ko">(기본) Sketchbook5 게시판 스타일</title>
+		</color>
+	</colorset>
+</skin>

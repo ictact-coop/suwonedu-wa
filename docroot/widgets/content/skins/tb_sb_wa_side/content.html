@@ -1,0 +1,16 @@
+<load target="default.css" />
+<ul class="nav nav-list siderecent">
+<span class="nav-header" style="padding-left:0px;">Recent Contents</span>
+<div style="height:10px;"></div>
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+    <li<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end-->>
+        <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+            <!--@if($v=='title')-->
+                <a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+            <!--@end-->
+        <!--@end-->
+    </li>
+{@$_idx++}
+<!--@end-->
+</ul>
