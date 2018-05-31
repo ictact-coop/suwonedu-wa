@@ -27,3 +27,4 @@ Thumbs.db
 *.sublime-workspace
 *.sublime-project
 .codeintel
+.php-version
