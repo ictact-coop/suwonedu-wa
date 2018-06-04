@@ -3,15 +3,15 @@
 ## 2018/02/28 - xe 1 프로젝트 깃 저장소 만들기
 
 기존 소스에 XE 최신 버전을 덮어써볼까 했지만 코어가 제공하는 기본 모듈, 위젯, 애드온, 레이아웃, 스킨 등과 구분이 되지 않아서
-일단 최신 버전의 XE 소스에 기존 프로젝트에서 쓰던 모듈, 위젯 등을 역으로 추가해가며 커밋을 하고 
+일단 최신 버전의 XE 소스에 기존 프로젝트에서 쓰던 모듈, 위젯 등을 역으로 추가해가며 커밋을 하고
 안전하다거나 믿을 수 있는 코드베이스를 만들어보자! 좀 더 구체적으로 아래 디렉토리를 살펴봐야....
 
 ```
 addons
 layouts
 modules
-module-board-skins
-module-member-skins
+modules/board/skins
+modules/member/skins
 widgets
 ```
 
@@ -23,3 +23,16 @@ widgets
 
 어쨌든 하나씩 차분히 해봅시다 ㅋ
 
+# 2018/05/21
+
+xe 최신 버전으로 업그레이드 후 글쓰기 화면의 에디터에도 이전과 다르게 텍스트 붙혀넣기, 워드에서 붙혀넣기 버튼이 없어졌다.
+확인해보니 코어 버전이 올라가면서 ckeditor 버전도 올라가며 내부 구조가 변해서 내장되어 있던게 추가 플러그인으로 전환된 문제였...
+관련 플러그인을 추가로 설치해준다.
+
+```
+common/js/plugins/ckeditor/ckeditor/plugins
+- clipboard
+- notification
+- pastefromword
+- pastetext
+```
