@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">2018 phiz 반응형 갤러리 위젯스킨</title>
+    <title xml:lang="en">2018 phiz gallery widget skin for responsive web design</title>
+    <description xml:lang="ko">phiz 반응형 갤러리 위젯 스킨입니다.
+    phiz (phiz@phiz.kr)
+    </description>
+    <description xml:lang="en">phiz gallery widget skin for responsive web design.
+    phiz (phiz@phiz.kr)
+    </description>
+    <version>0.1</version>
+    <date>2014-01-30</date>
+    <link>http://phiz.kr/</link>
+
+    <author email_address="phiz@phiz.kr" link="http://phiz.kr/">
+        <name xml:lang="ko">phiz</name>
+        <name xml:lang="en">phiz</name>
+    </author>
+
+    <colorset>
+        <color name="layout">
+            <title xml:lang="ko">레이아웃에 맞춤</title>
+            <title xml:lang="en">Custom Layout</title>
+        </color>
+        <color name="white">
+            <title xml:lang="ko">흰색 바탕용</title>
+            <title xml:lang="en">White Background</title>
+        </color>
+        <color name="black">
+            <title xml:lang="ko">어두운 바탕용</title>
+            <title xml:lang="en">Dark Background</title>
+        </color>
+    </colorset>
+</skin>

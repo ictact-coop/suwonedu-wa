@@ -1,0 +1,50 @@
+<load target="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+<load target="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
+{@ Context::loadJavascriptPlugin('ui'); }
+<load target="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="body" />
+{@ $csi = rand(10000,99999);}
+
+<div id="slick{$csi}" class="slick-center">
+	<div class="slick-item" loop="$widget_info->content_items=>$key,$item">
+		<!--@if($item->getLink()=='#')-->
+		<img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" />
+		<!--@else-->
+		<a href="{$item->getLink()}" target="_blank"|cond="$widget_info->hyperlink_target=='Y'"><img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" /></a>
+		<!--@endif-->
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(function($){
+	$(".slick-center").slick({
+		centerMode: true,
+	  centerPadding: '210px',
+	  slidesToShow: 1,
+		responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        centerMode: true,
+        centerPadding: '200px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        centerMode: true,
+        centerPadding: '0',
+        slidesToShow: 1
+      }
+    }
+  ]
+	});
+});
+</script>
+
+<style>
+.slick-item { width: 550px; height: auto; margin: 0 2rem; }
+.slick-prev { left: 20px; z-index: 100; }
+.slick-next { right: 20px; z-index: 100; }
+.slick-next, .slick-prev { transform: scale(2); margin-top: -15px;}
+</style>

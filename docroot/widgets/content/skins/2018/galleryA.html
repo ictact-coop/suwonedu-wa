@@ -1,0 +1,50 @@
+<ul class="phizGalleryA w2018">
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clearLeft"<!--@end--> style="<!--@if($_idx >= $widget_info->list_count)-->display:none;<!--@end-->width:{100/$widget_info->cols_list_count}%; white-space: normal; padding-right: 10px;">
+		<div class="<!--@if($widget_info->thumbnail_margin=='yes')-->thumbnail1<!--@else-->thumbnail<!--@end-->">
+			<!--@foreach($widget_info->option_view_arr as $k => $v)-->
+				<!--@if($v=='thumbnail')-->
+				<div class="thumb-wrap">
+					<a href="{$item->getLink()}" class="thumb" target="_blank"|cond="$widget_info->new_window">
+						<!--@if($item->getThumbnail())-->
+							<img src="{$item->getThumbnail()}"/>
+						<!--@else-->
+							<span class="imgNone">{$lang->none_image}</span>
+						<!--@end-->
+					</a>
+				</div>
+				<!--@end-->
+				<!--@if($v=='title')-->
+				<div class="caption">
+					<h2 class="title"><a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window">{$item->getTitle($widget_info->subject_cut_size)}</a></h2>
+						<!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+							<p class="category">{$item->getCategory()}</p>
+						<!--@end-->
+						<!--@else if($v=='nickname')-->
+							<a href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}">{$item->getNickName()}</a>
+						<!--@else if($v=='regdate')-->
+							<!-- <span class="date">{$item->getRegdate("Y-m-d")}</span> -->
+						<!--@else if($v=='content')-->
+							<p class="text">{$item->getContent()}</p>
+				</div>
+				<!--@end-->
+			<!--@end-->
+		</div>
+	</li>
+{@$_idx++}
+<!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<ul class="phizNavigator">
+    <li><button type="button" class="prev" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.phizNavigator').prev('ul.phizGalleryA'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+    <li><button type="button" class="next" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.phizNavigator').prev('ul.phizGalleryA'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+</ul>
+<!--@end-->
+
+<style>
+	.phizGalleryA.w2018 { margin-top: 2rem; }
+	.phizGalleryA h2.title { text-align: left; margin: .5rem 0; font-weight: 500; }
+	.phizGalleryA .text { font-size: .9rem; line-height: 1.8; }
+</style>
