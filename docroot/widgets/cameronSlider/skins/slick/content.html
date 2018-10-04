@@ -9,7 +9,9 @@
 		<!--@if($item->getLink()=='#')-->
 		<img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" />
 		<!--@else-->
-		<a href="{$item->getLink()}" target="_blank"|cond="$widget_info->hyperlink_target=='Y'"><img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" /></a>
+		<a href="{$item->getLink()}"|cond="$widget_info->hyperlink_target=='Y'">
+			<img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" />
+		</a>
 		<!--@endif-->
 	</div>
 </div>
@@ -18,8 +20,10 @@
 jQuery(function($){
 	$(".slick-center").slick({
 		centerMode: true,
-	  centerPadding: '210px',
+	  centerPadding: '224px',
 	  slidesToShow: 1,
+		autoplay: true,
+  	autoplaySpeed: 2000,
 		responsive: [
     {
       breakpoint: 768,
@@ -43,8 +47,25 @@ jQuery(function($){
 </script>
 
 <style>
-.slick-item { width: 550px; height: auto; margin: 0 2rem; }
-.slick-prev { left: 20px; z-index: 100; }
-.slick-next { right: 20px; z-index: 100; }
+.slick-slide { width: 550px !important;}
+.slick-item { width: 550px; height: auto; }
+.slick-prev { left: 90px; z-index: 100; visibility: hidden; }
+.slick-next { right: 90px; z-index: 100; visibility: hidden; }
+.slick-center:hover .slick-prev,
+.slick-center:hover .slick-next {
+	visibility: visible;
+}
+.slick-prev:before { font-family: 'FontAwesome' !important; content: '\f104' !important; }
+.slick-next:before { font-family: 'FontAwesome' !important; content: '\f105' !important; }
 .slick-next, .slick-prev { transform: scale(2); margin-top: -15px;}
+.slick-item img {
+  filter: gray saturate(0%) brightness(30%); /* IE6-9 */
+  -webkit-filter: grayscale(1)  saturate(0%) brightness(30%); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1) saturate(0%) brightness(30%); /* Microsoft Edge and Firefox 35+ */
+}
+.slick-active img {
+	filter: none;
+	-webkit-filter: none;
+	filter: none;
+}
 </style>
