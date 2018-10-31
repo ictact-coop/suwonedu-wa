@@ -36,3 +36,48 @@ common/js/plugins/ckeditor/ckeditor/plugins
 - pastefromword
 - pastetext
 ```
+
+# 2018/10/31
+
+## Family site 목록 변경
+
+-수원시평생학습관 https://learning.suwon.go.kr/
+-인문사회공유카페 https://cafe.naver.com/suwonlearn
+-거북이공방 http://blog.naver.com/suwonedu2011
+-고고장 http://gogospace.org/notice
+-뭐라도학교 http://cafe.daum.net/3rd-Age
+-누구나학교 http://nuguna.suwonedu.org/
+-웹진와 페이스북 https://www.facebook.com/suwonwa/
+
+## 오시는 길 오류 수정
+
+```
+<div class="mapouter">
+<div class="gmap_canvas"><iframe frameborder="0" height="500" id="gmap_canvas" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?q=%EC%88%98%EC%9B%90%EC%8B%9C%ED%8F%89%EC%83%9D%ED%95%99%EC%8A%B5%EA%B4%80&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="740"></iframe></div>
+<style type="text/css">.mapouter{text-align:right;height:500px;width:740px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:740px;}
+</style>
+</div>
+```
+
+## 사이드바 최신 콘텐츠
+
+이슈/칼럼/현장 => 63051,111513,110608
+
+```
+
+63051,84933,98144,80699
+=>
+63051,111513,110608
+
+<img class="zbxe_widget_output" widget="content" skin="tb_sb_wa_side" content_type="document" module_srls="63051,111513,110608" list_type="normal" tab_type="none" markup_type="table" list_count="8" page_count="1" subject_cut_size="25" option_view="title" show_browser_title="N" show_comment_count="N" show_trackback_count="N" show_category="N" show_icon="N" order_target="regdate" order_type="desc" thumbnail_type="crop" />
+```
+
+
+## 태그 최신 순
+
+태그 페이지를 잘 보는 사람들이 없으므로 그냥 레이아웃에서 더 보기 링크를 제거하기로 한다.
+
+```
+<div style="text-align:right"><a href="/index.php?mid=keywords"><i class="xi-plus-square"></i> 더보기</a></div>
+제거
+```
