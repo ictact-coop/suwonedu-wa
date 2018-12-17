@@ -297,7 +297,7 @@ if(default_style=='webzine'){
 			});
 		});
 	};
-	
+
 };
 
 // Link Board
@@ -368,7 +368,7 @@ if(bd.find('div.rd').length){
 	if(bdImgOpt) bd.find('.xe_content img').draggable();
 	if(bdImgLink){
 		bd.find('.xe_content img').click(function(){
-			window.location.href=$(this).attr('src');
+			// window.location.href=$(this).attr('src');
 		});
 	};
 	// Side Navi Scoll

@@ -16,6 +16,18 @@
 	</div>
 </div>
 
+<div id="slick{$csi+1}" class="slick-phone">
+	<div class="slick-item" loop="$widget_info->content_items=>$key,$item">
+		<!--@if($item->getLink()=='#')-->
+		<img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" />
+		<!--@else-->
+		<a href="{$item->getLink()}"|cond="$widget_info->hyperlink_target=='Y'">
+			<img src="{$item->getThumbnail()}" title="{$item->getTitle()}" style="width:{$widget_info->thumbnail_width}px" />
+		</a>
+		<!--@endif-->
+	</div>
+</div>
+
 <script type="text/javascript">
 jQuery(function($){
 	$(".slick-center").slick({
@@ -25,35 +37,49 @@ jQuery(function($){
 		autoplay: true,
   	autoplaySpeed: 2000,
 		responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        centerMode: true,
-        centerPadding: '200px',
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        centerMode: true,
-        centerPadding: '0',
-        slidesToShow: 1
-      }
-    }
-  ]
+			{
+				breakpoint: 480,
+				settings: {
+					centerMode: true,
+					centerPadding: '0',
+					slidesToShow: 1
+				}
+			},
+	    {
+	      breakpoint: 768,
+	      settings: {
+	        centerMode: true,
+	        centerPadding: '200px',
+	        slidesToShow: 3
+	      }
+	    }
+	  ]
+	});
+
+	$(".slick-phone").slick({
+		autoplay: true,
+  	autoplaySpeed: 2000
 	});
 });
 </script>
 
 <style>
-.slick-slide { width: 550px !important;}
-.slick-item { width: 550px; height: auto; }
-.slick-prev { left: 90px; z-index: 100; visibility: hidden; }
-.slick-next { right: 90px; z-index: 100; visibility: hidden; }
-.slick-center:hover .slick-prev,
-.slick-center:hover .slick-next {
+.slick-center .slick-slide { width: 550px !important;}
+.slick-center .slick-item { width: 550px; height: auto; }
+.slick-center .slick-prev { left: 90px; z-index: 100; visibility: hidden; }
+.slick-center .slick-next { right: 90px; z-index: 100; visibility: hidden; }
+.slick-center .slick-center:hover .slick-center .slick-prev,
+.slick-center .slick-center:hover .slick-center .slick-next {
 	visibility: visible;
+}
+@media only screen and (min-width: 48em) {
+	.slick-phone { display: none; }
+}
+@media only screen and (max-width: 48em) {
+	.slick-center { display: none; }
+	.slick-phone { display: block; }
+	/* .slick-slide { width: auto !important; max-width: 100%; } */
+	/* .slick-item { width: auto; height: auto; max-width: 100%; } */
 }
 .slick-prev:before { font-family: 'FontAwesome' !important; content: '\f104' !important; }
 .slick-next:before { font-family: 'FontAwesome' !important; content: '\f105' !important; }
