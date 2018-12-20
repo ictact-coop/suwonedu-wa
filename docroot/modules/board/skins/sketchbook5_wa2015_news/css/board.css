@@ -921,7 +921,7 @@ body.viewer_blk{background:#222}
 .bd_tb_lst .no,.bd_tb_lst .cate,#cloud_btn,
 .bd_wrt .color_wrp{display:none !important}
 #re_cmt .editor_select{display:block !important}
-.bd .bd_hd{padding:0}
+.bd .bd_hd{padding:0 0 1rem 0;}
 .bd_bc{overflow:hidden;float:none !important;padding:10px}
 .bd_hd.v2 .bd_bc{border-top:1px solid #DDD;background:#FCFCFC}
 .bd_cnb{padding-left:48px}

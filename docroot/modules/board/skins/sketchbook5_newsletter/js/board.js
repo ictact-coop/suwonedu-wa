@@ -615,6 +615,5 @@ function bdLinkBoard(bd){
 	};
 }
 (function($){
-	console.log($(window).width());
 	$('.stb-left-cell, .stb-right-cell').css({'width': 'auto'});
 })(jQuery);
