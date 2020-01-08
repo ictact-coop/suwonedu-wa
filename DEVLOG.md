@@ -81,3 +81,23 @@ common/js/plugins/ckeditor/ckeditor/plugins
 <div style="text-align:right"><a href="/index.php?mid=keywords"><i class="xi-plus-square"></i> 더보기</a></div>
 제거
 ```
+
+## 지난호보기 newsletter
+
+지난호보기 게시판에 매년 새해의 카테고리를 만들어야 한다.
+
+- 게시판 분류 2020 생성
+	* /index.php?module=admin&act=dispBoardAdminCategoryInfo&module_srl=443
+- 해당 분류 id 파악해서 url 만들어 메뉴에 추가하기
+	* 해당 분류 id => 139562
+	* `/index.php?mid=newsletter&category=139562&page=1`
+	* /index.php?module=admin&act=dispMenuAdminSiteMap
+- 레이아웃 상세에 사이드바에 링크 추가하기 (포탈온 레이아웃)
+	* /index.php?module=admin&act=dispLayoutAdminEdit&layout=portalon&layout_srl=99099
+
+```php
+// docroot/layouts/portalon/2018-detail.html
+<block cond="$mid==newsletter"><!--지난호보기-->
+...
+<li class="active"|cond="$category==139562"><a href="{getURL('','mid','newsletter','category','139562','page','1')}"><i class="icon-chevron-sign-right"></i> 2020년</a></li>
+```
